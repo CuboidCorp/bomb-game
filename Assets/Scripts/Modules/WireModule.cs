@@ -6,11 +6,11 @@ using UnityEngine;
 /// </summary>
 public class WireModule : Module
 {
-    [SerializeField] private const int nbWiresMin = 3;
-    [SerializeField] private const int nbWiresMax = 5;
+    private const int nbWiresMin = 3;
+    private const int nbWiresMax = 5;
 
     private Vector3 wireOffset = new(.05f, 0, 0);
-    private float[] wireYOffsets = { -.3f, -.15f, 0, .15f, .3f };
+    private readonly float[] wireYOffsets = { -.3f, -.15f, 0, .15f, .3f };
 
     private int nbWires;
 

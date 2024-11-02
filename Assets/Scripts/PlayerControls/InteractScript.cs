@@ -7,18 +7,47 @@ using UnityEngine.InputSystem;
 public class InteractScript : MonoBehaviour
 {
     private PlayerControls actions;
-    private Transform selectedObject;
-    private bool isZoomed = false;
+    private InputAction _pos;
+
+    private bool isZoomedOnBomb = false;
+    private bool isZoomedOnModule = false;
+    private bool isRotating = false;
+
+    private Vector2 lastPos;
+
+    [Header("Settings")]
+
+    [SerializeField] private float rotationSpeed = 50f;
+    [SerializeField] private float zoomSpeed = 0.5f;
+
+    private const float rayDistance = 10;
+
+    private Transform bombTransform = null;
+    private Transform moduleTransform = null;
+
+    private int bombLayerMask;
+    private int moduleLayerMask;
+
     private Camera mainCamera;
+    [SerializeField] private Vector3 mainCameraBasePosition;
+
 
     private void Awake()
     {
         actions = new PlayerControls();
         actions.Enable();
-        mainCamera = Camera.main;
 
-        actions.Player.Tap.performed += ctx => OnTap(ctx.ReadValue<Vector2>());
-        actions.Player.Hold.performed += ctx => OnHold(ctx.ReadValue<Vector2>());
+        mainCamera = Camera.main;
+        mainCamera.transform.position = mainCameraBasePosition;
+
+        bombLayerMask = LayerMask.GetMask("Bomb");
+        moduleLayerMask = LayerMask.GetMask("Module");
+
+        _pos = actions.Player.Position;
+
+        actions.Player.Tap.performed += _ => OnTap(_pos.ReadValue<Vector2>());
+        actions.Player.Hold.performed += _ => StartRotate();
+        actions.Player.Hold.canceled += _ => StopRotate();
     }
 
     private void OnEnable()
@@ -31,68 +60,106 @@ public class InteractScript : MonoBehaviour
         actions.Disable();
     }
 
+    private void StartRotate()
+    {
+        isRotating = true;
+        lastPos = _pos.ReadValue<Vector2>();
+    }
+
+    private void StopRotate()
+    {
+        isRotating = false;
+    }
+
+    private void Update()
+    {
+        if (isRotating)
+        {
+            if (bombTransform != null && isZoomedOnBomb && !isZoomedOnModule)
+            {
+                RotateObject();
+            }
+        }
+    }
+
     private void OnTap(Vector2 pos)
     {
         Debug.Log("Tap " + pos);
         Ray ray = mainCamera.ScreenPointToRay(pos);
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (isZoomedOnBomb)
         {
-            // Si on touche un objet et que celui-ci est déjà sélectionné
-            if (selectedObject == hit.transform)
+            //On quitte ou on zoome sur le module
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.yellow, 5);
+            if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, moduleLayerMask))
             {
-                // Si déjà zoomé, on clique dehors pour dézoomer
-                DeselectObject();
+                isZoomedOnModule = true;
+                moduleTransform = hit.transform;
+                ZoomOnTransform(moduleTransform);
+                Debug.Log("Module");
             }
             else
             {
-                // Sinon, on sélectionne l'objet et on applique le zoom
-                SelectObject(hit.transform);
+                if (!Physics.Raycast(ray, out _, rayDistance, bombLayerMask))
+                {
+                    isZoomedOnBomb = false;
+                    bombTransform = null;
+                    ZoomOnTransform(null);
+                    Debug.Log("Leaving bomb");
+                }
+
             }
         }
         else
         {
-            // Si on touche en dehors, dézoomer si déjà zoomé
-            if (isZoomed)
+            //On zoome sur la bombe
+            Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red, 5);
+            if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, bombLayerMask))
             {
-                DeselectObject();
+                Debug.Log("Bomb");
+                isZoomedOnBomb = true;
+                bombTransform = hit.transform;
+                ZoomOnTransform(bombTransform);
             }
+            else
+            {
+                Debug.Log("No bomb");
+            }
+
         }
     }
 
-    private void OnHold(Vector2 pos)
+    private void ZoomOnTransform(Transform transform)
     {
-        Debug.Log("Hold " + pos);
-        // Rotation de l'objet sélectionné si un objet est zoomé
-        if (selectedObject != null && isZoomed)
+        //Zoomer sur un transform ou sur la position initiale 
+        Vector3 zoomPosition = mainCameraBasePosition; // Ajustez cette valeur pour un meilleur effet de zoom
+        if (transform != null)
         {
-            RotateObject();
+            zoomPosition = transform.position + transform.forward * -2f; // Ajustez cette valeur pour un meilleur effet de zoom}
         }
-    }
-
-    private void SelectObject(Transform obj)
-    {
-        // Enregistrer l'objet sélectionné
-        selectedObject = obj;
-        isZoomed = true;
-
-        // Appliquer le zoom en déplaçant la caméra vers l'objet
-        Vector3 zoomPosition = selectedObject.position + selectedObject.forward * -2f; // Ajustez cette valeur pour un meilleur effet de zoom
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, 0.5f);
-    }
-
-    private void DeselectObject()
-    {
-        // Dézoomer en réinitialisant la caméra à sa position d'origine
-        mainCamera.transform.position = new Vector3(0, 0, -10); // Position d'origine de la caméra, ajustez si nécessaire
-        isZoomed = false;
-        selectedObject = null;
+        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed);
     }
 
     private void RotateObject()
     {
-        // Rotation autour de l'axe Y de l'objet sélectionné
-        float rotationSpeed = 50f;
-        float rotation = rotationSpeed * Time.deltaTime;
-        selectedObject.Rotate(Vector3.up, rotation, Space.World);
+        Vector2 currentPos = _pos.ReadValue<Vector2>();
+        Vector2 deltaPos = currentPos - lastPos; // Calcul de la différence de position
+        float rotationY;
+        if (Vector3.Dot(bombTransform.up, Vector3.up) >= 0)
+        {
+            rotationY = -Vector3.Dot(deltaPos, mainCamera.transform.right) * rotationSpeed * Time.deltaTime;
+        }
+        else
+        {
+            rotationY = Vector3.Dot(deltaPos, mainCamera.transform.right) * rotationSpeed * Time.deltaTime;
+        }
+
+        // Rotation autour de l'axe Y (horizontal) et X (vertical)
+        float rotationX = Vector3.Dot(deltaPos, mainCamera.transform.up) * rotationSpeed * Time.deltaTime;
+
+        // Appliquer la rotation
+        bombTransform.Rotate(bombTransform.up, rotationY, Space.World);
+        bombTransform.Rotate(mainCamera.transform.right, rotationX, Space.World);
+
+        lastPos = currentPos; // Mettre à jour la dernière position
     }
 }

@@ -9,6 +9,7 @@ public class TestBombScript : MonoBehaviour
     public int seed;
     public GameObject bomb;
 
+    [SerializeField] private Vector3 bombPosition = new(0, 0, 0);
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class TestBombScript : MonoBehaviour
 
     private void Start()
     {
-        bomb = Instantiate(Resources.Load<GameObject>("Bomb/6Bomb"), new Vector3(0, 0, 0), Quaternion.Euler(-90, 0, 0));
+        bomb = Instantiate(Resources.Load<GameObject>("Bomb/6Bomb"), bombPosition, Quaternion.identity);
         bomb.GetComponent<Bomb>().SetupBomb(seed);
         bomb.GetComponent<Bomb>().SetupModules();
         bomb.GetComponent<Bomb>().StartBomb();

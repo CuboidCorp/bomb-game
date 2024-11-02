@@ -28,112 +28,99 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""df70fa95-8a34-4494-b137-73ab6b9c7d37"",
             ""actions"": [
                 {
-                    ""name"": ""Tap"",
+                    ""name"": ""Position"",
                     ""type"": ""Value"",
-                    ""id"": ""8d47efc8-5217-4d4a-a68c-62bbef8998ab"",
+                    ""id"": ""6367e349-820a-498c-83be-6d5273b0ae53"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Tap"",
+                    ""type"": ""Button"",
+                    ""id"": ""a4f8aca2-4d68-478a-8b4c-14ca1c9bbc2d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Hold"",
-                    ""type"": ""Value"",
-                    ""id"": ""5d5441fe-78fe-4290-91f0-90c709be3e33"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fe38bc5-ec47-4fd5-93dd-cee39652c69f"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Hold"",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""58ddc507-b78b-4c4a-927c-618416e8a834"",
-                    ""path"": ""<Touchscreen>/position"",
-                    ""interactions"": ""Tap"",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""8c81b8a8-5c01-4220-886c-5f5cb1d70244"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": ""Tap"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Tap"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""68c3503b-e7ab-40e4-9256-33bfed60675e"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""c29be526-1505-4121-970d-461101584b1d"",
+                    ""id"": ""69cbb22c-119a-418a-a6a0-235ca398cd21"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Tap"",
+                    ""action"": ""Position"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c9e46696-a3b8-4ed3-8a3b-9077e1ead479"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""id"": ""e281c77e-74db-48da-9065-06e55c543111"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Hold"",
+                    ""action"": ""Position"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""f44c07d4-3aeb-42a4-b04c-e7da5a49dc47"",
-                    ""path"": ""OneModifier"",
+                    ""name"": """",
+                    ""id"": ""1a9a2f6d-31a3-46a6-8e91-c280d6bbd23c"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Hold"",
-                    ""isComposite"": true,
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Modifier"",
-                    ""id"": ""abef4c87-3603-45e4-9d54-3edd06ebcc78"",
+                    ""name"": """",
+                    ""id"": ""9790d14d-a73e-4fa7-b7a4-395fe9fafbac"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Touch"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a735e75b-d86e-4162-a962-6939df081ee1"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Hold"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Binding"",
-                    ""id"": ""57035a13-c801-4a1c-8127-17b5939a08e9"",
-                    ""path"": ""<Mouse>/position"",
+                    ""name"": """",
+                    ""id"": ""f23c2478-19c7-41fa-ad9c-b6774f02eb3f"",
+                    ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": "";Touch"",
                     ""action"": ""Hold"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -686,6 +673,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Position = m_Player.FindAction("Position", throwIfNotFound: true);
         m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
         m_Player_Hold = m_Player.FindAction("Hold", throwIfNotFound: true);
         // UI
@@ -767,12 +755,14 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+    private readonly InputAction m_Player_Position;
     private readonly InputAction m_Player_Tap;
     private readonly InputAction m_Player_Hold;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Position => m_Wrapper.m_Player_Position;
         public InputAction @Tap => m_Wrapper.m_Player_Tap;
         public InputAction @Hold => m_Wrapper.m_Player_Hold;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -784,6 +774,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+            @Position.started += instance.OnPosition;
+            @Position.performed += instance.OnPosition;
+            @Position.canceled += instance.OnPosition;
             @Tap.started += instance.OnTap;
             @Tap.performed += instance.OnTap;
             @Tap.canceled += instance.OnTap;
@@ -794,6 +787,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
+            @Position.started -= instance.OnPosition;
+            @Position.performed -= instance.OnPosition;
+            @Position.canceled -= instance.OnPosition;
             @Tap.started -= instance.OnTap;
             @Tap.performed -= instance.OnTap;
             @Tap.canceled -= instance.OnTap;
@@ -955,6 +951,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
+        void OnPosition(InputAction.CallbackContext context);
         void OnTap(InputAction.CallbackContext context);
         void OnHold(InputAction.CallbackContext context);
     }

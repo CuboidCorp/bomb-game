@@ -39,7 +39,7 @@ public abstract class Bomb : MonoBehaviour
         Vector3 pos = modulePositions[timerSlot];
         modulePositions.Remove(pos);
         modulesGo[0] = Instantiate(Resources.Load<GameObject>("Timer"));
-        modulesGo[0].transform.position = pos;
+        modulesGo[0].transform.position = pos + transform.position;
         modulesGo[0].transform.SetParent(transform);
         modulesGo[0].name = "Timer";
         timerScript = modulesGo[0].GetComponent<Timer>();
@@ -51,7 +51,7 @@ public abstract class Bomb : MonoBehaviour
             Debug.Log($"Module n°{i + 1} at pos : {position} type : {moduleType}");
             GameObject modulePrefab = modulesPrefabs[(int)moduleType];
             modulesGo[i] = Instantiate(modulePrefab);
-            modulesGo[i].transform.position = position;
+            modulesGo[i].transform.position = position + transform.position;
             modulesGo[i].transform.SetParent(transform);
             modulesGo[i].name = $"Module n°{i + 1}-{moduleType}";
             modulesGo[i].GetComponent<Module>().SetupModule();
