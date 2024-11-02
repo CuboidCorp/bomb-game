@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "SecondFingerPosition",
+                    "type": "Value",
+                    "id": "63a36488-04ef-467e-82aa-93191442d2da",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Tap",
                     "type": "Button",
                     "id": "a4f8aca2-4d68-478a-8b4c-14ca1c9bbc2d",
@@ -30,6 +39,24 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Return",
+                    "type": "Button",
+                    "id": "feacaab3-e09d-4771-bbc3-ed4cc6550448",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SecondFingerContact",
+                    "type": "Button",
+                    "id": "92aee62d-4d96-4a99-a514-c87c82866389",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -48,7 +75,7 @@
                 {
                     "name": "",
                     "id": "e281c77e-74db-48da-9065-06e55c543111",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "path": "<Touchscreen>/touch0/position",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
@@ -97,6 +124,39 @@
                     "processors": "",
                     "groups": ";Touch",
                     "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ae9f843-d077-4d04-b2f9-9a87d3b764fd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Return",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb0fd492-c2cf-43eb-9199-37a62b016719",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondFingerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "572d2478-a54f-44a0-a720-88a29644f2d3",
+                    "path": "<Touchscreen>/touch1/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "SecondFingerContact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,9 +10,12 @@ public class InteractScript : MonoBehaviour
     private PlayerControls actions;
     private InputAction _pos;
 
-    private bool isZoomedOnBomb = false;
-    private bool isZoomedOnModule = false;
-    private bool isRotating = false;
+
+    [Header("Booleans")]
+    [SerializeField] private bool isZoomedOnBomb = false;
+    [SerializeField] private bool isZoomedOnModule = false;
+    [SerializeField] private bool isRotating = false;
+    [SerializeField] private bool isZooming = false;
 
     private Vector2 lastPos;
 
@@ -30,6 +34,9 @@ public class InteractScript : MonoBehaviour
 
     private Camera mainCamera;
     [SerializeField] private Vector3 mainCameraBasePosition;
+    private Vector3 zoomPosition;
+
+    private Coroutine pinchDetectCoroutine;
 
 
     private void Awake()
@@ -48,6 +55,10 @@ public class InteractScript : MonoBehaviour
         actions.Player.Tap.performed += _ => OnTap(_pos.ReadValue<Vector2>());
         actions.Player.Hold.performed += _ => StartRotate();
         actions.Player.Hold.canceled += _ => StopRotate();
+
+        actions.Player.Return.performed += _ => UnZoom();
+        actions.Player.SecondFingerContact.started += _ => PinchDetectStart();
+        actions.Player.SecondFingerContact.canceled += _ => PinchDetectEnd();
     }
 
     private void OnEnable()
@@ -58,6 +69,7 @@ public class InteractScript : MonoBehaviour
     private void OnDisable()
     {
         actions.Disable();
+        PinchDetectEnd();
     }
 
     private void StartRotate()
@@ -80,6 +92,14 @@ public class InteractScript : MonoBehaviour
                 RotateObject();
             }
         }
+        if (isZooming)
+        {
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed * Time.deltaTime);
+            if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .25f)
+            {
+                isZooming = false;
+            }
+        }
     }
 
     private void OnTap(Vector2 pos)
@@ -97,17 +117,6 @@ public class InteractScript : MonoBehaviour
                 ZoomOnTransform(moduleTransform);
                 Debug.Log("Module");
             }
-            else
-            {
-                if (!Physics.Raycast(ray, out _, rayDistance, bombLayerMask))
-                {
-                    isZoomedOnBomb = false;
-                    bombTransform = null;
-                    ZoomOnTransform(null);
-                    Debug.Log("Leaving bomb");
-                }
-
-            }
         }
         else
         {
@@ -118,6 +127,7 @@ public class InteractScript : MonoBehaviour
                 Debug.Log("Bomb");
                 isZoomedOnBomb = true;
                 bombTransform = hit.transform;
+                bombTransform.GetComponent<Collider>().enabled = false;
                 ZoomOnTransform(bombTransform);
             }
             else
@@ -128,15 +138,62 @@ public class InteractScript : MonoBehaviour
         }
     }
 
-    private void ZoomOnTransform(Transform transform)
+    private void PinchDetectStart()
     {
-        //Zoomer sur un transform ou sur la position initiale 
-        Vector3 zoomPosition = mainCameraBasePosition; // Ajustez cette valeur pour un meilleur effet de zoom
-        if (transform != null)
+        pinchDetectCoroutine = StartCoroutine(PinchDetection());
+    }
+
+    private void PinchDetectEnd()
+    {
+        if (pinchDetectCoroutine != null)
+            StopCoroutine(pinchDetectCoroutine);
+    }
+
+    private IEnumerator PinchDetection()
+    {
+        float previousDistance = 0f, distance;
+        while (true)
         {
-            zoomPosition = transform.position + transform.forward * -2f; // Ajustez cette valeur pour un meilleur effet de zoom}
+            distance = Vector2.Distance(actions.Player.Position.ReadValue<Vector2>(), actions.Player.SecondFingerPosition.ReadValue<Vector2>());
+
+            if (distance > previousDistance)
+            {
+                UnZoom();
+            }
+            previousDistance = distance;
         }
-        mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed);
+    }
+
+    private void UnZoom()
+    {
+        if (isZoomedOnModule)
+        {
+            isZoomedOnModule = false;
+            ZoomOnTransform(bombTransform);
+        }
+        else if (isZoomedOnBomb)
+        {
+            isZoomedOnBomb = false;
+            bombTransform.GetComponent<Collider>().enabled = true;
+            ZoomOnTransform(null);
+        }
+        else
+        {
+            ZoomOnTransform(null);
+        }
+    }
+
+    private void ZoomOnTransform(Transform targetTransform)
+    {
+        if (targetTransform != null)
+        {
+            zoomPosition = targetTransform.position + targetTransform.forward * 2f; // Ajustez cette valeur pour un meilleur effet de zoom}
+        }
+        else
+        {
+            zoomPosition = mainCameraBasePosition;
+        }
+        isZooming = true;
     }
 
     private void RotateObject()
