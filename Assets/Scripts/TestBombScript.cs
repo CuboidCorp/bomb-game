@@ -20,10 +20,13 @@ public class TestBombScript : MonoBehaviour
 
     private void Start()
     {
-        bomb = Instantiate(Resources.Load<GameObject>("Bomb/6Bomb"), bombPosition, Quaternion.identity);
-        bomb.GetComponent<Bomb>().SetupBomb(seed);
-        bomb.GetComponent<Bomb>().SetupModules();
-        bomb.GetComponent<Bomb>().StartBomb();
+        //bomb = Instantiate(Resources.Load<GameObject>("Bomb/6Bomb"), bombPosition, Quaternion.identity);
+        //bomb.GetComponent<Bomb>().SetupBomb(seed);
+        //bomb.GetComponent<Bomb>().SetupModules();
+        //bomb.GetComponent<Bomb>().StartBomb();
+
+        WireRuleGenerator wireRuleGenerator = new();
+        wireRuleGenerator.SetupRules();
     }
 
 }

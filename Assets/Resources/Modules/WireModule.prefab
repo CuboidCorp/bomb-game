@@ -179,8 +179,11 @@ MonoBehaviour:
   lampScript: {fileID: 1705623967089014881}
   wireMaterials:
   - {fileID: 2100000, guid: 61c8ac4cbe58e574085a4e65deb048d8, type: 2}
+  - {fileID: 2100000, guid: dde1215fdef8b7745991b5e6e9a1dfa6, type: 2}
   - {fileID: 2100000, guid: 60e4e238c5c330a43b3d764514d6ff3b, type: 2}
+  - {fileID: 2100000, guid: 35378f9a73a94594ab6fb94a55f38ba6, type: 2}
   - {fileID: 2100000, guid: 51695315ebc8c524a94830da85812b04, type: 2}
+  - {fileID: 2100000, guid: 4baf5fec99b444f43a44dcd7791bdcb6, type: 2}
 --- !u!65 &5936919445364478778
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -108,14 +108,24 @@ public class InteractScript : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(pos);
         if (isZoomedOnBomb)
         {
-            //On quitte ou on zoome sur le module
-            Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.yellow, 5);
-            if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, moduleLayerMask))
+            if (isZoomedOnModule)
             {
-                isZoomedOnModule = true;
-                moduleTransform = hit.transform;
-                ZoomOnTransform(moduleTransform);
-                Debug.Log("Module");
+                Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.green, 5);
+                if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, moduleLayerMask))
+                {
+                    moduleTransform.GetComponent<Collider>().enabled = false;
+                    hit.transform.GetComponent<Module>().ModuleInteract(ray);
+                }
+            }
+            else
+            {
+                Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.yellow, 5);
+                if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, moduleLayerMask))
+                {
+                    isZoomedOnModule = true;
+                    moduleTransform = hit.transform;
+                    ZoomOnTransform(moduleTransform);
+                }
             }
         }
         else
@@ -124,15 +134,10 @@ public class InteractScript : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red, 5);
             if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, bombLayerMask))
             {
-                Debug.Log("Bomb");
                 isZoomedOnBomb = true;
                 bombTransform = hit.transform;
                 bombTransform.GetComponent<Collider>().enabled = false;
                 ZoomOnTransform(bombTransform);
-            }
-            else
-            {
-                Debug.Log("No bomb");
             }
 
         }
@@ -169,6 +174,7 @@ public class InteractScript : MonoBehaviour
         if (isZoomedOnModule)
         {
             isZoomedOnModule = false;
+            moduleTransform.GetComponent<Collider>().enabled = true;
             ZoomOnTransform(bombTransform);
         }
         else if (isZoomedOnBomb)

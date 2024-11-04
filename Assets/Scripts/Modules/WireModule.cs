@@ -6,8 +6,7 @@ using UnityEngine;
 /// </summary>
 public class WireModule : Module
 {
-    private const int nbWiresMin = 3;
-    private const int nbWiresMax = 5;
+
 
     private Vector3 wireOffset = new(.05f, 0, 0);
     private readonly float[] wireYOffsets = { -.3f, -.15f, 0, .15f, .3f };
@@ -22,10 +21,11 @@ public class WireModule : Module
 
     public override void SetupModule()
     {
+
         wiresPrefabs = Resources.LoadAll<GameObject>("Wires/Normal");
         brokenWiresPrefabs = Resources.LoadAll<GameObject>("Wires/BrokenWires");
 
-        nbWires = Random.Range(nbWiresMin, nbWiresMax + 1);
+        nbWires = Random.Range(0, 1);
         placedWires = new GameObject[nbWires];
 
         List<float> yOffsets = new(wireYOffsets);
@@ -34,18 +34,25 @@ public class WireModule : Module
         {
             float yOffset = yOffsets[Random.Range(0, yOffsets.Count)];
             yOffsets.Remove(yOffset);
+            int wireIndex = i;
             Vector3 pos = transform.position + wireOffset + new Vector3(0, yOffset, 0);
             int wireType = Random.Range(0, wiresPrefabs.Length);
             Material mat = wireMaterials[Random.Range(0, wireMaterials.Length)];
             GameObject wire = Instantiate(wiresPrefabs[wireType], pos, Quaternion.identity);
             wire.transform.SetParent(transform);
-            wire.name = "Wire" + (i + 1);
+            wire.name = "Wire" + (wireIndex + 1);
             wire.GetComponent<MeshRenderer>().material = mat;
-            wire.GetComponent<Wire>().OnWireClicked.AddListener(() => ReplaceWire(i, wireType, mat));
-            placedWires[i] = wire;
+            wire.GetComponent<Wire>().OnWireClicked.AddListener(() => ReplaceWire(wireIndex, wireType, mat));
+            placedWires[wireIndex] = wire;
         }
     }
 
+    /// <summary>
+    /// Remplace un fil par son équivalent cassé et vérifie si c'était un bon fil
+    /// </summary>
+    /// <param name="wireIndex"></param>
+    /// <param name="wireType"></param>
+    /// <param name="mat"></param>
     private void ReplaceWire(int wireIndex, int wireType, Material mat)
     {
         GameObject wire = placedWires[wireIndex];
@@ -54,5 +61,17 @@ public class WireModule : Module
         placedWires[wireIndex].name = "Wire" + (wireIndex + 1);
         placedWires[wireIndex].GetComponent<MeshRenderer>().material = mat;
         Destroy(wire);
+    }
+
+    public override void ModuleInteract(Ray rayInteract)
+    {
+        if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
+        {
+            if (hit.collider.TryGetComponent(out Wire wire))
+            {
+                wire.OnWireClicked.Invoke();
+            }
+        }
+        GetComponent<Collider>().enabled = true;
     }
 }

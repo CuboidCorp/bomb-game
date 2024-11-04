@@ -8,9 +8,4 @@ public class Wire : MonoBehaviour
 {
     public UnityEvent OnWireClicked;
 
-    public void Interact()
-    {
-        OnWireClicked.Invoke();
-    }
-
 }
