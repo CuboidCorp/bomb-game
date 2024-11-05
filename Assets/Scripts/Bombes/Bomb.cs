@@ -25,14 +25,13 @@ public abstract class Bomb : MonoBehaviour
     /// </summary>
     protected GameObject[] modulesGo;
 
-    public virtual void SetupBomb(int seed)
+    public virtual void SetupBomb()
     {
         modulesPrefabs = Resources.LoadAll<GameObject>("Modules");
-        Random.InitState(seed);
         nbStrikes = 0;
     }
 
-    public void SetupModules()
+    public void SetupModules(ModuleType[] modules)
     {
         //On place le timer dans un des slots random
         int timerSlot = Random.Range(0, nbModules);
@@ -46,7 +45,7 @@ public abstract class Bomb : MonoBehaviour
 
         for (int i = 0; i < nbModules - 1; i++)
         {
-            ModuleType moduleType = (ModuleType)Random.Range(0, Enum.GetValues(typeof(ModuleType)).Length);
+            ModuleType moduleType = modules[i];
             Vector3 position = modulePositions[i];
             Debug.Log($"Module n°{i + 1} at pos : {position} type : {moduleType}");
             GameObject modulePrefab = modulesPrefabs[(int)moduleType];

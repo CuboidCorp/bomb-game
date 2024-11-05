@@ -19,6 +19,6 @@ public class DefusingUIManager : MonoBehaviour
     private void AddStrike()
     {
         Debug.Log("Button clicked");
-        TestBombScript.Instance.bomb.GetComponent<Bomb>().AddStrike();
+        BombSquad.Instance.bomb.GetComponent<Bomb>().AddStrike();
     }
 }

@@ -1,6 +1,6 @@
 public class RuleHolder
 {
-    public WireRuleGenerator wireRuleGenerator;
+    public WireRuleGenerator wireRuleGenerator = null;
 
     public void Generate(ModuleType[] modules)
     {
@@ -9,7 +9,11 @@ public class RuleHolder
             switch (module)
             {
                 case ModuleType.WIRES:
-                    wireRuleGenerator.SetupRules();
+                    if (wireRuleGenerator == null)
+                    {
+                        wireRuleGenerator = new();
+                        wireRuleGenerator.SetupRules();
+                    }
                     break;
             }
         }

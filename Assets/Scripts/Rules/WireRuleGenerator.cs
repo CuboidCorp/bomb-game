@@ -42,6 +42,7 @@ public class WireRuleGenerator
         {
             WireConditionTarget.Material => (WireMaterials)Random.Range(0, Enum.GetValues(typeof(WireMaterials)).Length),
             WireConditionTarget.Type => (WireType)Random.Range(0, Enum.GetValues(typeof(WireType)).Length),
+            _ => throw new NotImplementedException(),
         };
 
         int quantity = Random.Range(0, 3);

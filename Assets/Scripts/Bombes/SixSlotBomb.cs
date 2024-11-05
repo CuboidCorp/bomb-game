@@ -5,9 +5,9 @@ using UnityEngine;
 /// </summary>
 public class SixSlotBomb : Bomb
 {
-    public override void SetupBomb(int seed)
+    public override void SetupBomb()
     {
-        base.SetupBomb(seed);
+        base.SetupBomb();
         nbModules = 6;
         modulePositions = new()//Les slots vont de haut a gauche a bas a droite
         {

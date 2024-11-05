@@ -209,11 +209,11 @@ public class InteractScript : MonoBehaviour
         float rotationY;
         if (Vector3.Dot(bombTransform.up, Vector3.up) >= 0)
         {
-            rotationY = -Vector3.Dot(deltaPos, mainCamera.transform.right) * rotationSpeed * Time.deltaTime;
+            rotationY = Vector3.Dot(deltaPos, mainCamera.transform.right) * rotationSpeed * Time.deltaTime;
         }
         else
         {
-            rotationY = Vector3.Dot(deltaPos, mainCamera.transform.right) * rotationSpeed * Time.deltaTime;
+            rotationY = -Vector3.Dot(deltaPos, mainCamera.transform.right) * rotationSpeed * Time.deltaTime;
         }
 
         // Rotation autour de l'axe Y (horizontal) et X (vertical)
