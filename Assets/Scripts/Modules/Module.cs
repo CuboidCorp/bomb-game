@@ -9,7 +9,7 @@ public abstract class Module : MonoBehaviour
 
     [SerializeField] private Lamp lampScript;
 
-    public abstract void SetupModule();
+    public abstract void SetupModule(RuleHolder rules);
 
     public abstract void ModuleInteract(Ray rayInteract);
 }

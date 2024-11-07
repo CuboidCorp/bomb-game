@@ -56,13 +56,54 @@ public class WireRuleGenerator
         }
         //En fonction de la quantité, on va choisir un type de quantité
         QuantityType quantityType = (QuantityType)Random.Range(0, Enum.GetValues(typeof(QuantityType)).Length - 1);
+        bool isRuleOkay = false;
         WireRule wireRule = new(invertCondition, targetType, condition, quantity, quantityType);
+        while (isRuleOkay == false)
+        {
+            wireRule = new(invertCondition, targetType, condition, quantity, quantityType);
+            if (lastRule != null)
+            {
+                if (wireRule.Equals(lastRule.Value) || wireRule.Equals(lastRule.Value.GetRuleInverse()))
+                {
+                    continue;
+                }
+                foreach (WireRule constraint in lastRule.Value.constraints)
+                {
+                    if (wireRule.Equals(constraint) || wireRule.Equals(constraint.GetRuleInverse()))
+                    {
+                        continue;
+                    }
+                }
+
+                isRuleOkay = true;
+            }
+            else
+            {
+                isRuleOkay = true;
+            }
+
+        }
+
         if (lastRule != null)
         {
             wireRule.AddConstraint((WireRule)lastRule);
         }
 
         return wireRule;
+    }
+
+    public WireRule[] GetRulesFromNbWire(int nbWire)
+    {
+        List<WireRule> rulesList = new();
+
+        int startIndex = (NB_WIRES_MIN - nbWire) * NB_RULES;
+
+        for (int i = startIndex; i < startIndex + NB_RULES; i++)
+        {
+            rulesList.Add(rules[i]);
+        }
+
+        return rulesList.ToArray();
     }
 
     public int GetNbWiresMin()

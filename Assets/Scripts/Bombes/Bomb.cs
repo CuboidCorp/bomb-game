@@ -31,7 +31,7 @@ public abstract class Bomb : MonoBehaviour
         nbStrikes = 0;
     }
 
-    public void SetupModules(ModuleType[] modules)
+    public void SetupModules(ModuleType[] modules, RuleHolder rules)
     {
         //On place le timer dans un des slots random
         int timerSlot = Random.Range(0, nbModules);
@@ -53,7 +53,7 @@ public abstract class Bomb : MonoBehaviour
             modulesGo[i].transform.position = position + transform.position;
             modulesGo[i].transform.SetParent(transform);
             modulesGo[i].name = $"Module n°{i + 1}-{moduleType}";
-            modulesGo[i].GetComponent<Module>().SetupModule();
+            modulesGo[i].GetComponent<Module>().SetupModule(rules);
         }
 
     }

@@ -19,13 +19,15 @@ public class WireModule : Module
 
     private GameObject[] placedWires;
 
-    public override void SetupModule()
+    public override void SetupModule(RuleHolder rules)
     {
-
         wiresPrefabs = Resources.LoadAll<GameObject>("Wires/Normal");
         brokenWiresPrefabs = Resources.LoadAll<GameObject>("Wires/BrokenWires");
 
-        nbWires = Random.Range(0, 1);
+        nbWires = Random.Range(rules.wireRuleGenerator.GetNbWiresMin(), rules.wireRuleGenerator.GetNbWiresMax());
+
+        WireRule[] wireRules = rules.wireRuleGenerator.GetRulesFromNbWire(nbWires);
+
         placedWires = new GameObject[nbWires];
 
         List<float> yOffsets = new(wireYOffsets);

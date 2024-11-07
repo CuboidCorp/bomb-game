@@ -100,4 +100,32 @@ public struct WireRule
 
         return ruleString;
     }
+
+    public override bool Equals(object obj)
+    {
+        WireRule? other = obj as WireRule?;
+        if (other == null)
+        {
+            return false;
+        }
+        if (invertCondition != other.Value.invertCondition)
+        {
+            return false;
+        }
+        if (targetType != other.Value.targetType)
+        {
+            return false;
+        }
+        if (condition != other.Value.condition)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(invertCondition, targetType, condition, quantity, quantityType, constraints);
+    }
 }
