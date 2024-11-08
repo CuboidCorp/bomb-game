@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class WireRuleGenerator
@@ -21,19 +20,13 @@ public class WireRuleGenerator
             WireRule? lastWire = null;
             for (int y = 0; y < NB_RULES; y++)
             {
-                rules[i * NB_RULES + y] = GenerateRule(lastWire);
+                rules[i * NB_RULES + y] = GenerateRule(NB_WIRES_MIN + i, lastWire);
                 lastWire = rules[i * NB_RULES + y];
             }
         }
-
-        foreach (WireRule rule in rules)
-        {
-            Debug.Log(rule.GetRuleString());
-        }
-
     }
 
-    private WireRule GenerateRule(WireRule? lastRule)
+    private WireRule GenerateRule(int nbWires, WireRule? lastRule)
     {
         //Randomiser certaines parties
         bool invertCondition;
@@ -57,10 +50,10 @@ public class WireRuleGenerator
         //En fonction de la quantité, on va choisir un type de quantité
         QuantityType quantityType = (QuantityType)Random.Range(0, Enum.GetValues(typeof(QuantityType)).Length - 1);
         bool isRuleOkay = false;
-        WireRule wireRule = new(invertCondition, targetType, condition, quantity, quantityType);
+        WireRule wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1);
         while (isRuleOkay == false)
         {
-            wireRule = new(invertCondition, targetType, condition, quantity, quantityType);
+            wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1);
             if (lastRule != null)
             {
                 if (wireRule.Equals(lastRule.Value) || wireRule.Equals(lastRule.Value.GetRuleInverse()))
@@ -96,7 +89,7 @@ public class WireRuleGenerator
     {
         List<WireRule> rulesList = new();
 
-        int startIndex = (NB_WIRES_MIN - nbWire) * NB_RULES;
+        int startIndex = (nbWire - NB_WIRES_MIN) * NB_RULES;
 
         for (int i = startIndex; i < startIndex + NB_RULES; i++)
         {

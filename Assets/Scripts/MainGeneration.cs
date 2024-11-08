@@ -51,7 +51,7 @@ public class MainGeneration : MonoBehaviour
     {
         GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.identity);
         bomb.GetComponent<Bomb>().SetupBomb();
-        bomb.GetComponent<Bomb>().SetupModules(modules);
+        bomb.GetComponent<Bomb>().SetupModules(modules, ruleHolder);
         bomb.GetComponent<Bomb>().StartBomb();
         return bomb;
     }

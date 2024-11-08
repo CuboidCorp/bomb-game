@@ -4,6 +4,10 @@ using System.Collections.Generic;
 public struct WireRule
 {
     /// <summary>
+    /// Nombre de fils visés par la règle
+    /// </summary>
+    public int nbWires;
+    /// <summary>
     /// Si la condition est inversée ou non
     /// </summary>
     public bool invertCondition;
@@ -24,26 +28,32 @@ public struct WireRule
     /// Relation a check en fonction de la quantité NYI
     /// </summary>
     public QuantityType quantityType;
+
+    /// <summary>
+    /// L'index du fil sur lequel la règle s'applique  NYI
+    /// (De 0 à nbWires - 1)
+    /// </summary>
+    public int wirePositionIndex;
+
     /// <summary>
     /// Contraintes à respecter pour cette règle ( Liste des regles précédentes)
     /// </summary>
     public List<WireRule> constraints;
 
-    public WireRule(bool invertCondition, Enum targetType, WireConditionTarget condition, int quantity, QuantityType quantityType, List<WireRule> constraints = null)
+    public WireRule(int nbWires, bool invertCondition, Enum targetType, WireConditionTarget condition, int quantity, QuantityType quantityType, int wirePosition, List<WireRule> constraints = null)
     {
+        this.nbWires = nbWires;
         this.invertCondition = invertCondition;
         this.targetType = targetType;
         this.condition = condition;
         this.quantity = quantity;
         this.quantityType = quantityType;
         this.constraints = constraints;
+        this.wirePositionIndex = wirePosition;
         this.constraints ??= new List<WireRule>();
     }
 
-    public WireRule GetRuleInverse()
-    {
-        return new WireRule(!invertCondition, targetType, condition, quantity, GetInverseQuantityType(quantityType), constraints);
-    }
+    public readonly WireRule GetRuleInverse() => new(nbWires, !invertCondition, targetType, condition, quantity, GetInverseQuantityType(quantityType), wirePositionIndex, constraints);
 
     private static QuantityType GetInverseQuantityType(QuantityType qt)
     {
@@ -63,10 +73,7 @@ public struct WireRule
     /// Ajoute l'inverse d'une regle aux contraintes de cette regle
     /// </summary>
     /// <param name="ruleToAdd"></param>
-    public void AddConstraint(WireRule ruleToAdd)
-    {
-        constraints.Add(ruleToAdd.GetRuleInverse());
-    }
+    public readonly void AddConstraint(WireRule ruleToAdd) => constraints.Add(ruleToAdd.GetRuleInverse());
 
     public string GetRuleString()
     {
@@ -104,7 +111,12 @@ public struct WireRule
     public override bool Equals(object obj)
     {
         WireRule? other = obj as WireRule?;
+
         if (other == null)
+        {
+            return false;
+        }
+        if (nbWires != other.Value.nbWires)
         {
             return false;
         }
