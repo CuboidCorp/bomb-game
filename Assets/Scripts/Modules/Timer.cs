@@ -62,4 +62,13 @@ public class Timer : MonoBehaviour
         }
         TimerFinished.Invoke();
     }
+
+    public void StopTimer()
+    {
+        if (timerCoroutine != null)
+        {
+            StopCoroutine(timerCoroutine);
+        }
+    }
+
 }

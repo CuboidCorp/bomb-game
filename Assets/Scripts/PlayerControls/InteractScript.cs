@@ -114,7 +114,11 @@ public class InteractScript : MonoBehaviour
                 if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, moduleLayerMask))
                 {
                     moduleTransform.GetComponent<Collider>().enabled = false;
-                    hit.transform.GetComponent<Module>().ModuleInteract(ray);
+                    if (hit.transform.TryGetComponent(out Module module))
+                    {
+                        module.ModuleInteract(ray);
+                    }
+
                 }
             }
             else

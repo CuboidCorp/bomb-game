@@ -10,7 +10,7 @@ public class WireModule : Module
 
 
     private Vector3 wireOffset = new(.05f, 0, 0);
-    private readonly float[] wireYOffsets = { -.3f, -.15f, 0, .15f, .3f };
+    private readonly float[] wireYOffsets = { .3f, .15f, 0, -.15f, -.3f };
 
     private int nbWires;
 
@@ -25,6 +25,8 @@ public class WireModule : Module
 
     private GameObject[] placedWires;
 
+    private WireRule targetRule;
+
     public override void SetupModule(RuleHolder rules)
     {
         wiresPrefabs = Resources.LoadAll<GameObject>("Wires/Normal");
@@ -34,8 +36,76 @@ public class WireModule : Module
 
         WireRule[] wireRules = rules.wireRuleGenerator.GetRulesFromNbWire(nbWires);
 
-        WireRule targetRule = wireRules[Random.Range(0, wireRules.Length)];
+        targetRule = wireRules[Random.Range(0, wireRules.Length)];
 
+        SetupConstraints();
+
+        Debug.Log("Target Rule : " + targetRule.GetRuleString());
+
+        placedWires = new GameObject[nbWires];
+
+        List<Material> availableMaterials = new(wireMaterials);
+        availableMaterials.RemoveAll(mat => forbiddenMaterials.Contains(mat));
+
+        List<int> availableTypes = new();
+        for (int i = 0; i < wiresPrefabs.Length; i++)
+        {
+            if (!forbiddenTypes.Contains(i))
+                availableTypes.Add(i);
+        }
+
+        List<float> yOffsets = new(wireYOffsets);
+
+        //On supprime les offsets qui ne sont pas utilisés
+        //Il faut qu'on enleve 5-nbWires offsets, de manière aléatoire
+        int offsetsToRemove = 5 - nbWires;
+
+        for (int i = 0; i < offsetsToRemove; i++)
+        {
+            yOffsets.RemoveAt(Random.Range(0, yOffsets.Count));
+        }
+
+        List<Material> selectedMaterials = new();
+        List<int> selectedTypes = new();
+
+        selectedMaterials.AddRange(mandatoryMaterials);
+        selectedTypes.AddRange(mandatoryTypes);
+
+        while (selectedMaterials.Count < nbWires)
+        {
+            selectedMaterials.Add(availableMaterials[Random.Range(0, availableMaterials.Count)]);
+        }
+
+        while (selectedTypes.Count < nbWires)
+        {
+            selectedTypes.Add(availableTypes[Random.Range(0, availableTypes.Count)]);
+        }
+
+        selectedMaterials = selectedMaterials.OrderBy(x => Random.value).ToList();
+        selectedTypes = selectedTypes.OrderBy(x => Random.value).ToList();
+
+        for (int i = 0; i < nbWires; i++)
+        {
+            float yOffset = yOffsets[i];
+
+            int wireIndex = i;
+            Vector3 pos = transform.position + wireOffset + new Vector3(0, yOffset, 0);
+
+            Material mat = selectedMaterials[i];
+            int wireType = selectedTypes[i];
+
+            GameObject wire = Instantiate(wiresPrefabs[wireType], pos, Quaternion.identity);
+            wire.transform.SetParent(transform);
+            wire.name = "Wire" + (wireIndex + 1);
+            wire.GetComponent<MeshRenderer>().material = mat;
+            wire.GetComponent<Wire>().OnWireClicked.AddListener(() => ReplaceWire(wireIndex, wireType, mat));
+
+            placedWires[wireIndex] = wire;
+        }
+    }
+
+    private void SetupConstraints()
+    {
         mandatoryMaterials = new List<Material>();
         forbiddenMaterials = new List<Material>();
         mandatoryTypes = new List<int>();
@@ -95,72 +165,6 @@ public class WireModule : Module
 
             }
         }
-
-        Debug.Log("Target Rule : " + targetRule.GetRuleString());
-
-        Debug.Log("Mandatory Materials : " + string.Join(", ", mandatoryMaterials));
-        Debug.Log("Forbidden Materials : " + string.Join(", ", forbiddenMaterials));
-        Debug.Log("Mandatory Types : " + string.Join(", ", mandatoryTypes));
-        Debug.Log("Forbidden Types : " + string.Join(", ", forbiddenTypes));
-
-        placedWires = new GameObject[nbWires];
-
-        // Prepare lists of available materials and types, excluding forbidden items
-        List<Material> availableMaterials = new(wireMaterials);
-        availableMaterials.RemoveAll(mat => forbiddenMaterials.Contains(mat));
-
-        List<int> availableTypes = new();
-        for (int i = 0; i < wiresPrefabs.Length; i++)
-        {
-            if (!forbiddenTypes.Contains(i))
-                availableTypes.Add(i);
-        }
-
-        List<float> yOffsets = new(wireYOffsets);
-        List<Material> selectedMaterials = new();
-        List<int> selectedTypes = new();
-
-        // Ensure all mandatory materials and types are selected
-        selectedMaterials.AddRange(mandatoryMaterials);
-        selectedTypes.AddRange(mandatoryTypes);
-
-        // Randomly fill up remaining slots with available materials and types
-        while (selectedMaterials.Count < nbWires)
-        {
-            selectedMaterials.Add(availableMaterials[Random.Range(0, availableMaterials.Count)]);
-        }
-
-        while (selectedTypes.Count < nbWires)
-        {
-            selectedTypes.Add(availableTypes[Random.Range(0, availableTypes.Count)]);
-        }
-
-        // Shuffle lists to randomize order
-        selectedMaterials = selectedMaterials.OrderBy(x => Random.value).ToList();
-        selectedTypes = selectedTypes.OrderBy(x => Random.value).ToList();
-
-        // Place wires at random positions with selected materials and types
-        for (int i = 0; i < nbWires; i++)
-        {
-            float yOffset = yOffsets[Random.Range(0, yOffsets.Count)];
-            yOffsets.Remove(yOffset);  // Remove used offset
-
-            int wireIndex = i;
-            Vector3 pos = transform.position + wireOffset + new Vector3(0, yOffset, 0);
-
-            // Select a material and type for this wire
-            Material mat = selectedMaterials[i];
-            int wireType = selectedTypes[i];
-
-            // Instantiate and setup the wire GameObject
-            GameObject wire = Instantiate(wiresPrefabs[wireType], pos, Quaternion.identity);
-            wire.transform.SetParent(transform);
-            wire.name = "Wire" + (wireIndex + 1);
-            wire.GetComponent<MeshRenderer>().material = mat;
-            wire.GetComponent<Wire>().OnWireClicked.AddListener(() => ReplaceWire(wireIndex, wireType, mat));
-
-            placedWires[wireIndex] = wire;
-        }
     }
 
     /// <summary>
@@ -177,6 +181,19 @@ public class WireModule : Module
         placedWires[wireIndex].name = "Wire" + (wireIndex + 1);
         placedWires[wireIndex].GetComponent<MeshRenderer>().material = mat;
         Destroy(wire);
+
+        Debug.Log("Clicked on wire " + (wireIndex + 1) + " of type " + wireType + " with material " + mat.name);
+
+        //On vérifie si c'est bien un bon fil
+        if (targetRule.IsWireCorrect(wireIndex, wireType, mat))
+        {
+            lampScript.Activate();
+            ModuleSuccess.Invoke();
+        }
+        else
+        {
+            ModuleFail.Invoke();
+        }
     }
 
     public override void ModuleInteract(Ray rayInteract)

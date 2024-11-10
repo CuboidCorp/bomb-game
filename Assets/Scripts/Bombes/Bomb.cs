@@ -24,10 +24,12 @@ public abstract class Bomb : MonoBehaviour
     /// Modules de la bombe (timer inclus)
     /// </summary>
     protected GameObject[] modulesGo;
+    protected int nbModulesFinished;
 
     public virtual void SetupBomb()
     {
         modulesPrefabs = Resources.LoadAll<GameObject>("Modules");
+        nbModulesFinished = 0;
         nbStrikes = 0;
     }
 
@@ -54,6 +56,9 @@ public abstract class Bomb : MonoBehaviour
             modulesGo[i].transform.SetParent(transform);
             modulesGo[i].name = $"Module n°{i + 1}-{moduleType}";
             modulesGo[i].GetComponent<Module>().SetupModule(rules);
+            modulesGo[i].GetComponent<Module>().ModuleFail.AddListener(AddStrike);
+            modulesGo[i].GetComponent<Module>().ModuleSuccess.AddListener(ModuleSuccess);
+
         }
 
     }
@@ -69,19 +74,42 @@ public abstract class Bomb : MonoBehaviour
 
     public void AddStrike()
     {
+        AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_FAIL);
         nbStrikes++;
         Debug.Log("Adding strike");
         if (nbStrikes == 3)
         {
             ExplodeBomb();
         }
-        timerScript.AddStrike();
+        else
+        {
+            timerScript.AddStrike();
+        }
     }
+
+    public void ModuleSuccess()
+    {
+        AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_SUCCESS);
+        nbModulesFinished++;
+        if (nbModulesFinished == nbModules - 1)
+        {
+            BombSuccess();
+        }
+    }
+
 
     public void ExplodeBomb()
     {
+        timerScript.StopTimer();
         AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_EXPLOSION);
         Debug.Log("BOOM");
+
+    }
+
+    private void BombSuccess()
+    {
+        timerScript.StopTimer();
+        Debug.Log("GG");
     }
 
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public struct WireRule
 {
@@ -40,7 +41,12 @@ public struct WireRule
     /// </summary>
     public List<WireRule> constraints;
 
-    public WireRule(int nbWires, bool invertCondition, Enum targetType, WireConditionTarget condition, int quantity, QuantityType quantityType, int wirePosition, List<WireRule> constraints = null)
+    /// <summary>
+    /// Le fil a couper apres
+    /// </summary>
+    public WireRuleTarget action;
+
+    public WireRule(int nbWires, bool invertCondition, Enum targetType, WireConditionTarget condition, int quantity, QuantityType quantityType, int wirePosition, WireRuleTarget action, List<WireRule> constraints = null)
     {
         this.nbWires = nbWires;
         this.invertCondition = invertCondition;
@@ -50,10 +56,11 @@ public struct WireRule
         this.quantityType = quantityType;
         this.constraints = constraints;
         this.wirePositionIndex = wirePosition;
+        this.action = action;
         this.constraints ??= new List<WireRule>();
     }
 
-    public readonly WireRule GetRuleInverse() => new(nbWires, !invertCondition, targetType, condition, quantity, GetInverseQuantityType(quantityType), wirePositionIndex, constraints);
+    public readonly WireRule GetRuleInverse() => new(nbWires, !invertCondition, targetType, condition, quantity, GetInverseQuantityType(quantityType), wirePositionIndex, action, constraints);
 
     private static QuantityType GetInverseQuantityType(QuantityType qt)
     {
@@ -97,14 +104,48 @@ public struct WireRule
                 break;
         }
 
-        ruleString += targetType.ToString() + " ";
+        ruleString += targetType.ToString() + " alors ";
 
+        ruleString += action.GetWireTargetString();
+
+        return ruleString;
+    }
+
+    public string GetRuleStringWithoutAction()
+    {
+        string ruleString = "Si il ";
+        if (invertCondition)
+        {
+            ruleString += "n'";
+        }
+        ruleString += "y a ";
+        if (invertCondition)
+        {
+            ruleString += "pas ";
+        }
+        switch (condition)
+        {
+            case WireConditionTarget.Material:
+                ruleString += $"le matériel ";
+                break;
+            case WireConditionTarget.Type:
+                ruleString += $"le type ";
+                break;
+        }
+
+        ruleString += targetType.ToString() + " ";
+        return ruleString;
+    }
+
+
+    public string GetFullRuleString()
+    {
+        string ruleString = GetRuleString();
         foreach (WireRule constraint in constraints)
         {
             ruleString += "et ";
-            ruleString += constraint.GetRuleString();
+            ruleString += constraint.GetRuleStringWithoutAction();
         }
-
         return ruleString;
     }
 
@@ -139,5 +180,11 @@ public struct WireRule
     public override int GetHashCode()
     {
         return HashCode.Combine(invertCondition, targetType, condition, quantity, quantityType, constraints);
+    }
+
+    public bool IsWireCorrect(int wireIndex, int wireType, Material mat)
+    {
+        //Pour le momement on ne check que l'index du fil
+        return action.IsIndexCorrect(wireIndex);
     }
 }

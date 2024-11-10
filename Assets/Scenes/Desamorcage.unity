@@ -286,8 +286,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - {fileID: 8300000, guid: 144dfc4313f86424f9b20a151c946e10, type: 3}
+  - {fileID: 8300000, guid: 725a5f819cb233046af4d5c7fac251ad, type: 3}
   - {fileID: 8300000, guid: 8b22f97241bb26e4d9162f15046b258f, type: 3}
+  - {fileID: 8300000, guid: e12b20155f2be714e98b29c61d133874, type: 3}
+  - {fileID: 8300000, guid: 5fd1f54fa36ac0a43b69534fddce0e79, type: 3}
 --- !u!82 &799906768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -430,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombPos: {x: 0, y: 5, z: 0}
+  bomb: {fileID: 0}
 --- !u!1 &1020873276
 GameObject:
   m_ObjectHideFlags: 0

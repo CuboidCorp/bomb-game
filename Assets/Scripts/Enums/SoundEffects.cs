@@ -5,4 +5,6 @@ public enum SoundEffects
 {
     BOMB_BEEP,
     BOMB_EXPLOSION,
+    MODULE_FAIL,
+    MODULE_SUCCESS
 }

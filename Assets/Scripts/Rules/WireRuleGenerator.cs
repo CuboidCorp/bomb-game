@@ -50,10 +50,11 @@ public class WireRuleGenerator
         //En fonction de la quantité, on va choisir un type de quantité
         QuantityType quantityType = (QuantityType)Random.Range(0, Enum.GetValues(typeof(QuantityType)).Length - 1);
         bool isRuleOkay = false;
-        WireRule wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1);
+        WireRuleTarget action = new(Random.Range(0, nbWires));
+        WireRule wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1, action);
         while (isRuleOkay == false)
         {
-            wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1);
+            wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1, action);
             if (lastRule != null)
             {
                 if (wireRule.Equals(lastRule.Value) || wireRule.Equals(lastRule.Value.GetRuleInverse()))
