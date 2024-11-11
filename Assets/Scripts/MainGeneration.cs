@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class MainGeneration : MonoBehaviour
@@ -56,8 +58,28 @@ public class MainGeneration : MonoBehaviour
         return bomb;
     }
 
-    public void GenerateManuel(Vector3 position, string resourcesPath)
+    public VisualElement[] GenerateManuel()
     {
-        //TODO : Faire la generation du manuel avec les regles
+        List<VisualElement> modulesRules = new();
+        List<ModuleType> differentModulesList = new();
+
+        VisualTreeAsset[] visualTreeAssets = Resources.LoadAll<VisualTreeAsset>("ManuelModules");
+
+        foreach (ModuleType module in modules)
+        {
+            if (!differentModulesList.Contains(module))
+            {
+                differentModulesList.Add(module);
+            }
+        }
+
+        foreach (ModuleType module in differentModulesList)
+        {
+            VisualElement visualElement = visualTreeAssets[(int)module].CloneTree();
+
+            modulesRules.Add(visualElement);
+        }
+
+        return modulesRules.ToArray();
     }
 }

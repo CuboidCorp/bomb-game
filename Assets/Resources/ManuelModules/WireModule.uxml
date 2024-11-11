@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="wireModuleHolder" style="flex-grow: 1;">
+        <engine:Label text="Wire Module" name="title" style="font-size: 30px;" />
+        <engine:Label text="Module avec 3 à 5 fils colorés. Il faut couper le bon fil en fonction de la première condition qui est remplie." name="description" style="font-size: 18px;" />
+        <engine:Foldout text="Cas avec 3 fils" name="3wireRules" style="font-size: 18px;" />
+        <engine:Foldout text="Cas avec 4 fils" name="4wireRules" style="font-size: 18px;" />
+        <engine:Foldout text="Cas avec 5 fils" name="5wireRules" style="font-size: 18px;" />
+    </engine:VisualElement>
+</engine:UXML>

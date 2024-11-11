@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="PC_ToolBar" src="project://database/Assets/UI%20Toolkit/PC_ToolBar.uxml?fileID=9197481963319205126&amp;guid=ba92f712e9cfa5c488aac8ce77b4f815&amp;type=3#PC_ToolBar" />
+    <engine:Template name="PC_Cursor" src="project://database/Assets/UI%20Toolkit/PC_Cursor.uxml?fileID=9197481963319205126&amp;guid=189919e3b631fd34ea7debaf7e06a4aa&amp;type=3#PC_Cursor" />
+    <engine:VisualElement name="desktop" style="flex-grow: 1; width: 1024px; max-width: 1024px; min-width: 1024px; height: 464px; max-height: 464px; min-height: 464px; background-image: url(&quot;project://database/Assets/Images/StockSnap_AYRUIOILUG.jpg?fileID=2800000&amp;guid=e31ce08f9144d5846bd8cde90dbc406b&amp;type=3#StockSnap_AYRUIOILUG&quot;);" />
+    <engine:Instance template="PC_ToolBar" style="width: 1024px; max-width: 1024px; min-width: 1024px; height: 48px; max-height: 48px; min-height: 48px;" />
+    <engine:Instance template="PC_Cursor" style="position: absolute;" />
+</engine:UXML>
