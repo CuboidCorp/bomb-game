@@ -77,6 +77,15 @@ public class MainGeneration : MonoBehaviour
         {
             VisualElement visualElement = visualTreeAssets[(int)module].CloneTree();
 
+            switch (module)
+            {
+                case ModuleType.WIRES:
+                    visualElement.Q<WireRulesElement>().Init(ruleHolder.wireRuleGenerator);
+                    break;
+                default:
+                    throw new NotImplementedException();
+            }
+
             modulesRules.Add(visualElement);
         }
 

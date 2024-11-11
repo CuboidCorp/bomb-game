@@ -26,4 +26,9 @@ public class ManuelSquad : MonoBehaviour
         modulesRules = MainGeneration.Instance.GenerateManuel();
     }
 
+    public VisualElement[] GetModuleRules()
+    {
+        return modulesRules;
+    }
+
 }

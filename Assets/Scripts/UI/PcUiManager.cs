@@ -62,6 +62,17 @@ public class PcUiManager : MonoBehaviour
         SetupDoc();
     }
 
+    private void OpenManual()
+    {
+        VisualElement[] modules = ManuelSquad.Instance.GetModuleRules();
+        doc.visualTreeAsset = manualWindow;
+        VisualElement main = doc.rootVisualElement;
+        foreach (VisualElement module in modules)
+        {
+            main.Add(module);
+        }
+    }
+
     private IEnumerator WaitForStartup()
     {
         yield return new WaitForSeconds(startupTime);
