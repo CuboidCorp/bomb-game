@@ -13,7 +13,7 @@ public class WireRuleGenerator
 
     public void SetupRules()
     {
-        int nbWireRules = NB_WIRES_MAX - NB_WIRES_MIN;
+        int nbWireRules = NB_WIRES_MAX + 1 - NB_WIRES_MIN;
         rules = new WireRule[nbWireRules * NB_RULES];
         for (int i = 0; i < nbWireRules; i++)
         {
@@ -86,6 +86,11 @@ public class WireRuleGenerator
         return wireRule;
     }
 
+    /// <summary>
+    /// Renvoie les règles pour un nombre de fils donné
+    /// </summary>
+    /// <param name="nbWire">Le nombre de fils</param>
+    /// <returns>L'ensemble des regles pour ce nombre de fils</returns>
     public WireRule[] GetRulesFromNbWire(int nbWire)
     {
         List<WireRule> rulesList = new();
@@ -100,11 +105,19 @@ public class WireRuleGenerator
         return rulesList.ToArray();
     }
 
+    /// <summary>
+    /// Renvoie le nombre de fils minimum
+    /// </summary>
+    /// <returns>Le nombre de fils minimum</returns>
     public int GetNbWiresMin()
     {
         return NB_WIRES_MIN;
     }
 
+    /// <summary>
+    /// Renvoie le nombre de fils maximum (Ajoute +1 pour random pour l'inclure)
+    /// </summary>
+    /// <returns>Le nombre de fils max</returns>
     public int GetNbWiresMax()
     {
         return NB_WIRES_MAX;

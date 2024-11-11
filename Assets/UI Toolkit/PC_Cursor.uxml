@@ -1,3 +1,0 @@
-<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:VisualElement name="cursor" style="flex-grow: 1; max-width: 32px; min-width: 32px; min-height: 32px; max-height: 32px; height: 32px; width: 32px; background-image: url(&quot;project://database/Assets/Images/Cursor.png?fileID=2800000&amp;guid=bb6860f72662db04b98fe83499fd091c&amp;type=3#Cursor&quot;); -unity-background-image-tint-color: rgb(255, 255, 255);" />
-</engine:UXML>

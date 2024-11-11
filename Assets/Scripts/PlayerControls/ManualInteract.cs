@@ -39,7 +39,6 @@ public class ManualInteract : BaseInteract
 
     protected override void OnTap(Vector2 pos)
     {
-        Debug.Log("Tap " + pos);
         Ray ray = mainCamera.ScreenPointToRay(pos);
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
@@ -63,6 +62,7 @@ public class ManualInteract : BaseInteract
 
     protected override void UnZoom()
     {
+        PcUiManager.Instance.UnSetupDoc();
         ZoomTo(mainCameraBasePosition);
         isZoomedOnComputer = false;
     }

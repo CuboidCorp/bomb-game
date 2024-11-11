@@ -32,7 +32,7 @@ public class WireModule : Module
         wiresPrefabs = Resources.LoadAll<GameObject>("Wires/Normal");
         brokenWiresPrefabs = Resources.LoadAll<GameObject>("Wires/BrokenWires");
 
-        nbWires = Random.Range(rules.wireRuleGenerator.GetNbWiresMin(), rules.wireRuleGenerator.GetNbWiresMax());
+        nbWires = Random.Range(rules.wireRuleGenerator.GetNbWiresMin(), rules.wireRuleGenerator.GetNbWiresMax() + 1);
 
         WireRule[] wireRules = rules.wireRuleGenerator.GetRulesFromNbWire(nbWires);
 
