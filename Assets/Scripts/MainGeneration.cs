@@ -9,6 +9,8 @@ public class MainGeneration : MonoBehaviour
     [SerializeField] private int seed = 0;
     [SerializeField] private BombTypes bombType;
 
+    [SerializeField] private bool isDebug = false;
+
     public static MainGeneration Instance;
 
     private RuleHolder ruleHolder;
@@ -20,7 +22,7 @@ public class MainGeneration : MonoBehaviour
     {
         if (Instance != null)
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
         Instance = this;
@@ -28,6 +30,16 @@ public class MainGeneration : MonoBehaviour
         Random.InitState(seed);
 
         ruleHolder = new();
+    }
+
+    /// <summary>
+    /// Set le seed de la game 
+    /// </summary>
+    /// <param name="seed">Le seed a mettre</param>
+    public void SetSeed(int seed)
+    {
+        this.seed = seed;
+        Random.InitState(seed);
     }
 
     public void GenerateModules()

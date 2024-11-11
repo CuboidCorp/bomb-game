@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 55c051b96233fae4eaa719f3062b5632
   - enabled: 1
-    path: Assets/Scenes/Desamorcage.unity
+    path: Assets/Scenes/Agent.unity
     guid: f078fcde024f08541ae9132ad52c2c5f
   - enabled: 1
-    path: Assets/Scenes/Manuel.unity
+    path: Assets/Scenes/Operator.unity
     guid: 92fc0c60283d77940adf788790b45ce0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1e9c9cecbff09ef42af440a4330b3459, type: 2}

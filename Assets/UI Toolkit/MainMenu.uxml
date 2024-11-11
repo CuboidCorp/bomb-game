@@ -1,0 +1,16 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="seedHolder" style="flex-grow: 1; position: relative; top: 0; right: auto; left: auto; align-items: center; height: auto; justify-content: space-between; align-self: center; max-width: 200px; min-width: 200px; max-height: 80px; min-height: 80px; background-color: rgb(60, 60, 60);">
+        <engine:IntegerField label="Seed" value="0" name="seed" max-length="1000" style="height: 35px;" />
+        <engine:Button text="Randomize Seed" name="randomizeSeed" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;" />
+    </engine:VisualElement>
+    <engine:VisualElement name="holder" style="flex-grow: 1; flex-direction: row;">
+        <engine:VisualElement name="operator" style="flex-grow: 1; width: 50%; max-width: 50%; min-width: 50%; justify-content: center;">
+            <engine:Label text="OPERATOR" name="title" style="-unity-text-align: upper-center; font-size: 32px; color: rgb(255, 255, 255);" />
+            <engine:Button text="Start" name="startOpBtn" />
+        </engine:VisualElement>
+        <engine:VisualElement name="agent" style="flex-grow: 1; width: 50%; max-width: 50%; min-width: 50%; align-items: stretch; justify-content: center;">
+            <engine:Label text="AGENT" name="title" style="-unity-text-align: upper-center; font-size: 32px; color: rgb(255, 255, 255);" />
+            <engine:Button text="Start" name="startAgtBtn" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
