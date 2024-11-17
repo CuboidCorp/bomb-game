@@ -10,8 +10,8 @@ public abstract class Module : MonoBehaviour
 
     [SerializeField] protected Lamp lampScript;
 
-    public UnityEvent ModuleSuccess;
-    public UnityEvent ModuleFail;
+    [HideInInspector] public UnityEvent ModuleSuccess;
+    [HideInInspector] public UnityEvent ModuleFail;
 
     public abstract void SetupModule(RuleHolder rules);
 

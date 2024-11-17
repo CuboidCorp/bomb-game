@@ -3,5 +3,6 @@
 /// </summary>
 public enum ModuleType
 {
+    LABY,
     WIRES,
 }

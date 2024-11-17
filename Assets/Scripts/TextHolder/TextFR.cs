@@ -12,4 +12,9 @@ public static class TextFR
     public const string WIRE_RULE_TITLE = "Règles des fils";
     public const string WIRE_RULE_DESC = "Ce module est composé de {nb_wires_min} à {nb_wires_max} fils. L'objectif est de trouver la première condition qui est remplie et d'effectuer l'action associée. Les conditions se lisent de haut en bas.";
     #endregion
+
+    #region LabyRule
+    public const string LABY_RULE_TITLE = "Règles du labyrinthe";
+    public const string LABY_RULE_DESC = "Ce module est composé d'un labyrinthe de {nb_laby}x{nb_laby} cases. L'objectif est d'aider l'agent à déplacer le curseur du labyrithe du début du labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue) sans passer par les murs que l'agent ne peut pas voir'";
+    #endregion
 }

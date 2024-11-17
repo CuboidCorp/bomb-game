@@ -7,8 +7,6 @@ using UnityEngine;
 /// </summary>
 public class WireModule : Module
 {
-
-
     private Vector3 wireOffset = new(.05f, 0, 0);
     private readonly float[] wireYOffsets = { .3f, .15f, 0, -.15f, -.3f };
 

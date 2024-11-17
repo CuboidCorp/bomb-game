@@ -1,6 +1,7 @@
 public class RuleHolder
 {
     public WireRuleGenerator wireRuleGenerator = null;
+    public LabyRuleGenerator labyRuleGenerator = null;
 
     public void Generate(ModuleType[] modules)
     {
@@ -15,6 +16,15 @@ public class RuleHolder
                         wireRuleGenerator.SetupRules();
                     }
                     break;
+                case ModuleType.LABY:
+                    if (labyRuleGenerator == null)
+                    {
+                        labyRuleGenerator = new();
+                        labyRuleGenerator.SetupRules();
+                    }
+                    break;
+                default:
+                    throw new System.Exception("Module non reconnu");
             }
         }
     }
