@@ -1,168 +1,141 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class LabyRuleGenerator
 {
+    private struct Neighbour
+    {
+        public Vector2Int Pos;
+        public WallState SharedWall;
+    }
 
     private const int LABY_HEIGHT = 6;
     private const int LABY_WIDTH = 6;
 
-    private LabyCell[,] laby;
+    private const int NB_RULES = 4;
 
-    private Vector2Int startPos;
-    private Vector2Int endPos;
+
+    private LabyRule[] labyRules;
+    private LabyRule currentRule;
 
     public void SetupRules()
     {
-        GenerateMaze(LABY_WIDTH, LABY_HEIGHT);
-        //Les positions de départ et d'arrivée sont les coins opposés du labyrinthe (Random d'un coté et l'opposé de l'autre)
-        int startCorner = Random.Range(0, 4);
-        startPos = startCorner switch
+        for (int i = 0; i < NB_RULES; i++)
         {
-            0 => new Vector2Int(0, 0),
-            1 => new Vector2Int(LABY_WIDTH - 1, 0),
-            2 => new Vector2Int(0, LABY_HEIGHT - 1),
-            3 => new Vector2Int(LABY_WIDTH - 1, LABY_HEIGHT - 1),
-            _ => new Vector2Int(0, 0),
-        };
+            Vector2Int startPos = i switch
+            {
+                0 => new Vector2Int(0, 0),
+                1 => new Vector2Int(LABY_WIDTH - 1, 0),
+                2 => new Vector2Int(0, LABY_HEIGHT - 1),
+                3 => new Vector2Int(LABY_WIDTH - 1, LABY_HEIGHT - 1),
+                _ => new Vector2Int(0, 0),
+            };
 
-        endPos = startCorner switch
-        {
-            0 => new Vector2Int(LABY_WIDTH - 1, LABY_HEIGHT - 1),
-            1 => new Vector2Int(0, LABY_HEIGHT - 1),
-            2 => new Vector2Int(LABY_WIDTH - 1, 0),
-            3 => new Vector2Int(0, 0),
-            _ => new Vector2Int(0, 0),
-        };
+            Vector2Int endPos = i switch
+            {
+                0 => new Vector2Int(LABY_WIDTH - 1, LABY_HEIGHT - 1),
+                1 => new Vector2Int(0, LABY_HEIGHT - 1),
+                2 => new Vector2Int(LABY_WIDTH - 1, 0),
+                3 => new Vector2Int(0, 0),
+                _ => new Vector2Int(0, 0),
+            };
+
+            currentRule.labyStart = startPos;
+            currentRule.labyEnd = endPos;
+            currentRule.labySize = new Vector2Int(LABY_WIDTH, LABY_HEIGHT);
+            GenerateMaze(currentRule, LABY_WIDTH, LABY_HEIGHT);
+
+        }
     }
 
     private struct Voisin
     {
         public Vector2Int pos;
-        public LabyCell murPartage;
+        public WallState murPartage;
     }
 
-    private void GenerateMaze(int width, int height)
+    private static void GenerateMaze(LabyRule rule, int width, int height)
     {
         // Initialisation du labyrinthe avec tous les murs
-        laby = new LabyCell[width, height];
-        LabyCell initialState = LabyCell.LEFT_WALL | LabyCell.RIGHT_WALL | LabyCell.TOP_WALL | LabyCell.BOTTOM_WALL;
+        rule.laby = new WallState[width, height];
+        WallState initialState = WallState.LEFT_WALL | WallState.RIGHT_WALL | WallState.TOP_WALL | WallState.BOTTOM_WALL;
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                laby[i, j] = initialState;
+                rule.laby[i, j] = initialState;
             }
         }
 
-        // Départ du backtracking
-        Stack<Vector2Int> pile = new();
-        Vector2Int positionInitiale = new(0, 0);
-        pile.Push(positionInitiale);
-        laby[0, 0] |= LabyCell.VISITED;
+        bool aEuDesVoisins = true;
+        Stack<Vector2Int> stack = new();
+        Vector2Int currentCell = new(Random.Range(0, width), Random.Range(0, height));
+        rule.laby[currentCell.x, currentCell.y] |= WallState.VISITED;
+        stack.Push(currentCell);
 
-        while (pile.Count > 0)
+        while (stack.Count > 0)
         {
-            Vector2Int current = pile.Peek();
-            List<Voisin> voisins = TrouverVoisins(current, width, height);
-
-            if (voisins.Count > 0)
+            Vector2Int posActuelle = stack.Pop();
+            Neighbour[] voisins = GetUnvisitedNeighbor(rule, posActuelle);
+            if (voisins.Length > 0)
             {
-                Voisin voisinChoisi = voisins[Random.Range(0, voisins.Count)];
+                aEuDesVoisins = true;
+                stack.Push(posActuelle);
 
-                // Supprimer le mur entre les deux cellules
-                laby[current.x, current.y] &= ~voisinChoisi.murPartage;
-                laby[voisinChoisi.pos.x, voisinChoisi.pos.y] &= ~MurOppose(voisinChoisi.murPartage);
+                int randIndex = Random.Range(0, voisins.Length);
+                Neighbour randomNeighbour = voisins[randIndex];
+                Vector2Int posNeighbour = randomNeighbour.Pos;
 
-                // Marquer la cellule voisine comme visitée
-                laby[voisinChoisi.pos.x, voisinChoisi.pos.y] |= LabyCell.VISITED;
+                rule.laby[posActuelle.x, posActuelle.y] &= ~randomNeighbour.SharedWall;
+                rule.laby[posNeighbour.x, posNeighbour.y] &= ~GetOppositeWall(randomNeighbour.SharedWall);
+                rule.laby[posNeighbour.x, posNeighbour.y] |= WallState.VISITED;
 
-                // Ajouter la cellule voisine à la pile
-                pile.Push(voisinChoisi.pos);
+                stack.Push(posNeighbour);
             }
-            else
+            else if (aEuDesVoisins)
             {
-                // Retour en arrière
-                pile.Pop();
+                aEuDesVoisins = false;
             }
         }
     }
 
-    private List<Voisin> TrouverVoisins(Vector2Int cell, int width, int height)
+
+
+    private static WallState GetOppositeWall(WallState wall)
     {
-        List<Voisin> voisins = new List<Voisin>();
-
-        if (cell.x > 0 && !CelluleVisitee(cell.x - 1, cell.y)) // Gauche
+        return wall switch
         {
-            voisins.Add(new Voisin
-            {
-                pos = new Vector2Int(cell.x - 1, cell.y),
-                murPartage = LabyCell.LEFT_WALL
-            });
-        }
-        if (cell.x < width - 1 && !CelluleVisitee(cell.x + 1, cell.y)) // Droite
-        {
-            voisins.Add(new Voisin
-            {
-                pos = new Vector2Int(cell.x + 1, cell.y),
-                murPartage = LabyCell.RIGHT_WALL
-            });
-        }
-        if (cell.y > 0 && !CelluleVisitee(cell.x, cell.y - 1)) // Bas
-        {
-            voisins.Add(new Voisin
-            {
-                pos = new Vector2Int(cell.x, cell.y - 1),
-                murPartage = LabyCell.BOTTOM_WALL
-            });
-        }
-        if (cell.y < height - 1 && !CelluleVisitee(cell.x, cell.y + 1)) // Haut
-        {
-            voisins.Add(new Voisin
-            {
-                pos = new Vector2Int(cell.x, cell.y + 1),
-                murPartage = LabyCell.TOP_WALL
-            });
-        }
-
-        return voisins;
-    }
-
-    private bool CelluleVisitee(int x, int y)
-    {
-        return (laby[x, y] & LabyCell.VISITED) != 0;
-    }
-
-    private LabyCell MurOppose(LabyCell mur)
-    {
-        return mur switch
-        {
-            LabyCell.LEFT_WALL => LabyCell.RIGHT_WALL,
-            LabyCell.RIGHT_WALL => LabyCell.LEFT_WALL,
-            LabyCell.TOP_WALL => LabyCell.BOTTOM_WALL,
-            LabyCell.BOTTOM_WALL => LabyCell.TOP_WALL,
-            _ => 0,
+            WallState.LEFT_WALL => WallState.RIGHT_WALL,
+            WallState.RIGHT_WALL => WallState.LEFT_WALL,
+            WallState.TOP_WALL => WallState.BOTTOM_WALL,
+            WallState.BOTTOM_WALL => WallState.TOP_WALL,
+            _ => WallState.LEFT_WALL,
         };
     }
 
-    public LabyCell[,] GetLaby()
+    private static Neighbour[] GetUnvisitedNeighbor(LabyRule rule, Vector2Int pos)
     {
-        return laby;
+        List<Neighbour> unvisited = new();
+
+        if (pos.x > 0 && !rule.laby[pos.x - 1, pos.y].HasFlag(WallState.VISITED))
+        {
+            unvisited.Add(new Neighbour { Pos = new Vector2Int(pos.x - 1, pos.y), SharedWall = WallState.LEFT_WALL });
+        }
+        if (pos.x < LABY_WIDTH - 1 && !rule.laby[pos.x + 1, pos.y].HasFlag(WallState.VISITED))
+        {
+            unvisited.Add(new Neighbour { Pos = new Vector2Int(pos.x + 1, pos.y), SharedWall = WallState.RIGHT_WALL });
+        }
+        if (pos.y > 0 && !rule.laby[pos.x, pos.y - 1].HasFlag(WallState.VISITED))
+        {
+            unvisited.Add(new Neighbour { Pos = new Vector2Int(pos.x, pos.y - 1), SharedWall = WallState.BOTTOM_WALL });
+        }
+        if (pos.y < LABY_HEIGHT - 1 && !rule.laby[pos.x, pos.y + 1].HasFlag(WallState.VISITED))
+        {
+            unvisited.Add(new Neighbour { Pos = new Vector2Int(pos.x, pos.y + 1), SharedWall = WallState.TOP_WALL });
+        }
+        return unvisited.ToArray();
     }
 
-    public Vector2Int GetLabySize()
-    {
-        return new Vector2Int(LABY_WIDTH, LABY_HEIGHT);
-    }
 
-    public Vector2Int GetStartPos()
-    {
-        return startPos;
-    }
-
-    public Vector2Int GetEndPos()
-    {
-        return endPos;
-    }
 }

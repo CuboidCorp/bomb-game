@@ -453,7 +453,24 @@ MonoBehaviour:
   ModuleFail:
     m_PersistentCalls:
       m_Calls: []
+  blinkInterval: 1
   canvaHolder: {fileID: 7256790539776914182}
+  imagesLaby:
+  - {fileID: 2800000, guid: 436f3a323f187a74ca0e3ac1e119adba, type: 3}
+  - {fileID: 2800000, guid: 354a8d9b49a6d63439ca012d1e23097e, type: 3}
+  - {fileID: 2800000, guid: 0ce8f4051a195384eb52f69f7c7e015d, type: 3}
+  - {fileID: 2800000, guid: 5d74be7aee3015d4eb3da25b90db2ac8, type: 3}
+  - {fileID: 2800000, guid: 83b7e71b7f32dcb4686b903b993e61cf, type: 3}
+  - {fileID: 2800000, guid: 126f1c3a90029f64a959d8f8318f80fe, type: 3}
+  - {fileID: 2800000, guid: eb2ee299bb37eb74582f7e9b0baaa8d8, type: 3}
+  - {fileID: 2800000, guid: 230ba8de2995769449f38482020d98b1, type: 3}
+  - {fileID: 2800000, guid: 3d6355f424953fa4aa9c282eb2cc4599, type: 3}
+  - {fileID: 2800000, guid: 59095682e292b1a478b2098530a3d754, type: 3}
+  - {fileID: 2800000, guid: 8fe417b789a22134ea8fa81ad2589c42, type: 3}
+  - {fileID: 2800000, guid: cb366ab2d475fc34fb2285235c83578d, type: 3}
+  - {fileID: 2800000, guid: c7292fd37e42da44fa9a85f264c50bef, type: 3}
+  - {fileID: 2800000, guid: e1b091cd4ff3b9545bb6098ea825901c, type: 3}
+  - {fileID: 2800000, guid: fbcfcacfadfc4524c810f980ddd1132b, type: 3}
 --- !u!65 &3818006127353216367
 BoxCollider:
   m_ObjectHideFlags: 0

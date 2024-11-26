@@ -1,5 +1,5 @@
 [System.Flags]
-public enum LabyCell
+public enum WallState
 {
     LEFT_WALL = 1,
     RIGHT_WALL = 2,

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,15 @@ public class LabyModule : Module
     private Vector2Int labyEnd;
 
     private Vector2Int currentPos;
-    private LabyCell[,] laby;
+    private WallState[,] laby;
 
-    private float blinkInterval = 1f;
+    private WallState allValues = WallState.LEFT_WALL | WallState.RIGHT_WALL | WallState.TOP_WALL | WallState.BOTTOM_WALL | WallState.VISITED;
+
+    [SerializeField] private float blinkInterval = 1f;
     private Coroutine blinkCoroutine;
 
     [SerializeField] private Transform canvaHolder;
+    [SerializeField] List<Texture> imagesLaby;
 
     public override void SetupModule(RuleHolder rules)
     {
@@ -47,9 +51,38 @@ public class LabyModule : Module
 
     private void RenderLaby()
     {
+        for (int y = 0; y < labySize.y; y++)
+        {
+            for (int x = 0; x < labySize.x; x++)
+            {
+                int childIndex = y * labySize.x + x;
+                Transform imageHolder = canvaHolder.GetChild(childIndex);
+                RawImage img = imageHolder.GetComponent<RawImage>();
+                int index = GetIndexCouloir(new Vector2Int(x, y));
+                Debug.Log((laby[x, y] & ~WallState.VISITED) + " x :" + x + " y:" + y + " nb : " + index);
+                if (index == 0)
+                {
+                    img.texture = null;
+                }
+                else
+                {
+                    img.texture = imagesLaby[index];
+                }
+            }
+        }
         //On change la couleur des cases du début et de la fin
         SetBaseColor(GetCellPos(labyStart), labyStart);
         SetBaseColor(GetCellPos(labyEnd), labyEnd);
+    }
+
+    /// <summary>
+    /// Renvoie l'index d'un couloir en fonction de son voisin dans la grille
+    /// </summary>
+    /// <returns>L'index du couloir dans la liste des couloirs</returns>
+    private int GetIndexCouloir(Vector2Int position)
+    {
+        int allFlagsMask = (int)(WallState.BOTTOM_WALL | WallState.TOP_WALL | WallState.LEFT_WALL | WallState.RIGHT_WALL | WallState.VISITED);
+        return ~(int)laby[position.x, position.y] & allFlagsMask;
     }
 
     private RawImage GetCellPos(Vector2Int pos)
@@ -77,24 +110,24 @@ public class LabyModule : Module
 
     private void Deplacement(string nomFleche)
     {
-        LabyCell wallState;
+        WallState wallState;
         Vector2Int direction;
         switch (nomFleche)
         {
             case "TriangleU":
-                wallState = LabyCell.TOP_WALL;
+                wallState = WallState.TOP_WALL;
                 direction = Vector2Int.up;
                 break;
             case "TriangleD":
-                wallState = LabyCell.BOTTOM_WALL;
+                wallState = WallState.BOTTOM_WALL;
                 direction = Vector2Int.down;
                 break;
             case "TriangleL":
-                wallState = LabyCell.LEFT_WALL;
+                wallState = WallState.LEFT_WALL;
                 direction = Vector2Int.left;
                 break;
             case "TriangleR":
-                wallState = LabyCell.RIGHT_WALL;
+                wallState = WallState.RIGHT_WALL;
                 direction = Vector2Int.right;
                 break;
             default:

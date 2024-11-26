@@ -103,4 +103,5 @@ public class MainGeneration : MonoBehaviour
 
         return modulesRules.ToArray();
     }
+
 }
