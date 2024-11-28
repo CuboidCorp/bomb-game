@@ -6,6 +6,11 @@ using UnityEngine;
 /// </summary>
 public static class Functions
 {
+    /// <summary>
+    /// Utilisation de l'algorithme de Fisher-Yates pour mélanger une liste
+    /// </summary>
+    /// <typeparam name="T">Le type des valeurs de la liste</typeparam>
+    /// <param name="list">La liste qu'il faut mélanger</param>
     public static void Shuffle<T>(List<T> list)
     {
         int n = list.Count;

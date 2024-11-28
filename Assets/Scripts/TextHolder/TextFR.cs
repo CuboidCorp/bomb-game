@@ -15,6 +15,6 @@ public static class TextFR
 
     #region LabyRule
     public const string LABY_RULE_TITLE = "Règles du labyrinthe";
-    public const string LABY_RULE_DESC = "Ce module est composé d'un labyrinthe de {nb_laby}x{nb_laby} cases. L'objectif est d'aider l'agent à déplacer le curseur du labyrithe du début du labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue) sans passer par les murs que l'agent ne peut pas voir'";
+    public const string LABY_RULE_DESC = "Ce module est composé d'un labyrinthe de {nb_laby}x{nb_laby} cases. L'objectif est d'aider l'agent à déplacer le curseur du labyrithe du début du labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue) sans passer par les murs que l'agent ne peut pas voir. La position actuelle dans le labyrinthe est indiqué par une case jaune clignotante.";
     #endregion
 }

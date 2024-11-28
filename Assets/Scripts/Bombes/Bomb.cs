@@ -49,7 +49,6 @@ public abstract class Bomb : MonoBehaviour
         {
             ModuleType moduleType = modules[i];
             Vector3 position = modulePositions[i];
-            Debug.Log($"Module n°{i + 1} at pos : {position} type : {moduleType}");
             GameObject modulePrefab = modulesPrefabs[(int)moduleType];
             modulesGo[i] = Instantiate(modulePrefab);
             modulesGo[i].transform.position = position + transform.position;

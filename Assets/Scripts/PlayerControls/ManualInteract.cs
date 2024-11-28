@@ -30,7 +30,7 @@ public class ManualInteract : BaseInteract
         if (isZooming)
         {
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed * Time.deltaTime);
-            if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .25f)
+            if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .1f)
             {
                 isZooming = false;
             }

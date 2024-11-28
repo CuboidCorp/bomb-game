@@ -11,12 +11,17 @@ public class WireRuleGenerator
 
     private WireRule[] rules;
 
+    private List<int> nbWiresList;
+    private int currentNbWiresIndex = 0;
+
     public void SetupRules()
     {
+        nbWiresList = new List<int>();
         int nbWireRules = NB_WIRES_MAX + 1 - NB_WIRES_MIN;
         rules = new WireRule[nbWireRules * NB_RULES];
         for (int i = 0; i < nbWireRules; i++)
         {
+            nbWiresList.Add(NB_WIRES_MIN + i);
             WireRule? lastWire = null;
             for (int y = 0; y < NB_RULES; y++)
             {
@@ -24,6 +29,19 @@ public class WireRuleGenerator
                 lastWire = rules[i * NB_RULES + y];
             }
         }
+
+        Functions.Shuffle(nbWiresList);
+
+    }
+
+    public int GetNbWire()
+    {
+        currentNbWiresIndex++;
+        if (currentNbWiresIndex > nbWiresList.Count)
+        {
+            currentNbWiresIndex = 1;
+        }
+        return nbWiresList[currentNbWiresIndex - 1];
     }
 
     private WireRule GenerateRule(int nbWires, WireRule? lastRule)

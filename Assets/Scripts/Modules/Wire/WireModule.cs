@@ -30,7 +30,7 @@ public class WireModule : Module
         wiresPrefabs = Resources.LoadAll<GameObject>("Wires/Normal");
         brokenWiresPrefabs = Resources.LoadAll<GameObject>("Wires/BrokenWires");
 
-        nbWires = Random.Range(rules.wireRuleGenerator.GetNbWiresMin(), rules.wireRuleGenerator.GetNbWiresMax() + 1); //TODO : Enlever le random car il fait un problème avec le seed
+        nbWires = rules.wireRuleGenerator.GetNbWire();
 
         WireRule[] wireRules = rules.wireRuleGenerator.GetRulesFromNbWire(nbWires);
 
@@ -179,8 +179,6 @@ public class WireModule : Module
         placedWires[wireIndex].name = "Wire" + (wireIndex + 1);
         placedWires[wireIndex].GetComponent<MeshRenderer>().material = mat;
         Destroy(wire);
-
-        Debug.Log("Clicked on wire " + (wireIndex + 1) + " of type " + wireType + " with material " + mat.name);
 
         //On vérifie si c'est bien un bon fil
         if (targetRule.IsWireCorrect(wireIndex, wireType, mat))

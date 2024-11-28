@@ -27,9 +27,12 @@ public class MainGeneration : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this);
-        Random.InitState(seed);
-
         ruleHolder = new();
+        if (isDebug)
+        {
+            Debug.Log("Init seed : " + seed);
+            Random.InitState(seed);
+        }
     }
 
     /// <summary>
@@ -39,6 +42,7 @@ public class MainGeneration : MonoBehaviour
     public void SetSeed(int seed)
     {
         this.seed = seed;
+        Debug.Log("Set seed : " + seed);
         Random.InitState(seed);
     }
 
@@ -55,6 +59,7 @@ public class MainGeneration : MonoBehaviour
         for (int i = 0; i < nbModules; i++)
         {
             modules[i] = (ModuleType)Random.Range(0, Enum.GetValues(typeof(ModuleType)).Length);
+            Debug.Log("Module " + i + " : " + modules[i]);
         }
 
         ruleHolder.Generate(modules);
@@ -75,6 +80,7 @@ public class MainGeneration : MonoBehaviour
         List<VisualElement> modulesRules = new();
         List<ModuleType> differentModulesList = new();
 
+        VisualTreeAsset[] images = Resources.LoadAll<VisualTreeAsset>("ManuelImages");
         VisualTreeAsset[] visualTreeAssets = Resources.LoadAll<VisualTreeAsset>("ManuelModules");
 
         foreach (ModuleType module in modules)
@@ -93,6 +99,9 @@ public class MainGeneration : MonoBehaviour
             {
                 case ModuleType.WIRES:
                     visualElement.Q<WireRulesElement>().Init(ruleHolder.wireRuleGenerator);
+                    break;
+                case ModuleType.LABY:
+                    visualElement.Q<LabyRulesElement>().Init(ruleHolder.labyRuleGenerator, images[(int)ManuelImages.LABY_TEMPLATE]);
                     break;
                 default:
                     throw new NotImplementedException();

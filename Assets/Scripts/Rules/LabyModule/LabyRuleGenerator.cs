@@ -13,7 +13,7 @@ public class LabyRuleGenerator
     private const int LABY_HEIGHT = 6;
     private const int LABY_WIDTH = 6;
 
-    private const int NB_RULES = 4;
+    public const int NB_RULES = 4;
 
     private LabyRule[] labyRules;
     private LabyRule currentRule;
@@ -50,13 +50,7 @@ public class LabyRuleGenerator
             rules.Add(currentRule);
         }
 
-        //Shuffle the rules
-        for (int i = rules.Count - 1; i > 0; i--)
-        {
-            int j = Random.Range(0, i + 1);
-            (rules[j], rules[i]) = (rules[i], rules[j]);
-        }
-
+        Functions.Shuffle(rules);
         labyRules = rules.ToArray();
     }
 

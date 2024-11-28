@@ -4,17 +4,23 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class LabyRulesElement : VisualElement
 {
-    private VisualElement rulesHolder => this.Q("labyController");
-    private Label title => this.Q<Label>("titre");
-    private Label description => this.Q<Label>("description");
+    private VisualElement RulesHolder => this.Q("labyController");
+    private Label Title => this.Q<Label>("titre");
+    private Label Description => this.Q<Label>("description");
 
-    public void Init(LabyRuleGenerator generator)
+    public void Init(LabyRuleGenerator generator, VisualTreeAsset labyTemplate)
     {
         Vector2Int mapSize = generator.GetLabySize();
 
-        title.text = TextFR.LABY_RULE_TITLE;
-        description.text = TextFR.LABY_RULE_DESC.Replace("{nb_laby}", mapSize.x.ToString());
+        Title.text = TextFR.LABY_RULE_TITLE;
+        Description.text = TextFR.LABY_RULE_DESC.Replace("{nb_laby}", mapSize.x.ToString());
 
+        for (int i = 0; i < LabyRuleGenerator.NB_RULES; i++)
+        {
+            VisualElement labyRuleVisu = labyTemplate.CloneTree();
+            labyRuleVisu.Q<LabyVisuElement>().Init(generator.GetRule());
+            RulesHolder.Add(labyRuleVisu);
+        }
     }
 
     public LabyRulesElement() { }
