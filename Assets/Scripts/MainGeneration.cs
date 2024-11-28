@@ -9,7 +9,7 @@ public class MainGeneration : MonoBehaviour
     [SerializeField] private int seed = 0;
     [SerializeField] private BombTypes bombType;
 
-    [SerializeField] private bool isDebug = false;
+    public bool isDebug = false;
 
     public static MainGeneration Instance;
 

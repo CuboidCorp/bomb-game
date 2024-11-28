@@ -30,7 +30,7 @@ public class WireModule : Module
         wiresPrefabs = Resources.LoadAll<GameObject>("Wires/Normal");
         brokenWiresPrefabs = Resources.LoadAll<GameObject>("Wires/BrokenWires");
 
-        nbWires = Random.Range(rules.wireRuleGenerator.GetNbWiresMin(), rules.wireRuleGenerator.GetNbWiresMax() + 1);
+        nbWires = Random.Range(rules.wireRuleGenerator.GetNbWiresMin(), rules.wireRuleGenerator.GetNbWiresMax() + 1); //TODO : Enlever le random car il fait un problème avec le seed
 
         WireRule[] wireRules = rules.wireRuleGenerator.GetRulesFromNbWire(nbWires);
 
@@ -168,9 +168,9 @@ public class WireModule : Module
     /// <summary>
     /// Remplace un fil par son équivalent cassé et vérifie si c'était un bon fil
     /// </summary>
-    /// <param name="wireIndex"></param>
-    /// <param name="wireType"></param>
-    /// <param name="mat"></param>
+    /// <param name="wireIndex">Index du wire de haut en bas</param>
+    /// <param name="wireType">Type du wire</param>
+    /// <param name="mat">Materiel du wire</param>
     private void ReplaceWire(int wireIndex, int wireType, Material mat)
     {
         GameObject wire = placedWires[wireIndex];
@@ -185,12 +185,11 @@ public class WireModule : Module
         //On vérifie si c'est bien un bon fil
         if (targetRule.IsWireCorrect(wireIndex, wireType, mat))
         {
-            lampScript.Activate();
-            ModuleSuccess.Invoke();
+            Success();
         }
         else
         {
-            ModuleFail.Invoke();
+            Fail();
         }
     }
 

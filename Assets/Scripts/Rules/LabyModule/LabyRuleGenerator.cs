@@ -15,12 +15,14 @@ public class LabyRuleGenerator
 
     private const int NB_RULES = 4;
 
-
     private LabyRule[] labyRules;
     private LabyRule currentRule;
 
+    private int currentRuleIndex = 0;
+
     public void SetupRules()
     {
+        List<LabyRule> rules = new();
         for (int i = 0; i < NB_RULES; i++)
         {
             Vector2Int startPos = i switch
@@ -44,63 +46,68 @@ public class LabyRuleGenerator
             currentRule.labyStart = startPos;
             currentRule.labyEnd = endPos;
             currentRule.labySize = new Vector2Int(LABY_WIDTH, LABY_HEIGHT);
-            GenerateMaze(currentRule, LABY_WIDTH, LABY_HEIGHT);
-
+            GenerateMaze(LABY_WIDTH, LABY_HEIGHT);
+            rules.Add(currentRule);
         }
+
+        //Shuffle the rules
+        for (int i = rules.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (rules[j], rules[i]) = (rules[i], rules[j]);
+        }
+
+        labyRules = rules.ToArray();
     }
 
-    private struct Voisin
-    {
-        public Vector2Int pos;
-        public WallState murPartage;
-    }
-
-    private static void GenerateMaze(LabyRule rule, int width, int height)
+    private void GenerateMaze(int width, int height)
     {
         // Initialisation du labyrinthe avec tous les murs
-        rule.laby = new WallState[width, height];
+        currentRule.laby = new WallState[width, height];
         WallState initialState = WallState.LEFT_WALL | WallState.RIGHT_WALL | WallState.TOP_WALL | WallState.BOTTOM_WALL;
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                rule.laby[i, j] = initialState;
+                currentRule.laby[i, j] = initialState;
             }
         }
 
-        bool aEuDesVoisins = true;
         Stack<Vector2Int> stack = new();
         Vector2Int currentCell = new(Random.Range(0, width), Random.Range(0, height));
-        rule.laby[currentCell.x, currentCell.y] |= WallState.VISITED;
+        currentRule.laby[currentCell.x, currentCell.y] |= WallState.VISITED;
         stack.Push(currentCell);
 
         while (stack.Count > 0)
         {
             Vector2Int posActuelle = stack.Pop();
-            Neighbour[] voisins = GetUnvisitedNeighbor(rule, posActuelle);
+            Neighbour[] voisins = GetUnvisitedNeighbor(currentRule, posActuelle);
             if (voisins.Length > 0)
             {
-                aEuDesVoisins = true;
                 stack.Push(posActuelle);
 
                 int randIndex = Random.Range(0, voisins.Length);
                 Neighbour randomNeighbour = voisins[randIndex];
                 Vector2Int posNeighbour = randomNeighbour.Pos;
 
-                rule.laby[posActuelle.x, posActuelle.y] &= ~randomNeighbour.SharedWall;
-                rule.laby[posNeighbour.x, posNeighbour.y] &= ~GetOppositeWall(randomNeighbour.SharedWall);
-                rule.laby[posNeighbour.x, posNeighbour.y] |= WallState.VISITED;
+                currentRule.laby[posActuelle.x, posActuelle.y] &= ~randomNeighbour.SharedWall;
+                currentRule.laby[posNeighbour.x, posNeighbour.y] &= ~GetOppositeWall(randomNeighbour.SharedWall);
+                currentRule.laby[posNeighbour.x, posNeighbour.y] |= WallState.VISITED;
 
                 stack.Push(posNeighbour);
-            }
-            else if (aEuDesVoisins)
-            {
-                aEuDesVoisins = false;
             }
         }
     }
 
-
+    public LabyRule GetRule()
+    {
+        currentRuleIndex++;
+        if (currentRuleIndex > NB_RULES)
+        {
+            currentRuleIndex = 1;
+        }
+        return labyRules[currentRuleIndex - 1];
+    }
 
     private static WallState GetOppositeWall(WallState wall)
     {
@@ -137,5 +144,8 @@ public class LabyRuleGenerator
         return unvisited.ToArray();
     }
 
-
+    public Vector2Int GetLabySize()
+    {
+        return new Vector2Int(LABY_WIDTH, LABY_HEIGHT);
+    }
 }

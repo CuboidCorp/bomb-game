@@ -12,9 +12,7 @@ public static class Functions
         for (int i = 0; i < n - 1; i++)
         {
             int randomIndex = Random.Range(i, n);
-            T temp = list[i];
-            list[i] = list[randomIndex];
-            list[randomIndex] = temp;
+            (list[randomIndex], list[i]) = (list[i], list[randomIndex]);
         }
     }
 

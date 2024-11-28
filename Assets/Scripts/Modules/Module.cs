@@ -13,7 +13,34 @@ public abstract class Module : MonoBehaviour
     [HideInInspector] public UnityEvent ModuleSuccess;
     [HideInInspector] public UnityEvent ModuleFail;
 
+    /// <summary>
+    /// Initialise le module
+    /// </summary>
+    /// <param name="rules">Les regles pour intialiser le module</param>
     public abstract void SetupModule(RuleHolder rules);
 
+    /// <summary>
+    /// Gère l'interaction du module
+    /// </summary>
+    /// <param name="rayInteract">Le ray qui interagit avec le module</param>
     public abstract void ModuleInteract(Ray rayInteract);
+
+    /// <summary>
+    /// Quand le module est réussi
+    /// Si override appelé base.Success() après le code spécifique
+    /// </summary>
+    protected virtual void Success()
+    {
+        lampScript.Activate();
+        ModuleSuccess.Invoke();
+        Destroy(this);
+    }
+
+    /// <summary>
+    /// Quand le module est raté
+    /// </summary>
+    protected virtual void Fail()
+    {
+        ModuleFail.Invoke();
+    }
 }

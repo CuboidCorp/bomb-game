@@ -12,20 +12,22 @@ public class LabyModule : Module
     private Vector2Int currentPos;
     private WallState[,] laby;
 
-    private WallState allValues = WallState.LEFT_WALL | WallState.RIGHT_WALL | WallState.TOP_WALL | WallState.BOTTOM_WALL | WallState.VISITED;
 
     [SerializeField] private float blinkInterval = 1f;
     private Coroutine blinkCoroutine;
 
     [SerializeField] private Transform canvaHolder;
-    [SerializeField] List<Texture> imagesLaby;
+    [SerializeField] private GameObject debugOverlay;
+    [SerializeField] private List<Texture> imagesLaby;
 
     public override void SetupModule(RuleHolder rules)
     {
-        laby = rules.labyRuleGenerator.GetLaby();
-        labySize = rules.labyRuleGenerator.GetLabySize();
-        labyStart = rules.labyRuleGenerator.GetStartPos();
-        labyEnd = rules.labyRuleGenerator.GetEndPos();
+        LabyRule rule = rules.labyRuleGenerator.GetRule();
+
+        laby = rule.GetLaby();
+        labySize = rule.GetLabySize();
+        labyStart = rule.GetStartPos();
+        labyEnd = rule.GetEndPos();
         currentPos = labyStart;
         RenderLaby();
         blinkCoroutine = StartCoroutine(BlinkCoroutine());
@@ -51,25 +53,33 @@ public class LabyModule : Module
 
     private void RenderLaby()
     {
-        for (int y = 0; y < labySize.y; y++)
+        if (MainGeneration.Instance.isDebug)
         {
-            for (int x = 0; x < labySize.x; x++)
+            debugOverlay.SetActive(true);
+            for (int y = 0; y < labySize.y; y++)
             {
-                int childIndex = y * labySize.x + x;
-                Transform imageHolder = canvaHolder.GetChild(childIndex);
-                RawImage img = imageHolder.GetComponent<RawImage>();
-                int index = GetIndexCouloir(new Vector2Int(x, y));
-                Debug.Log((laby[x, y] & ~WallState.VISITED) + " x :" + x + " y:" + y + " nb : " + index);
-                if (index == 0)
+                for (int x = 0; x < labySize.x; x++)
                 {
-                    img.texture = null;
-                }
-                else
-                {
-                    img.texture = imagesLaby[index];
+                    int childIndex = y * labySize.x + x;
+                    Transform imageHolder = debugOverlay.transform.GetChild(childIndex);
+                    RawImage img = imageHolder.GetComponent<RawImage>();
+                    if (MainGeneration.Instance.isDebug)
+                    {
+                        int index = GetIndexCouloir(new Vector2Int(x, y));
+                        if (index == 0)
+                        {
+                            img.texture = null;
+                        }
+                        else
+                        {
+                            img.texture = imagesLaby[index - 1];
+                        }
+                    }
+
                 }
             }
         }
+
         //On change la couleur des cases du début et de la fin
         SetBaseColor(GetCellPos(labyStart), labyStart);
         SetBaseColor(GetCellPos(labyEnd), labyEnd);
@@ -81,8 +91,7 @@ public class LabyModule : Module
     /// <returns>L'index du couloir dans la liste des couloirs</returns>
     private int GetIndexCouloir(Vector2Int position)
     {
-        int allFlagsMask = (int)(WallState.BOTTOM_WALL | WallState.TOP_WALL | WallState.LEFT_WALL | WallState.RIGHT_WALL | WallState.VISITED);
-        return ~(int)laby[position.x, position.y] & allFlagsMask;
+        return (int)(laby[position.x, position.y] & ~WallState.VISITED);
     }
 
     private RawImage GetCellPos(Vector2Int pos)
@@ -137,7 +146,7 @@ public class LabyModule : Module
         //On vérifie si on est en dehors du labyrinthe
         if (currentPos.x + direction.x < 0 || currentPos.x + direction.x >= labySize.x || currentPos.y + direction.y < 0 || currentPos.y + direction.y >= labySize.y)
         {
-            ModuleFail.Invoke();
+            Fail();
             return;
         }
 
@@ -145,16 +154,27 @@ public class LabyModule : Module
         //Si le mur est présent Fail
         if ((laby[currentPos.x, currentPos.y] & wallState) != 0)
         {
-            ModuleFail.Invoke();
+            Fail();
             return;
         }
 
         currentPos += direction;
         if (currentPos == labyEnd)
         {
-            ModuleSuccess.Invoke();
+            Success();
         }
 
+    }
+
+    protected override void Success()
+    {
+        StopCoroutine(blinkCoroutine);
+        for (int i = 0; i < canvaHolder.childCount; i++)
+        {
+            RawImage img = canvaHolder.GetChild(i).GetComponent<RawImage>();
+            img.color = Color.green;
+        }
+        base.Success();
     }
 
     private IEnumerator BlinkCoroutine()
