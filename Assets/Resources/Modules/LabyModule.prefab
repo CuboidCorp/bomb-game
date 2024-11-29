@@ -689,6 +689,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: eb2ee299bb37eb74582f7e9b0baaa8d8, type: 3}
   - {fileID: 2800000, guid: e1b091cd4ff3b9545bb6098ea825901c, type: 3}
   - {fileID: 2800000, guid: fbcfcacfadfc4524c810f980ddd1132b, type: 3}
+  textPrefab: {fileID: 2026429329075510115, guid: b570f2e9c2e09644d8bbcfc6c464b3cb, type: 3}
 --- !u!65 &3818006127353216367
 BoxCollider:
   m_ObjectHideFlags: 0

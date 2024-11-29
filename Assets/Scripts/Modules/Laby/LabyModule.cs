@@ -17,6 +17,8 @@ public class LabyModule : Module
     private Coroutine blinkCoroutine;
 
     [SerializeField] private Transform canvaHolder;
+
+    [Header("Debug")]
     [SerializeField] private GameObject debugOverlay;
     [SerializeField] private List<Texture> imagesLaby;
 
@@ -63,17 +65,15 @@ public class LabyModule : Module
                     int childIndex = y * labySize.x + x;
                     Transform imageHolder = debugOverlay.transform.GetChild(childIndex);
                     RawImage img = imageHolder.GetComponent<RawImage>();
-                    if (MainGeneration.Instance.isDebug)
+
+                    int index = GetIndexCouloir(new Vector2Int(x, y));
+                    if (index == 0)
                     {
-                        int index = GetIndexCouloir(new Vector2Int(x, y));
-                        if (index == 0)
-                        {
-                            img.texture = null;
-                        }
-                        else
-                        {
-                            img.texture = imagesLaby[index - 1];
-                        }
+                        img.texture = null;
+                    }
+                    else
+                    {
+                        img.texture = imagesLaby[index - 1];
                     }
 
                 }

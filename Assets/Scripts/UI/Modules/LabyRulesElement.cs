@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class LabyRulesElement : VisualElement
 {
-    private VisualElement RulesHolder => this.Q("labyController");
+    private VisualElement LabyImageHolder => this.Q("labyHolder");
     private Label Title => this.Q<Label>("titre");
     private Label Description => this.Q<Label>("description");
 
@@ -18,8 +18,8 @@ public partial class LabyRulesElement : VisualElement
         for (int i = 0; i < LabyRuleGenerator.NB_RULES; i++)
         {
             VisualElement labyRuleVisu = labyTemplate.CloneTree();
-            labyRuleVisu.Q<LabyVisuElement>().Init(generator.GetRule());
-            RulesHolder.Add(labyRuleVisu);
+            labyRuleVisu.Q<LabyVisuElement>().Init(generator.GetRule(), i);
+            LabyImageHolder.Add(labyRuleVisu);
         }
     }
 

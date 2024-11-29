@@ -11,17 +11,11 @@
 }
 
 .laby-grid-item {
-    width:64px;
-    height:64px;
+    width: 64px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #cccccc;
+    background-color: rgb(204, 204, 204);
     position: relative;
-}
-
-.laby-label {
-    position: absolute;
-    font-size: 1px;
-    color: black;
 }

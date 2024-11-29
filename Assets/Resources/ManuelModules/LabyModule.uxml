@@ -3,5 +3,6 @@
     <LabyRulesElement name="labyController">
         <engine:Label text="Module laby" name="titre" style="font-size: 32px; -unity-text-align: upper-center;" />
         <engine:Label text="BLABLALALLALALLAALLALALA" name="description" style="font-size: 20px; text-overflow: clip; justify-content: flex-start; align-self: auto; align-content: flex-start; align-items: stretch; flex-wrap: nowrap; white-space: normal;" />
+        <engine:VisualElement name="labyHolder" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly; align-items: center; align-content: auto;" />
     </LabyRulesElement>
 </engine:UXML>
