@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 [UxmlElement]
 public partial class LabyVisuElement : VisualElement
@@ -21,10 +20,6 @@ public partial class LabyVisuElement : VisualElement
 
         laby = rule.GetLaby();
         labyImages = Resources.LoadAll<Sprite>("Textures/LabyImages");
-        foreach (Sprite sprite in labyImages)
-        {
-            Debug.Log(sprite.name);
-        }
         Vector2Int labySize = rule.GetLabySize();
 
         int totalWidth = labySize.x * (CellSize + CellMargin);

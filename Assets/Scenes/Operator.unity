@@ -881,6 +881,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
+      propertyPath: seed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5129861796239562880, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: m_Name
       value: MainGenerationDebug

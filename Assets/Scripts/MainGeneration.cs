@@ -30,7 +30,8 @@ public class MainGeneration : MonoBehaviour
         ruleHolder = new();
         if (isDebug)
         {
-            Debug.Log("Init seed : " + seed);
+            Debug.LogWarning("Lancement en mode debug, le jeu sera différent de la release, meme avec le meme seed");
+            Debug.Log("Set seed : " + seed);
             Random.InitState(seed);
         }
     }

@@ -46,8 +46,6 @@ public class MainMenuUiManager : MonoBehaviour
     {
         int seed = seedField.value;
 
-        Debug.Log("Setting seed to " + seed);
-
         GameObject mainGen = Instantiate(Resources.Load<GameObject>("MainGen"));
 
         mainGen.GetComponent<MainGeneration>().SetSeed(seed);
