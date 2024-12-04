@@ -2,6 +2,7 @@ public class RuleHolder
 {
     public WireRuleGenerator wireRuleGenerator = null;
     public LabyRuleGenerator labyRuleGenerator = null;
+    public ButtonRuleGenerator buttonRuleGenerator = null;
 
     public void Generate(ModuleType[] modules)
     {
@@ -21,6 +22,13 @@ public class RuleHolder
                     {
                         labyRuleGenerator = new();
                         labyRuleGenerator.SetupRules();
+                    }
+                    break;
+                case ModuleType.BUTTON:
+                    if (buttonRuleGenerator == null)
+                    {
+                        buttonRuleGenerator = new();
+                        buttonRuleGenerator.SetupRules();
                     }
                     break;
                 default:

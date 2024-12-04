@@ -12,12 +12,20 @@ public class Timer : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private TMP_Text strikesText;
 
+    public static Timer instance;
+
     private int nbSeconds;
     private float timeBetweenSeconds = 1f;
 
     private Coroutine timerCoroutine;
 
     public UnityEvent TimerFinished;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
 
     private void OnDisable()
     {
@@ -28,9 +36,9 @@ public class Timer : MonoBehaviour
     }
 
     /// <summary>
-    /// Start le timer avec le temps donné
+    /// Start le timer avec le temps donnï¿½
     /// </summary>
-    /// <param name="time">Le temps de départ de la bombe</param>
+    /// <param name="time">Le temps de dï¿½part de la bombe</param>
     public void StartTimer(TimeSpan time)
     {
         Debug.Log("Starting timer with time : " + time.ToString());
