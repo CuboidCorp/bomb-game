@@ -1,7 +1,19 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <IntroElement name="intro">
-        <engine:Label text="Label" name="titre" style="-unity-text-align: upper-center; font-size: 32px; white-space: normal;" />
-        <engine:Label text="Label" name="desc1" style="font-size: 20px; white-space: normal;" />
-        <engine:Label text="Label" name="desc2" style="font-size: 20px; white-space: normal;" />
-    </IntroElement>
+    <engine:VisualElement name="intro" style="flex-grow: 1; margin-top: 4px; margin-right: 4px; margin-bottom: 2px; margin-left: 2px; padding-top: 4px; padding-right: 2px; padding-bottom: 4px; padding-left: 1px;">
+        <engine:Label text="Label" name="titre" style="-unity-text-align: upper-center; font-size: 32px; white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33936601088)" />
+            </Bindings>
+        </engine:Label>
+        <engine:Label text="Label" name="desc1" style="font-size: 20px; white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(96884715520)" />
+            </Bindings>
+        </engine:Label>
+        <engine:Label text="Label" name="desc2" style="font-size: 20px; white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(177146916864)" />
+            </Bindings>
+        </engine:Label>
+    </engine:VisualElement>
 </engine:UXML>

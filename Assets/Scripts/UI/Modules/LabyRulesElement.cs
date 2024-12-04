@@ -5,15 +5,13 @@ using UnityEngine.UIElements;
 public partial class LabyRulesElement : VisualElement
 {
     private VisualElement LabyImageHolder => this.Q("labyHolder");
-    private Label Title => this.Q<Label>("titre");
-    private Label Description => this.Q<Label>("description");
+
+    private int mapSizeSide;
 
     public void Init(LabyRuleGenerator generator, VisualTreeAsset labyTemplate)
     {
         Vector2Int mapSize = generator.GetLabySize();
-
-        Title.text = TextFR.LABY_RULE_TITLE;
-        Description.text = TextFR.LABY_RULE_DESC.Replace("{nb_laby}", mapSize.x.ToString());
+        mapSizeSide = mapSize.x;
 
         for (int i = 0; i < LabyRuleGenerator.NB_RULES; i++)
         {

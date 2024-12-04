@@ -90,7 +90,6 @@ public class PcUiManager : MonoBehaviour
         VisualElement main = doc.rootVisualElement.Q<VisualElement>("scrollManualZone");
         //On rajoute l'intro en premier
         VisualElement intro = introManual.CloneTree();
-        intro.Q<IntroElement>().Init();
         main.Add(intro);
         foreach (VisualElement module in modules)
         {
