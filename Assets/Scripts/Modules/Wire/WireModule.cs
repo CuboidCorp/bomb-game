@@ -38,8 +38,6 @@ public class WireModule : Module
 
         SetupConstraints();
 
-        Debug.Log("Target Rule : " + targetRule.GetRuleString());
-
         placedWires = new GameObject[nbWires];
 
         List<Material> availableMaterials = new(wireMaterials);
@@ -201,5 +199,15 @@ public class WireModule : Module
             }
         }
         GetComponent<Collider>().enabled = true;
+    }
+
+    public override void OnModuleHoldStart(Ray rayInteract)
+    {
+        //RIEN
+    }
+
+    public override void OnModuleHoldEnd()
+    {
+        //RIEN
     }
 }

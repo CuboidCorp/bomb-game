@@ -26,6 +26,16 @@ public abstract class Module : MonoBehaviour
     public abstract void ModuleInteract(Ray rayInteract);
 
     /// <summary>
+    /// Quand on hold le module
+    /// </summary>
+    public abstract void OnModuleHoldStart(Ray rayInteract);
+
+    /// <summary>
+    /// Quand on finit le hold du module
+    /// </summary>
+    public abstract void OnModuleHoldEnd();
+
+    /// <summary>
     /// Quand le module est réussi
     /// Si override appelé base.Success() après le code spécifique
     /// </summary>

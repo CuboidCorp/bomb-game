@@ -3,7 +3,8 @@
 /// </summary>
 public enum ModuleType
 {
+    BUTTON,
     LABY,
     WIRES,
-    BUTTON
+
 }

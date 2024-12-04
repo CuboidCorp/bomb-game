@@ -1,8 +1,8 @@
 using UnityEngine;
-public struct ButtonRule 
+public struct ButtonRule
 {
     public Material buttonMaterial;
-    public LocalizedString word;
+    public string wordKey;
     public ButtonCondition condition;
 
     public float targetPressTime;

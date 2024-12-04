@@ -188,4 +188,14 @@ public class LabyModule : Module
             yield return new WaitForSeconds(blinkInterval);
         }
     }
+
+    public override void OnModuleHoldStart(Ray rayInteract)
+    {
+        //Rien sur ce module
+    }
+
+    public override void OnModuleHoldEnd()
+    {
+        //Rien sur ce module
+    }
 }

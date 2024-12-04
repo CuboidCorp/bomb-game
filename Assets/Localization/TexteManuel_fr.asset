@@ -61,6 +61,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
+  - m_Id: 338585450934272
+    m_Localized: "R\xE8gles du bouton\t"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

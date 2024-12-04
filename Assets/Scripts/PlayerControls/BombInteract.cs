@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Script pour gérer toutes les interactions du joueur dans la scene de desamorcage
@@ -18,6 +20,9 @@ public class BombInteract : BaseInteract
     private Transform bombTransform = null;
     private Transform moduleTransform = null;
 
+    private Module targetModule = null;
+    private Ray? lastRay;
+
     private int bombLayerMask;
     private int moduleLayerMask;
 
@@ -31,24 +36,24 @@ public class BombInteract : BaseInteract
     protected override void SetupActions()
     {
         base.SetupActions();
-        actions.Player.Hold.performed += _ => StartRotate();
-        actions.Player.Hold.canceled += _ => StopRotate();
     }
 
     protected override void UnSetupActions()
     {
         base.UnSetupActions();
-        actions.Player.Hold.performed -= _ => StartRotate();
-        actions.Player.Hold.canceled -= _ => StopRotate();
+        actions.Player.Hold.started -= HoldStartModule;
+        actions.Player.Hold.canceled -= HoldEndModule;
+        actions.Player.Hold.performed -= StartRotate;
+        actions.Player.Hold.canceled -= StopRotate;
     }
 
-    private void StartRotate()
+    private void StartRotate(InputAction.CallbackContext ctx)
     {
         isRotating = true;
         lastPos = _pos.ReadValue<Vector2>();
     }
 
-    private void StopRotate()
+    private void StopRotate(InputAction.CallbackContext ctx)
     {
         isRotating = false;
     }
@@ -97,6 +102,10 @@ public class BombInteract : BaseInteract
                 if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, moduleLayerMask))
                 {
                     isZoomedOnModule = true;
+                    targetModule = hit.transform.GetComponent<Module>();
+                    lastRay = ray;
+                    actions.Player.Hold.started += HoldStartModule;
+                    actions.Player.Hold.canceled += HoldEndModule;
                     moduleTransform = hit.transform;
                     ZoomOnTransform(moduleTransform);
                 }
@@ -108,6 +117,9 @@ public class BombInteract : BaseInteract
             Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red, 5);
             if (Physics.Raycast(ray, out RaycastHit hit, rayDistance, bombLayerMask))
             {
+                Debug.Log("Activation Rotation");
+                actions.Player.Hold.performed += StartRotate;
+                actions.Player.Hold.canceled += StopRotate;
                 isZoomedOnBomb = true;
                 bombTransform = hit.transform;
                 bombTransform.GetComponent<Collider>().enabled = false;
@@ -119,14 +131,21 @@ public class BombInteract : BaseInteract
 
     protected override void UnZoom()
     {
-        if (isZoomedOnModule)
+        if (isZoomedOnModule)//Si on quitte le module
         {
+            targetModule = null;
+            actions.Player.Hold.started -= HoldStartModule;
+            actions.Player.Hold.canceled -= HoldEndModule;
+            actions.Player.Hold.performed += StartRotate;
+            actions.Player.Hold.canceled += StopRotate;
             isZoomedOnModule = false;
             moduleTransform.GetComponent<Collider>().enabled = true;
             ZoomOnTransform(bombTransform);
         }
         else if (isZoomedOnBomb)
         {
+            actions.Player.Hold.performed -= StartRotate;
+            actions.Player.Hold.canceled -= StopRotate;
             isZoomedOnBomb = false;
             bombTransform.GetComponent<Collider>().enabled = true;
             ZoomOnTransform(null);
@@ -135,6 +154,20 @@ public class BombInteract : BaseInteract
         {
             ZoomOnTransform(null);
         }
+    }
+
+    private void HoldStartModule(InputAction.CallbackContext context)
+    {
+        if (lastRay != null && targetModule != null)
+        {
+            targetModule.OnModuleHoldStart(lastRay.Value);
+            lastRay = null;
+        }
+    }
+
+    private void HoldEndModule(InputAction.CallbackContext context)
+    {
+        targetModule.OnModuleHoldEnd();
     }
 
     private void RotateObject()

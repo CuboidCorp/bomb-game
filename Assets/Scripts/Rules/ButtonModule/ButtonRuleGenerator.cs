@@ -1,42 +1,57 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ButtonRuleGenerator
 {
     private const int NB_RULES = 6;
     private Material[] materials;
 
-    private LocalizedString[] words;
-
-    private ButtonRule[] rules;
-    private int currentRuleIndex = 0;
-    
-    private static Vector2Int[] timerBounds = new Vector2Int[]
+    private static readonly string[] wordKeys = new string[]
     {
-        new Vector2Int(0, 15),
-        new Vector2Int(15, 30),
-        new Vector2Int(30, 45),
-        new Vector2Int(45, 60)
+        "BUTTON_MOD_TEXT1",
+        "BUTTON_MOD_TEXT2",
+        "BUTTON_MOD_TEXT3",
+        "BUTTON_MOD_TEXT4",
+        "BUTTON_MOD_TEXT5",
+        "BUTTON_MOD_TEXT6"
+    };
+
+    private List<ButtonRule> rules;
+    private int currentRuleIndex = 0;
+
+    private static readonly Vector2Int[] timerBounds = new Vector2Int[]
+    {
+        new(0, 15),
+        new(15, 30),
+        new(30, 45),
+        new(45, 60)
     };
 
     public void SetupRules()
     {
-        rules = new ButtonRule[NB_RULES];
+        rules = new();
 
-        //TODO : Trouver comment récupérer les matériaux et les mots
+        materials = Resources.LoadAll<Material>("Materials/Button");
 
 
         for (int i = 0; i < NB_RULES; i++)
         {
-            rules[i] = GenerateRule(i);
+            rules.Add(GenerateRule(i));
         }
+
+        Functions.Shuffle(rules);
     }
 
     private ButtonRule GenerateRule(int index)
     {
-        ButtonRule rule = new();
-        rule.buttonMaterial = materials[index];
-        rule.word = words[index];
-        rule.condition = (ButtonCondition)Random.Range(0, Enum.GetValues(typeof(ButtonCondition)).Length);
+        ButtonRule rule = new()
+        {
+            buttonMaterial = materials[index],
+            wordKey = wordKeys[index],
+            condition = (ButtonCondition)Random.Range(0, Enum.GetValues(typeof(ButtonCondition)).Length)
+        };
         switch (rule.condition)
         {
             case ButtonCondition.PRESS_FOR:

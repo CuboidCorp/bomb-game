@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,9 +24,17 @@ public abstract class BaseInteract : MonoBehaviour
 
     private Coroutine pinchDetectCoroutine;
 
+    public static BaseInteract Instance;
+
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
         Setup();
     }
 
@@ -86,6 +95,16 @@ public abstract class BaseInteract : MonoBehaviour
                 isZooming = false;
             }
         }
+    }
+
+    public void AddReleaseAction(Action act)
+    {
+        actions.Player.Hold.canceled += _ => act();
+    }
+
+    public void ResetReleaseAction(Action act)
+    {
+        actions.Player.Hold.canceled -= _ => act();
     }
 
     protected abstract void OnTap(Vector2 pos);

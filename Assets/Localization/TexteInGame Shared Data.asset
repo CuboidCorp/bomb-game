@@ -10,55 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
-  m_Name: TexteManuel Shared Data
+  m_Name: TexteInGame Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: TexteManuel
-  m_TableCollectionNameGuidString: 1c63d9cd4a0b9e84f9c5fc96bc93be33
+  m_TableCollectionName: TexteInGame
+  m_TableCollectionNameGuidString: 57b20bf073f2f064693c09291ad7ca62
   m_Entries:
-  - m_Id: 33936601088
-    m_Key: INTRO_TITLE
+  - m_Id: 16190500864
+    m_Key: BUTTON_MOD_TEXT1
     m_Metadata:
       m_Items: []
-  - m_Id: 96884715520
-    m_Key: INTRO_DESC_1
+  - m_Id: 67319066624
+    m_Key: BUTTON_MOD_TEXT2
     m_Metadata:
       m_Items: []
-  - m_Id: 177146916864
-    m_Key: INTRO_DESC_2
+  - m_Id: 86650613760
+    m_Key: BUTTON_MOD_TEXT3
     m_Metadata:
       m_Items: []
-  - m_Id: 205965979648
-    m_Key: WIRE_RULE_TITLE
+  - m_Id: 103662710784
+    m_Key: BUTTON_MOD_TEXT4
     m_Metadata:
       m_Items: []
-  - m_Id: 222474760192
-    m_Key: WIRE_RULE_DESC
+  - m_Id: 193425010688
+    m_Key: BUTTON_MOD_TEXT5
     m_Metadata:
       m_Items: []
-  - m_Id: 234994757632
-    m_Key: LABY_RULE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 265327964160
-    m_Key: LABY_RULE_DESC
-    m_Metadata:
-      m_Items: []
-  - m_Id: 338585450934272
-    m_Key: BUTTON_RULE_TITLE
-    m_Metadata:
-      m_Items: []
-  - m_Id: 338588126900224
-    m_Key: BUTTON_RULE_DESC
+  - m_Id: 196340051968
+    m_Key: BUTTON_MOD_TEXT6
     m_Metadata:
       m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
-    rid: 4501475455923650833
+    rid: 4501475477241987146
   references:
     version: 2
     RefIds:
-    - rid: 4501475455923650833
+    - rid: 4501475477241987146
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
-        m_CustomEpoch: 1733249989811
+        m_CustomEpoch: 1733330774381

@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
 
     public static Timer instance;
 
-    private int nbSeconds;
+    public int nbSeconds;
     private float timeBetweenSeconds = 1f;
 
     private Coroutine timerCoroutine;
@@ -63,7 +63,7 @@ public class Timer : MonoBehaviour
     {
         while (nbSeconds > 0)
         {
-            yield return new WaitForSeconds(timeBetweenSeconds);
+            yield return new WaitForSecondsRealtime(timeBetweenSeconds);
             AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_BEEP);
             nbSeconds--;
             timerText.text = TimeSpan.FromSeconds(nbSeconds).ToString("mm\\:ss");
