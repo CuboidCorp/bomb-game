@@ -5,10 +5,10 @@ using Random = UnityEngine.Random;
 
 public class ButtonRuleGenerator
 {
-    private const int NB_RULES = 6;
-    private Material[] materials;
+    public const int NB_RULES = 6;
+    public Material[] materials;
 
-    private static readonly string[] wordKeys = new string[]
+    public static readonly string[] wordKeys = new string[]
     {
         "BUTTON_MOD_TEXT1",
         "BUTTON_MOD_TEXT2",
