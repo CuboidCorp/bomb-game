@@ -42,11 +42,12 @@ public class LabyModule : Module
 
     public override void ModuleInteract(Ray rayInteract)
     {
+        GetComponent<Collider>().enabled = false;
         if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
         {
             if (hit.collider.gameObject.name.StartsWith("Triangle"))
             {
-                Debug.Log(hit.collider.gameObject.name);
+                AudioManager.Instance.PlaySoundEffect(SoundEffects.BUTTON_PRESS);
                 Deplacement(hit.collider.gameObject.name);
             }
         }

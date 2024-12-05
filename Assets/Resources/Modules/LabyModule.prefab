@@ -584,7 +584,7 @@ Transform:
   m_GameObject: {fileID: 288088356409057054}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.963}
+  m_LocalPosition: {x: -0, y: 0, z: 1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -689,7 +689,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: eb2ee299bb37eb74582f7e9b0baaa8d8, type: 3}
   - {fileID: 2800000, guid: e1b091cd4ff3b9545bb6098ea825901c, type: 3}
   - {fileID: 2800000, guid: fbcfcacfadfc4524c810f980ddd1132b, type: 3}
-  textPrefab: {fileID: 2026429329075510115, guid: b570f2e9c2e09644d8bbcfc6c464b3cb, type: 3}
 --- !u!65 &3818006127353216367
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -24,21 +24,21 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Tap",
+                    "name": "SecondFingerContact",
                     "type": "Button",
-                    "id": "a4f8aca2-4d68-478a-8b4c-14ca1c9bbc2d",
+                    "id": "92aee62d-4d96-4a99-a514-c87c82866389",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Tap",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hold",
+                    "name": "Press",
                     "type": "Button",
                     "id": "9fe38bc5-ec47-4fd5-93dd-cee39652c69f",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -51,12 +51,21 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SecondFingerContact",
+                    "name": "Rotate",
                     "type": "Button",
-                    "id": "92aee62d-4d96-4a99-a514-c87c82866389",
+                    "id": "d7cb69d4-5663-4c30-a71e-20974c8e4ce0",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press",
+                    "interactions": "Hold",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "a48116a0-eeba-4cf1-b69c-1003d7fcc052",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap",
                     "initialStateCheck": false
                 }
             ],
@@ -85,34 +94,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1a9a2f6d-31a3-46a6-8e91-c280d6bbd23c",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9790d14d-a73e-4fa7-b7a4-395fe9fafbac",
-                    "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Touch",
-                    "action": "Tap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "a735e75b-d86e-4162-a962-6939df081ee1",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Hold",
+                    "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -123,7 +110,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Hold",
+                    "action": "Press",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -157,6 +144,39 @@
                     "processors": "",
                     "groups": ";Touch",
                     "action": "SecondFingerContact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be5527a4-a67f-43ff-8f33-173b242842ed",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4c49bb83-87ef-4255-847c-fdcb1e2b6158",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e4f0af9a-67c7-4525-8ef5-e96fad256f47",
+                    "path": "<Touchscreen>/primaryTouch/tap",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

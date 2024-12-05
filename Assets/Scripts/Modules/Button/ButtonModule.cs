@@ -38,19 +38,14 @@ public class ButtonModule : Module
 
     public override void OnModuleHoldStart(Ray rayInteract)
     {
-        Debug.DrawRay(rayInteract.origin, rayInteract.direction * 10, Color.black, 5);
-        GetComponent<Collider>().enabled = false;
         if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
         {
-            Debug.Log("Hold a touché");
-            if (hit.collider.gameObject == button)
+            if (hit.collider.gameObject == gameObject)
             {
-                Debug.Log("Hold sur bouton");
                 isPressed = true;
                 pressStartTime = Time.time;
             }
         }
-        GetComponent<Collider>().enabled = true;
     }
 
     public override void OnModuleHoldEnd()

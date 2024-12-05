@@ -191,8 +191,11 @@ public class WireModule : Module
 
     public override void ModuleInteract(Ray rayInteract)
     {
+        GetComponent<Collider>().enabled = false;
         if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
         {
+            Debug.Log(hit.collider.gameObject.name);
+            Debug.DrawRay(rayInteract.origin, rayInteract.direction * 10, Color.black, 5);
             if (hit.collider.TryGetComponent(out Wire wire))
             {
                 wire.OnWireClicked.Invoke();

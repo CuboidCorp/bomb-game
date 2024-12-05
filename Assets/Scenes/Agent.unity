@@ -376,6 +376,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8b22f97241bb26e4d9162f15046b258f, type: 3}
   - {fileID: 8300000, guid: e12b20155f2be714e98b29c61d133874, type: 3}
   - {fileID: 8300000, guid: 5fd1f54fa36ac0a43b69534fddce0e79, type: 3}
+  - {fileID: 8300000, guid: 6308de4974d7f234ebe9871bf2b281b2, type: 3}
 --- !u!82 &799906768
 AudioSource:
   m_ObjectHideFlags: 0
@@ -527,7 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f4e453cd10814f4b85bb8b0256a8af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombPos: {x: -50, y: 5, z: 0}
+  bombPos: {x: -50, y: 4.7, z: 0}
+  bombRot: {x: 0, y: 0, z: 0}
   bomb: {fileID: 0}
 --- !u!4 &863665254 stripped
 Transform:
@@ -2858,7 +2860,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -50, y: 5.6, z: 7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -50, y: 5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3160,6 +3162,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 8749508308589499606}
     m_Modifications:
     - target: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
@@ -3169,7 +3179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.36
       objectReference: {fileID: 0}
     - target: {fileID: 480638082837041977, guid: 5d77a75c98992b840b27e02e065df54f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3484,11 +3494,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e822ccc0f81b74ca25afd3d8ed2be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomSpeed: 1.5
-  mainCameraBasePosition: {x: -50, y: 5.6, z: 7}
+  bombTargetPosition: {x: -50, y: 5.6, z: 4.4}
+  bombTargetRotation: {x: 0, y: 0, z: 0}
+  interactDistance: 10
+  grabSpeed: 1.5
   rotationSpeed: 50
-  isZoomedOnBomb: 0
-  isZoomedOnModule: 0
+  isGrabbingBomb: 0
+  isBombGrabbed: 0
   isRotating: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

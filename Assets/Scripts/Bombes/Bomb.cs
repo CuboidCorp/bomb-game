@@ -65,7 +65,7 @@ public abstract class Bomb : MonoBehaviour
     public void StartBomb()
     {
         //Calcul du temps de la bombe
-        TimeSpan time = new(0, 5 * (nbModules / 6), 0);
+        TimeSpan time = new(0, 3 * (nbModules / 6), 0);
         timerScript.StartTimer(time);
         timerScript.TimerFinished.AddListener(ExplodeBomb);
 

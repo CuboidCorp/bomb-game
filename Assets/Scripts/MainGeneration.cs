@@ -67,9 +67,9 @@ public class MainGeneration : MonoBehaviour
     }
 
 
-    public GameObject GenerateBomb(Vector3 position, string resourcesPath)
+    public GameObject GenerateBomb(Vector3 position, Vector3 rotation, string resourcesPath)
     {
-        GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.identity);
+        GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.Euler(rotation));
         bomb.GetComponent<Bomb>().SetupBomb();
         bomb.GetComponent<Bomb>().SetupModules(modules, ruleHolder);
         bomb.GetComponent<Bomb>().StartBomb();

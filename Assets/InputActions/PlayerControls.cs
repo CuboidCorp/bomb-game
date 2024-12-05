@@ -46,21 +46,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Tap"",
+                    ""name"": ""SecondFingerContact"",
                     ""type"": ""Button"",
-                    ""id"": ""a4f8aca2-4d68-478a-8b4c-14ca1c9bbc2d"",
+                    ""id"": ""92aee62d-4d96-4a99-a514-c87c82866389"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Tap"",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Hold"",
+                    ""name"": ""Press"",
                     ""type"": ""Button"",
                     ""id"": ""9fe38bc5-ec47-4fd5-93dd-cee39652c69f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold"",
+                    ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
@@ -73,12 +73,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SecondFingerContact"",
+                    ""name"": ""Rotate"",
                     ""type"": ""Button"",
-                    ""id"": ""92aee62d-4d96-4a99-a514-c87c82866389"",
+                    ""id"": ""d7cb69d4-5663-4c30-a71e-20974c8e4ce0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Hold"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tap"",
+                    ""type"": ""Button"",
+                    ""id"": ""a48116a0-eeba-4cf1-b69c-1003d7fcc052"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -107,34 +116,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1a9a2f6d-31a3-46a6-8e91-c280d6bbd23c"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9790d14d-a73e-4fa7-b7a4-395fe9fafbac"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Touch"",
-                    ""action"": ""Tap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""a735e75b-d86e-4162-a962-6939df081ee1"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Hold"",
+                    ""action"": ""Press"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -145,7 +132,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
-                    ""action"": ""Hold"",
+                    ""action"": ""Press"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -179,6 +166,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Touch"",
                     ""action"": ""SecondFingerContact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be5527a4-a67f-43ff-8f33-173b242842ed"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4c49bb83-87ef-4255-847c-fdcb1e2b6158"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Tap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4f0af9a-67c7-4525-8ef5-e96fad256f47"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Touch"",
+                    ""action"": ""Tap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -735,10 +755,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Position = m_Player.FindAction("Position", throwIfNotFound: true);
         m_Player_SecondFingerPosition = m_Player.FindAction("SecondFingerPosition", throwIfNotFound: true);
-        m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
-        m_Player_Hold = m_Player.FindAction("Hold", throwIfNotFound: true);
-        m_Player_Return = m_Player.FindAction("Return", throwIfNotFound: true);
         m_Player_SecondFingerContact = m_Player.FindAction("SecondFingerContact", throwIfNotFound: true);
+        m_Player_Press = m_Player.FindAction("Press", throwIfNotFound: true);
+        m_Player_Return = m_Player.FindAction("Return", throwIfNotFound: true);
+        m_Player_Rotate = m_Player.FindAction("Rotate", throwIfNotFound: true);
+        m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -820,20 +841,22 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Position;
     private readonly InputAction m_Player_SecondFingerPosition;
-    private readonly InputAction m_Player_Tap;
-    private readonly InputAction m_Player_Hold;
-    private readonly InputAction m_Player_Return;
     private readonly InputAction m_Player_SecondFingerContact;
+    private readonly InputAction m_Player_Press;
+    private readonly InputAction m_Player_Return;
+    private readonly InputAction m_Player_Rotate;
+    private readonly InputAction m_Player_Tap;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
         public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Position => m_Wrapper.m_Player_Position;
         public InputAction @SecondFingerPosition => m_Wrapper.m_Player_SecondFingerPosition;
-        public InputAction @Tap => m_Wrapper.m_Player_Tap;
-        public InputAction @Hold => m_Wrapper.m_Player_Hold;
-        public InputAction @Return => m_Wrapper.m_Player_Return;
         public InputAction @SecondFingerContact => m_Wrapper.m_Player_SecondFingerContact;
+        public InputAction @Press => m_Wrapper.m_Player_Press;
+        public InputAction @Return => m_Wrapper.m_Player_Return;
+        public InputAction @Rotate => m_Wrapper.m_Player_Rotate;
+        public InputAction @Tap => m_Wrapper.m_Player_Tap;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -849,18 +872,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SecondFingerPosition.started += instance.OnSecondFingerPosition;
             @SecondFingerPosition.performed += instance.OnSecondFingerPosition;
             @SecondFingerPosition.canceled += instance.OnSecondFingerPosition;
-            @Tap.started += instance.OnTap;
-            @Tap.performed += instance.OnTap;
-            @Tap.canceled += instance.OnTap;
-            @Hold.started += instance.OnHold;
-            @Hold.performed += instance.OnHold;
-            @Hold.canceled += instance.OnHold;
-            @Return.started += instance.OnReturn;
-            @Return.performed += instance.OnReturn;
-            @Return.canceled += instance.OnReturn;
             @SecondFingerContact.started += instance.OnSecondFingerContact;
             @SecondFingerContact.performed += instance.OnSecondFingerContact;
             @SecondFingerContact.canceled += instance.OnSecondFingerContact;
+            @Press.started += instance.OnPress;
+            @Press.performed += instance.OnPress;
+            @Press.canceled += instance.OnPress;
+            @Return.started += instance.OnReturn;
+            @Return.performed += instance.OnReturn;
+            @Return.canceled += instance.OnReturn;
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
+            @Tap.started += instance.OnTap;
+            @Tap.performed += instance.OnTap;
+            @Tap.canceled += instance.OnTap;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -871,18 +897,21 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @SecondFingerPosition.started -= instance.OnSecondFingerPosition;
             @SecondFingerPosition.performed -= instance.OnSecondFingerPosition;
             @SecondFingerPosition.canceled -= instance.OnSecondFingerPosition;
-            @Tap.started -= instance.OnTap;
-            @Tap.performed -= instance.OnTap;
-            @Tap.canceled -= instance.OnTap;
-            @Hold.started -= instance.OnHold;
-            @Hold.performed -= instance.OnHold;
-            @Hold.canceled -= instance.OnHold;
-            @Return.started -= instance.OnReturn;
-            @Return.performed -= instance.OnReturn;
-            @Return.canceled -= instance.OnReturn;
             @SecondFingerContact.started -= instance.OnSecondFingerContact;
             @SecondFingerContact.performed -= instance.OnSecondFingerContact;
             @SecondFingerContact.canceled -= instance.OnSecondFingerContact;
+            @Press.started -= instance.OnPress;
+            @Press.performed -= instance.OnPress;
+            @Press.canceled -= instance.OnPress;
+            @Return.started -= instance.OnReturn;
+            @Return.performed -= instance.OnReturn;
+            @Return.canceled -= instance.OnReturn;
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
+            @Tap.started -= instance.OnTap;
+            @Tap.performed -= instance.OnTap;
+            @Tap.canceled -= instance.OnTap;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1040,10 +1069,11 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnPosition(InputAction.CallbackContext context);
         void OnSecondFingerPosition(InputAction.CallbackContext context);
-        void OnTap(InputAction.CallbackContext context);
-        void OnHold(InputAction.CallbackContext context);
-        void OnReturn(InputAction.CallbackContext context);
         void OnSecondFingerContact(InputAction.CallbackContext context);
+        void OnPress(InputAction.CallbackContext context);
+        void OnReturn(InputAction.CallbackContext context);
+        void OnRotate(InputAction.CallbackContext context);
+        void OnTap(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
