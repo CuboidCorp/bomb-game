@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 
 public class ButtonModule : Module
 {
@@ -25,7 +24,7 @@ public class ButtonModule : Module
     {
         targetRule = rules.buttonRuleGenerator.GetRule();
 
-        text.text = LocalizationSettings.StringDatabase.GetLocalizedStringAsync("TexteInGame", targetRule.wordKey).Result;
+        text.text = TextLocalizationHandler.LoadString("TexteInGame", targetRule.wordKey);
 
         button.GetComponent<MeshRenderer>().material = targetRule.buttonMaterial;
 

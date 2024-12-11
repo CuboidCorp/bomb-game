@@ -21,6 +21,8 @@ public class ButtonRuleGenerator
     private List<ButtonRule> rules;
     private int currentRuleIndex = 0;
 
+    private Dictionary<string, ButtonRule> rulesDict;
+
     private static readonly Vector2Int[] timerBounds = new Vector2Int[]
     {
         new(0, 15),
@@ -33,25 +35,28 @@ public class ButtonRuleGenerator
     {
         rules = new();
 
+        rulesDict = new();
+
         materials = Resources.LoadAll<Material>("Materials/Button");
 
 
         for (int i = 0; i < NB_RULES; i++)
         {
-            rules.Add(GenerateRule(i));
+            rules.Add(GenerateRule(i, i)); //TODO : Pour changer randomiser le materiel et le texte en verifiant qu'ils ne sont pas deja pris
         }
 
         Functions.Shuffle(rules);
     }
 
-    private ButtonRule GenerateRule(int index)
+    private ButtonRule GenerateRule(int matIndex, int wordIndex)
     {
         ButtonRule rule = new()
         {
-            buttonMaterial = materials[index],
-            wordKey = wordKeys[index],
+            buttonMaterial = materials[matIndex],
+            wordKey = wordKeys[wordIndex],
             condition = (ButtonCondition)Random.Range(0, Enum.GetValues(typeof(ButtonCondition)).Length)
         };
+
         switch (rule.condition)
         {
             case ButtonCondition.PRESS_FOR:
@@ -64,6 +69,8 @@ public class ButtonRuleGenerator
                 rule.targetTimerBetweenBounds = timerBounds[Random.Range(0, timerBounds.Length)];
                 break;
         }
+
+        rulesDict.Add($"{matIndex}:{wordIndex}", rule);
         return rule;
     }
 
@@ -75,5 +82,35 @@ public class ButtonRuleGenerator
             currentRuleIndex = 1;
         }
         return rules[currentRuleIndex - 1];
+    }
+
+    public ButtonRule GetFakeRule(int materialIndex, int wordIndex)
+    {
+        ButtonRule rule = new()
+        {
+            buttonMaterial = materials[materialIndex],
+            wordKey = wordKeys[wordIndex],
+            condition = (ButtonCondition)Random.Range(0, Enum.GetValues(typeof(ButtonCondition)).Length)
+        };
+
+        switch (rule.condition)
+        {
+            case ButtonCondition.PRESS_FOR:
+                rule.targetPressTime = Random.Range(1, 5);
+                break;
+            case ButtonCondition.PRESS_UNTIL_TIMER_CONTAINS:
+                rule.targetTimerNumber = Random.Range(0, 10);
+                break;
+            case ButtonCondition.PRESS_UNTIL_TIMER_BETWEEN:
+                rule.targetTimerBetweenBounds = timerBounds[Random.Range(0, timerBounds.Length)];
+                break;
+        }
+
+        return rule;
+    }
+
+    public Dictionary<string, ButtonRule> GetRulesDict()
+    {
+        return rulesDict;
     }
 }
