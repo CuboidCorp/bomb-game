@@ -33,6 +33,49 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4501475455923650834
+  - m_Id: 2960232460808192
+    m_Localized: Release after {0:1 second|{} seconds}
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 2961313454583808
+    m_Localized: Release immediatly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2961590408671232
+    m_Localized: Release when timer contains a {0}
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 2961743685316608
+    m_Localized: Release when seconds are between {0} and {1}
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 2963092376350720
+    m_Localized: Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963167097876480
+    m_Localized: Cyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963459621220352
+    m_Localized: Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963475165310976
+    m_Localized: Purple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963492038995968
+    m_Localized: Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963504961646592
+    m_Localized: Yellow
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -43,3 +86,6 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 222474760192
         - id: 265327964160
+        - id: 2960232460808192
+        - id: 2961590408671232
+        - id: 2961743685316608

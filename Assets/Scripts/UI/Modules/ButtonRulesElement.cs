@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class ButtonRulesElement : VisualElement
 {
-    private VisualElement GridHolder => this.Q("labyHolder");
+    private VisualElement GridHolder => this.Q("gridHolder");
 
     private VisualElement gridPlaced;
 
@@ -23,7 +23,7 @@ public partial class ButtonRulesElement : VisualElement
             else
             {
                 gridPlaced = gridElem.CloneTree();
-                gridPlaced.Q<Label>("word").text = TextLocalizationHandler.LoadString("TexteManuel", ButtonRuleGenerator.wordKeys[i - 1]);
+                gridPlaced.Q<Label>("word").text = TextLocalizationHandler.LoadString("TexteInGame", ButtonRuleGenerator.wordKeys[i - 1]);
             }
             GridHolder.Add(gridPlaced);
         }

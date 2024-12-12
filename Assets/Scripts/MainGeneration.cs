@@ -104,6 +104,9 @@ public class MainGeneration : MonoBehaviour
                 case ModuleType.LABY:
                     visualElement.Q<LabyRulesElement>().Init(ruleHolder.labyRuleGenerator, images[(int)ManuelImages.LABY_TEMPLATE]);
                     break;
+                case ModuleType.BUTTON:
+                    visualElement.Q<ButtonRulesElement>().Init(ruleHolder.buttonRuleGenerator, images[(int)ManuelImages.BUTTON_TEMPLATE]);
+                    break;
                 default:
                     throw new NotImplementedException();
             }

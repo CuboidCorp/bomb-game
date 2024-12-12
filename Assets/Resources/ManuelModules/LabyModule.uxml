@@ -6,7 +6,7 @@
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(234994757632)" />
             </Bindings>
         </engine:Label>
-        <engine:Label style="font-size: 20px; text-overflow: clip; justify-content: flex-start; align-self: auto; align-content: flex-start; align-items: stretch; flex-wrap: nowrap; white-space: normal;" />
+        <engine:Label name="desc" style="font-size: 20px; text-overflow: clip; justify-content: flex-start; align-self: auto; align-content: flex-start; align-items: stretch; flex-wrap: nowrap; white-space: normal;" />
         <engine:VisualElement name="labyHolder" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly; align-items: center; align-content: auto;" />
     </LabyRulesElement>
 </engine:UXML>

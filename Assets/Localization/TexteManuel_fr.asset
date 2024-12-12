@@ -65,6 +65,55 @@ MonoBehaviour:
     m_Localized: "R\xE8gles du bouton\t"
     m_Metadata:
       m_Items: []
+  - m_Id: 2960232460808192
+    m_Localized: "Rel\xE2cher apr\xE8s {0:1 seconde|{} secondes}"
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 2961313454583808
+    m_Localized: "Rel\xE2cher imm\xE9diatement"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2961590408671232
+    m_Localized: "Rel\xE2cher quand le timer contient un {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 2961743685316608
+    m_Localized: "Rel\xE2cher quand les secondes sont entre {0} et {1}"
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 2963092376350720
+    m_Localized: Bleu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963167097876480
+    m_Localized: Cyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963459621220352
+    m_Localized: Vert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963475165310976
+    m_Localized: Violet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963492038995968
+    m_Localized: Rouge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963504961646592
+    m_Localized: Jaune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 338588126900224
+    m_Localized: "Ce module est compos\xE9 d'un gros bouton, en fonction de sa couleur
+      et du texte \xE9crit dessus l'agent devra appuyer et rel\xE2cher le bouton
+      selon la condition contenue dans le tableau."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -75,3 +124,6 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 222474760192
         - id: 265327964160
+        - id: 2960232460808192
+        - id: 2961590408671232
+        - id: 2961743685316608

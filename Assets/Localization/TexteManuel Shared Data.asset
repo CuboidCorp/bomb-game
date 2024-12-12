@@ -51,6 +51,46 @@ MonoBehaviour:
     m_Key: BUTTON_RULE_DESC
     m_Metadata:
       m_Items: []
+  - m_Id: 2961313454583808
+    m_Key: BUTTON_RULE_INSTRUCTION0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2960232460808192
+    m_Key: BUTTON_RULE_INSTRUCTION1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2961590408671232
+    m_Key: BUTTON_RULE_INSTRUCTION2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2961743685316608
+    m_Key: BUTTON_RULE_INSTRUCTION3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963092376350720
+    m_Key: COLORS1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963167097876480
+    m_Key: COLORS2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963459621220352
+    m_Key: COLORS3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963475165310976
+    m_Key: COLORS4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963492038995968
+    m_Key: COLORS5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963504961646592
+    m_Key: COLORS6
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
