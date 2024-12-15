@@ -5,6 +5,7 @@ public enum ModuleType
 {
     BUTTON,
     LABY,
+    MORSE,
     WIRES,
 
 }
