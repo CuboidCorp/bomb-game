@@ -43,5 +43,108 @@ public class MorseRuleGenerator
         { '9',new bool[] { true,true,true,true,false } },
     };
 
-    public void SetupRules() { }
+    //TODO : Pret rajouter kes symboles spéciaux si besoin / customiser  les symboles
+    private List<char[]> groups;
+
+    private List<MorseRule> rules;
+    private const int NB_RULES = 8;
+    private const int IMG_X = 3;
+    private const int IMG_Y = 5;
+
+    private const int PROBA_ACTIVATED = 50;
+
+    private int currentRuleIndex = 0;
+
+    public void SetupRules() 
+    {
+        rules = new();
+
+        GenerateGroups();
+
+        for (int i = 0; i < NB_RULES; i++)
+        {
+            rules[i] = GenerateRule(i);
+        }
+
+        Functions.Shuffle(rules);
+    }
+
+    private MorseRule GenerateRule(int index)
+    {
+        char[] targetGroup = groups[index];
+        char targetChar = targetGroup[Random.Range(0, targetGroup.Length)];
+        bool[] targetMorse = morseAlphabet[targetChar];
+
+        bool[,] correctImage = new bool[IMG_X, IMG_Y];
+        for (int i = 0; i < IMG_X; i++)
+        {
+            for (int j = 0; j < IMG_Y; j++)
+            {
+                correctImage[i, j] = Random.Range(0, 100) < PROBA_ACTIVATED;
+            }
+        }
+
+        return new MorseRule
+        {
+            targetCharacter = targetChar,
+            targetMorseCode = targetMorse,
+            correctImage = correctImage
+        };
+
+    }
+
+    private void GenerateGroups()
+    {
+        //On divise les caracteres en NB_RULES groupes
+        groups = new();
+
+        List<char> caract = new(morseAlphabet.Keys);
+        Functions.Shuffle(caract);
+
+        int nbCaract = caract.Count;
+        int nbCaractPerGroup = nbCaract / NB_RULES;
+        int reste = nbCaract % nbCaractPerGroup;
+
+        List<int> taillesGroupes = new();
+        for (int i = 0; i < NB_RULES; i++)
+        {
+            taillesGroupes[i] = nbCaractPerGroup;
+            if (reste > 0)
+            {
+                taillesGroupes[i]++;
+                reste--;
+            }
+        }
+
+        Functions.Shuffle(taillesGroupes);
+        int index = 0;
+
+        for(int i = 0; i < NB_RULES; i++)
+        {
+            char[] groupe = caract.Skip(index).Take(taillesGroupes[i]).ToArray();
+            groups.Add(groupe);
+            index += taillesGroupes[i];
+        }
+
+        //AFFICHAGE DEBUG TEMPORAIRE
+        for (int i = 0; i < groupes.Count; i++)
+        {
+            Debug.Log($"Groupe {i + 1}: {new string(groupes[i])}");
+        }
+    }
+
+    public MorseRule GetRule()
+    {
+        currentRuleIndex++;
+        if (currentRuleIndex > NB_RULES)
+        {
+            currentRuleIndex = 1;
+        }
+        return rules[currentRuleIndex];
+    }
+
+    public Vector2Int GetImageSize()
+    {
+        return new Vector2Int(IMG_X, IMG_Y);
+    }
 }

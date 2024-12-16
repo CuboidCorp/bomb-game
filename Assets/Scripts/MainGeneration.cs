@@ -30,7 +30,7 @@ public class MainGeneration : MonoBehaviour
         ruleHolder = new();
         if (isDebug)
         {
-            Debug.LogWarning("Lancement en mode debug, le jeu sera différent de la release, meme avec le meme seed");
+            Debug.LogWarning("Lancement en mode debug, le jeu sera diffï¿½rent de la release, meme avec le meme seed");
             Debug.Log("Set seed : " + seed);
             Random.InitState(seed);
         }
@@ -63,7 +63,7 @@ public class MainGeneration : MonoBehaviour
             Debug.Log("Module " + i + " : " + modules[i]);
         }
 
-        ruleHolder.Generate(modules);
+        ruleHolder.Generate(modules); //TODO : On genere plusieurs fois des modules identiques, a changer 
     }
 
 
