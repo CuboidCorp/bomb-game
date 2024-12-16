@@ -4,6 +4,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Classe de base pour tous les modules de bombe
 /// </summary>
+[RequireComponent(typeof(Collider))]
 public abstract class Module : MonoBehaviour
 {
     protected ModuleType moduleType;

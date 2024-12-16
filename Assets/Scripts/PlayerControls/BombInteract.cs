@@ -97,7 +97,6 @@ public class BombInteract : MonoBehaviour
 
     private void PressStartModule(InputAction.CallbackContext context)
     {
-        Debug.Log("Hold start");
         //On fait un ray pr tester la position
         Ray ray = mainCamera.ScreenPointToRay(_pos.ReadValue<Vector2>());
 

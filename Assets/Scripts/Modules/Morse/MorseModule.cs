@@ -1,17 +1,19 @@
+using System.Collections;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class MorseModule : Module
 {
     private MorseRule targetRule;
-    
+
     #region Boutons
     [SerializeField] private Transform[] buttons;
     [SerializeField] private Material buttonOnMaterial;
     [SerializeField] private Material buttonOffMaterial;
 
-    private const string BUTTON_NAME_PATTERN = "^\d:\d$";
-    private Vector2Int imageSize ;
-    private bool [,] currentImage;
+    private const string BUTTON_NAME_PATTERN = @"^\d:\d$";
+    private Vector2Int imageSize;
+    private bool[,] currentImage;
     #endregion
 
     #region Morse Blink
@@ -36,8 +38,26 @@ public class MorseModule : Module
     public override void SetupModule(RuleHolder rules)
     {
         targetRule = rules.morseRuleGenerator.GetRule();
+
         blinkSequence = targetRule.targetMorseCode;
         imageSize = rules.morseRuleGenerator.GetImageSize();
+
+        if (MainGeneration.Instance.isDebug)
+        {
+            Debug.Log($"Module Morse on {gameObject.name}");
+            Debug.Log($"Target Char : {targetRule.targetCharacter}");
+            string img = "";
+            for (int i = 0; i < imageSize.y; i++)
+            {
+                for (int j = 0; j < imageSize.x; j++)
+                {
+                    img += targetRule.correctImage[j, i] ? "1" : "0";
+                }
+                img += "\n";
+            }
+            Debug.Log(img);
+        }
+
 
         currentImage = new bool[imageSize.x, imageSize.y];
 
@@ -55,12 +75,14 @@ public class MorseModule : Module
         if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
         {
             string goName = hit.collider.gameObject.name;
-            if(goName == "BoutonValider")
+            Debug.Log(goName);
+            if (goName == "BoutonValider")
             {
                 CheckSucces();
             }
-            else if(Regex.IsMatch(goName,BUTTON_NAME_PATTERN))
+            else if (Regex.IsMatch(goName, BUTTON_NAME_PATTERN))
             {
+                Debug.Log("Bouton appuyé");
                 string[] split = goName.Split(':');
                 int x = int.Parse(split[0]);
                 int y = int.Parse(split[1]);
@@ -76,11 +98,11 @@ public class MorseModule : Module
     /// </summary>
     private void CheckSucces()
     {
-        for(int i=0;i<imageSize.x;i++)
+        for (int i = 0; i < imageSize.x; i++)
         {
-            for(int j=0;j<imageSize.y;j++)
+            for (int j = 0; j < imageSize.y; j++)
             {
-                if(currentImage[i,j] != targetRule.correctImage[i,j])
+                if (currentImage[i, j] != targetRule.correctImage[i, j])
                 {
                     Fail();
                     return;
@@ -121,7 +143,7 @@ public class MorseModule : Module
 
     private IEnumerator BlinkCoroutine()
     {
-        while(true)
+        while (true)
         {
             foreach (bool isLong in blinkSequence)
             {

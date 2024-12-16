@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class MorseRuleGenerator
 {
     //Les booleens c'est true pr long et false pr court
-    private static Dictionary<char, bool[]> morseAlphabet = new()
+    private static readonly Dictionary<char, bool[]> morseAlphabet = new()
     {
         { 'A',new bool[] { false,true } },
         { 'B',new bool[] { true,false,false,false } },
@@ -49,13 +51,13 @@ public class MorseRuleGenerator
     private List<MorseRule> rules;
     private const int NB_RULES = 8;
     private const int IMG_X = 3;
-    private const int IMG_Y = 5;
+    private const int IMG_Y = 6;
 
     private const int PROBA_ACTIVATED = 50;
 
     private int currentRuleIndex = 0;
 
-    public void SetupRules() 
+    public void SetupRules()
     {
         rules = new();
 
@@ -63,7 +65,7 @@ public class MorseRuleGenerator
 
         for (int i = 0; i < NB_RULES; i++)
         {
-            rules[i] = GenerateRule(i);
+            rules.Add(GenerateRule(i));
         }
 
         Functions.Shuffle(rules);
@@ -108,7 +110,7 @@ public class MorseRuleGenerator
         List<int> taillesGroupes = new();
         for (int i = 0; i < NB_RULES; i++)
         {
-            taillesGroupes[i] = nbCaractPerGroup;
+            taillesGroupes.Add(nbCaractPerGroup);
             if (reste > 0)
             {
                 taillesGroupes[i]++;
@@ -119,17 +121,11 @@ public class MorseRuleGenerator
         Functions.Shuffle(taillesGroupes);
         int index = 0;
 
-        for(int i = 0; i < NB_RULES; i++)
+        for (int i = 0; i < NB_RULES; i++)
         {
             char[] groupe = caract.Skip(index).Take(taillesGroupes[i]).ToArray();
             groups.Add(groupe);
             index += taillesGroupes[i];
-        }
-
-        //AFFICHAGE DEBUG TEMPORAIRE
-        for (int i = 0; i < groupes.Count; i++)
-        {
-            Debug.Log($"Groupe {i + 1}: {new string(groupes[i])}");
         }
     }
 

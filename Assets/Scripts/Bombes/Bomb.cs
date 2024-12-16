@@ -100,9 +100,15 @@ public abstract class Bomb : MonoBehaviour
     public void ExplodeBomb()
     {
         timerScript.StopTimer();
+        foreach (GameObject module in modulesGo)
+        {
+            if (module != null)
+            {
+                Destroy(module.GetComponent<Module>());
+            }
+        }
         AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_EXPLOSION);
         Debug.Log("BOOM");
-
     }
 
     private void BombSuccess()
