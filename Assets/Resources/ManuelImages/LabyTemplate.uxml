@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
     <LabyVisuElement name="labyVisuController" style="flex-wrap: nowrap; flex-direction: column; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-        <engine:Label text="Label" name="labyName" style="-unity-text-align: middle-center;" />
+        <engine:Label text="[A,B,C,D,E,F]" name="labyName" style="-unity-text-align: middle-center;" />
         <engine:VisualElement name="labyHolder" style="flex-direction: row; flex-wrap: wrap;" />
     </LabyVisuElement>
 </engine:UXML>

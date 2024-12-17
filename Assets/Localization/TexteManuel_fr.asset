@@ -114,6 +114,19 @@ MonoBehaviour:
       selon la condition contenue dans le tableau."
     m_Metadata:
       m_Items: []
+  - m_Id: 5083017551245312
+    m_Localized: "R\xE8gles du module de morse"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5083079790522368
+    m_Localized: "Ce module est compos\xE9 d'une lampe qui clignote, un long bouton
+      vert et une grille de 3*6 boutons. Pour d\xE9samorcer ce module il faut que
+      l'agent vous informe des clignotements en morse de la lampe, et trouver le
+      caract\xE8re associ\xE9, vous devrez alors trouver l'image associ\xE9 au groupe
+      auquel appartient le caract\xE8re et la d\xE9crire \xE0 l'agent pour qu'ils
+      valident ensuite en clickant sur le long bouton vert."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

@@ -49,7 +49,7 @@ public class MorseRuleGenerator
     private List<char[]> groups;
 
     private List<MorseRule> rules;
-    private const int NB_RULES = 8;
+    public const int NB_RULES = 8;
     private const int IMG_X = 3;
     private const int IMG_Y = 6;
 
@@ -89,6 +89,7 @@ public class MorseRuleGenerator
         return new MorseRule
         {
             targetCharacter = targetChar,
+            targetGroup = targetGroup,
             targetMorseCode = targetMorse,
             correctImage = correctImage
         };
@@ -136,11 +137,16 @@ public class MorseRuleGenerator
         {
             currentRuleIndex = 1;
         }
-        return rules[currentRuleIndex];
+        return rules[currentRuleIndex - 1];
     }
 
     public Vector2Int GetImageSize()
     {
         return new Vector2Int(IMG_X, IMG_Y);
+    }
+
+    public List<char[]> GetGroups()
+    {
+        return groups;
     }
 }

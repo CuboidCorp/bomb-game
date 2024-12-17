@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <MorseVisuElement name="morseVisu">
+        <engine:Label text="[A,B,C,D,E,F]" name="morseGroupLabel" style="-unity-text-align: upper-center; font-size: 15px;" />
+        <engine:VisualElement name="gridHolder" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap;" />
+    </MorseVisuElement>
+</engine:UXML>

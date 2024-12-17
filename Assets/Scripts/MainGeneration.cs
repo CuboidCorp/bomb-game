@@ -107,6 +107,10 @@ public class MainGeneration : MonoBehaviour
                 case ModuleType.BUTTON:
                     visualElement.Q<ButtonRulesElement>().Init(ruleHolder.buttonRuleGenerator, images[(int)ManuelImages.BUTTON_TEMPLATE]);
                     break;
+                case ModuleType.MORSE:
+                    Debug.Log((int)ManuelImages.MORSE_TEMPLATE);
+                    visualElement.Q<MorseRulesElement>().Init(ruleHolder.morseRuleGenerator, images[(int)ManuelImages.MORSE_TEMPLATE]);
+                    break;
                 default:
                     throw new NotImplementedException();
             }
