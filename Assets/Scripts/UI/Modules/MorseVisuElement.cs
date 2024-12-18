@@ -37,7 +37,6 @@ public partial class MorseVisuElement : VisualElement
                 cell.style.marginBottom = 2;
 
                 cell.style.backgroundImage = image[x, y] ? onSprite.texture : offSprite.texture;
-
                 GridHolder.Add(cell);
             }
         }

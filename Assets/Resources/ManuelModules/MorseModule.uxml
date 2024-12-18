@@ -10,6 +10,6 @@
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(5083079790522368)" />
             </Bindings>
         </engine:Label>
-        <engine:VisualElement name="groupeInfoHolder" style="flex-grow: 1;" />
+        <engine:VisualElement name="groupeInfoHolder" style="flex-grow: 1; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;" />
     </MorseRulesElement>
 </engine:UXML>
