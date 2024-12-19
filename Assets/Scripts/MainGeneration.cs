@@ -26,7 +26,7 @@ public class MainGeneration : MonoBehaviour
     /// </summary>
     private ModuleType[] distinctBombModules;
 
-#region ModuleGeneration
+    #region ModuleGeneration
     private ModuleType[] allModules;
     private Dictionary<ModuleType, float> moduleWeights;
 
@@ -35,7 +35,7 @@ public class MainGeneration : MonoBehaviour
     [SerializeField] private float minimumWeight = .1f;
 
     private float totalWeight;
-#endregion
+    #endregion
 
     private void Awake()
     {
@@ -82,7 +82,7 @@ public class MainGeneration : MonoBehaviour
         moduleWeights = new();
         foreach (ModuleType module in allModules)
         {
-            poidsModules.Add(module, 1);
+            moduleWeights.Add(module, 1);
         }
         totalWeight = allModules.Length;
 
@@ -107,7 +107,7 @@ public class MainGeneration : MonoBehaviour
         float currentWeight = 0;
         foreach (ModuleType module in allModules)
         {
-            currentWeight += poidsModules[module];
+            currentWeight += moduleWeights[module];
             if (currentWeight >= randomValue)
             {
                 AdjustWeights(module);
@@ -136,7 +136,7 @@ public class MainGeneration : MonoBehaviour
                 totalWeight += moduleWeights[module];
             }
         }
-    
+
     }
 
     /// <summary>

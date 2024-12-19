@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class ToolBarElement : VisualElement
 {
-    
+#nullable enable
     private ComputerLocation computerLocation;
 
     private PcUiManager pcUiManager;
@@ -81,8 +81,9 @@ public partial class ToolBarElement : VisualElement
     private void AddSelectedStyle(ComputerLocation location)
     {
         Button? button = GetButtonFromLocation(location);
-        if(button != null)
+        if (button != null)
         {
+            Debug.Log("Add selected style");
             button.AddToClassList(selectedBtnClass);
         }
     }
@@ -94,7 +95,7 @@ public partial class ToolBarElement : VisualElement
     private void RemoveSelectedStyle(ComputerLocation location)
     {
         Button? button = GetButtonFromLocation(location);
-        if(button != null)
+        if (button != null)
         {
             button.RemoveFromClassList(selectedBtnClass);
         }
@@ -105,23 +106,17 @@ public partial class ToolBarElement : VisualElement
     /// </summary>
     /// <param name="location">L'emplacement dont on veut le bouton</param>
     /// <returns>Le bouton associé</returns>
-    private Button GetButtonFromLocation(ComputerLocation location)
+    private Button? GetButtonFromLocation(ComputerLocation location)
     {
-        switch (location)
+        return location switch
         {
-            case ComputerLocation.HOME:
-                return homeButton;
-            case ComputerLocation.MANUAL:
-                return manualButton;
-            case ComputerLocation.CALCULATOR:
-                return calculatorButton;
-            case ComputerLocation.MORSE:
-                return morseButton;
-            case ComputerLocation.WIRE:
-                return wireButton;
-            default:
-                return null;
-        }
+            ComputerLocation.HOME => homeButton,
+            ComputerLocation.MANUAL => manualButton,
+            ComputerLocation.CALCULATOR => calculatorButton,
+            ComputerLocation.MORSE => morseButton,
+            ComputerLocation.WIRE => wireButton,
+            _ => null,
+        };
     }
 
     public ToolBarElement() { }

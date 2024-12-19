@@ -31,7 +31,6 @@ public class MorseModule : Module
 
     private Coroutine blinkCoroutine;
     private bool[] blinkSequence;
-    private int currentBlinkIndex = 0;
 
     #endregion
 
