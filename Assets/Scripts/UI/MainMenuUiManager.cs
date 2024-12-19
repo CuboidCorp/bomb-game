@@ -37,6 +37,9 @@ public class MainMenuUiManager : MonoBehaviour
         startAgtGameBtn.clicked -= StartAgentGame;
     }
 
+    /// <summary>
+    /// Randomise le seed
+    /// </summary>
     private void RandomizeSeed()
     {
         seedField.value = Random.Range(0, 100000);

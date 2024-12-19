@@ -18,6 +18,8 @@ public class PcUiManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset desktopWindow;
     [SerializeField] private VisualTreeAsset manualWindow;
     [SerializeField] private VisualTreeAsset calcWindow;
+    [SerializeField] private VisualTreeAsset morseWindow;
+    [SerializeField] private VisualTreeAsset wireWindow;
 
     [Header("Manual")]
     [SerializeField] private VisualTreeAsset introManual;
@@ -32,6 +34,9 @@ public class PcUiManager : MonoBehaviour
         Instance = this;
     }
 
+    /// <summary>
+    /// Lance le pc si il n'est pas lancé
+    /// </summary>
     public void StartComputer()
     {
         if (isStarted)
@@ -48,17 +53,23 @@ public class PcUiManager : MonoBehaviour
             Debug.Log("Starting computer");
             hasLoggedIn = true;
             doc.visualTreeAsset = startWindow;
-            //TODO : Bruit de d�marrage
+            //TODO : Bruit de d�marrage
             StartCoroutine(WaitForStartup());
         }
 
     }
 
+    /// <summary>
+    /// Met en place la fonction qui permet d'intéragir avec le pc
+    /// </summary>
     private void SetupDoc()
     {
         doc.panelSettings.SetScreenToPanelSpaceFunction(ScreenToPanelSpaceFunction);
     }
 
+    /// <summary>
+    /// Desactive la fonction d'intéraction avec le pc et eteint l'ordinateur
+    /// </summary>
     public void UnSetupDoc()
     {
 #if UNITY_STANDALONE || UNITY_EDITOR
@@ -76,12 +87,18 @@ public class PcUiManager : MonoBehaviour
         OpenDesktop();
     }
 
+    /// <summary>
+    /// Ouvre le bureau
+    /// </summary>
     public void OpenDesktop()
     {
         screenHolder.Clear();
         screenHolder.Add(desktopWindow.CloneTree());
     }
 
+    /// <summary>
+    /// Ouvre le manuel avec tous les modules
+    /// </summary>
     public void OpenManual()
     {
         screenHolder.Clear();
@@ -97,18 +114,46 @@ public class PcUiManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Ouvre la calculatrice NYI
+    /// </summary>
     public void OpenCalculator()
     {
         screenHolder.Clear();
         screenHolder.Add(desktopWindow.CloneTree());
     }
 
+    /// <summary>
+    /// Ouvre l'appli pour l'alphabet morse
+    /// </summary>
+    public void OpenMorse()
+    {
+        screenHolder.Clear();
+        screenHolder.Add(morseWindow.CloneTree());
+    }
+
+    /// <summary>
+    /// Ouvre l'appli pour voir les différents types de fils
+    /// </summary>
+    public void OpenWire()
+    {
+        screenHolder.Clear();
+        screenHolder.Add(wireWindow.CloneTree());
+    }
+
+    /// <summary>
+    /// Setup la barre de taches
+    /// </summary>
     private void SetupToolBar()
     {
         ToolBarElement toolbar = doc.rootVisualElement.Q<ToolBarElement>();
         toolbar.Init();
     }
 
+    /// <summary>
+    /// Allume l'ordinateur après un temps de chargement
+    /// </summary>
+    /// <returns>Quand le chargement est terminé</returns>
     private IEnumerator WaitForStartup()
     {
         yield return new WaitForSeconds(startupTime);
@@ -116,6 +161,11 @@ public class PcUiManager : MonoBehaviour
         OnComputerLoggedIn();
     }
 
+    /// <summary>
+    /// Convertit une position sur l'écran (le vrai) sur une position sur le panel qui represente l'écran de l'ordinateur
+    /// </summary>
+    /// <param name="screenPosition">La position sur l'écran</param>
+    /// <returns>La position sur le panel</returns>
     private Vector2 ScreenToPanelSpaceFunction(Vector2 screenPosition)
     {
         Vector2 invalidPosition = new(float.NaN, float.NaN);

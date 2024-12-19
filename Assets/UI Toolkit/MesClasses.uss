@@ -19,3 +19,7 @@
     background-color: rgb(204, 204, 204);
     position: relative;
 }
+
+.selected-task-bar-item {
+    background-color: rgb(0, 0, 0);
+}
