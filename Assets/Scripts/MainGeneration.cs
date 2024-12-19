@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 public class MainGeneration : MonoBehaviour
 {
@@ -15,8 +16,26 @@ public class MainGeneration : MonoBehaviour
 
     private RuleHolder ruleHolder;
 
+    /// <summary>
+    /// Array qui contient tous les modules de la bombe
+    /// </summary>
+    private ModuleType[] bombModules;
 
-    private ModuleType[] modules;
+    /// <summary>
+    /// Array qui contient les modules de la bombe sans doublons
+    /// </summary>
+    private ModuleType[] distinctBombModules;
+
+#region ModuleGeneration
+    private ModuleType[] allModules;
+    private Dictionary<ModuleType, float> moduleWeights;
+
+    [SerializeField] private float weightDecreaseFactor = 0.5f;
+    [SerializeField] private float weightIncreaseFactor = .1f;
+    [SerializeField] private float minimumWeight = .1f;
+
+    private float totalWeight;
+#endregion
 
     private void Awake()
     {
@@ -47,6 +66,9 @@ public class MainGeneration : MonoBehaviour
         Random.InitState(seed);
     }
 
+    /// <summary>
+    /// Genere les modules de la bombe
+    /// </summary>
     public void GenerateModules()
     {
         int nbModules = bombType switch
@@ -56,45 +78,99 @@ public class MainGeneration : MonoBehaviour
             _ => throw new NotImplementedException(),
         };
 
-        modules = new ModuleType[nbModules];
+        allModules = (ModuleType[])Enum.GetValues(typeof(ModuleType));
+        moduleWeights = new();
+        foreach (ModuleType module in allModules)
+        {
+            poidsModules.Add(module, 1);
+        }
+        totalWeight = allModules.Length;
+
+        bombModules = new ModuleType[nbModules];
         for (int i = 0; i < nbModules; i++)
         {
-            modules[i] = (ModuleType)Random.Range(0, Enum.GetValues(typeof(ModuleType)).Length);
-            Debug.Log("Module " + i + " : " + modules[i]);
+            bombModules[i] = SelectModule();
+            Debug.Log("Module " + i + " : " + bombModules[i]);
         }
 
-        ruleHolder.Generate(modules); //TODO : On genere plusieurs fois des modules identiques, a changer 
+        ruleHolder.Generate(bombModules); //TODO : On genere plusieurs fois des modules identiques, a changer 
     }
 
+    /// <summary>
+    /// Selection un module en fonction des poids des différents modules,
+    /// Permet de réduire les chances d'avoir le même module plusieurs fois sans l'interdire
+    /// </summary>
+    /// <returns>Le module selectionné</returns>
+    private ModuleType SelectModule()
+    {
+        float randomValue = Random.Range(0, totalWeight);
+        float currentWeight = 0;
+        foreach (ModuleType module in allModules)
+        {
+            currentWeight += poidsModules[module];
+            if (currentWeight >= randomValue)
+            {
+                AdjustWeights(module);
+                return module;
+            }
+        }
+        Debug.LogWarning("Aucun module n'a ete selectionne");
+        return allModules[0];
+    }
 
+    /// <summary>
+    /// Reajuste les poids des modules en fonction du module selectionné
+    /// </summary>
+    /// <param name="selectedModule">Le module qui a été </param>
+    private void AdjustWeights(ModuleType selectedModule)
+    {
+        totalWeight = 0;
+        moduleWeights[selectedModule] = Mathf.Max(moduleWeights[selectedModule] * weightDecreaseFactor, minimumWeight);
+        totalWeight += moduleWeights[selectedModule];
+
+        foreach (ModuleType module in allModules)
+        {
+            if (module != selectedModule)
+            {
+                moduleWeights[module] += weightIncreaseFactor;
+                totalWeight += moduleWeights[module];
+            }
+        }
+    
+    }
+
+    /// <summary>
+    /// Genere la bombe pour l'agent 
+    /// </summary>
+    /// <param name="position">Position de la bombe</param>
+    /// <param name="rotation">Rotation de la bombe</param>
+    /// <param name="resourcesPath">Chemin dans les ressources pour la prefab de la bombe</param>
+    /// <returns>Le gameobject instancié et configuré de la bombe</returns>
     public GameObject GenerateBomb(Vector3 position, Vector3 rotation, string resourcesPath)
     {
         GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.Euler(rotation));
         bomb.GetComponent<Bomb>().SetupBomb();
-        bomb.GetComponent<Bomb>().SetupModules(modules, ruleHolder);
+        bomb.GetComponent<Bomb>().SetupModules(bombModules, ruleHolder);
         bomb.GetComponent<Bomb>().StartBomb();
         return bomb;
     }
 
+    /// <summary>
+    /// Genere le manuel pour l'opérateur, pour avoir la documentation de tous les modules sur la bombe (sans doublons)
+    /// </summary>
+    /// <returns>Un array de visual element qui correspond aux manuels des modules</returns>
     public VisualElement[] GenerateManuel()
     {
+        //TODO : Regarder si c'est bien en generant les regles des modules qui y a pas pour compliquer la tache de l'operateur
         List<VisualElement> modulesRules = new();
-        List<ModuleType> differentModulesList = new();
+        ModuleType[] uniqueModules = bombModules.Distinct().ToArray();
 
         VisualTreeAsset[] images = Resources.LoadAll<VisualTreeAsset>("ManuelImages");
-        VisualTreeAsset[] visualTreeAssets = Resources.LoadAll<VisualTreeAsset>("ManuelModules");
+        VisualTreeAsset[] modules = Resources.LoadAll<VisualTreeAsset>("ManuelModules");
 
-        foreach (ModuleType module in modules)
+        foreach (ModuleType module in uniqueModules)
         {
-            if (!differentModulesList.Contains(module))
-            {
-                differentModulesList.Add(module);
-            }
-        }
-
-        foreach (ModuleType module in differentModulesList)
-        {
-            VisualElement visualElement = visualTreeAssets[(int)module].CloneTree();
+            VisualElement visualElement = modules[(int)module].CloneTree();
 
             switch (module)
             {
@@ -108,7 +184,6 @@ public class MainGeneration : MonoBehaviour
                     visualElement.Q<ButtonRulesElement>().Init(ruleHolder.buttonRuleGenerator, images[(int)ManuelImages.BUTTON_TEMPLATE]);
                     break;
                 case ModuleType.MORSE:
-                    Debug.Log((int)ManuelImages.MORSE_TEMPLATE);
                     visualElement.Q<MorseRulesElement>().Init(ruleHolder.morseRuleGenerator, images[(int)ManuelImages.MORSE_TEMPLATE]);
                     break;
                 default:
@@ -117,7 +192,6 @@ public class MainGeneration : MonoBehaviour
 
             modulesRules.Add(visualElement);
         }
-
         return modulesRules.ToArray();
     }
 

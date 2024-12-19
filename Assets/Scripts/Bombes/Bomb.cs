@@ -26,6 +26,9 @@ public abstract class Bomb : MonoBehaviour
     protected GameObject[] modulesGo;
     protected int nbModulesFinished;
 
+    /// <summary>
+    /// Initialisation des variables nécessaire pour la bombe
+    /// </summary>
     public virtual void SetupBomb()
     {
         modulesPrefabs = Resources.LoadAll<GameObject>("Modules");
@@ -33,6 +36,11 @@ public abstract class Bomb : MonoBehaviour
         nbStrikes = 0;
     }
 
+    /// <summary>
+    /// Instancie et configure les différents modules de la bombe
+    /// </summary>
+    /// <param name="modules">L'array qui stocke tous les modules de la bombe</param>
+    /// <param name="rules">L'objet qui contient les générateur de regles pour les différents modules</param>
     public void SetupModules(ModuleType[] modules, RuleHolder rules)
     {
         //On place le timer dans un des slots random
@@ -53,7 +61,7 @@ public abstract class Bomb : MonoBehaviour
             modulesGo[i] = Instantiate(modulePrefab);
             modulesGo[i].transform.position = position + transform.position;
             modulesGo[i].transform.SetParent(transform);
-            modulesGo[i].name = $"Module n�{i + 1}-{moduleType}";
+            modulesGo[i].name = $"Module n�{i + 1}-{moduleType}";
             modulesGo[i].GetComponent<Module>().SetupModule(rules);
             modulesGo[i].GetComponent<Module>().ModuleFail.AddListener(AddStrike);
             modulesGo[i].GetComponent<Module>().ModuleSuccess.AddListener(ModuleSuccess);
@@ -62,15 +70,20 @@ public abstract class Bomb : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Lance la bombe en commençant le timer et en ajoutant l'evenement d'explosion a la fin du timer
+    /// </summary>
     public void StartBomb()
     {
         //Calcul du temps de la bombe
         TimeSpan time = new(0, 3 * (nbModules / 6), 0);
         timerScript.StartTimer(time);
         timerScript.TimerFinished.AddListener(ExplodeBomb);
-
     }
 
+    /// <summary>
+    /// Ajoute une erreur à la bombe, ce qui accelere le timer et fait exploser la bombe au bout de 3 erreurs
+    /// </summary>
     public void AddStrike()
     {
         AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_FAIL);
@@ -86,6 +99,9 @@ public abstract class Bomb : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Desamorce un module, et la bombe si tous les modules sont desamorcés
+    /// </summary>
     public void ModuleSuccess()
     {
         AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_SUCCESS);
@@ -96,9 +112,13 @@ public abstract class Bomb : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Methode appelée lorsque la bombe explose, detruit les modules et le timer pour eviter les erreurs
+    /// </summary>
     public void ExplodeBomb()
     {
+        //TODO : Afficher ecran final avec score
+        //TODO : Afficher explosion
         timerScript.StopTimer();
         foreach (GameObject module in modulesGo)
         {
@@ -111,8 +131,13 @@ public abstract class Bomb : MonoBehaviour
         Debug.Log("BOOM");
     }
 
+    /// <summary>
+    /// Methode appelée lorsque la bombe est desamorcée
+    /// </summary>
     private void BombSuccess()
     {
+        //TODO : Afficher ecran final avec score
+        //TODO : Afficher confettis
         timerScript.StopTimer();
         Debug.Log("GG");
     }
