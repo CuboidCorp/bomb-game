@@ -44,4 +44,13 @@ public class RuleHolder
             }
         }
     }
+
+    public MorseRuleGenerator GetMorseRuleGenerator()
+    {
+        if (morseRuleGenerator == null)
+        {
+            return new MorseRuleGenerator();
+        }
+        return morseRuleGenerator;
+    }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine.UIElements;
 
 [UxmlElement]
@@ -19,5 +18,9 @@ public partial class MorseRulesElement : VisualElement
             groupeVisu.Q<MorseVisuElement>().Init(rule.targetGroup, rule.correctImage);
             GroupeInfoHolder.Add(groupeVisu);
         }
+    }
+
+    public MorseRulesElement()
+    {
     }
 }

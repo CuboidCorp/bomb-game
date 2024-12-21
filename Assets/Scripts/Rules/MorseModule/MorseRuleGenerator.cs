@@ -149,4 +149,9 @@ public class MorseRuleGenerator
     {
         return groups;
     }
+
+    public Dictionary<char, bool[]> GetAlphabet()
+    {
+        return morseAlphabet;
+    }
 }

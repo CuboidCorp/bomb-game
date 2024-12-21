@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <MorseAppliElement name="morseView" style="width: 1024px; max-width: 1024px; height: 464px; max-height: 464px; min-height: 464px; background-color: rgb(200, 200, 200);">
+        <engine:Label text="Appli Morse" name="titre" style="font-size: 30px;" />
+        <engine:VisualElement name="characterHolder" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; justify-content: space-evenly;" />
+    </MorseAppliElement>
+</engine:UXML>

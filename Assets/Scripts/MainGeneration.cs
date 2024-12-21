@@ -195,4 +195,9 @@ public class MainGeneration : MonoBehaviour
         return modulesRules.ToArray();
     }
 
+    public RuleHolder GetRuleHolder()
+    {
+        return ruleHolder;
+    }
+
 }

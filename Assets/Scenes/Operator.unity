@@ -769,6 +769,8 @@ MonoBehaviour:
   desktopWindow: {fileID: 9197481963319205126, guid: 2389d47bad40dc941b1346da2b51e8b3, type: 3}
   manualWindow: {fileID: 9197481963319205126, guid: c0bb55e9e745716418f4b16f2e007595, type: 3}
   calcWindow: {fileID: 9197481963319205126, guid: 0f0aff89ba1793340831e5d9c48fe2db, type: 3}
+  morseWindow: {fileID: 9197481963319205126, guid: b1658074343dbd246b043fda140b1226, type: 3}
+  wireWindow: {fileID: 0}
   introManual: {fileID: 9197481963319205126, guid: 7a88274392f2f8f4da3ca9c38c7b3e77, type: 3}
 --- !u!114 &810705778
 MonoBehaviour:

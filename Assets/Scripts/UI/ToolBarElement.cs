@@ -11,66 +11,56 @@ public partial class ToolBarElement : VisualElement
 
     private const string selectedBtnClass = "selected-task-bar-item";
 
-    private Button homeButton => this.Q<Button>("mainMenuBtn");
-    private Button manualButton => this.Q<Button>("manualBtn");
-    private Button calculatorButton => this.Q<Button>("calcBtn");
-    private Button morseButton => this.Q<Button>("morseBtn");
-    private Button wireButton => this.Q<Button>("wireBtn");
+    private Button HomeButton => this.Q<Button>("mainMenuBtn");
+    private Button ManualButton => this.Q<Button>("manualBtn");
+    private Button CalculatorButton => this.Q<Button>("calcBtn");
+    private Button MorseButton => this.Q<Button>("morseBtn");
+    private Button WireButton => this.Q<Button>("wireBtn");
 
     public void Init()
     {
-        Debug.Log("Inut toolbar");
+        Debug.Log("Init toolbar");
         pcUiManager = PcUiManager.Instance;
         computerLocation = ComputerLocation.HOME;
-        homeButton.clicked += GoToDesktop;
-        manualButton.clicked += GoToManual;
-        calculatorButton.clicked += GoToCalculator;
-        morseButton.clicked += GoToMorse;
-        wireButton.clicked += GoToWire;
+        HomeButton.clicked += GoToDesktop;
+        ManualButton.clicked += GoToManual;
+        CalculatorButton.clicked += GoToCalculator;
+        MorseButton.clicked += GoToMorse;
+        WireButton.clicked += GoToWire;
     }
 
     private void GoToDesktop()
     {
         Debug.Log("Go to desktop");
-        RemoveSelectedStyle(computerLocation);
         computerLocation = ComputerLocation.HOME;
-        AddSelectedStyle(computerLocation);
         pcUiManager.OpenDesktop();
     }
 
     private void GoToManual()
     {
         Debug.Log("Go to manual");
-        RemoveSelectedStyle(computerLocation);
         computerLocation = ComputerLocation.MANUAL;
-        AddSelectedStyle(computerLocation);
         pcUiManager.OpenManual();
     }
 
     private void GoToCalculator()
     {
         Debug.Log("Go to calculator");
-        RemoveSelectedStyle(computerLocation);
         computerLocation = ComputerLocation.CALCULATOR;
-        AddSelectedStyle(computerLocation);
         pcUiManager.OpenCalculator();
     }
 
     private void GoToMorse()
     {
         Debug.Log("Go to morse");
-        RemoveSelectedStyle(computerLocation);
         computerLocation = ComputerLocation.MORSE;
-        AddSelectedStyle(computerLocation);
         pcUiManager.OpenMorse();
     }
 
     private void GoToWire()
     {
         Debug.Log("Go to wire");
-        RemoveSelectedStyle(computerLocation);
         computerLocation = ComputerLocation.WIRE;
-        AddSelectedStyle(computerLocation);
         pcUiManager.OpenWire();
     }
 
@@ -110,11 +100,11 @@ public partial class ToolBarElement : VisualElement
     {
         return location switch
         {
-            ComputerLocation.HOME => homeButton,
-            ComputerLocation.MANUAL => manualButton,
-            ComputerLocation.CALCULATOR => calculatorButton,
-            ComputerLocation.MORSE => morseButton,
-            ComputerLocation.WIRE => wireButton,
+            ComputerLocation.HOME => HomeButton,
+            ComputerLocation.MANUAL => ManualButton,
+            ComputerLocation.CALCULATOR => CalculatorButton,
+            ComputerLocation.MORSE => MorseButton,
+            ComputerLocation.WIRE => WireButton,
             _ => null,
         };
     }

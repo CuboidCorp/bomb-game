@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -21,6 +22,8 @@ public class PcUiManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset morseWindow;
     [SerializeField] private VisualTreeAsset wireWindow;
 
+    private VisualTreeAsset[] annexes;
+
     [Header("Manual")]
     [SerializeField] private VisualTreeAsset introManual;
 
@@ -32,6 +35,8 @@ public class PcUiManager : MonoBehaviour
     {
         doc = GetComponent<UIDocument>();
         Instance = this;
+        annexes = Resources.LoadAll<VisualTreeAsset>("Applis");
+        Debug.Log("Annexes : " + annexes.Length);
     }
 
     /// <summary>
@@ -130,6 +135,7 @@ public class PcUiManager : MonoBehaviour
     {
         screenHolder.Clear();
         screenHolder.Add(morseWindow.CloneTree());
+        doc.rootVisualElement.Q<MorseAppliElement>().Init(MainGeneration.Instance.GetRuleHolder().GetMorseRuleGenerator().GetAlphabet(), annexes[(int)ComputerAppliAnnexe.MORSE_CHARACTER_ELEMENT]);
     }
 
     /// <summary>

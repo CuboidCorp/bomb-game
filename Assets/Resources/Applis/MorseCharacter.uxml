@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <MorseCharacterElement name="character" style="width: auto; max-width: none; min-width: auto; height: 64px; max-height: 64px; min-height: 64px; flex-direction: row;">
+        <engine:Label text="A" name="labelChara" style="-unity-text-align: middle-center; font-size: 24px; width: 32px; max-width: 32px; min-width: 32px; height: 64px; max-height: 64px; min-height: 64px;" />
+        <engine:VisualElement name="signalHolder" style="flex-grow: 1; flex-direction: row; justify-content: space-evenly;" />
+    </MorseCharacterElement>
+</engine:UXML>
