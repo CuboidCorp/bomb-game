@@ -125,7 +125,7 @@ public class PcUiManager : MonoBehaviour
     public void OpenCalculator()
     {
         screenHolder.Clear();
-        screenHolder.Add(desktopWindow.CloneTree());
+        screenHolder.Add(calcWindow.CloneTree());
     }
 
     /// <summary>

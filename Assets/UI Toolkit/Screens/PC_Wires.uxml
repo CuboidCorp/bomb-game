@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="wires" style="flex-grow: 1; width: 1024px; max-width: 1024px; min-width: 1024px; min-height: 464px; max-height: 464px; height: 464px; background-color: rgb(200, 200, 200);">
+        <engine:Label text="Label" name="nyi" style="width: 1024px; max-width: 1024px; min-width: 1024px; height: 464px; max-height: 464px; min-height: 464px; font-size: 180px; -unity-text-align: middle-center;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(6796106386599936)" />
+            </Bindings>
+        </engine:Label>
+    </engine:VisualElement>
 </engine:UXML>

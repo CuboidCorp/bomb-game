@@ -127,6 +127,10 @@ MonoBehaviour:
       valident ensuite en clickant sur le long bouton vert."
     m_Metadata:
       m_Items: []
+  - m_Id: 6796106386599936
+    m_Localized: A venir ...
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
