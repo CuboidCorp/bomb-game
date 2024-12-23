@@ -1,9 +1,31 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:VisualElement name="wires" style="flex-grow: 1; width: 1024px; max-width: 1024px; min-width: 1024px; min-height: 464px; max-height: 464px; height: 464px; background-color: rgb(200, 200, 200);">
-        <engine:Label text="Label" name="nyi" style="width: 1024px; max-width: 1024px; min-width: 1024px; height: 464px; max-height: 464px; min-height: 464px; font-size: 180px; -unity-text-align: middle-center;">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(6796106386599936)" />
-            </Bindings>
-        </engine:Label>
+        <engine:Label text="Wirepedia" name="title" style="-unity-text-align: middle-center; font-size: 40px; -unity-font-style: bold;" />
+        <engine:ScrollView name="wireTypes">
+            <engine:VisualElement name="wireType" style="flex-grow: 1; align-items: center; justify-content: flex-start;">
+                <engine:Label name="name" style="-unity-font-style: bold; font-size: 25px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(7159074420912128)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:VisualElement name="image" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/WireImages/curb.png?fileID=2800000&amp;guid=f9efebc7b0b2b6a4296207a7a764bd26&amp;type=3#curb&quot;); min-width: 400px; min-height: 200px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="wireType" style="flex-grow: 1; align-items: center; justify-content: flex-start;">
+                <engine:Label name="name" style="-unity-font-style: bold; font-size: 25px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(7159144780361728)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:VisualElement name="image" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/WireImages/zigzag.png?fileID=2800000&amp;guid=62aace76965929143b1d8afd5242d489&amp;type=3#zigzag&quot;); min-width: 400px; min-height: 200px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="wireType" style="flex-grow: 1; align-items: center; justify-content: flex-start;">
+                <engine:Label name="name" style="-unity-font-style: bold; font-size: 25px;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(7159166854983680)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:VisualElement name="image" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Images/WireImages/bumpy.png?fileID=2800000&amp;guid=d039e22517f573e4e88b2306a025be45&amp;type=3#bumpy&quot;); min-width: 400px; min-height: 200px;" />
+            </engine:VisualElement>
+        </engine:ScrollView>
     </engine:VisualElement>
 </engine:UXML>

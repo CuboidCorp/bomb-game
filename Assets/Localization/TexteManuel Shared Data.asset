@@ -103,6 +103,20 @@ MonoBehaviour:
     m_Key: NYI
     m_Metadata:
       m_Items: []
+  - m_Id: 7159074420912128
+    m_Key: WIRE_TYPE1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7159144780361728
+    m_Key: 'WIRE_TYPE2
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7159166854983680
+    m_Key: WIRE_TYPE3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
