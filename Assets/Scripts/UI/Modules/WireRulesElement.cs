@@ -4,8 +4,8 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class WireRulesElement : VisualElement
 {
-    private Label description => this.Q<Label>("description");
-    private VisualElement rulesHolder => this.Q("wireController");
+    private Label Description => this.Q<Label>("description");
+    private VisualElement RulesHolder => this.Q("wireController");
 
     public void Init(WireRuleGenerator generator)
     {
@@ -14,7 +14,7 @@ public partial class WireRulesElement : VisualElement
 
         LocalizedString smartString = TextLocalizationHandler.GetSmartString("TexteManuel", "WIRE_RULE_DESC");
         smartString.Arguments = new object[] { nbWiresMin, nbWiresMax };
-        description.text = smartString.GetLocalizedString();
+        Description.text = smartString.GetLocalizedString();
 
         int nbRules = nbWiresMax - nbWiresMin;
 
@@ -34,7 +34,7 @@ public partial class WireRulesElement : VisualElement
                 Label label = new();
                 if (y > 0)
                 {
-                    label.text = TextLocalizationHandler.LoadString("TexteManuel", "ELSE") + rules[y].GetRuleString().ToLower();
+                    label.text = TextLocalizationHandler.LoadString("TexteManuel", "ELSE") + " " + rules[y].GetRuleString().ToLower();
                 }
                 else
                 {
@@ -43,7 +43,7 @@ public partial class WireRulesElement : VisualElement
                 rule.Add(label);
             }
 
-            rulesHolder.Add(rule);
+            RulesHolder.Add(rule);
         }
 
     }

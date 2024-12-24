@@ -20,7 +20,5 @@ public partial class MorseRulesElement : VisualElement
         }
     }
 
-    public MorseRulesElement()
-    {
-    }
+    public MorseRulesElement() { }
 }

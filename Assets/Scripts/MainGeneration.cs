@@ -21,11 +21,6 @@ public class MainGeneration : MonoBehaviour
     /// </summary>
     private ModuleType[] bombModules;
 
-    /// <summary>
-    /// Array qui contient les modules de la bombe sans doublons
-    /// </summary>
-    private ModuleType[] distinctBombModules;
-
     #region ModuleGeneration
     private ModuleType[] allModules;
     private Dictionary<ModuleType, float> moduleWeights;
@@ -135,8 +130,8 @@ public class MainGeneration : MonoBehaviour
                 moduleWeights[module] += weightIncreaseFactor;
                 totalWeight += moduleWeights[module];
             }
-        }
 
+        }
     }
 
     /// <summary>

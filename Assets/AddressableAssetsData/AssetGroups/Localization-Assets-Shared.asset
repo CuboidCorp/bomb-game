@@ -20,6 +20,16 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2eb1bddef06e1c34391d9681b3589c78
+    m_Address: Assets/Localization/MainMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 49728bc5ca4b0ce42975bee687bd6c0a
+    m_Address: Assets/Localization/Images Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 57b20bf073f2f064693c09291ad7ca62
     m_Address: Assets/Localization/TexteInGame Shared Data.asset
     m_ReadOnly: 1
