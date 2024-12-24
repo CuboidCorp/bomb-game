@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 
 public struct WireRule
 {
@@ -82,71 +83,37 @@ public struct WireRule
     /// <param name="ruleToAdd"></param>
     public readonly void AddConstraint(WireRule ruleToAdd) => constraints.Add(ruleToAdd.GetRuleInverse());
 
-    public string GetRuleString()
+    /// <summary>
+    /// Renvoie la règle sous forme lisible traduite en fonction de la locale
+    /// </summary>
+    /// <returns>La regle en string</returns>
+    public readonly string GetRuleString()
     {
-        string ruleString = "Si il ";
+        LocalizedString ruleString;
         if (invertCondition)
         {
-            ruleString += "n'";
+            ruleString = TextLocalizationHandler.GetSmartString("TexteManuel", "WIRE_RULE_INVERTED");
         }
-        ruleString += "y a ";
-        if (invertCondition)
+        else
         {
-            ruleString += "pas ";
+            ruleString = TextLocalizationHandler.GetSmartString("TexteManuel", "WIRE_RULE_NORMAL");
         }
+        object[] args = new object[2];
         switch (condition)
         {
             case WireConditionTarget.Material:
-                ruleString += $"le matériel ";
+                args[0] = TextLocalizationHandler.LoadString("TexteManuel", $"WIRE_COLOR{((int)(WireMaterials)targetType) + 1}");
                 break;
             case WireConditionTarget.Type:
-                ruleString += $"le type ";
+                args[0] = TextLocalizationHandler.LoadString("TexteManuel", $"WIRE_TYPE{((int)(WireType)targetType) + 1}_DESC");
                 break;
         }
 
-        ruleString += targetType.ToString() + " alors ";
+        args[1] = TextLocalizationHandler.LoadString("TexteManuel", $"NB_TO_TEXT{action.targetIndex + 1}");
 
-        ruleString += action.GetWireTargetString();
+        ruleString.Arguments = args;
 
-        return ruleString;
-    }
-
-    public string GetRuleStringWithoutAction()
-    {
-        string ruleString = "Si il ";
-        if (invertCondition)
-        {
-            ruleString += "n'";
-        }
-        ruleString += "y a ";
-        if (invertCondition)
-        {
-            ruleString += "pas ";
-        }
-        switch (condition)
-        {
-            case WireConditionTarget.Material:
-                ruleString += $"le matériel ";
-                break;
-            case WireConditionTarget.Type:
-                ruleString += $"le type ";
-                break;
-        }
-
-        ruleString += targetType.ToString() + " ";
-        return ruleString;
-    }
-
-
-    public string GetFullRuleString()
-    {
-        string ruleString = GetRuleString();
-        foreach (WireRule constraint in constraints)
-        {
-            ruleString += "et ";
-            ruleString += constraint.GetRuleStringWithoutAction();
-        }
-        return ruleString;
+        return ruleString.GetLocalizedString();
     }
 
     public override bool Equals(object obj)

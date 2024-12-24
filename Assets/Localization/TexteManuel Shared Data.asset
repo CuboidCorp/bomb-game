@@ -107,14 +107,90 @@ MonoBehaviour:
     m_Key: WIRE_TYPE1
     m_Metadata:
       m_Items: []
+  - m_Id: 7482984056188928
+    m_Key: WIRE_TYPE1_DESC
+    m_Metadata:
+      m_Items: []
   - m_Id: 7159144780361728
     m_Key: 'WIRE_TYPE2
 
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 7483048212262912
+    m_Key: WIRE_TYPE2_DESC
+    m_Metadata:
+      m_Items: []
   - m_Id: 7159166854983680
     m_Key: WIRE_TYPE3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483120492703744
+    m_Key: WIRE_TYPE3_DESC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7480320446656512
+    m_Key: WIRE_RULE_FOLDOUT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7480511501398016
+    m_Key: WIRE_RULE_NORMAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7482107345989632
+    m_Key: WIRE_RULE_INVERTED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483902847840256
+    m_Key: WIRE_COLOR1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483931536879616
+    m_Key: WIRE_COLOR2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483958577557504
+    m_Key: WIRE_COLOR3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483969319170048
+    m_Key: WIRE_COLOR4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483980559904768
+    m_Key: WIRE_COLOR5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483989216948224
+    m_Key: WIRE_COLOR6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7486142241271808
+    m_Key: NB_TO_TEXT1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7487959779995648
+    m_Key: NB_TO_TEXT2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488030714064896
+    m_Key: NB_TO_TEXT3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488072690659328
+    m_Key: NB_TO_TEXT4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488191133609984
+    m_Key: NB_TO_TEXT5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488240597037056
+    m_Key: NB_TO_TEXT6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488464770002944
+    m_Key: ELSE
     m_Metadata:
       m_Items: []
   m_Metadata:

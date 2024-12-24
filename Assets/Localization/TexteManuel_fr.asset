@@ -41,10 +41,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 222474760192
-    m_Localized: "Ce module est compos\xE9 de {wire-component.nb_wires_min} \xE0
-      {wire-component.nb_wires_max} fils. L'objectif est de trouver la premi\xE8re
-      condition qui est remplie et d'effectuer l'action associ\xE9e. Les conditions
-      se lisent de haut en bas."
+    m_Localized: "Ce module est compos\xE9 de {0} \xE0 {1} fils color\xE9s. L'objectif
+      est de trouver la premi\xE8re condition qui est remplie et d'effectuer l'action
+      associ\xE9e. Les conditions se lisent de haut en bas."
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
@@ -53,11 +52,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 265327964160
-    m_Localized: "Ce module est compos\xE9 d'un labyrinthe de {laby-component.nb_laby}x{aby-component.nb_laby}
-      cases. L'objectif est d'aider l'agent \xE0 d\xE9placer le curseur du labyrithe
-      du d\xE9but du labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue)
-      sans passer par les murs que l'agent ne peut pas voir. La position actuelle
-      dans le labyrinthe est indiqu\xE9 par une case jaune clignotante."
+    m_Localized: "Ce module est compos\xE9 d'un labyrinthe de {0}x{1} cases. L'objectif
+      est d'aider l'agent \xE0 d\xE9placer le curseur du labyrithe du d\xE9but du
+      labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue) sans passer
+      par les murs que l'agent ne peut pas voir. La position actuelle dans le labyrinthe
+      est indiqu\xE9 par une case jaune clignotante."
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
@@ -143,6 +142,85 @@ MonoBehaviour:
     m_Localized: Bossue
     m_Metadata:
       m_Items: []
+  - m_Id: 7480320446656512
+    m_Localized: Dans le cas de {0} fils
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 7480511501398016
+    m_Localized: Si il y a un fil {0} alors coupez le {1} fil
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 7482107345989632
+    m_Localized: Si il n'y a pas de fil {0} alors coupez le {1} fil
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 7482984056188928
+    m_Localized: "courb\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483048212262912
+    m_Localized: zigzag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483120492703744
+    m_Localized: bossu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483902847840256
+    m_Localized: bleu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483931536879616
+    m_Localized: cyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483958577557504
+    m_Localized: vert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483969319170048
+    m_Localized: magenta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483980559904768
+    m_Localized: rouge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483989216948224
+    m_Localized: jaune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7486142241271808
+    m_Localized: premier
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7487959779995648
+    m_Localized: "deuxi\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488030714064896
+    m_Localized: "troisi\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488072690659328
+    m_Localized: "quatri\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488191133609984
+    m_Localized: "cinqui\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488240597037056
+    m_Localized: "sixi\xE8me"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488464770002944
+    m_Localized: Sinon
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -156,3 +234,6 @@ MonoBehaviour:
         - id: 2960232460808192
         - id: 2961590408671232
         - id: 2961743685316608
+        - id: 7480320446656512
+        - id: 7480511501398016
+        - id: 7482107345989632

@@ -1,8 +1,10 @@
+using UnityEngine.Localization;
 using UnityEngine.UIElements;
 
 [UxmlElement]
 public partial class WireRulesElement : VisualElement
 {
+    private Label description => this.Q<Label>("description");
     private VisualElement rulesHolder => this.Q("wireController");
 
     public void Init(WireRuleGenerator generator)
@@ -10,13 +12,20 @@ public partial class WireRulesElement : VisualElement
         int nbWiresMin = generator.GetNbWiresMin();
         int nbWiresMax = generator.GetNbWiresMax();
 
+        LocalizedString smartString = TextLocalizationHandler.GetSmartString("TexteManuel", "WIRE_RULE_DESC");
+        smartString.Arguments = new object[] { nbWiresMin, nbWiresMax };
+        description.text = smartString.GetLocalizedString();
+
         int nbRules = nbWiresMax - nbWiresMin;
 
         for (int i = 0; i <= nbRules; i++)
         {
+            LocalizedString smartFoldout = TextLocalizationHandler.GetSmartString("TexteManuel", "WIRE_RULE_FOLDOUT");
+            smartFoldout.Arguments = new object[] { nbWiresMin + i };
+
             Foldout rule = new() //TODO : Remplacer pas de texte sans localisation
             {
-                text = $"Dans le cas de {nbWiresMin + i} fils"
+                text = smartFoldout.GetLocalizedString(),
             };
             rule.AddToClassList("wireFoldout");
             WireRule[] rules = generator.GetRulesFromNbWire(i + nbWiresMin);
@@ -25,7 +34,7 @@ public partial class WireRulesElement : VisualElement
                 Label label = new();
                 if (y > 0)
                 {
-                    label.text = "Sinon " + rules[y].GetRuleString();
+                    label.text = TextLocalizationHandler.LoadString("TexteManuel", "ELSE") + rules[y].GetRuleString().ToLower();
                 }
                 else
                 {

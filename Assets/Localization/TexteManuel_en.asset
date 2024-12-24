@@ -92,6 +92,85 @@ MonoBehaviour:
     m_Localized: Bumpy
     m_Metadata:
       m_Items: []
+  - m_Id: 7480320446656512
+    m_Localized: In the case of {0} wires
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 7480511501398016
+    m_Localized: If there is a {0} wire then cut the {1} wire
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 7482984056188928
+    m_Localized: curbed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7482107345989632
+    m_Localized: If there is no {0} wire then cut the {1} wire
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 7483048212262912
+    m_Localized: zigzag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483120492703744
+    m_Localized: bumpy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483902847840256
+    m_Localized: blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483931536879616
+    m_Localized: cyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483958577557504
+    m_Localized: green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483969319170048
+    m_Localized: magenta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483980559904768
+    m_Localized: red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483989216948224
+    m_Localized: yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7486142241271808
+    m_Localized: first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7487959779995648
+    m_Localized: second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488030714064896
+    m_Localized: third
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488072690659328
+    m_Localized: fourth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488191133609984
+    m_Localized: fifth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488240597037056
+    m_Localized: sixth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488464770002944
+    m_Localized: Else
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -105,3 +184,6 @@ MonoBehaviour:
         - id: 2960232460808192
         - id: 2961590408671232
         - id: 2961743685316608
+        - id: 7480320446656512
+        - id: 7480511501398016
+        - id: 7482107345989632

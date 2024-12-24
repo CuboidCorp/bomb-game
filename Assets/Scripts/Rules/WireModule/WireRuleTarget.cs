@@ -15,15 +15,6 @@ public struct WireRuleTarget
     /// </summary>
     public Material targetMaterial;
 
-    public string GetWireTargetString()
-    {
-        string ruleTarget = "couper le fil";
-
-        ruleTarget += targetIndex != -1 ? " n°" + (targetIndex + 1) : "";
-
-        return ruleTarget;
-    }
-
     public WireRuleTarget(int targetIndex, Material targetMaterial = null)
     {
         this.targetIndex = targetIndex;
