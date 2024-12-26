@@ -109,6 +109,9 @@ public partial class ToolBarElement : VisualElement
         };
     }
 
-    public ToolBarElement() { }
+    public ToolBarElement()
+    {
+        pcUiManager = PcUiManager.Instance;
+    }
 
 }
