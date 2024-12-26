@@ -9,16 +9,13 @@ public class DefusingUIManager : MonoBehaviour
     [SerializeField] private Button pauseMenuButton;
     [SerializeField] private GameObject pauseMenu;
 
-    [SerializeField] private Button strikeTempButton;
-
     private void Start()
     {
-        strikeTempButton.onClick.AddListener(AddStrike);
+        pauseMenuButton.onClick.AddListener(OnPauseMenuButtonClicked);
     }
 
-    private void AddStrike()
+    private void OnPauseMenuButtonClicked()
     {
-        Debug.Log("Button clicked");
-        BombSquad.Instance.bomb.GetComponent<Bomb>().AddStrike();
+        Debug.Log("Pause menu button clicked");
     }
 }
