@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: PauseMenu_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 602e67e85e73c4742bf209c0f2939638, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 365173370880
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 330712969216
+    m_Localized: OPTIONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 300081967104
+    m_Localized: PAUSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 675962908672
+    m_Localized: Retour
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3546334851072
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4037940834304
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4104407969792
+    m_Localized: General
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4132174262272
+    m_Localized: Musique
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4320666284032
+    m_Localized: SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46708952625152
+    m_Localized: SAUVEGARDER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46757472333824
+    m_Localized: ANNULER
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

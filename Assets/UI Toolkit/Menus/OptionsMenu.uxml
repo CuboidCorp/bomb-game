@@ -1,0 +1,50 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="optionsMenu" style="flex-grow: 1; background-color: rgba(17, 17, 17, 0.59); margin-top: 5%; margin-right: 10%; margin-bottom: 5%; margin-left: 10%; justify-content: space-evenly;">
+        <engine:Label text="Label" name="optionsLabel" style="font-size: 100px; -unity-text-align: middle-center; color: rgb(255, 255, 255);">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(330712969216)" />
+            </Bindings>
+        </engine:Label>
+        <engine:ScrollView name="optScrollView">
+            <engine:VisualElement name="volumeHolder" style="flex-grow: 1; margin-right: 20px; margin-left: 20px;">
+                <engine:Label text="Label" name="volume" style="font-size: 60px; -unity-text-align: middle-center; color: rgb(255, 255, 255);">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4037940834304)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Slider label="Slider" value="42" high-value="100" name="generalSlider" fill="true" usage-hints="None" picking-mode="Ignore" page-size="0" style="font-size: 45px; -unity-text-align: middle-left; color: rgb(255, 255, 255); align-items: stretch; justify-content: flex-start; align-self: stretch;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4104407969792)" />
+                    </Bindings>
+                </engine:Slider>
+                <engine:Slider label="Slider" value="42" high-value="100" name="musicSlider" fill="true" style="font-size: 45px; color: rgb(255, 255, 255);">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4132174262272)" />
+                    </Bindings>
+                </engine:Slider>
+                <engine:Slider label="Slider" value="42" high-value="100" name="sfxSlider" fill="true" show-input-field="false" style="font-size: 45px; color: rgb(255, 255, 255);">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4320666284032)" />
+                    </Bindings>
+                </engine:Slider>
+            </engine:VisualElement>
+        </engine:ScrollView>
+        <engine:VisualElement name="saveAndReset" style="flex-grow: 1; flex-direction: row; justify-content: space-around; align-self: stretch; align-items: center; width: 100%; height: 110px; max-height: 110px; min-height: 100px;">
+            <engine:Button text="Button" name="saveBtn" style="font-size: 60px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(46708952625152)" />
+                </Bindings>
+            </engine:Button>
+            <engine:Button text="Button" name="cancelBtn" style="font-size: 60px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(46757472333824)" />
+                </Bindings>
+            </engine:Button>
+        </engine:VisualElement>
+        <engine:Button text="Button" name="returnBtn" style="font-size: 60px;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(675962908672)" />
+            </Bindings>
+        </engine:Button>
+    </engine:VisualElement>
+</engine:UXML>
