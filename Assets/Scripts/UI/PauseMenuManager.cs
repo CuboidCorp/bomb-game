@@ -119,7 +119,7 @@ public class PauseMenuManager : MonoBehaviour
     /// <summary>
     /// Ouvre le menu des options
     /// </summary>
-    private void OpenOptionsMenu()
+    public void OpenOptionsMenu()
     {
         DisablePauseMenu();
         SetVisualTreeAsset(optionsMenu);

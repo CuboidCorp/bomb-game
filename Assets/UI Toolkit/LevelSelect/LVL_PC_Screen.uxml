@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="PC_Cursor" src="project://database/Assets/UI%20Toolkit/Templates/PC_Cursor.uxml?fileID=9197481963319205126&amp;guid=189919e3b631fd34ea7debaf7e06a4aa&amp;type=3#PC_Cursor" />
+    <engine:Template name="LVL_PC_ToolBar" src="project://database/Assets/UI%20Toolkit/LevelSelect/LVL_PC_ToolBar.uxml?fileID=9197481963319205126&amp;guid=0d988c0f66b9eb3479fa89a5bae0f228&amp;type=3#LVL_PC_ToolBar" />
+    <engine:VisualElement name="screenHolder" style="flex-grow: 1; width: 1024px; max-width: 1024px; min-width: 1024px; height: 464px; max-height: 464px; min-height: 464px;" />
+    <engine:Instance template="LVL_PC_ToolBar" style="width: 1024px; max-width: 1024px; min-width: 1024px; height: 48px; max-height: 48px; min-height: 48px;" />
+    <engine:Instance template="PC_Cursor" picking-mode="Ignore" style="position: absolute; width: 32px; max-width: 32px; min-width: 32px; height: 32px; max-height: 32px; min-height: 32px;" />
+</engine:UXML>

@@ -15,28 +15,24 @@ MonoBehaviour:
   m_TableCollectionName: MainMenu
   m_TableCollectionNameGuidString: 2eb1bddef06e1c34391d9681b3589c78
   m_Entries:
-  - m_Id: 29767462912
-    m_Key: SEED
-    m_Metadata:
-      m_Items: []
-  - m_Id: 96364621824
-    m_Key: SEED_BTN
-    m_Metadata:
-      m_Items: []
-  - m_Id: 234210422784
-    m_Key: OPERATOR
-    m_Metadata:
-      m_Items: []
-  - m_Id: 302590160896
-    m_Key: AGENT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 338627620864
-    m_Key: START
-    m_Metadata:
-      m_Items: []
   - m_Id: 5316238864384
     m_Key: LANGUAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549376825028608
+    m_Key: MAIN_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549479157657600
+    m_Key: PLAY_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549509797048320
+    m_Key: OPTIONS_BTN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549531037003776
+    m_Key: QUIT_BTN
     m_Metadata:
       m_Items: []
   m_Metadata:

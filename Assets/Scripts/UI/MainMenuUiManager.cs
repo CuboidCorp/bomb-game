@@ -8,25 +8,26 @@ using UnityEngine.Localization.Settings;
 public class MainMenuUiManager : MonoBehaviour
 {
     private UIDocument doc;
-    private IntegerField seedField;
-    private Button randSeedBtn;
 
-    private Button startOpGameBtn;
-    private Button startAgtGameBtn;
+    private Button playBtn;
+    private Button optionsBtn;
+    private Button quitBtn;
+
+    private Label versionLabel;
 
     private List<Locale> locales;
     private DropdownField languageDropdown;
 
-
-
     private void Awake()
     {
         doc = GetComponent<UIDocument>();
-        seedField = doc.rootVisualElement.Q<IntegerField>("seed");
-        randSeedBtn = doc.rootVisualElement.Q<Button>("randomizeSeed");
 
-        startOpGameBtn = doc.rootVisualElement.Q<Button>("startOpBtn");
-        startAgtGameBtn = doc.rootVisualElement.Q<Button>("startAgtBtn");
+        playBtn = doc.rootVisualElement.Q<Button>("playBtn");
+        optionsBtn = doc.rootVisualElement.Q<Button>("optionsBtn");
+        quitBtn = doc.rootVisualElement.Q<Button>("quitBtn");
+
+        versionLabel = doc.rootVisualElement.Q<Label>("versionLabel");
+        versionLabel.text = "v" + Application.version;
 
         languageDropdown = doc.rootVisualElement.Q<DropdownField>("changeLocale");
         locales = LocalizationSettings.AvailableLocales.Locales;
@@ -39,66 +40,38 @@ public class MainMenuUiManager : MonoBehaviour
 
     private void OnEnable()
     {
-        randSeedBtn.clicked += RandomizeSeed;
-
-        startOpGameBtn.clicked += StartOperatorGame;
-        startAgtGameBtn.clicked += StartAgentGame;
+        playBtn.clicked += StartGame;
+        optionsBtn.clicked += OpenOptions;
+        quitBtn.clicked += QuitGame;
 
         languageDropdown.RegisterValueChangedCallback(OnLanguageChanged);
     }
 
     private void OnDisable()
     {
-        randSeedBtn.clicked -= RandomizeSeed;
-
-        startOpGameBtn.clicked -= StartOperatorGame;
-        startAgtGameBtn.clicked -= StartAgentGame;
+        playBtn.clicked -= StartGame;
+        optionsBtn.clicked -= OpenOptions;
+        quitBtn.clicked -= QuitGame;
 
         languageDropdown.UnregisterValueChangedCallback(OnLanguageChanged);
     }
 
-    /// <summary>
-    /// Randomise le seed
-    /// </summary>
-    private void RandomizeSeed()
+    private void StartGame()
     {
-        seedField.value = Random.Range(0, 100000);
+        SceneManager.LoadScene("LevelSelect");
     }
 
-    private void GenerateSeedHolder()
+    private void OpenOptions()
     {
-        int seed = seedField.value;
-
-        GameObject mainGen = Instantiate(Resources.Load<GameObject>("MainGen"));
-
-        mainGen.GetComponent<MainGeneration>().SetSeed(seed);
+        OptionsMainMenuManager.Instance.OpenOptionsMenu();
     }
 
-    /// <summary>
-    /// Start la scene de manuel
-    /// </summary>
-    private void StartOperatorGame()
+    private void QuitGame()
     {
-        Debug.Log("Starting Operator Game");
-        if (MainGeneration.Instance == null)
-        {
-            GenerateSeedHolder();
-        }
-        SceneManager.LoadScene("Operator");
+        Debug.Log("Quit game");
+        Application.Quit();
     }
 
-    /// <summary>
-    /// Start la scene de desamorcage
-    /// </summary>
-    private void StartAgentGame()
-    {
-        Debug.Log("Starting Agent Game");
-        if (MainGeneration.Instance == null)
-        {
-            GenerateSeedHolder();
-        }
-        SceneManager.LoadScene("Agent");
-    }
 
     /// <summary>
     /// Fonction appelée quand la langue est changée

@@ -18,28 +18,24 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 29767462912
-    m_Localized: Seed
-    m_Metadata:
-      m_Items: []
-  - m_Id: 96364621824
-    m_Localized: Randomize seed
-    m_Metadata:
-      m_Items: []
-  - m_Id: 234210422784
-    m_Localized: OPERATOR
-    m_Metadata:
-      m_Items: []
-  - m_Id: 302590160896
-    m_Localized: AGENT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 338627620864
-    m_Localized: START
-    m_Metadata:
-      m_Items: []
   - m_Id: 5316238864384
     m_Localized: LANGUAGE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549376825028608
+    m_Localized: UNTITLED BOMB GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549479157657600
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549509797048320
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549531037003776
+    m_Localized: Quit
     m_Metadata:
       m_Items: []
   references:

@@ -18,28 +18,24 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_TableData:
-  - m_Id: 29767462912
-    m_Localized: Graine
-    m_Metadata:
-      m_Items: []
-  - m_Id: 96364621824
-    m_Localized: Randomiser la graine
-    m_Metadata:
-      m_Items: []
-  - m_Id: 234210422784
-    m_Localized: OPERATEUR
-    m_Metadata:
-      m_Items: []
-  - m_Id: 302590160896
-    m_Localized: AGENT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 338627620864
-    m_Localized: COMMENCER
-    m_Metadata:
-      m_Items: []
   - m_Id: 5316238864384
     m_Localized: LANGUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549376825028608
+    m_Localized: UNTITLED BOMB GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549479157657600
+    m_Localized: Jouer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549509797048320
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1549531037003776
+    m_Localized: Quitter
     m_Metadata:
       m_Items: []
   references:
