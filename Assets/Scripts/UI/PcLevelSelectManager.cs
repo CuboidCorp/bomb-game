@@ -90,12 +90,13 @@ public class PcLevelSelectManager : MonoBehaviour
     {
         screenHolder.Clear();
         screenHolder.Add(desktopWindow.CloneTree());
+        doc.rootVisualElement.Q<LvlDesktopElement>().Init();
     }
 
     /// <summary>
     /// Ouvre le menu de lancement
     /// </summary>
-    public void OpenRunWindow()
+    public void OpenRunWindow(RunInfoHolder runInfo)
     {
         screenHolder.Clear();
         screenHolder.Add(runWindow.CloneTree());
