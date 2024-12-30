@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: LevelSelect Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: LevelSelect
+  m_TableCollectionNameGuidString: 9c753c02c1d42d3449f1dccbc2989712
+  m_Entries:
+  - m_Id: 22700060672
+    m_Key: SEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 63254786048
+    m_Key: RANDOMIZE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 78463332352
+    m_Key: NB_MODULES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1125822984192
+    m_Key: OPERATOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1142134632448
+    m_Key: AGENT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1335005507584
+    m_Key: START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1468384374784
+    m_Key: OPERATOR_DESC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1493617307648
+    m_Key: AGENT_DESC
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21720862257152
+    m_Key: RUN_INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66901036724224
+    m_Key: APP_TRASHCAN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 66948545605632
+    m_Key: APP_DAILY_RUN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67260933173248
+    m_Key: APP_CUSTOM_RUN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67421658902528
+    m_Key: APP_RANDOM_RUN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67823716495360
+    m_Key: APP_SCOREBOARD
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 4501476060917399552
+  references:
+    version: 2
+    RefIds:
+    - rid: 4501476060917399552
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1735556986861

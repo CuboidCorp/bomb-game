@@ -100,6 +100,7 @@ public class PcLevelSelectManager : MonoBehaviour
     {
         screenHolder.Clear();
         screenHolder.Add(runWindow.CloneTree());
+        doc.rootVisualElement.Q<LvlRunElement>().Init(runInfo);
     }
 
     /// <summary>
@@ -129,6 +130,13 @@ public class PcLevelSelectManager : MonoBehaviour
         yield return new WaitForSeconds(startupTime);
         SetupDoc();
         OnComputerLoggedIn();
+    }
+
+    public void GenerateSeedHolder(int seed)
+    {
+        GameObject mainGen = Instantiate(Resources.Load<GameObject>("MainGen"));
+
+        mainGen.GetComponent<MainGeneration>().SetSeed(seed);
     }
 
     /// <summary>
