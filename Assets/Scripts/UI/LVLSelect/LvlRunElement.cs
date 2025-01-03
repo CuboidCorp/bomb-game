@@ -26,6 +26,7 @@ public partial class LvlRunElement : VisualElement
             SeedFied.SetEnabled(false);
         }
         CopySeedBtn.clicked += CopySeed;
+        RandomizeButton.clicked += RandomizeSeed;
 
         if (!runInfo.isRandomizable)
         {
@@ -69,6 +70,9 @@ public partial class LvlRunElement : VisualElement
         SceneManager.LoadScene("Agent");
     }
 
+    /// <summary>
+    /// Randomize le seed
+    /// </summary>
     private void RandomizeSeed()
     {
         SeedFied.value = Random.Range(0, 1000000);
