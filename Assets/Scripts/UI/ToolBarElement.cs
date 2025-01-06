@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 public partial class ToolBarElement : VisualElement
 {
 #nullable enable
-    private ComputerLocation computerLocation;
 
     private PcUiManager pcUiManager;
 
@@ -21,7 +20,6 @@ public partial class ToolBarElement : VisualElement
     {
         Debug.Log("Init toolbar");
         pcUiManager = PcUiManager.Instance;
-        computerLocation = ComputerLocation.HOME;
         HomeButton.clicked += GoToDesktop;
         ManualButton.clicked += GoToManual;
         CalculatorButton.clicked += GoToCalculator;
@@ -32,35 +30,30 @@ public partial class ToolBarElement : VisualElement
     private void GoToDesktop()
     {
         Debug.Log("Go to desktop");
-        computerLocation = ComputerLocation.HOME;
         pcUiManager.OpenDesktop();
     }
 
     private void GoToManual()
     {
         Debug.Log("Go to manual");
-        computerLocation = ComputerLocation.MANUAL;
         pcUiManager.OpenManual();
     }
 
     private void GoToCalculator()
     {
         Debug.Log("Go to calculator");
-        computerLocation = ComputerLocation.CALCULATOR;
         pcUiManager.OpenCalculator();
     }
 
     private void GoToMorse()
     {
         Debug.Log("Go to morse");
-        computerLocation = ComputerLocation.MORSE;
         pcUiManager.OpenMorse();
     }
 
     private void GoToWire()
     {
         Debug.Log("Go to wire");
-        computerLocation = ComputerLocation.WIRE;
         pcUiManager.OpenWire();
     }
 

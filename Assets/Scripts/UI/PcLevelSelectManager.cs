@@ -132,11 +132,17 @@ public class PcLevelSelectManager : MonoBehaviour
         OnComputerLoggedIn();
     }
 
-    public void GenerateSeedHolder(int seed)
+    /// <summary>
+    /// Génère la main generation qui permet aux données de passer à travers les scènes
+    /// </summary>
+    /// <param name="seed">Le seed de la game</param>
+    /// <param name="bombType">Le type de la bombe</param>
+    public void GenerateDataHolder(int seed, BombTypes bombType)
     {
         GameObject mainGen = Instantiate(Resources.Load<GameObject>("MainGen"));
 
         mainGen.GetComponent<MainGeneration>().SetSeed(seed);
+        mainGen.GetComponent<MainGeneration>().SetBombType(bombType);
     }
 
     /// <summary>

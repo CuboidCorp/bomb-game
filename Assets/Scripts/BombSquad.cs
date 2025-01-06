@@ -24,8 +24,8 @@ public class BombSquad : MonoBehaviour
 
     private void Start()
     {
-        MainGeneration.Instance.GenerateModules(); //TODO : A enlever, ce sera mis lors de la generation du seed depuis le menu principal
-        bomb = MainGeneration.Instance.GenerateBomb(bombPos, bombRot, "Bomb/6Bomb");
+        MainGeneration.Instance.GenerateModules();
+        bomb = MainGeneration.Instance.GenerateBomb(bombPos, bombRot);
     }
 
 }

@@ -38,8 +38,8 @@ public partial class LvlDesktopElement : VisualElement
         {
             seed = Random.Range(0, 1000000),
             isSeedLocked = true,
-            bombTypeIndex = Random.Range(0, Enum.GetValues(typeof(ButtonCondition)).Length),
-            isBombTypeLocked = true,
+            bombTypeIndex = Random.Range(0, Enum.GetValues(typeof(BombTypes)).Length),
+            isBombTypeLocked = false,
             isRandomizable = true
         };
         PcLevelSelectManager.Instance.OpenRunWindow(runInfo);
@@ -73,10 +73,11 @@ public partial class LvlDesktopElement : VisualElement
         {
             seed = daySeed,
             isSeedLocked = true,
-            bombTypeIndex = Random.Range(0, Enum.GetValues(typeof(ButtonCondition)).Length),
+            bombTypeIndex = Random.Range(0, Enum.GetValues(typeof(BombTypes)).Length),
             isBombTypeLocked = true,
             isRandomizable = false
         };
+
         PcLevelSelectManager.Instance.OpenRunWindow(runInfo);
     }
 

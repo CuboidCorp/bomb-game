@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 [UxmlElement]
 public partial class LvlRunElement : VisualElement
@@ -8,11 +10,13 @@ public partial class LvlRunElement : VisualElement
     private Button CloseBtn => this.Q<Button>("closeButton");
     private IntegerField SeedFied => this.Q<IntegerField>("seedField");
 
-    private Button CopySeedBtn => this.Q<Button>("copyBtn");
+    private Button CopySeedBtn => this.Q<Button>("copySeedBtn");
 
-    private Button RandomizeButton => this.Q<Button>("randomizeBtn");
+    private Button RandomizeSeedButton => this.Q<Button>("randomizeSeedBtn");
 
     private EnumField NbModules => this.Q<EnumField>("bombType");
+
+    private Button RandomizeModulesButton => this.Q<Button>("randomizeModulesBtn");
 
     private Button StartOperateur => this.Q<Button>("playAsOp");
     private Button StartAgent => this.Q<Button>("playAsAgent");
@@ -26,11 +30,17 @@ public partial class LvlRunElement : VisualElement
             SeedFied.SetEnabled(false);
         }
         CopySeedBtn.clicked += CopySeed;
-        RandomizeButton.clicked += RandomizeSeed;
+
 
         if (!runInfo.isRandomizable)
         {
-            RandomizeButton.SetEnabled(false);
+            RandomizeSeedButton.SetEnabled(false);
+            RandomizeModulesButton.SetEnabled(false);
+        }
+        else
+        {
+            RandomizeSeedButton.clicked += RandomizeSeed;
+            RandomizeModulesButton.clicked += RandomizeModules;
         }
 
         NbModules.Init((BombTypes)runInfo.bombTypeIndex);
@@ -49,7 +59,10 @@ public partial class LvlRunElement : VisualElement
     /// </summary>
     private void CopySeed()
     {
-        //TODO : Copier le seed dans le presse papier
+        int seed = SeedFied.value;
+        Debug.Log("Seed copied : " + seed);
+
+        GUIUtility.systemCopyBuffer = seed.ToString();
     }
 
     /// <summary>
@@ -57,7 +70,7 @@ public partial class LvlRunElement : VisualElement
     /// </summary>
     private void StartGameOperateur()
     {
-        PcLevelSelectManager.Instance.GenerateSeedHolder(SeedFied.value);
+        PcLevelSelectManager.Instance.GenerateDataHolder(SeedFied.value, (BombTypes)NbModules.value);
         PcLevelSelectManager.Instance.UnSetupDoc();
         SceneManager.LoadScene("Operator");
     }
@@ -67,7 +80,7 @@ public partial class LvlRunElement : VisualElement
     /// </summary>
     private void StartGameAgent()
     {
-        PcLevelSelectManager.Instance.GenerateSeedHolder(SeedFied.value);
+        PcLevelSelectManager.Instance.GenerateDataHolder(SeedFied.value, (BombTypes)NbModules.value);
         PcLevelSelectManager.Instance.UnSetupDoc();
         SceneManager.LoadScene("Agent");
     }
@@ -78,6 +91,14 @@ public partial class LvlRunElement : VisualElement
     private void RandomizeSeed()
     {
         SeedFied.value = Random.Range(0, 1000000);
+    }
+
+    /// <summary>
+    /// Randomize le nombre de modules
+    /// </summary>
+    private void RandomizeModules()
+    {
+        NbModules.value = (BombTypes)Random.Range(0, Enum.GetValues(typeof(BombTypes)).Length);
     }
 
 

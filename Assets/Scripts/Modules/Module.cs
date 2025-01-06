@@ -10,9 +10,19 @@ public abstract class Module : MonoBehaviour
     protected ModuleType moduleType;
 
     [SerializeField] protected Lamp lampScript;
+    [SerializeField] private Vector3 moduleOffset = new(0, 0, 0);
 
     [HideInInspector] public UnityEvent ModuleSuccess;
     [HideInInspector] public UnityEvent ModuleFail;
+
+    /// <summary>
+    /// Retourne l'offset du module
+    /// </summary>
+    /// <returns>L'offset du module</returns>
+    public Vector3 GetOffset()
+    {
+        return moduleOffset;
+    }
 
     /// <summary>
     /// Initialise le module

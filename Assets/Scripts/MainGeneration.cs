@@ -62,6 +62,16 @@ public class MainGeneration : MonoBehaviour
     }
 
     /// <summary>
+    /// Set le type de bombe
+    /// </summary>
+    /// <param name="bombtype">The bomb type</param>
+    public void SetBombType(BombTypes bombtype)
+    {
+        Debug.Log("Set bomb type :" + bombtype);
+        bombType = bombtype;
+    }
+
+    /// <summary>
     /// Genere les modules de la bombe
     /// </summary>
     public void GenerateModules()
@@ -88,7 +98,8 @@ public class MainGeneration : MonoBehaviour
             Debug.Log("Module " + i + " : " + bombModules[i]);
         }
 
-        ruleHolder.Generate(bombModules); //TODO : On genere plusieurs fois des modules identiques, a changer 
+        ruleHolder.Generate(bombModules);
+
     }
 
     /// <summary>
@@ -141,8 +152,14 @@ public class MainGeneration : MonoBehaviour
     /// <param name="rotation">Rotation de la bombe</param>
     /// <param name="resourcesPath">Chemin dans les ressources pour la prefab de la bombe</param>
     /// <returns>Le gameobject instancié et configuré de la bombe</returns>
-    public GameObject GenerateBomb(Vector3 position, Vector3 rotation, string resourcesPath)
+    public GameObject GenerateBomb(Vector3 position, Vector3 rotation)
     {
+        string resourcesPath = bombType switch
+        {
+            BombTypes.SIX_SLOTS => "Bomb/6Bomb",
+            BombTypes.TWELVE_SLOTS => "Bomb/12Bomb",
+            _ => throw new NotImplementedException(),
+        };
         GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.Euler(rotation));
         bomb.GetComponent<Bomb>().SetupBomb();
         bomb.GetComponent<Bomb>().SetupModules(bombModules, ruleHolder);

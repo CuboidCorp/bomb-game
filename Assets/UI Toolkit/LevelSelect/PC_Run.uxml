@@ -1,9 +1,33 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <LvlRunElement name="lvlRun" style="width: 1024px; max-width: 1024px; min-width: 1024px; max-height: 464px; height: 464px; min-height: 464px; flex-direction: column;">
-        <engine:VisualElement name="topBar" style="flex-grow: 1; height: 32px; max-height: 32px; min-height: 32px; flex-direction: row-reverse; background-color: rgb(0, 81, 159);">
-            <engine:Button text="X" name="closeButton" />
+        <engine:VisualElement name="topBar" style="flex-grow: 1; height: 32px; max-height: 32px; min-height: 32px; flex-direction: row-reverse; background-color: rgb(25, 25, 25);">
+            <engine:Button name="closeButton" style="width: 32px; max-width: 32px; min-width: 32px; min-height: 32px; max-height: 32px; height: 32px; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); background-image: url(&quot;project://database/Assets/Images/Close.png?fileID=2800000&amp;guid=d34a329af0b48864aa051eefef94dcb5&amp;type=3#Close&quot;); background-color: rgba(255, 255, 255, 0); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-bottom: 0;" />
         </engine:VisualElement>
-        <engine:VisualElement style="flex-grow: 1; flex-direction: row; background-color: rgb(0, 76, 112);">
+        <engine:VisualElement name="runInfo" style="flex-grow: 1; position: relative; top: 0; left: 0; background-color: rgb(110, 110, 110); align-self: stretch;">
+            <engine:Label text="Label" name="Title" style="color: rgb(0, 0, 0); font-size: 30px; -unity-text-align: middle-center; -unity-font-style: bold;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(21720862257152)" />
+                </Bindings>
+            </engine:Label>
+            <engine:VisualElement name="seed" style="flex-grow: 1; flex-direction: row; justify-content: center;">
+                <engine:IntegerField label="Integer Field" value="42" name="seedField" enabled="true" style="color: rgb(0, 0, 0); font-size: 20px; -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(22700060672)" />
+                    </Bindings>
+                </engine:IntegerField>
+                <engine:Button name="copySeedBtn" style="background-image: url(&quot;project://database/Assets/Textures/Icones/copy-svgrepo-com.png?fileID=2800000&amp;guid=e177aa3979b94114f891380fd0433e33&amp;type=3#copy-svgrepo-com&quot;); width: 64px; max-width: 64px; height: 64px; max-height: 64px; min-height: 64px; min-width: 64px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
+                <engine:Button name="randomizeSeedBtn" style="background-image: url(&quot;project://database/Assets/Textures/Icones/random-svgrepo-com.png?fileID=2800000&amp;guid=f43359b631ecd8247bb2ce946c8d9998&amp;type=3#random-svgrepo-com&quot;); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; width: 64px; max-width: 64px; min-width: 64px; min-height: 64px; max-height: 64px; height: 64px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="NbModules" style="flex-grow: 1; flex-direction: row; justify-content: center;">
+                <engine:EnumField label="Enum" value="Center" type="BombTypes, Assembly-CSharp" name="bombType" style="color: rgb(0, 0, 0); font-size: 20px; -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(78463332352)" />
+                    </Bindings>
+                </engine:EnumField>
+                <engine:Button name="randomizeModulesBtn" style="background-image: url(&quot;project://database/Assets/Textures/Icones/random-svgrepo-com.png?fileID=2800000&amp;guid=f43359b631ecd8247bb2ce946c8d9998&amp;type=3#random-svgrepo-com&quot;); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; width: 64px; max-width: 64px; min-width: 64px; min-height: 64px; max-height: 64px; height: 64px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 1; flex-direction: row; background-color: rgb(110, 110, 110);">
             <engine:VisualElement name="operator" style="flex-grow: 1; flex-direction: column-reverse; max-width: 50%; min-width: 50%;">
                 <engine:Button text="Button" name="playAsOp" style="font-size: 40px;">
                     <Bindings>
@@ -21,7 +45,7 @@
                     </Bindings>
                 </engine:Label>
             </engine:VisualElement>
-            <engine:VisualElement name="agent" style="flex-grow: 1; flex-direction: column-reverse; max-width: 50%; min-width: 50%;">
+            <engine:VisualElement name="agent" style="flex-grow: 1; flex-direction: column-reverse; max-width: 50%; min-width: 50%; min-height: 48px;">
                 <engine:Button text="Button" name="playAsAgent" style="font-size: 40px;">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(1335005507584)" />
@@ -38,27 +62,6 @@
                     </Bindings>
                 </engine:Label>
             </engine:VisualElement>
-        </engine:VisualElement>
-        <engine:VisualElement name="runInfo" style="flex-grow: 1; position: absolute; top: 32px; left: 325px; background-color: rgb(123, 123, 123);">
-            <engine:Label text="Label" name="Title" style="color: rgb(0, 0, 0); font-size: 30px; -unity-text-align: middle-center; -unity-font-style: bold;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(21720862257152)" />
-                </Bindings>
-            </engine:Label>
-            <engine:VisualElement name="seed" style="flex-grow: 1; flex-direction: row; justify-content: space-evenly;">
-                <engine:IntegerField label="Integer Field" value="42" name="seedField" enabled="true" style="color: rgb(0, 0, 0); font-size: 20px; -unity-text-align: middle-center;">
-                    <Bindings>
-                        <UnityEngine.Localization.LocalizedString property="label" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(22700060672)" />
-                    </Bindings>
-                </engine:IntegerField>
-                <engine:Button name="copyBtn" style="background-image: url(&quot;project://database/Assets/Textures/Icones/copy-svgrepo-com.png?fileID=2800000&amp;guid=e177aa3979b94114f891380fd0433e33&amp;type=3#copy-svgrepo-com&quot;); width: 64px; max-width: 64px; height: 64px; max-height: 64px; min-height: 64px; min-width: 64px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
-                <engine:Button name="randomizeBtn" style="background-image: url(&quot;project://database/Assets/Textures/Icones/random-svgrepo-com.png?fileID=2800000&amp;guid=f43359b631ecd8247bb2ce946c8d9998&amp;type=3#random-svgrepo-com&quot;); padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px; width: 64px; max-width: 64px; min-width: 64px; min-height: 64px; max-height: 64px; height: 64px;" />
-            </engine:VisualElement>
-            <engine:EnumField label="Enum" value="Center" type="BombTypes, Assembly-CSharp" name="bombType" style="color: rgb(0, 0, 0); font-size: 20px; -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(78463332352)" />
-                </Bindings>
-            </engine:EnumField>
         </engine:VisualElement>
     </LvlRunElement>
 </engine:UXML>

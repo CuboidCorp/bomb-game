@@ -50,6 +50,10 @@ public abstract class Bomb : MonoBehaviour
         modulesGo[0] = Instantiate(Resources.Load<GameObject>("Timer"));
         modulesGo[0].transform.position = pos + transform.position;
         modulesGo[0].transform.SetParent(transform);
+        if (pos.z < 0)
+        {
+            modulesGo[0].transform.Rotate(0, 180, 0);
+        }
         modulesGo[0].name = "Timer";
         timerScript = modulesGo[0].GetComponent<Timer>();
 
@@ -60,6 +64,15 @@ public abstract class Bomb : MonoBehaviour
             GameObject modulePrefab = modulesPrefabs[(int)moduleType];
             modulesGo[i] = Instantiate(modulePrefab);
             modulesGo[i].transform.position = position + transform.position;
+            if (position.z < 0)
+            {
+                modulesGo[i].transform.position -= modulesGo[i].GetComponent<Module>().GetOffset();
+                modulesGo[i].transform.Rotate(0, 180, 0);
+            }
+            else
+            {
+                modulesGo[i].transform.position += modulesGo[i].GetComponent<Module>().GetOffset();
+            }
             modulesGo[i].transform.SetParent(transform);
             modulesGo[i].name = $"Module n�{i + 1}-{moduleType}";
             modulesGo[i].GetComponent<Module>().SetupModule(rules);

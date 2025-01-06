@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d31708c14aba0154a94620a3d6a93aeb, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 1ab8985c62b0edd42abcc1348ccd400b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cd865a24b3a071b42a8e57313a6ed3ac, type: 2}
     - target: {fileID: -6214230437451723689, guid: 1ab8985c62b0edd42abcc1348ccd400b, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -434,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lampScript: {fileID: 3632798899967241468}
+  moduleOffset: {x: 0, y: 0, z: 0.075}
   ModuleSuccess:
     m_PersistentCalls:
       m_Calls: []

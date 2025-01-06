@@ -85,7 +85,7 @@ public class WireModule : Module
             float yOffset = yOffsets[i];
 
             int wireIndex = i;
-            Vector3 pos = transform.position + wireOffset + new Vector3(0, yOffset, 0);
+            Vector3 pos = transform.position + (transform.rotation.eulerAngles.y == 180 ? -wireOffset : wireOffset) + new Vector3(0, yOffset, 0);
 
             Material mat = selectedMaterials[i];
             int wireType = selectedTypes[i];
