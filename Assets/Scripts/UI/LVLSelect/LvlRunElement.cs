@@ -58,6 +58,7 @@ public partial class LvlRunElement : VisualElement
     private void StartGameOperateur()
     {
         PcLevelSelectManager.Instance.GenerateSeedHolder(SeedFied.value);
+        PcLevelSelectManager.Instance.UnSetupDoc();
         SceneManager.LoadScene("Operator");
     }
 
@@ -67,6 +68,7 @@ public partial class LvlRunElement : VisualElement
     private void StartGameAgent()
     {
         PcLevelSelectManager.Instance.GenerateSeedHolder(SeedFied.value);
+        PcLevelSelectManager.Instance.UnSetupDoc();
         SceneManager.LoadScene("Agent");
     }
 

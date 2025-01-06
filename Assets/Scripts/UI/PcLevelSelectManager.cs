@@ -68,11 +68,11 @@ public class PcLevelSelectManager : MonoBehaviour
     /// </summary>
     public void UnSetupDoc()
     {
+        isStarted = false;
+        doc.panelSettings.SetScreenToPanelSpaceFunction(null);
 #if UNITY_STANDALONE || UNITY_EDITOR
         UnityEngine.Cursor.visible = true;
 #endif
-        isStarted = false;
-        doc.panelSettings.SetScreenToPanelSpaceFunction(null);
     }
 
     private void OnComputerLoggedIn()
