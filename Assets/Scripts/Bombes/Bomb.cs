@@ -130,7 +130,6 @@ public abstract class Bomb : MonoBehaviour
     /// </summary>
     public void ExplodeBomb()
     {
-        //TODO : Afficher ecran final avec score
         //TODO : Afficher explosion
         timerScript.StopTimer();
         foreach (GameObject module in modulesGo)
@@ -142,6 +141,7 @@ public abstract class Bomb : MonoBehaviour
         }
         AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_EXPLOSION);
         Debug.Log("BOOM");
+        EndMenuManager.Instance.OpenEndMenu(timerScript.GetTimeLeft(), nbStrikes, false);
     }
 
     /// <summary>
@@ -149,10 +149,10 @@ public abstract class Bomb : MonoBehaviour
     /// </summary>
     private void BombSuccess()
     {
-        //TODO : Afficher ecran final avec score
         //TODO : Afficher confettis
         timerScript.StopTimer();
         Debug.Log("GG");
+        EndMenuManager.Instance.OpenEndMenu(timerScript.GetTimeLeft(), nbStrikes, true);
     }
 
 }

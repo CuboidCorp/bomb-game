@@ -157,6 +157,7 @@ MonoBehaviour:
   desktopWindow: {fileID: 9197481963319205126, guid: 0884060f028b00e4ea9e2a6cfbdb868f, type: 3}
   runWindow: {fileID: 9197481963319205126, guid: 4fc8c769ea72de44387fd220536a72bb, type: 3}
   scoreboardWindow: {fileID: 9197481963319205126, guid: c29cfcae541af124daa1614e1fb5c325, type: 3}
+  creditsWindow: {fileID: 9197481963319205126, guid: 385b73e2d2e0a8c45ae21694728fa31c, type: 3}
 --- !u!114 &10656018
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -56,6 +56,7 @@ public class BombInteract : MonoBehaviour
     private void OnDisable()
     {
         actions.Player.Disable();
+        actions.UI.Disable();
         UnSetupActions();
     }
 

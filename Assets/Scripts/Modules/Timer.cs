@@ -59,6 +59,9 @@ public class Timer : MonoBehaviour
         timeBetweenSeconds /= 1.5f;
     }
 
+    /// <summary>
+    /// Coroutine pour faire descendre le timer
+    /// </summary>
     private IEnumerator TimeTickingDown()
     {
         while (nbSeconds > 0)
@@ -71,12 +74,24 @@ public class Timer : MonoBehaviour
         TimerFinished.Invoke();
     }
 
+    /// <summary>
+    /// Stop le timer
+    /// </summary>
     public void StopTimer()
     {
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
         }
+    }
+
+    /// <summary>
+    /// Retourne le temps restant sur le timer
+    /// </summary>
+    /// <returns>Le temps restant sur le timer en secondes</returns>
+    public int GetTimeLeft()
+    {
+        return nbSeconds;
     }
 
 }

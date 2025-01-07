@@ -1,9 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd"
->
-    
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="holder" style="flex-grow: 1; margin-top: 5%; margin-right: 10%; margin-bottom: 5%; margin-left: 10%; background-color: rgba(35, 35, 35, 0.9); justify-content: space-evenly;">
+        <engine:Label text="Game Over" name="title" style="font-size: 60px; -unity-text-align: upper-center; color: rgb(255, 255, 255); -unity-font-style: bold;" />
+        <engine:VisualElement name="timeHolder" style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-evenly; height: 40px; max-height: 40px; min-height: 40px;">
+            <engine:Label text="Label" name="timeLabel" style="width: 50%; max-width: 50%; min-width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4082574373122048)" />
+                </Bindings>
+            </engine:Label>
+            <engine:Label text="Label" name="timerTime" style="width: 50%; max-width: 50%; min-width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 32px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="strikesHolder" style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-evenly; height: 40px; max-height: 40px; min-height: 40px;">
+            <engine:Label text="Label" name="strikeLabel" style="width: 50%; max-width: 50%; min-width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4083140876791808)" />
+                </Bindings>
+            </engine:Label>
+            <engine:Label text="Label" name="nbStrikes" style="width: 50%; max-width: 50%; min-width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 32px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="scoreHolder" style="flex-grow: 1; flex-direction: row; align-items: stretch; justify-content: space-evenly; height: 40px; max-height: 40px; min-height: 40px;">
+            <engine:Label text="Label" name="scoreLabel" style="width: 50%; max-width: 50%; min-width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4086631338831872)" />
+                </Bindings>
+            </engine:Label>
+            <engine:Label text="Label" name="score" style="width: 50%; max-width: 50%; min-width: 50%; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; -unity-text-align: middle-center; color: rgb(255, 255, 255); font-size: 32px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="BtnHolder" style="flex-grow: 1; flex-direction: row; justify-content: space-around; align-self: stretch; height: 64px; max-height: 64px; min-height: 64px;">
+            <engine:Button text="Button" name="shareBtn" style="font-size: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4087958617944064)" />
+                </Bindings>
+            </engine:Button>
+            <engine:Button text="Button" name="quitBtn" style="font-size: 32px;">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(365173370880)" />
+                </Bindings>
+            </engine:Button>
+        </engine:VisualElement>
+    </engine:VisualElement>
 </engine:UXML>

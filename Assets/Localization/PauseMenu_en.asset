@@ -62,6 +62,30 @@ MonoBehaviour:
     m_Localized: CANCEL
     m_Metadata:
       m_Items: []
+  - m_Id: 4075292339957760
+    m_Localized: "Game Over\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4075370110742528
+    m_Localized: Victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4082574373122048
+    m_Localized: 'Time left :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4083140876791808
+    m_Localized: 'Number of strikes :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4086631338831872
+    m_Localized: 'Score :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4087958617944064
+    m_Localized: Share
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
