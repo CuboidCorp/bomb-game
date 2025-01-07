@@ -76,6 +76,10 @@ MonoBehaviour:
     m_Localized: Scoreboard
     m_Metadata:
       m_Items: []
+  - m_Id: 2994325642768384
+    m_Localized: "Cr\xE9dits"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

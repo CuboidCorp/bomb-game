@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: APP_SCOREBOARD
     m_Metadata:
       m_Items: []
+  - m_Id: 2994325642768384
+    m_Key: APP_CREDITS
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

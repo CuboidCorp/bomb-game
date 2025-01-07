@@ -18,6 +18,7 @@ public class PcLevelSelectManager : MonoBehaviour
     [SerializeField] private VisualTreeAsset desktopWindow;
     [SerializeField] private VisualTreeAsset runWindow;
     [SerializeField] private VisualTreeAsset scoreboardWindow;
+    [SerializeField] private VisualTreeAsset creditsWindow;
 
     private UIDocument doc;
 
@@ -110,6 +111,15 @@ public class PcLevelSelectManager : MonoBehaviour
     {
         screenHolder.Clear();
         screenHolder.Add(scoreboardWindow.CloneTree());
+    }
+
+    /// <summary>
+    /// Ouvre les crédits
+    /// </summary>
+    public void OpenCreditsWindow()
+    {
+        screenHolder.Clear();
+        screenHolder.Add(creditsWindow.CloneTree());
     }
 
     /// <summary>
