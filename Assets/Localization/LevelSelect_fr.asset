@@ -80,6 +80,34 @@ MonoBehaviour:
     m_Localized: Credits
     m_Metadata:
       m_Items: []
+  - m_Id: 3350720389017600
+    m_Localized: "D\xE9veloppeurs"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3350951939764224
+    m_Localized: Testeurs
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3351482842181632
+    m_Localized: "(Grandement) Inspir\xE9 par :"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3352509507137536
+    m_Localized: 'Packages Unity : '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3353211285499904
+    m_Localized: 'Polices : '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3352461922758656
+    m_Localized: 'Icones :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3353669584515072
+    m_Localized: 'Audio : '
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -75,6 +75,34 @@ MonoBehaviour:
     m_Key: APP_CREDITS
     m_Metadata:
       m_Items: []
+  - m_Id: 3350720389017600
+    m_Key: CREDITS_DEVELOPER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3350951939764224
+    m_Key: CREDITS_TESTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3351482842181632
+    m_Key: CREDITS_INSPIRATION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3352461922758656
+    m_Key: CREDITS_ICONS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3352509507137536
+    m_Key: CREDITS_PACKAGES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3353211285499904
+    m_Key: CREDITS_FONT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3353669584515072
+    m_Key: CREDITS_AUDIO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
