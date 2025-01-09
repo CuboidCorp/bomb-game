@@ -7,14 +7,21 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip[] soundEffects;
-    private AudioSource audioSource;
+
+    [SerializeField] private AudioSource audioSourceSFX;
+    [SerializeField] private AudioSource audioSourceMusic;
 
     public static AudioManager Instance;
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
-        audioSource = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
 
     /// <summary>
@@ -24,7 +31,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="volume">Le volume du sound effect</param>
     public void PlaySoundEffect(SoundEffects soundEffect, int volume = 1)
     {
-        audioSource.PlayOneShot(soundEffects[(int)soundEffect], 1);
+        audioSourceSFX.PlayOneShot(soundEffects[(int)soundEffect], volume);
     }
 
 }

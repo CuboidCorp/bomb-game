@@ -76,6 +76,12 @@ public class PauseMenuManager : MonoBehaviour
     public void OpenPauseMenu()
     {
         UnSetupInGameMenu();
+
+        if (PcUiManager.InstanceAbs != null)
+        {
+            PcUiManager.InstanceAbs.UnSetupDoc();
+        }
+
         SetVisualTreeAsset(pauseMenu);
         resumeButton = currentRootElement.Q<Button>("cancelBtn");
         optionsButton = currentRootElement.Q<Button>("optionsBtn");
@@ -91,6 +97,10 @@ public class PauseMenuManager : MonoBehaviour
     private void ClosePauseMenu()
     {
         SetupInGameMenu();
+        if (PcUiManager.InstanceAbs != null)
+        {
+            PcUiManager.InstanceAbs.SetupIfStarted();
+        }
         DisablePauseMenu();
     }
 

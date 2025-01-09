@@ -152,6 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6dc358f5bee5f4fb8a1ee963f91915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startupTime: 1
+  offsetCursorX: 16
+  offsetCursorY: 16
+  screenTexture: {fileID: 8400000, guid: 41c5a86fb6303b14684fb008220fe7d3, type: 2}
   startWindow: {fileID: 9197481963319205126, guid: ab59a3a20e89ca9429aa4f18ea4714ba, type: 3}
   mainScreenWindow: {fileID: 9197481963319205126, guid: c47edc067cf133542a7c8dbd8aaf79ba, type: 3}
   desktopWindow: {fileID: 9197481963319205126, guid: 0884060f028b00e4ea9e2a6cfbdb868f, type: 3}

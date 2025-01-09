@@ -169,7 +169,7 @@ public class ManualInteract : MonoBehaviour
 
     private void UnZoom()
     {
-        PcUiManager.Instance.UnSetupDoc();
+        PcOperatorManager.Instance.UnSetupDoc();
         ZoomTo(mainCameraBasePosition);
         isZoomedOnComputer = false;
     }

@@ -12,7 +12,7 @@ public partial class LvlToolBarElement : VisualElement
 
     public void Init()
     {
-        pcUiManager = PcLevelSelectManager.Instance;
+        pcUiManager = (PcLevelSelectManager)PcLevelSelectManager.Instance;
         HomeButton.clicked += GoToDesktop;
     }
 
@@ -24,7 +24,7 @@ public partial class LvlToolBarElement : VisualElement
 
     public LvlToolBarElement()
     {
-        pcUiManager = PcLevelSelectManager.Instance;
+        pcUiManager = (PcLevelSelectManager)PcLevelSelectManager.Instance;
     }
 
 }

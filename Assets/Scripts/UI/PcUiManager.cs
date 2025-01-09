@@ -2,40 +2,36 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class PcUiManager : MonoBehaviour
+public abstract class PcUiManager : MonoBehaviour
 {
-    private bool isStarted = false;
-    private bool hasLoggedIn = false;
-    public static PcUiManager Instance;
+    protected bool isStarted = false;
+    protected bool hasLoggedIn = false;
+    public static PcUiManager InstanceAbs;
+
+    protected UIDocument doc;
+    protected VisualElement screenHolder;
+
+    [SerializeField] private int startupTime = 5;
+
+    //TODO : Tester comment faire pr deplacer tt et que ce soit joli
+    [SerializeField] private float offsetCursorX = 16;
+    [SerializeField] private float offsetCursorY = 16;
+
+    [SerializeField] protected RenderTexture screenTexture;
 
     [Header("Windows")]
-    [SerializeField] private VisualTreeAsset startWindow;
-    [SerializeField] private VisualTreeAsset mainScreenWindow;
-
-    private VisualElement screenHolder;
+    [SerializeField] protected VisualTreeAsset startWindow;
+    [SerializeField] protected VisualTreeAsset mainScreenWindow;
 
     [Header("Apps")]
-    [SerializeField] private VisualTreeAsset desktopWindow;
-    [SerializeField] private VisualTreeAsset manualWindow;
-    [SerializeField] private VisualTreeAsset calcWindow;
-    [SerializeField] private VisualTreeAsset morseWindow;
-    [SerializeField] private VisualTreeAsset wireWindow;
+    [SerializeField] protected VisualTreeAsset desktopWindow;
+    //Les autres pr les implementations
 
-    private VisualTreeAsset[] annexes;
-
-    [Header("Manual")]
-    [SerializeField] private VisualTreeAsset introManual;
-
-    private UIDocument doc;
-
-    private const int startupTime = 5;
-
+    //A Copier pr les implementations
     private void Awake()
     {
         doc = GetComponent<UIDocument>();
-        Instance = this;
-        annexes = Resources.LoadAll<VisualTreeAsset>("Applis");
-        Debug.Log("Annexes : " + annexes.Length);
+        InstanceAbs = this;
     }
 
     /// <summary>
@@ -72,6 +68,17 @@ public class PcUiManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Setup le pc si il a déjà été lancé
+    /// </summary>
+    public void SetupIfStarted()
+    {
+        if (isStarted)
+        {
+            SetupDoc();
+        }
+    }
+
+    /// <summary>
     /// Desactive la fonction d'intéraction avec le pc et eteint l'ordinateur
     /// </summary>
     public void UnSetupDoc()
@@ -92,68 +99,26 @@ public class PcUiManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Clear la texture de rendu
+    /// </summary>
+    protected void ClearRenderTexture()
+    {
+        screenTexture.Release();
+    }
+
+    /// <summary>
     /// Ouvre le bureau
     /// </summary>
-    public void OpenDesktop()
+    public virtual void OpenDesktop()
     {
         screenHolder.Clear();
         screenHolder.Add(desktopWindow.CloneTree());
     }
 
     /// <summary>
-    /// Ouvre le manuel avec tous les modules
-    /// </summary>
-    public void OpenManual()
-    {
-        screenHolder.Clear();
-        screenHolder.Add(manualWindow.CloneTree());
-        VisualElement[] modules = ManuelSquad.Instance.GetModuleRules();
-        VisualElement main = doc.rootVisualElement.Q<VisualElement>("scrollManualZone");
-        //On rajoute l'intro en premier
-        VisualElement intro = introManual.CloneTree();
-        main.Add(intro);
-        foreach (VisualElement module in modules)
-        {
-            main.Add(module);
-        }
-    }
-
-    /// <summary>
-    /// Ouvre la calculatrice NYI
-    /// </summary>
-    public void OpenCalculator()
-    {
-        screenHolder.Clear();
-        screenHolder.Add(calcWindow.CloneTree());
-    }
-
-    /// <summary>
-    /// Ouvre l'appli pour l'alphabet morse
-    /// </summary>
-    public void OpenMorse()
-    {
-        screenHolder.Clear();
-        screenHolder.Add(morseWindow.CloneTree());
-        doc.rootVisualElement.Q<MorseAppliElement>().Init(MainGeneration.Instance.GetRuleHolder().GetMorseRuleGenerator().GetAlphabet(), annexes[(int)ComputerAppliAnnexe.MORSE_CHARACTER_ELEMENT]);
-    }
-
-    /// <summary>
-    /// Ouvre l'appli pour voir les différents types de fils
-    /// </summary>
-    public void OpenWire()
-    {
-        screenHolder.Clear();
-        screenHolder.Add(wireWindow.CloneTree());
-    }
-
-    /// <summary>
     /// Setup la barre de taches
     /// </summary>
-    private void SetupToolBar()
-    {
-        ToolBarElement toolbar = doc.rootVisualElement.Q<ToolBarElement>();
-        toolbar.Init();
-    }
+    protected abstract void SetupToolBar();
 
     /// <summary>
     /// Allume l'ordinateur après un temps de chargement
@@ -188,7 +153,7 @@ public class PcUiManager : MonoBehaviour
         }
 
 #if UNITY_STANDALONE || UNITY_EDITOR
-        UnityEngine.Cursor.visible = false;
+        //UnityEngine.Cursor.visible = false; //Retrait temp
 #endif
 
         Vector2 pixelUV = hit.textureCoord;
@@ -200,8 +165,8 @@ public class PcUiManager : MonoBehaviour
 
         if (cursor != null)
         {
-            cursor.style.left = pixelUV.x - 16;
-            cursor.style.top = pixelUV.y - 16;
+            cursor.style.left = pixelUV.x - offsetCursorX;
+            cursor.style.top = pixelUV.y - offsetCursorY;
         }
 
 

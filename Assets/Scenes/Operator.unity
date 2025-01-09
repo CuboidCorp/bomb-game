@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 810705773}
   - component: {fileID: 810705779}
   - component: {fileID: 810705778}
-  - component: {fileID: 810705777}
+  - component: {fileID: 810705780}
   m_Layer: 5
   m_Name: ComputerScreen
   m_TagString: Computer
@@ -752,26 +752,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &810705777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810705771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb6ebd9c89ac0d34783db4b55de482b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startWindow: {fileID: 9197481963319205126, guid: ab59a3a20e89ca9429aa4f18ea4714ba, type: 3}
-  mainScreenWindow: {fileID: 9197481963319205126, guid: a33784836058bf94793966ba48e3e0be, type: 3}
-  desktopWindow: {fileID: 9197481963319205126, guid: 2389d47bad40dc941b1346da2b51e8b3, type: 3}
-  manualWindow: {fileID: 9197481963319205126, guid: c0bb55e9e745716418f4b16f2e007595, type: 3}
-  calcWindow: {fileID: 9197481963319205126, guid: 0f0aff89ba1793340831e5d9c48fe2db, type: 3}
-  morseWindow: {fileID: 9197481963319205126, guid: b1658074343dbd246b043fda140b1226, type: 3}
-  wireWindow: {fileID: 9197481963319205126, guid: 78cf348c1bfece144b5b0d624a7987f8, type: 3}
-  introManual: {fileID: 9197481963319205126, guid: 7a88274392f2f8f4da3ca9c38c7b3e77, type: 3}
 --- !u!114 &810705778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +793,30 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &810705780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810705771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30d83a391377d544d97fe91f5b31551a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startupTime: 5
+  offsetCursorX: 16
+  offsetCursorY: 16
+  screenTexture: {fileID: 8400000, guid: 41c5a86fb6303b14684fb008220fe7d3, type: 2}
+  startWindow: {fileID: 9197481963319205126, guid: ab59a3a20e89ca9429aa4f18ea4714ba, type: 3}
+  mainScreenWindow: {fileID: 9197481963319205126, guid: a33784836058bf94793966ba48e3e0be, type: 3}
+  desktopWindow: {fileID: 9197481963319205126, guid: 2389d47bad40dc941b1346da2b51e8b3, type: 3}
+  manualWindow: {fileID: 9197481963319205126, guid: c0bb55e9e745716418f4b16f2e007595, type: 3}
+  calcWindow: {fileID: 9197481963319205126, guid: 0f0aff89ba1793340831e5d9c48fe2db, type: 3}
+  morseWindow: {fileID: 9197481963319205126, guid: b1658074343dbd246b043fda140b1226, type: 3}
+  wireWindow: {fileID: 9197481963319205126, guid: 78cf348c1bfece144b5b0d624a7987f8, type: 3}
+  introManual: {fileID: 9197481963319205126, guid: 7a88274392f2f8f4da3ca9c38c7b3e77, type: 3}
 --- !u!1001 &821065598
 PrefabInstance:
   m_ObjectHideFlags: 0

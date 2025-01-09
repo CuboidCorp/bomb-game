@@ -6,7 +6,7 @@ public partial class ToolBarElement : VisualElement
 {
 #nullable enable
 
-    private PcUiManager pcUiManager;
+    private PcOperatorManager pcUiManager;
 
     private const string selectedBtnClass = "selected-task-bar-item";
 
@@ -19,7 +19,7 @@ public partial class ToolBarElement : VisualElement
     public void Init()
     {
         Debug.Log("Init toolbar");
-        pcUiManager = PcUiManager.Instance;
+        pcUiManager = PcOperatorManager.Instance;
         HomeButton.clicked += GoToDesktop;
         ManualButton.clicked += GoToManual;
         CalculatorButton.clicked += GoToCalculator;
@@ -104,7 +104,7 @@ public partial class ToolBarElement : VisualElement
 
     public ToolBarElement()
     {
-        pcUiManager = PcUiManager.Instance;
+        pcUiManager = PcOperatorManager.Instance;
     }
 
 }
