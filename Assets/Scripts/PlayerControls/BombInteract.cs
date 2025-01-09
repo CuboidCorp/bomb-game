@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class BombInteract : MonoBehaviour
 {
+
+
     private PlayerControls actions;
     private InputAction _pos;
 

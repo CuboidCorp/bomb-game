@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class LevelSelectInteract : MonoBehaviour
 {
+    public static LevelSelectInteract Instance;
+
     protected PlayerControls actions;
     protected InputAction _pos;
 
@@ -29,6 +31,7 @@ public class LevelSelectInteract : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         Setup();
     }
 
@@ -40,29 +43,26 @@ public class LevelSelectInteract : MonoBehaviour
         mainCamera.transform.position = mainCameraBasePosition;
     }
 
-    protected void SetupActions()
+    public void SetupActions()
     {
         _pos = actions.Player.Position;
 
-        actions.Player.Tap.performed += _ => OnTap(_pos.ReadValue<Vector2>());
+        actions.Player.Tap.performed += OnTap;
 
-        actions.Player.Return.performed += _ => UnZoom();
-        actions.Player.SecondFingerContact.started += _ => PinchDetectStart();
-        actions.Player.SecondFingerContact.canceled += _ => PinchDetectEnd();
+        actions.Player.Return.performed += UnZoom;
+        actions.Player.SecondFingerContact.started += PinchDetectStart;
+        actions.Player.SecondFingerContact.canceled += PinchDetectEnd;
+        actions.Player.Escape.performed += OnEscapePerformed;
     }
 
-    /// <summary>
-    /// Surement inutile car le unsub d'un lambda anonyme n'existe pas, faudrait mettre dans des actions nommées
-    /// Mais c'est pour garder l'idée qu'il faut unsub des events
-    /// Pas nécessaire dans ce cas car le script est tjrs activé
-    /// </summary>
     protected void UnSetupActions()
     {
-        actions.Player.Tap.performed -= _ => OnTap(_pos.ReadValue<Vector2>());
+        actions.Player.Tap.performed -= OnTap;
 
-        actions.Player.Return.performed -= _ => UnZoom();
-        actions.Player.SecondFingerContact.started -= _ => PinchDetectStart();
-        actions.Player.SecondFingerContact.canceled -= _ => PinchDetectEnd();
+        actions.Player.Return.performed -= UnZoom;
+        actions.Player.SecondFingerContact.started -= PinchDetectStart;
+        actions.Player.SecondFingerContact.canceled -= PinchDetectEnd;
+        actions.Player.Escape.performed -= OnEscapePerformed;
     }
 
     private void OnEnable()
@@ -78,25 +78,38 @@ public class LevelSelectInteract : MonoBehaviour
         PinchDetectEnd();
     }
 
+    /// <summary>
+    /// Ouvre ou ferme le menu pause
+    /// </summary>
+    private void OnEscapePerformed(InputAction.CallbackContext _)
+    {
+        if (PauseMenuManager.Instance.OpenOrClose())
+        {
+            UnSetupActions();
+            PinchDetectEnd();
+
+        }
+    }
 
     private void Update()
     {
         if (isZooming)
         {
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed * Time.deltaTime);
-            if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .25f)
+            if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .05f)
             {
+                mainCamera.transform.position = zoomPosition;
                 isZooming = false;
             }
         }
     }
 
-    private void PinchDetectStart()
+    private void PinchDetectStart(InputAction.CallbackContext _)
     {
         pinchDetectCoroutine = StartCoroutine(PinchDetection());
     }
 
-    private void PinchDetectEnd()
+    private void PinchDetectEnd(InputAction.CallbackContext ctx = new InputAction.CallbackContext())
     {
         if (pinchDetectCoroutine != null)
             StopCoroutine(pinchDetectCoroutine);
@@ -118,23 +131,6 @@ public class LevelSelectInteract : MonoBehaviour
     }
 
     /// <summary>
-    /// Zoomme vers un peu en face de l'objet donné
-    /// </summary>
-    /// <param name="targetTransform">Le transform qu'on veut regarder en face</param>
-    private void ZoomOnTransform(Transform targetTransform)
-    {
-        if (targetTransform != null)
-        {
-            zoomPosition = targetTransform.position + targetTransform.forward * 2f; // Ajustez cette valeur pour un meilleur effet de zoom}
-        }
-        else
-        {
-            zoomPosition = mainCameraBasePosition;
-        }
-        isZooming = true;
-    }
-
-    /// <summary>
     /// Fait que la camera zoome jusqu'à la position donnée
     /// </summary>
     /// <param name="pos">La position </param>
@@ -144,8 +140,9 @@ public class LevelSelectInteract : MonoBehaviour
         zoomPosition = pos;
     }
 
-    private void OnTap(Vector2 pos)
+    private void OnTap(InputAction.CallbackContext _)
     {
+        Vector2 pos = _pos.ReadValue<Vector2>();
         Ray ray = mainCamera.ScreenPointToRay(pos);
         if (Physics.Raycast(ray, out RaycastHit hit, rayDistance))
         {
@@ -167,7 +164,7 @@ public class LevelSelectInteract : MonoBehaviour
         }
     }
 
-    private void UnZoom()
+    private void UnZoom(InputAction.CallbackContext _ = new InputAction.CallbackContext())
     {
         PcLevelSelectManager.Instance.UnSetupDoc();
         ZoomTo(mainCameraBasePosition);

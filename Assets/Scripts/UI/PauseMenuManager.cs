@@ -15,9 +15,7 @@ public class PauseMenuManager : MonoBehaviour
 
     [SerializeField] private AudioMixer mainAudioMixer;
 
-    #region InGameMenu
-    private Button pauseButton;
-    #endregion
+    private bool isPaused;
 
     #region PauseMenu
     private Button resumeButton;
@@ -39,6 +37,7 @@ public class PauseMenuManager : MonoBehaviour
         uiDoc = GetComponent<UIDocument>();
         Instance = this;
         SetupInGameMenu();
+        isPaused = false;
     }
 
     /// <summary>
@@ -49,8 +48,6 @@ public class PauseMenuManager : MonoBehaviour
         if (inGameMenu != null)
         {
             SetVisualTreeAsset(inGameMenu);
-            pauseButton = currentRootElement.Q<Button>("pauseBtn");
-            pauseButton.clicked += OpenPauseMenu;
         }
         else
         {
@@ -63,11 +60,6 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     private void UnSetupInGameMenu()
     {
-        if (inGameMenu != null)
-        {
-            pauseButton.clicked -= OpenPauseMenu;
-            pauseButton = null;
-        }
     }
 
     /// <summary>
@@ -75,11 +67,16 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void OpenPauseMenu()
     {
+        isPaused = true;
         UnSetupInGameMenu();
 
-        if (PcUiManager.InstanceAbs != null)
+        if (PcLevelSelectManager.Instance != null)
         {
-            PcUiManager.InstanceAbs.UnSetupDoc();
+            PcLevelSelectManager.Instance.UnSetupDoc();
+        }
+        if (PcOperatorManager.Instance != null)
+        {
+            PcOperatorManager.Instance.UnSetupDoc();
         }
 
         SetVisualTreeAsset(pauseMenu);
@@ -96,12 +93,37 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     private void ClosePauseMenu()
     {
+        isPaused = false;
         SetupInGameMenu();
-        if (PcUiManager.InstanceAbs != null)
+        if (PcLevelSelectManager.Instance != null)
         {
-            PcUiManager.InstanceAbs.SetupIfStarted();
+            LevelSelectInteract.Instance.SetupActions();
+            PcLevelSelectManager.Instance.SetupIfStarted();
+        }
+        if (PcOperatorManager.Instance != null)
+        {
+            ManualInteract.Instance.SetupActions();
+            PcOperatorManager.Instance.SetupIfStarted();
         }
         DisablePauseMenu();
+    }
+
+    /// <summary>
+    /// Ouvre ou ferme le menu de pause et renvoie true si le jeu est en pause
+    /// </summary>
+    /// <returns>True si le jeu est en pause, ou false</returns>
+    public bool OpenOrClose()
+    {
+        if (isPaused)
+        {
+            ClosePauseMenu();
+        }
+        else
+        {
+            OpenPauseMenu();
+        }
+
+        return isPaused;
     }
 
     /// <summary>

@@ -13,10 +13,6 @@ public abstract class PcUiManager : MonoBehaviour
 
     [SerializeField] private int startupTime = 5;
 
-    //TODO : Tester comment faire pr deplacer tt et que ce soit joli
-    [SerializeField] private float offsetCursorX = 16;
-    [SerializeField] private float offsetCursorY = 16;
-
     [SerializeField] protected RenderTexture screenTexture;
 
     [Header("Windows")]
@@ -157,7 +153,6 @@ public abstract class PcUiManager : MonoBehaviour
 #endif
 
         Vector2 pixelUV = hit.textureCoord;
-
         pixelUV.x *= doc.panelSettings.targetTexture.width;
         pixelUV.y *= doc.panelSettings.targetTexture.height;
 
@@ -165,8 +160,8 @@ public abstract class PcUiManager : MonoBehaviour
 
         if (cursor != null)
         {
-            cursor.style.left = pixelUV.x - offsetCursorX;
-            cursor.style.top = pixelUV.y - offsetCursorY;
+            cursor.style.left = pixelUV.x;
+            cursor.style.top = pixelUV.y;
         }
 
 
