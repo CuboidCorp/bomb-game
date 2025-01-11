@@ -13,6 +13,8 @@ public class BombInteract : MonoBehaviour
 
     private Camera mainCamera;
 
+    [SerializeField] private GameObject flashLight;
+
     [Header("Positions")]
     [SerializeField] private Vector3 bombTargetPosition;
     [SerializeField] private Vector3 bombTargetRotation;
@@ -26,6 +28,7 @@ public class BombInteract : MonoBehaviour
     [SerializeField] private bool isGrabbingBomb = false;
     [SerializeField] private bool isBombGrabbed = false;
     [SerializeField] private bool isRotating = false;
+    [SerializeField] private bool isFlashing = false;
 
     private Vector2 lastPos;
 
@@ -62,6 +65,8 @@ public class BombInteract : MonoBehaviour
         UnSetupActions();
     }
 
+
+
     private void SetupActions()
     {
         _pos = actions.Player.Position;
@@ -71,6 +76,10 @@ public class BombInteract : MonoBehaviour
 
         actions.Player.Rotate.started += StartRotate;
         actions.Player.Rotate.canceled += StopRotate;
+
+        actions.Player.Escape.performed += OnEscapePerformed;
+        actions.Player.Flashlight.performed += OnFlashlightPerformed;
+
     }
 
     private void UnSetupActions()
@@ -81,6 +90,38 @@ public class BombInteract : MonoBehaviour
 
         actions.Player.Rotate.started -= StartRotate;
         actions.Player.Rotate.canceled -= StopRotate;
+
+        actions.Player.Escape.performed -= OnEscapePerformed;
+        actions.Player.Flashlight.performed -= OnFlashlightPerformed;
+    }
+
+    /// <summary>
+    /// Ouvre ou ferme le menu pause
+    /// </summary>
+    private void OnEscapePerformed(InputAction.CallbackContext _)
+    {
+        if (PauseMenuManager.Instance.OpenOrClose())
+        {
+            UnSetupActions();
+
+        }
+    }
+
+    /// <summary>
+    /// Allume ou eteint la lampe torche
+    /// </summary>
+    private void OnFlashlightPerformed(InputAction.CallbackContext _)
+    {
+        if (isFlashing)
+        {
+            flashLight.SetActive(false);
+            isFlashing = false;
+        }
+        else
+        {
+            flashLight.SetActive(true);
+            isFlashing = true;
+        }
     }
 
     private void Update()

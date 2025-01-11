@@ -149,7 +149,7 @@ public abstract class PcUiManager : MonoBehaviour
         }
 
 #if UNITY_STANDALONE || UNITY_EDITOR
-        //UnityEngine.Cursor.visible = false; //Retrait temp
+        UnityEngine.Cursor.visible = false;
 #endif
 
         Vector2 pixelUV = hit.textureCoord;

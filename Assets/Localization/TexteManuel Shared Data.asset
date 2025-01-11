@@ -27,6 +27,14 @@ MonoBehaviour:
     m_Key: INTRO_DESC_2
     m_Metadata:
       m_Items: []
+  - m_Id: 14041401331773440
+    m_Key: CONTROLS_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14041938836025344
+    m_Key: CONTROLS_LIST
+    m_Metadata:
+      m_Items: []
   - m_Id: 205965979648
     m_Key: WIRE_RULE_TITLE
     m_Metadata:

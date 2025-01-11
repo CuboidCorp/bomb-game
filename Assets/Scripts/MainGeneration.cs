@@ -67,7 +67,7 @@ public class MainGeneration : MonoBehaviour
     /// <param name="bombtype">The bomb type</param>
     public void SetBombType(BombTypes bombtype)
     {
-        Debug.Log("Set bomb type :" + bombtype);
+        Debug.Log("Set bomb type : " + bombtype);
         bombType = bombtype;
     }
 

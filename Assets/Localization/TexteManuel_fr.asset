@@ -31,9 +31,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 177146916864
-    m_Localized: "Pour desactiver un module l'agent devra vous aider \xE0 identifier
+    m_Localized: "Pour d\xE9sactiver un module l'agent devra vous aider \xE0 identifier
       le type de module, parmi les modules pr\xE9sents dans ce manuel. Il faudra
-      alors vous r\xE9f\xE9rer aux r\xE8gles sp\xE9cifiques au module pour le desactiver."
+      alors vous r\xE9f\xE9rer aux r\xE8gles sp\xE9cifiques au module pour le d\xE9sactiver."
     m_Metadata:
       m_Items: []
   - m_Id: 205965979648
@@ -123,7 +123,7 @@ MonoBehaviour:
       l'agent vous informe des clignotements en morse de la lampe, et trouver le
       caract\xE8re associ\xE9, vous devrez alors trouver l'image associ\xE9 au groupe
       auquel appartient le caract\xE8re et la d\xE9crire \xE0 l'agent pour qu'ils
-      valident ensuite en clickant sur le long bouton vert."
+      valident ensuite en cliquant sur le long bouton vert."
     m_Metadata:
       m_Items: []
   - m_Id: 6796106386599936
@@ -219,6 +219,16 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 7488464770002944
     m_Localized: Sinon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14041401331773440
+    m_Localized: "Contr\xF4les"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14041938836025344
+    m_Localized: "Pour allumer ou \xE9teindre la lampe torche durant le d\xE9samor\xE7age
+      l'agent doit appuyer sur la touche [F].\nPour controler la rotation de la bombe
+      l'agent devra utiliser la touche [R] et le mouvement de sa souris."
     m_Metadata:
       m_Items: []
   references:

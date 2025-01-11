@@ -15,5 +15,15 @@
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(177146916864)" />
             </Bindings>
         </engine:Label>
+        <engine:Label text="Label" name="controls" style="-unity-text-align: upper-center; font-size: 32px; white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(14041401331773440)" />
+            </Bindings>
+        </engine:Label>
+        <engine:Label text="Label" name="listControls" style="font-size: 20px; white-space: normal;">
+            <Bindings>
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(14041938836025344)" />
+            </Bindings>
+        </engine:Label>
     </engine:VisualElement>
 </engine:UXML>
