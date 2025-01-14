@@ -4,6 +4,7 @@ public class RuleHolder
     public LabyRuleGenerator labyRuleGenerator = null;
     public ButtonRuleGenerator buttonRuleGenerator = null;
     public MorseRuleGenerator morseRuleGenerator = null;
+    public MathSymbolRuleGenerator mathSymbolRuleGenerator = null;
 
     public void Generate(ModuleType[] modules)
     {
@@ -37,6 +38,13 @@ public class RuleHolder
                     {
                         morseRuleGenerator = new();
                         morseRuleGenerator.SetupRules();
+                    }
+                    break;
+                case ModuleType.MATH_SYMBOL:
+                    if (mathSymbolRuleGenerator == null)
+                    {
+                        mathSymbolRuleGenerator = new();
+                        mathSymbolRuleGenerator.SetupRules();
                     }
                     break;
                 default:

@@ -7,5 +7,5 @@ public enum ModuleType
     LABY,
     MORSE,
     WIRES,
-
+    MATH_SYMBOL,
 }

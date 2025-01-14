@@ -2,7 +2,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class LabyRuleGenerator
+public class LabyRuleGenerator : IRuleGenerator
 {
     private struct Neighbour
     {
