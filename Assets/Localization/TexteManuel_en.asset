@@ -201,15 +201,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 205965979648
-    m_Localized: Instructions for the wires
+    m_Localized: Instructions for the wires module
     m_Metadata:
       m_Items: []
   - m_Id: 234994757632
-    m_Localized: Instructions for the labyrinth
+    m_Localized: Instructions for the labyrinth module
     m_Metadata:
       m_Items: []
   - m_Id: 338585450934272
-    m_Localized: Instructions for the button
+    m_Localized: Instructions for the button module
     m_Metadata:
       m_Items: []
   - m_Id: 338588126900224
@@ -220,7 +220,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5083017551245312
-    m_Localized: Instructions for the morse
+    m_Localized: Instructions for the morse module
     m_Metadata:
       m_Items: []
   - m_Id: 5083079790522368
@@ -231,6 +231,20 @@ MonoBehaviour:
       in which it belongs and describe the associated image so they can reproduce
       it. Once they have the same image they can confirm it by pressing the long
       green button.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15990518295523328
+    m_Localized: Instructions for the symbols module
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15990640144248832
+    m_Localized: This module is made of a black screen with a number on it, as well
+      as eight buttons with symbols on them. To defuse the module, the agent will
+      need to tell you what the number on the screen is, and which symbols are on
+      the buttons. The objective will then be to find a correct combination of symbols
+      where the sum of their respective values is equal to the number, once found
+      you can give it to the agent for them to press the buttons associated with
+      the symbols to defuse the bomb once the number is reached.
     m_Metadata:
       m_Items: []
   references:

@@ -37,7 +37,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 205965979648
-    m_Localized: "R\xE8gles des fils"
+    m_Localized: "R\xE8gles du module des fils"
     m_Metadata:
       m_Items: []
   - m_Id: 222474760192
@@ -48,7 +48,7 @@ MonoBehaviour:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 234994757632
-    m_Localized: "R\xE8gles du labyrinthe"
+    m_Localized: "R\xE8gles du module de labyrinthe"
     m_Metadata:
       m_Items: []
   - m_Id: 265327964160
@@ -61,7 +61,7 @@ MonoBehaviour:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 338585450934272
-    m_Localized: "R\xE8gles du bouton\t"
+    m_Localized: "R\xE8gles du module du bouton\t"
     m_Metadata:
       m_Items: []
   - m_Id: 2960232460808192
@@ -229,6 +229,21 @@ MonoBehaviour:
     m_Localized: "Pour allumer ou \xE9teindre la lampe torche durant le d\xE9samor\xE7age
       l'agent doit appuyer sur la touche [F].\nPour controler la rotation de la bombe
       l'agent devra utiliser la touche [R] et le mouvement de sa souris."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15990518295523328
+    m_Localized: "R\xE8gles pour le module des symboles"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15990640144248832
+    m_Localized: "Ce module est compos\xE9 d\u2019un \xE9cran noir avec un num\xE9ro
+      dessus, ainsi que de huit boutons avec des symboles dessus. Pour d\xE9samorcer
+      ce module, il faut que l\u2019agent vous informe du nombre sur l\u2019\xE9cran
+      et des symboles sur les boutons, l\u2019objectif sera alors de trouver une
+      combinaison de symboles dont la somme des valeurs correspond au nombre, vous
+      devrez alors donner \xE0 l\u2019agent la combinaison de symboles qu\u2019il
+      doit effectuer pour d\xE9samorcer le module en cliquant sur les boutons correspondants
+      une fois que le num\xE9ro est atteint."
     m_Metadata:
       m_Items: []
   references:
