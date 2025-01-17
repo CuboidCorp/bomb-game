@@ -10,5 +10,39 @@
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(15990640144248832)" />
             </Bindings>
         </engine:Label>
+        <engine:VisualElement name="tabSymbols" style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; margin-top: 20px;">
+            <engine:VisualElement name="group1" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols1" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num1" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group2" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols2" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num2" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group3" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols3" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num3" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group4" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols4" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num4" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group5" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols5" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num5" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group6" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols6" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num6" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group7" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols7" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num7" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+            <engine:VisualElement name="group8" style="flex-grow: 1; flex-direction: row; width: 50%; max-width: 50%; min-width: 50%; margin-top: 5px; margin-bottom: 5px;">
+                <engine:VisualElement name="symbols8" style="flex-grow: 1; min-height: 64px; flex-direction: row; justify-content: space-evenly;" />
+                <engine:Label text="150" name="num8" style="-unity-text-align: middle-center; font-size: 20px;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
     </MathSymbolRulesElement>
 </engine:UXML>
