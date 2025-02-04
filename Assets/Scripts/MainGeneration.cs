@@ -198,6 +198,9 @@ public class MainGeneration : MonoBehaviour
                 case ModuleType.MORSE:
                     visualElement.Q<MorseRulesElement>().Init(ruleHolder.morseRuleGenerator, images[(int)ManuelImages.MORSE_TEMPLATE]);
                     break;
+                case ModuleType.MATH_SYMBOL:
+                    visualElement.Q<MathSymbolRulesElement>().Init(ruleHolder.mathSymbolRuleGenerator);
+                    break;
                 default:
                     throw new NotImplementedException();
             }

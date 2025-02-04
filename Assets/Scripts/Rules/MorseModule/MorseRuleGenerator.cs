@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class MorseRuleGenerator
+public class MorseRuleGenerator : IRuleGenerator
 {
     //Les booleens c'est true pr long et false pr court
     private static readonly Dictionary<char, bool[]> morseAlphabet = new()

@@ -201,6 +201,14 @@ MonoBehaviour:
     m_Key: ELSE
     m_Metadata:
       m_Items: []
+  - m_Id: 15990518295523328
+    m_Key: MATH_SYMBOL_TITLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15990640144248832
+    m_Key: MATH_SYMBOL_DESC
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

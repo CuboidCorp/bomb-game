@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
-public class WireRuleGenerator
+public class WireRuleGenerator : IRuleGenerator
 {
     private const int NB_WIRES_MIN = 3;
     private const int NB_WIRES_MAX = 5;

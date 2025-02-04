@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class ButtonRuleGenerator
+public class ButtonRuleGenerator : IRuleGenerator
 {
     public const int NB_RULES = 6;
     public Material[] materials;
