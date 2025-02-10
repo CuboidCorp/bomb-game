@@ -150,7 +150,6 @@ public class MainGeneration : MonoBehaviour
     /// </summary>
     /// <param name="position">Position de la bombe</param>
     /// <param name="rotation">Rotation de la bombe</param>
-    /// <param name="resourcesPath">Chemin dans les ressources pour la prefab de la bombe</param>
     /// <returns>Le gameobject instancié et configuré de la bombe</returns>
     public GameObject GenerateBomb(Vector3 position, Vector3 rotation)
     {
@@ -210,9 +209,33 @@ public class MainGeneration : MonoBehaviour
         return modulesRules.ToArray();
     }
 
+    /// <summary>
+    /// Retourne le RuleHolder de la bombe
+    /// </summary>
+    /// <returns>L'element qui contient les regles de la bombe</returns>
     public RuleHolder GetRuleHolder()
     {
         return ruleHolder;
     }
 
+    /// <summary>
+    /// Gènere la bombe pour le tutoriel (sans lancer la bombe)
+    /// </summary>
+    /// <param name="position">Position de la bombe</param>
+    /// <param name="rotation">Rotation de la bombe</param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    public GameObject GenerateBombTutorial(Vector3 position, Vector3 rotation)
+    {
+        string resourcesPath = bombType switch
+        {
+            BombTypes.SIX_SLOTS => "Bomb/6Bomb",
+            BombTypes.TWELVE_SLOTS => "Bomb/12Bomb",
+            _ => throw new NotImplementedException(),
+        };
+        GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.Euler(rotation));
+        bomb.GetComponent<Bomb>().SetupBomb();
+        bomb.GetComponent<Bomb>().SetupModules(bombModules, ruleHolder);
+        return bomb;
+    }
 }
