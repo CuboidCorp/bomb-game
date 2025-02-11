@@ -103,6 +103,16 @@ public class MainGeneration : MonoBehaviour
     }
 
     /// <summary>
+    /// Génération des modules de la bombe en fonction des modules passés en paramètre
+    /// </summary>
+    /// <param name="modules">Les modules en question</param>
+    public void SetModules(ModuleType[] modules)
+    {
+        bombModules = modules;
+        ruleHolder.Generate(bombModules);
+    }
+
+    /// <summary>
     /// Selection un module en fonction des poids des différents modules,
     /// Permet de réduire les chances d'avoir le même module plusieurs fois sans l'interdire
     /// </summary>

@@ -1353,7 +1353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091158783}
-  - component: {fileID: 1091158782}
+  - component: {fileID: 1091158784}
   m_Layer: 0
   m_Name: GameHandler
   m_TagString: Untagged
@@ -1361,21 +1361,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1091158782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1091158781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f4e453cd10814f4b85bb8b0256a8af7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombPos: {x: -50, y: 4.7, z: 0}
-  bombRot: {x: 0, y: 0, z: 0}
-  bomb: {fileID: 0}
 --- !u!4 &1091158783
 Transform:
   m_ObjectHideFlags: 0
@@ -1391,6 +1376,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1091158784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091158781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0e7ca0d7e4cdb429446be859ba38e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPos: {x: -50, y: 4.7, z: 0}
+  bombRot: {x: 0, y: 0, z: 0}
+  bomb: {fileID: 0}
+  skipTuto:
+    m_Name: Skip Tuto
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bfc3dc21-aaad-42c0-86a7-3d3bb26e2036
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b7f25a82-9e68-4949-80f2-af19822f6f24
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip Tuto
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &1138596110
 GameObject:
   m_ObjectHideFlags: 0

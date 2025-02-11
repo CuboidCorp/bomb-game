@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: TutorialText_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 9859ea34b497b7049a57ef1ab09c37b6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 355815878656
+    m_Localized: "Bienvue dans le tutoriel pour les agents, vous allez apprendre
+      ici \xE0 d\xE9samorcer les bombes. Appuyez sur [Espace] pour continuer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 952602423296
+    m_Localized: "Il fait tr\xE8s sombre ici, pourquoi vous n'activeriez pas votre
+      lampe en utilisant la touche [F]"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2207437516800
+    m_Localized: "Parfait. Maintenant apprenons \xE0 d\xE9samorcer une bombe"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2412522205184
+    m_Localized: "Voil\xE0 la fameuse bombe, comme vous pouvez le voir elle est compos\xE9e
+      de plusieurs modules."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4414648053760
+    m_Localized: "Voici le module du minuteur, le temps dessus repr\xE9sente le temps
+      qu'il vous reste avant l'explosion de la bombe, pour l'instant le minuteur
+      n'a pas commenc\xE9. "
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12717218295808
+    m_Localized: TODO
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -107,6 +107,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AdvanceTuto"",
+                    ""type"": ""Button"",
+                    ""id"": ""2700b1b9-7b0a-478d-bd44-f90d94522b97"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -239,6 +248,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Flashlight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e14347f-fe84-436e-8e7d-ecee42d46996"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AdvanceTuto"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -802,6 +822,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Player_Tap = m_Player.FindAction("Tap", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
         m_Player_Flashlight = m_Player.FindAction("Flashlight", throwIfNotFound: true);
+        m_Player_AdvanceTuto = m_Player.FindAction("AdvanceTuto", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -890,6 +911,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Tap;
     private readonly InputAction m_Player_Escape;
     private readonly InputAction m_Player_Flashlight;
+    private readonly InputAction m_Player_AdvanceTuto;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -903,6 +925,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Tap => m_Wrapper.m_Player_Tap;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
         public InputAction @Flashlight => m_Wrapper.m_Player_Flashlight;
+        public InputAction @AdvanceTuto => m_Wrapper.m_Player_AdvanceTuto;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -939,6 +962,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Flashlight.started += instance.OnFlashlight;
             @Flashlight.performed += instance.OnFlashlight;
             @Flashlight.canceled += instance.OnFlashlight;
+            @AdvanceTuto.started += instance.OnAdvanceTuto;
+            @AdvanceTuto.performed += instance.OnAdvanceTuto;
+            @AdvanceTuto.canceled += instance.OnAdvanceTuto;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -970,6 +996,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Flashlight.started -= instance.OnFlashlight;
             @Flashlight.performed -= instance.OnFlashlight;
             @Flashlight.canceled -= instance.OnFlashlight;
+            @AdvanceTuto.started -= instance.OnAdvanceTuto;
+            @AdvanceTuto.performed -= instance.OnAdvanceTuto;
+            @AdvanceTuto.canceled -= instance.OnAdvanceTuto;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1134,6 +1163,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnTap(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
         void OnFlashlight(InputAction.CallbackContext context);
+        void OnAdvanceTuto(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

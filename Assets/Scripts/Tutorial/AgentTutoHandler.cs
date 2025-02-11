@@ -1,18 +1,60 @@
 using System.Collections;
 using UnityEngine;
+using System;
+using System.Linq;
+using UnityEngine.InputSystem;
 
 public class AgentTutoHandler : MonoBehaviour
 {
-    public TutorialStep[] TutorialSteps;
+    #region BombGeneration
+    private ModuleType[] bombModules;
+    [SerializeField] private Vector3 bombPos;
+    [SerializeField] private Vector3 bombRot;
+    public GameObject bomb;
+    #endregion
 
-    private const string LOCALIZATION_TUTO_TABLE = "";
+    private PlayerControls playerControls;
+    private InputAction skipTuto;
+    private InputAction flashLight;
+
+    private TutorialStep[] TutorialSteps;
+
+    private const string LOCALIZATION_TUTO_TABLE = "TutorialText";
+
+    private void OnEnable()
+    {
+        playerControls = new PlayerControls();
+        playerControls.Enable();
+        skipTuto = playerControls.Player.AdvanceTuto;
+        flashLight = playerControls.Player.Flashlight;
+        skipTuto.Enable();
+        flashLight.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControls.Disable();
+        flashLight.Disable();
+        skipTuto.Disable();
+    }
 
     private void Awake()
     {
         TutorialSteps = new TutorialStep[]
         {
-            new(()=>Debug.Log("Texte1"),()=>WaitForSeconds(3f)),
-            new(()=>FirstTutoStep(),()=>WaitForSeconds(3f))
+            new(()=>RenderText("TUTO_AGENT_1"),()=>WaitUntilInputPerformed(skipTuto)),
+            new(()=>RenderText("TUTO_AGENT_2"),()=>WaitUntilInputPerformed(flashLight)),
+            new(()=>RenderText("TUTO_AGENT_3"),()=>WaitUntilInputPerformed(skipTuto)),
+            new(GenerateBombStep,()=>WaitUntilInputPerformed(skipTuto)),
+            new(GoToTimerModuleStep,()=>WaitUntilInputPerformed(skipTuto)),
+        };
+
+        bombModules = new ModuleType[] {
+            ModuleType.WIRES,
+            ModuleType.BUTTON,
+            ModuleType.WIRES,
+            ModuleType.BUTTON,
+            ModuleType.WIRES,
         };
 
         //Que sont les vrais étapes du tuto
@@ -37,11 +79,7 @@ public class AgentTutoHandler : MonoBehaviour
 
     private void Start()
     {
-        MainGeneration.Instance.SetSeed(0);
-        MainGeneration.Instance.GenerateModules();
-
         StartCoroutine(RunTutorial());
-
     }
 
     /// <summary>
@@ -50,7 +88,7 @@ public class AgentTutoHandler : MonoBehaviour
     /// <returns>Quand le tutoriel est terminé</returns>
     private IEnumerator RunTutorial()
     {
-        foreach(TutorialStep step in TutorialSteps) //TODO : Pas un foreach mais à la fin de chaque etape on va vers une autre etape
+        foreach (TutorialStep step in TutorialSteps) //TODO : Pas un foreach mais à la fin de chaque etape on va vers une autre etape
         {
             step.StepAction?.Invoke();
 
@@ -58,15 +96,43 @@ public class AgentTutoHandler : MonoBehaviour
         }
     }
 
-    #region
+    #region Tutorials
 
-    private void FirstTutoStep()
+    private void RenderText(string key)
     {
-        Debug.Log("Texte2");
+        string text = TextLocalizationHandler.LoadString(LOCALIZATION_TUTO_TABLE, key);
+        Debug.Log(text);
+    }
+
+    /// <summary>
+    /// Contient les fonction pour l'étape 4 du tutoriel
+    /// </summary>
+    private void GenerateBombStep()
+    {
+        RenderText("TUTO_AGENT_4");
+        MainGeneration.Instance.SetBombType(BombTypes.SIX_SLOTS);
+        MainGeneration.Instance.SetModules(bombModules);
+        bomb = MainGeneration.Instance.GenerateBombTutorial(bombPos, bombRot);
+    }
+
+    /// <summary>
+    /// Contient les fonctions pour l'étape 5 du tutoriel
+    /// </summary>
+    private void GoToTimerModuleStep()
+    {
+        RenderText("TUTO_AGENT_5");
+
     }
 
     #endregion
 
+    #region Coroutines Wait
+
+    /// <summary>
+    /// Attends un certain nombre de secondes
+    /// </summary>
+    /// <param name="seconds">Le nombre de secondes à attendre</param>
+    /// <returns>Quand le timer est fini</returns>
     IEnumerator WaitForSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
@@ -79,4 +145,24 @@ public class AgentTutoHandler : MonoBehaviour
             yield return null; // attendre la frame suivante
         }
     }
+
+    /// <summary>
+    /// Attend qu'un input soit performé (appuyé)
+    /// </summary>
+    /// <param name="action">L'input qu'on attend</param>
+    /// <returns>Quand l'input a été appelé</returns>
+    public IEnumerator WaitUntilInputPerformed(InputAction action)
+    {
+        bool inputReceived = false;
+
+        void onPerformed(InputAction.CallbackContext ctx) => inputReceived = true;
+
+        action.performed += onPerformed;
+
+        yield return new WaitUntil(() => inputReceived);
+
+        action.performed -= onPerformed;
+    }
+
+    #endregion
 }
