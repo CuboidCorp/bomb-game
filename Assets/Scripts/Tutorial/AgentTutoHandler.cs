@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class AgentTutoHandler : MonoBehaviour
 {
@@ -18,6 +19,16 @@ public class AgentTutoHandler : MonoBehaviour
     private InputAction flashLight;
 
     private TutorialStep[] TutorialSteps;
+
+    private UIDocument doc;
+    private Label textLabel;
+    private bool isTextDisplayed = false;
+
+    public bool isDebug = false;
+
+    [SerializeField] private BombInteract bombInteract;
+
+    private const float TIME_BETWEEN_LETTERS = 0.1f;
 
     private const string LOCALIZATION_TUTO_TABLE = "TutorialText";
 
@@ -46,7 +57,8 @@ public class AgentTutoHandler : MonoBehaviour
             new(()=>RenderText("TUTO_AGENT_2"),()=>WaitUntilInputPerformed(flashLight)),
             new(()=>RenderText("TUTO_AGENT_3"),()=>WaitUntilInputPerformed(skipTuto)),
             new(GenerateBombStep,()=>WaitUntilInputPerformed(skipTuto)),
-            new(GoToTimerModuleStep,()=>WaitUntilInputPerformed(skipTuto)),
+            new(()=>RenderText("TUTO_AGENT_5"),()=>WaitForBombToBeClose()),
+            new(GoToTimerModuleStep,()=>WaitUntilInputPerformed(skipTuto))
         };
 
         bombModules = new ModuleType[] {
@@ -57,14 +69,18 @@ public class AgentTutoHandler : MonoBehaviour
             ModuleType.WIRES,
         };
 
+        doc = GetComponent<UIDocument>();
+        textLabel = doc.rootVisualElement.Q<Label>("tutorialText");
+
         //Que sont les vrais étapes du tuto
         //1- Bienvenue au tutoriel en tant qu'agent, l'objectif est de desamorcer la bombe, condition espace ou 5s
         //2- Il fait très sombre ici, allumer la flashlight , condition appuyer sur la touche pour la flashlight
         //3- Bon maintenant il faut apprendre à désamorcer une bombe , condition espace ou 5s
         //4- Spawn la bombe et dit voici la bombe que vous devez desamorcer, elle est composée de modules condition espace ou 5s
-        //5- Description du timer -condition espace ou 5s
-        //6- Description d'un module et on dit assez parler il faut commencer à le desamorcer condition espace ou 5s
-        //7- On decrit comment desamorcer le module condition désamorçage du module
+        //5- On dit qu'il faut click gauche pour zoommer sur la bombe, quand c'est fait on passe à l'étape suivante
+        //6- Description du timer -condition espace ou 5s
+        //7- Description d'un module et on dit assez parler il faut commencer à le desamorcer condition espace ou 5s
+        //8- On decrit comment desamorcer le module condition désamorçage du module
         //8- Description d'un autre module condition espace ou 5s
         //9- Activation du timer si le timer va a 0 9bis et on revient à 9
         //9bis - Boom, nan je trolle tu vas pas mourir sur le tuto quand même
@@ -98,10 +114,23 @@ public class AgentTutoHandler : MonoBehaviour
 
     #region Tutorials
 
+    /// <summary>
+    /// Affiche le texte du tutoriel
+    /// </summary>
+    /// <param name="key"></param>
     private void RenderText(string key)
     {
         string text = TextLocalizationHandler.LoadString(LOCALIZATION_TUTO_TABLE, key);
-        Debug.Log(text);
+        if (isDebug)
+        {
+            isTextDisplayed = true;
+            textLabel.text = text;
+        }
+        else
+        {
+            StartCoroutine(DisplayProgressiveText(text));
+        }
+
     }
 
     /// <summary>
@@ -113,6 +142,7 @@ public class AgentTutoHandler : MonoBehaviour
         MainGeneration.Instance.SetBombType(BombTypes.SIX_SLOTS);
         MainGeneration.Instance.SetModules(bombModules);
         bomb = MainGeneration.Instance.GenerateBombTutorial(bombPos, bombRot);
+        bomb.GetComponent<Bomb>().SetupTutorialBomb();
     }
 
     /// <summary>
@@ -120,13 +150,34 @@ public class AgentTutoHandler : MonoBehaviour
     /// </summary>
     private void GoToTimerModuleStep()
     {
-        RenderText("TUTO_AGENT_5");
+        //Faudrait zoomer sur le module du timer
+        RenderText("TUTO_AGENT_6");
 
     }
 
     #endregion
 
+    /// <summary>
+    /// Affiche le texte progressivement
+    /// </summary>
+    /// <param name="text">Le texte à afficher</param>
+    /// <returns>Quand le texte est affiché entierement</returns>
+    IEnumerator DisplayProgressiveText(string text)
+    {
+        textLabel.text = "";
+        isTextDisplayed = false;
+        for (int i = 0; i < text.Length; i++)
+        {
+            textLabel.text += text[i];
+            if (text[i] != ' ' && text[i] != '\n' && text[i] != '.' && text[i] != ',')
+                yield return new WaitForSeconds(TIME_BETWEEN_LETTERS);
+        }
+        isTextDisplayed = true;
+    }
+
     #region Coroutines Wait
+
+
 
     /// <summary>
     /// Attends un certain nombre de secondes
@@ -135,6 +186,8 @@ public class AgentTutoHandler : MonoBehaviour
     /// <returns>Quand le timer est fini</returns>
     IEnumerator WaitForSeconds(float seconds)
     {
+        //On attend que le texte soit render
+        yield return new WaitUntil(() => isTextDisplayed);
         yield return new WaitForSeconds(seconds);
     }
 
@@ -142,8 +195,16 @@ public class AgentTutoHandler : MonoBehaviour
     {
         while (!conditions.Any(condition => condition()))
         {
-            yield return null; // attendre la frame suivante
+            yield return null; // attendre la frame suivante bn
         }
+    }
+
+    IEnumerator WaitForBombToBeClose()
+    {
+        yield return new WaitUntil(() => isTextDisplayed);
+
+        //On vérifie si la bombe est grabbed dans le bombinteract
+        yield return new WaitUntil(() => bombInteract.IsBombGrabbed());
     }
 
     /// <summary>
@@ -156,6 +217,9 @@ public class AgentTutoHandler : MonoBehaviour
         bool inputReceived = false;
 
         void onPerformed(InputAction.CallbackContext ctx) => inputReceived = true;
+
+        //On attend que le texte soit render
+        yield return new WaitUntil(() => isTextDisplayed);
 
         action.performed += onPerformed;
 

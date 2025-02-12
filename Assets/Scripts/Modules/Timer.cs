@@ -51,6 +51,26 @@ public class Timer : MonoBehaviour
     }
 
     /// <summary>
+    /// Setup le timer avec le temps donné sans le lancer
+    /// </summary>
+    /// <param name="time">Le temps de départ de la bombe</param>
+    public void SetupTimer(TimeSpan time)
+    {
+        timerText.text = time.ToString("mm\\:ss");
+        nbSeconds = (int)time.TotalSeconds;
+        strikesText.text = "";
+        timeBetweenSeconds = 1f;
+    }
+
+    /// <summary>
+    /// Lance le timer
+    /// </summary>
+    public void LaunchTimer()
+    {
+        timerCoroutine = StartCoroutine(TimeTickingDown());
+    }
+
+    /// <summary>
     /// Ajoute un strike au timer et divise le temps entre chaque seconde par 2
     /// </summary>
     public void AddStrike()

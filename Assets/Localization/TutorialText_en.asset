@@ -29,7 +29,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2207437516800
-    m_Localized: Good. Now let's actually learn to defuse a bomb
+    m_Localized: Good. Now let's actually learn to defuse a bomb.
     m_Metadata:
       m_Items: []
   - m_Id: 2412522205184
@@ -44,6 +44,11 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 12717218295808
     m_Localized: TODO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 391353834369024
+    m_Localized: The bomb is quite far away, press [Left click] on it to pull it
+      closer.
     m_Metadata:
       m_Items: []
   references:

@@ -29,7 +29,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2207437516800
-    m_Localized: "Parfait. Maintenant apprenons \xE0 d\xE9samorcer une bombe"
+    m_Localized: "Parfait. Maintenant apprenons \xE0 d\xE9samorcer une bombe."
     m_Metadata:
       m_Items: []
   - m_Id: 2412522205184
@@ -45,6 +45,11 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 12717218295808
     m_Localized: TODO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 391353834369024
+    m_Localized: "Cette bombe est bien eloign\xE9e, appuyez sur [Clic gauche] pour
+      la rapprocher."
     m_Metadata:
       m_Items: []
   references:

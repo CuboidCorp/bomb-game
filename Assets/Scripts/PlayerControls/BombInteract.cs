@@ -257,4 +257,13 @@ public class BombInteract : MonoBehaviour
     }
 
     #endregion
+
+    /// <summary>
+    /// Indique si la bombe est grabbed ou non
+    /// </summary>
+    /// <returns></returns>
+    public bool IsBombGrabbed()
+    {
+        return isBombGrabbed;
+    }
 }

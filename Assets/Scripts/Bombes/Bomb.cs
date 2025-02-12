@@ -57,7 +57,7 @@ public abstract class Bomb : MonoBehaviour
         modulesGo[0].name = "Timer";
         timerScript = modulesGo[0].GetComponent<Timer>();
 
-        for (int i = 0; i < nbModules - 1; i++)
+        for (int i = 1; i < nbModules; i++)
         {
             ModuleType moduleType = modules[i];
             Vector3 position = modulePositions[i];
@@ -74,7 +74,7 @@ public abstract class Bomb : MonoBehaviour
                 modulesGo[i].transform.position += modulesGo[i].GetComponent<Module>().GetOffset();
             }
             modulesGo[i].transform.SetParent(transform);
-            modulesGo[i].name = $"Module n�{i + 1}-{moduleType}";
+            modulesGo[i].name = $"Module n�{i}-{moduleType}";
             modulesGo[i].GetComponent<Module>().SetupModule(rules);
             modulesGo[i].GetComponent<Module>().ModuleFail.AddListener(AddStrike);
             modulesGo[i].GetComponent<Module>().ModuleSuccess.AddListener(ModuleSuccess);
@@ -92,6 +92,27 @@ public abstract class Bomb : MonoBehaviour
         TimeSpan time = new(0, 3 * (nbModules / 6), 0);
         timerScript.StartTimer(time);
         timerScript.TimerFinished.AddListener(ExplodeBomb);
+    }
+
+    /// <summary>
+    /// Setup la bombe du tutoriel
+    /// </summary>
+    public void SetupTutorialBomb()
+    {
+        TimeSpan time = new(0, 3 * (nbModules / 6), 0);
+        timerScript.SetupTimer(time);
+        foreach (GameObject module in modulesGo)
+        {
+            module.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    /// <summary>
+    /// Lance la bombe pour le tutoriel
+    /// </summary>
+    public void StartTutorialBomb()
+    {
+        timerScript.LaunchTimer();
     }
 
     /// <summary>
