@@ -58,39 +58,37 @@ public class AgentTutoHandler : MonoBehaviour
             new(()=>RenderText("TUTO_AGENT_3"),()=>WaitUntilInputPerformed(skipTuto)),
             new(GenerateBombStep,()=>WaitUntilInputPerformed(skipTuto)),
             new(()=>RenderText("TUTO_AGENT_5"),()=>WaitForBombToBeClose()),
-            new(GoToTimerModuleStep,()=>WaitUntilInputPerformed(skipTuto))
+            new(GoToTimerModuleStep,()=>WaitUntilInputPerformed(skipTuto)),
+            new(GoToButtonModuleStep,()=>WaitUntilInputPerformed(skipTuto)),
+            new(FakeDefuseStep,()=>WaitForStrike()),
+            new(()=>RenderText("TUTO_AGENT_9"),()=>WaitUntilInputPerformed(skipTuto)),
+            new(StartBombTimerStep,()=>WaitForBombExplosionOrDefusal())
         };
 
-        bombModules = new ModuleType[] {
-            ModuleType.WIRES,
+        bombModules = new ModuleType[] { //TODO : Mettre un seul bouton et le reste c'est le module vide
             ModuleType.BUTTON,
-            ModuleType.WIRES,
             ModuleType.BUTTON,
-            ModuleType.WIRES,
+            ModuleType.BUTTON,
+            ModuleType.BUTTON,
+            ModuleType.BUTTON,
         };
 
         doc = GetComponent<UIDocument>();
         textLabel = doc.rootVisualElement.Q<Label>("tutorialText");
 
-        //Que sont les vrais étapes du tuto
+        //Que sont les vrais ï¿½tapes du tuto
         //1- Bienvenue au tutoriel en tant qu'agent, l'objectif est de desamorcer la bombe, condition espace ou 5s
-        //2- Il fait très sombre ici, allumer la flashlight , condition appuyer sur la touche pour la flashlight
-        //3- Bon maintenant il faut apprendre à désamorcer une bombe , condition espace ou 5s
-        //4- Spawn la bombe et dit voici la bombe que vous devez desamorcer, elle est composée de modules condition espace ou 5s
-        //5- On dit qu'il faut click gauche pour zoommer sur la bombe, quand c'est fait on passe à l'étape suivante
+        //2- Il fait trï¿½s sombre ici, allumer la flashlight , condition appuyer sur la touche pour la flashlight
+        //3- Bon maintenant il faut apprendre ï¿½ dï¿½samorcer une bombe , condition espace ou 5s
+        //4- Spawn la bombe et dit voici la bombe que vous devez desamorcer, elle est composï¿½e de modules condition espace ou 5s
+        //5- On dit qu'il faut click gauche pour zoommer sur la bombe, quand c'est fait on passe ï¿½ l'ï¿½tape suivante
         //6- Description du timer -condition espace ou 5s
-        //7- Description d'un module et on dit assez parler il faut commencer à le desamorcer condition espace ou 5s
-        //8- On decrit comment desamorcer le module condition désamorçage du module
-        //8- Description d'un autre module condition espace ou 5s
-        //9- Activation du timer si le timer va a 0 9bis et on revient à 9
-        //9bis - Boom, nan je trolle tu vas pas mourir sur le tuto quand même
-        //10- Bref avant que la bombe explose faut desamorcer ce module 
-        //11- On dit un truc faux genre et il se prend un strike
-        //12- Oups dsl c'était ça qu'il fallait faire et on desamorce le module
-        //12 bis - Si il a juste, ahah je m'étais trompé mais faut ecouter ses potes normalement, on force le strike
-        //13 - Maintenant on a un strike le temps va plus vite 
-        //14 - Bref le jeu est simple communique avec ton camarade et desamorce la bombe 
-        //15 - D'ailleurs j'ai trop parlé explosion, maintenant va et desamorce des bombres
+        //7- Description du module gros bouton
+        //8- On fake decrit comment desamorcer le module gros bouton on va sur 9
+        //TODO : trouver un seed pr pas que ce soit possible la condition genre faut que le timer ait un 5
+        //9- On lance le timer et on donne la solution
+        //9bis - Si il attend la fin du timer on le remet Ã  0 et on repart sur l'Ã©tape 10
+        //10- Fin du tuto on dit gg, faut pas oublier l'objectif c'est de communiquer avec l'expert bisous.
     }
 
     private void Start()
@@ -101,10 +99,10 @@ public class AgentTutoHandler : MonoBehaviour
     /// <summary>
     /// Coroutine qui permet de lancer le tutoriel
     /// </summary>
-    /// <returns>Quand le tutoriel est terminé</returns>
+    /// <returns>Quand le tutoriel est terminï¿½</returns>
     private IEnumerator RunTutorial()
     {
-        foreach (TutorialStep step in TutorialSteps) //TODO : Pas un foreach mais à la fin de chaque etape on va vers une autre etape
+        foreach (TutorialStep step in TutorialSteps) //TODO : Pas un foreach mais ï¿½ la fin de chaque etape on va vers une autre etape
         {
             step.StepAction?.Invoke();
 
@@ -117,7 +115,7 @@ public class AgentTutoHandler : MonoBehaviour
     /// <summary>
     /// Affiche le texte du tutoriel
     /// </summary>
-    /// <param name="key"></param>
+    /// <param name="key">La clÃ© pour charger le texte dans la table de traduction</param>
     private void RenderText(string key)
     {
         string text = TextLocalizationHandler.LoadString(LOCALIZATION_TUTO_TABLE, key);
@@ -134,10 +132,11 @@ public class AgentTutoHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Contient les fonction pour l'étape 4 du tutoriel
+    /// Contient les fonction pour l'ï¿½tape 4 du tutoriel
     /// </summary>
     private void GenerateBombStep()
     {
+        MainGeneration.Instance.SetSeed(0);
         RenderText("TUTO_AGENT_4");
         MainGeneration.Instance.SetBombType(BombTypes.SIX_SLOTS);
         MainGeneration.Instance.SetModules(bombModules);
@@ -146,13 +145,32 @@ public class AgentTutoHandler : MonoBehaviour
     }
 
     /// <summary>
-    /// Contient les fonctions pour l'étape 5 du tutoriel
+    /// Contient les fonctions pour l'ï¿½tape 6 du tutoriel
     /// </summary>
     private void GoToTimerModuleStep()
     {
-        //Faudrait zoomer sur le module du timer
+        //TODO : Faudrait zoomer sur le module du timer
         RenderText("TUTO_AGENT_6");
 
+    }
+
+
+    private void GoToButtonModuleStep()
+    {
+        //TODO : Zoom vers le module du gros bouton
+        RenderText("TUTO_AGENT_7");
+    }
+
+    private void FakeDefuseStep()
+    {
+        //TODO : Activer le collider du gros bouton
+        RenderText("TUTO_AGENT_8");
+    }
+
+    private void StartBombTimerStep()
+    {
+        //TODO : Activer le timer, le lancer et reactiver le collider du gros bouton
+        RenderText("TUTO_AGENT_10");
     }
 
     #endregion
@@ -160,8 +178,8 @@ public class AgentTutoHandler : MonoBehaviour
     /// <summary>
     /// Affiche le texte progressivement
     /// </summary>
-    /// <param name="text">Le texte à afficher</param>
-    /// <returns>Quand le texte est affiché entierement</returns>
+    /// <param name="text">Le texte ï¿½ afficher</param>
+    /// <returns>Quand le texte est affichï¿½ entierement</returns>
     IEnumerator DisplayProgressiveText(string text)
     {
         textLabel.text = "";
@@ -182,7 +200,7 @@ public class AgentTutoHandler : MonoBehaviour
     /// <summary>
     /// Attends un certain nombre de secondes
     /// </summary>
-    /// <param name="seconds">Le nombre de secondes à attendre</param>
+    /// <param name="seconds">Le nombre de secondes ï¿½ attendre</param>
     /// <returns>Quand le timer est fini</returns>
     IEnumerator WaitForSeconds(float seconds)
     {
@@ -191,27 +209,23 @@ public class AgentTutoHandler : MonoBehaviour
         yield return new WaitForSeconds(seconds);
     }
 
-    IEnumerator WaitForAnyCondition(params Func<bool>[] conditions)
-    {
-        while (!conditions.Any(condition => condition()))
-        {
-            yield return null; // attendre la frame suivante bn
-        }
-    }
-
+    /// <summary>
+    /// Attends que la bombe soit proche
+    /// </summary>
+    /// <returns>Quand la bombe est proche</returns>
     IEnumerator WaitForBombToBeClose()
     {
         yield return new WaitUntil(() => isTextDisplayed);
 
-        //On vérifie si la bombe est grabbed dans le bombinteract
+        //On vï¿½rifie si la bombe est grabbed dans le bombinteract
         yield return new WaitUntil(() => bombInteract.IsBombGrabbed());
     }
 
     /// <summary>
-    /// Attend qu'un input soit performé (appuyé)
+    /// Attend qu'un input soit performï¿½ (appuyï¿½)
     /// </summary>
     /// <param name="action">L'input qu'on attend</param>
-    /// <returns>Quand l'input a été appelé</returns>
+    /// <returns>Quand l'input a ï¿½tï¿½ appelï¿½</returns>
     public IEnumerator WaitUntilInputPerformed(InputAction action)
     {
         bool inputReceived = false;
@@ -228,5 +242,26 @@ public class AgentTutoHandler : MonoBehaviour
         action.performed -= onPerformed;
     }
 
+    IEnumerator WaitForBombExplosionOrDefusal()
+    {
+        //Si bomb explosion recursivitÃ©, sinon fin du tuto
+        yield return null;
+    }
+
+    IEnumerator WaitForBombExplosion()
+    {
+        yield return null;
+    }
+
+    IEnumerator WaitForBombToBeDefused()
+    {
+        yield return null;
+    }
+
+    IEnumerator WaitForStrike()
+    {
+        yield return null;
+        //TODO : Desactivation du module du gros bouton
+    }
     #endregion
 }

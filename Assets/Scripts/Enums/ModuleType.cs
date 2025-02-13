@@ -10,4 +10,5 @@ public enum ModuleType
     MORSE,
     WIRES,
 
+    //TODO : Ajouter le module vide
 }

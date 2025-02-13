@@ -26,6 +26,8 @@ public abstract class Bomb : MonoBehaviour
     protected GameObject[] modulesGo;
     protected int nbModulesFinished;
 
+    private const int MAX_STRIKES = 3;
+
     /// <summary>
     /// Initialisation des variables nécessaire pour la bombe
     /// </summary>
@@ -54,7 +56,7 @@ public abstract class Bomb : MonoBehaviour
         {
             modulesGo[0].transform.Rotate(0, 180, 0);
         }
-        modulesGo[0].name = "Timer";
+        modulesGo[0].name = "Module n°1-Timer";
         timerScript = modulesGo[0].GetComponent<Timer>();
 
         for (int i = 1; i < nbModules; i++)
@@ -74,11 +76,16 @@ public abstract class Bomb : MonoBehaviour
                 modulesGo[i].transform.position += modulesGo[i].GetComponent<Module>().GetOffset();
             }
             modulesGo[i].transform.SetParent(transform);
-            modulesGo[i].name = $"Module n�{i}-{moduleType}";
-            modulesGo[i].GetComponent<Module>().SetupModule(rules);
-            modulesGo[i].GetComponent<Module>().ModuleFail.AddListener(AddStrike);
-            modulesGo[i].GetComponent<Module>().ModuleSuccess.AddListener(ModuleSuccess);
+            modulesGo[i].name = $"Module n°{i+1}-{moduleType}";
 
+            if(modulesGo[i].TryGetComponent(out Module mod))
+            {
+                mod.SetupModule(rules);
+                mod.ModuleFail.AddListener(AddStrike);
+                mod.ModuleSuccess.AddListener(ModuleSuccess);
+            }
+            //Le else c'est pour le module empty
+            //TODO : Gestion du module empty
         }
 
     }
@@ -89,7 +96,7 @@ public abstract class Bomb : MonoBehaviour
     public void StartBomb()
     {
         //Calcul du temps de la bombe
-        TimeSpan time = new(0, 3 * (nbModules / 6), 0);
+        TimeSpan time = new(0, 3 * (nbModules / 6), 0); //TODO : Nouvelle version de calcul du temps  (Le nb de modules ne sera pas multiple de 6)
         timerScript.StartTimer(time);
         timerScript.TimerFinished.AddListener(ExplodeBomb);
     }
@@ -123,7 +130,7 @@ public abstract class Bomb : MonoBehaviour
         AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_FAIL);
         nbStrikes++;
         Debug.Log("Adding strike");
-        if (nbStrikes == 3)
+        if (nbStrikes == MAX_STRIKES)
         {
             ExplodeBomb();
         }
