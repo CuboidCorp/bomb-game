@@ -23,6 +23,8 @@ public class MainGeneration : MonoBehaviour
 
     #region ModuleGeneration
     private ModuleType[] allModules;
+    private bool isFull = true;
+
     private Dictionary<ModuleType, float> moduleWeights;
 
     [SerializeField] private float weightDecreaseFactor = 0.5f;
@@ -42,6 +44,10 @@ public class MainGeneration : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(this);
         ruleHolder = new();
+    }
+
+    private void Start()
+    {
         if (isDebug)
         {
             Debug.LogWarning("Lancement en mode debug, le jeu sera diff�rent de la release, meme avec le meme seed");
@@ -84,6 +90,9 @@ public class MainGeneration : MonoBehaviour
         };
 
         allModules = (ModuleType[])Enum.GetValues(typeof(ModuleType));
+        //On enleve le module vide
+        allModules = allModules.Where(x => x != ModuleType.EMPTY).ToArray(); //TODO : Ameliorer ça faut juste enlever un 
+
         moduleWeights = new();
         foreach (ModuleType module in allModules)
         {
@@ -92,14 +101,29 @@ public class MainGeneration : MonoBehaviour
         totalWeight = allModules.Length;
 
         bombModules = new ModuleType[nbModules];
-        for (int i = 0; i < nbModules; i++)
+        if (isFull)
         {
-            bombModules[i] = SelectModule();
-            Debug.Log("Module " + i + " : " + bombModules[i]);
+            for (int i = 0; i < nbModules; i++)
+            {
+                bombModules[i] = SelectModule();
+                Debug.Log("Module " + i + " : " + bombModules[i]);
+            }
         }
-
+        else
+        {
+            int nbModulesToGenerate = Random.Range(1, nbModules);
+            for (int i = 0; i < nbModulesToGenerate; i++)
+            {
+                bombModules[i] = SelectModule();
+                Debug.Log("Module " + i + " : " + bombModules[i]);
+            }
+            //Le reste des modules sont des modules vides
+            for (int i = nbModulesToGenerate; i < nbModules; i++)
+            {
+                bombModules[i] = ModuleType.EMPTY;
+            }
+        }
         ruleHolder.Generate(bombModules);
-
     }
 
     /// <summary>
@@ -209,6 +233,8 @@ public class MainGeneration : MonoBehaviour
                     break;
                 case ModuleType.MATH_SYMBOL:
                     visualElement.Q<MathSymbolRulesElement>().Init(ruleHolder.mathSymbolRuleGenerator);
+                    break;
+                case ModuleType.EMPTY: //Pas de manuel pour le module vide
                     break;
                 default:
                     throw new NotImplementedException();

@@ -38,18 +38,53 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4414648053760
-    m_Localized: "Voici le module du minuteur, le temps dessus repr\xE9sente le temps
-      qu'il vous reste avant l'explosion de la bombe, pour l'instant le minuteur
-      n'a pas commenc\xE9. "
+    m_Localized: "Voici le module du minuteur, il repr\xE9sente le temps qu\u2019il
+      reste avant que la bombe n\u2019explose, en dessous du minuteur un petit \xE9cran
+      qui permet d\u2019afficher le nombre d\u2019erreurs, \xE0 trois erreurs la
+      bombe explose."
     m_Metadata:
       m_Items: []
   - m_Id: 12717218295808
-    m_Localized: TODO
+    m_Localized: "Voici le module du bouton, la lampe en haut \xE0 droite indique
+      si le module est d\xE9samorc\xE9 ou non, ici elle est rouge donc le module
+      n\u2019est pas d\xE9samorc\xE9."
     m_Metadata:
       m_Items: []
   - m_Id: 391353834369024
     m_Localized: "Cette bombe est bien eloign\xE9e, appuyez sur [Clic gauche] pour
       la rapprocher."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752109616590848
+    m_Localized: "Pour d\xE9samorcer ce module, vous devriez normalement communiquer
+      avec votre op\xE9rateur, mais pour ce tutoriel je vais vous aider. Appuyez
+      sur le bouton avec [Clic gauche] pendant 2 secondes puis rel\xE2chez le."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752191023837184
+    m_Localized: "Oups, je me suis tromp\xE9 et vous avez eu une erreur, les erreurs
+      sont tr\xE8s dangereuses car elles acc\xE9l\xE8rent le minuteur."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752264675815424
+    m_Localized: "Passons aux choses s\xE9rieuses d\xE9sormais, j\u2019active le
+      minuteur qui va aller plus vite \xE0 cause de l\u2019erreur. Je vais vous dire
+      comment vraiment d\xE9samorcer le module."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752358993129472
+    m_Localized: "Pour d\xE9samorcer le module il faut, attendez, laissez moi regarder,
+      euuuuuuuuuhhhhhh, appuyer sur le bouton et le rel\xE2cher quand il y a un 4
+      dans le minuteur \xE0 n\u2019importe quelle position."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752468619653120
+    m_Localized: "Ah la bombe a explos\xE9, dommage, recommen\xE7ons."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752529386729472
+    m_Localized: "F\xE9licitations, vous avez d\xE9samorc\xE9 votre premi\xE8re bombe
+      !!"
     m_Metadata:
       m_Items: []
   references:

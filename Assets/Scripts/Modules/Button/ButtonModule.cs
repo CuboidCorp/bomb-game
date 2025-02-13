@@ -28,6 +28,8 @@ public class ButtonModule : Module
 
         button.GetComponent<MeshRenderer>().material = targetRule.buttonMaterial;
 
+        Debug.Log(targetRule.condition.ToString() + " " + targetRule.targetPressTime + " " + targetRule.targetTimerNumber + " " + targetRule.targetTimerBetweenBounds.ToString());
+
     }
 
     public override void ModuleInteract(Ray rayInteract)

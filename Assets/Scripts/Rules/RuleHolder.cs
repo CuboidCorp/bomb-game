@@ -47,6 +47,8 @@ public class RuleHolder
                         mathSymbolRuleGenerator.SetupRules();
                     }
                     break;
+                case ModuleType.EMPTY:
+                    break;
                 default:
                     throw new System.Exception("Module non reconnu");
             }

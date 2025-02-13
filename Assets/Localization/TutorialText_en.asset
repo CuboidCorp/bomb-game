@@ -38,17 +38,51 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 4414648053760
-    m_Localized: This is the timer module it represents the time you have left before
-      the bomb explodes, it currently hasn't started yet.
+    m_Localized: Here is the timer module it represents the remaining time before
+      the bomb explodes, below it is a small screen that shows the numbers of strikes,
+      once you are at three strikes the bomb explodes.
     m_Metadata:
       m_Items: []
   - m_Id: 12717218295808
-    m_Localized: TODO
+    m_Localized: This is the button module, the light in the upper right corner of
+      the module indicates if the module is defused or not, in this case as it is
+      red, the module is yet to be defused.
     m_Metadata:
       m_Items: []
   - m_Id: 391353834369024
     m_Localized: The bomb is quite far away, press [Left click] on it to pull it
       closer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752109616590848
+    m_Localized: In order to defuse it you would normally need to communicate with
+      your operator, but for this tutorial I will help you. Press and hold [Left
+      click] on the button for 2 seconds before releasing it.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752191023837184
+    m_Localized: Oops, I made a mistake and you got a strike, strikes are very dangerous
+      as they speed up the timer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752264675815424
+    m_Localized: "Let\u2019s get serious now, I will activate the timer which will
+      go faster than usual due to the strike. I will then tell you how to really
+      defuse the module."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752358993129472
+    m_Localized: To defuse the module, you need to, wait, let me have a look, aaaaaaaaaahhhhh,
+      press on the button and release it when there has a 4 in any position in the
+      timer.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752468619653120
+    m_Localized: "Oh the bomb exploded, that\u2019s too bad, let\u2019s start again."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752529386729472
+    m_Localized: Congratulations, you defused your first bomb !!
     m_Metadata:
       m_Items: []
   references:

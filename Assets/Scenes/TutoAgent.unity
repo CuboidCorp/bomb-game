@@ -491,7 +491,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 15
+  m_Intensity: 5
   m_Range: 30
   m_SpotAngle: 120
   m_InnerSpotAngle: 20
@@ -2251,6 +2251,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: seed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
+      propertyPath: isDebug
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}

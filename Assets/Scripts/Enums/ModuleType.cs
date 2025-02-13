@@ -5,6 +5,7 @@
 public enum ModuleType
 {
     BUTTON,
+    EMPTY,
     LABY,
     MATH_SYMBOL,
     MORSE,

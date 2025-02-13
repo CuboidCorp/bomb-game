@@ -19,6 +19,8 @@ public abstract class Bomb : MonoBehaviour
 
     protected int nbStrikes;
 
+    public bool isBombDefused = false;
+    public bool isBombExploded = false;
 
     /// <summary>
     /// Modules de la bombe (timer inclus)
@@ -27,6 +29,8 @@ public abstract class Bomb : MonoBehaviour
     protected int nbModulesFinished;
 
     private const int MAX_STRIKES = 3;
+
+    private bool isTutorial = false;
 
     /// <summary>
     /// Initialisation des variables nécessaire pour la bombe
@@ -61,31 +65,36 @@ public abstract class Bomb : MonoBehaviour
 
         for (int i = 1; i < nbModules; i++)
         {
-            ModuleType moduleType = modules[i];
-            Vector3 position = modulePositions[i];
+            Module mod;
+            ModuleType moduleType = modules[i - 1];
+            Vector3 position = modulePositions[i - 1];
             GameObject modulePrefab = modulesPrefabs[(int)moduleType];
             modulesGo[i] = Instantiate(modulePrefab);
             modulesGo[i].transform.position = position + transform.position;
             if (position.z < 0)
             {
-                modulesGo[i].transform.position -= modulesGo[i].GetComponent<Module>().GetOffset();
+                if (modulesGo[i].TryGetComponent(out mod))
+                {
+                    modulesGo[i].transform.position -= mod.GetOffset();
+                }
                 modulesGo[i].transform.Rotate(0, 180, 0);
             }
             else
             {
-                modulesGo[i].transform.position += modulesGo[i].GetComponent<Module>().GetOffset();
+                if (modulesGo[i].TryGetComponent(out mod))
+                {
+                    modulesGo[i].transform.position += mod.GetOffset();
+                }
             }
             modulesGo[i].transform.SetParent(transform);
-            modulesGo[i].name = $"Module n°{i+1}-{moduleType}";
+            modulesGo[i].name = $"Module n°{i + 1}-{moduleType}";
 
-            if(modulesGo[i].TryGetComponent(out Module mod))
+            if (modulesGo[i].TryGetComponent(out mod))
             {
                 mod.SetupModule(rules);
                 mod.ModuleFail.AddListener(AddStrike);
                 mod.ModuleSuccess.AddListener(ModuleSuccess);
             }
-            //Le else c'est pour le module empty
-            //TODO : Gestion du module empty
         }
 
     }
@@ -99,27 +108,6 @@ public abstract class Bomb : MonoBehaviour
         TimeSpan time = new(0, 3 * (nbModules / 6), 0); //TODO : Nouvelle version de calcul du temps  (Le nb de modules ne sera pas multiple de 6)
         timerScript.StartTimer(time);
         timerScript.TimerFinished.AddListener(ExplodeBomb);
-    }
-
-    /// <summary>
-    /// Setup la bombe du tutoriel
-    /// </summary>
-    public void SetupTutorialBomb()
-    {
-        TimeSpan time = new(0, 3 * (nbModules / 6), 0);
-        timerScript.SetupTimer(time);
-        foreach (GameObject module in modulesGo)
-        {
-            module.GetComponent<Collider>().enabled = false;
-        }
-    }
-
-    /// <summary>
-    /// Lance la bombe pour le tutoriel
-    /// </summary>
-    public void StartTutorialBomb()
-    {
-        timerScript.LaunchTimer();
     }
 
     /// <summary>
@@ -169,7 +157,12 @@ public abstract class Bomb : MonoBehaviour
         }
         AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_EXPLOSION);
         Debug.Log("BOOM");
-        EndMenuManager.Instance.OpenEndMenu(timerScript.GetTimeLeft(), nbStrikes, false);
+        isBombExploded = true;
+        if (!isTutorial)
+        {
+            EndMenuManager.Instance.OpenEndMenu(timerScript.GetTimeLeft(), nbStrikes, false);
+        }
+
     }
 
     /// <summary>
@@ -180,7 +173,81 @@ public abstract class Bomb : MonoBehaviour
         //TODO : Afficher confettis
         timerScript.StopTimer();
         Debug.Log("GG");
-        EndMenuManager.Instance.OpenEndMenu(timerScript.GetTimeLeft(), nbStrikes, true);
+        isBombDefused = true;
+        if (!isTutorial)
+        {
+            EndMenuManager.Instance.OpenEndMenu(timerScript.GetTimeLeft(), nbStrikes, true);
+        }
+
     }
+
+    /// <summary>
+    /// Retourne le nombre d'erreurs de la bombe
+    /// </summary>
+    /// <returns>Le nombre de strikes sur la bombe</returns>
+    public int GetNbStrikes()
+    {
+        return nbStrikes;
+    }
+
+    #region Tutoriel
+    /// <summary>
+    /// Setup la bombe du tutoriel
+    /// </summary>
+    public void SetupTutorialBomb()
+    {
+        isTutorial = true;
+        TimeSpan time = new(0, 3 * (nbModules / 6), 0);
+        timerScript.SetupTimer(time);
+        foreach (GameObject module in modulesGo)
+        {
+            if (module.TryGetComponent(out Collider col))
+            {
+                col.enabled = false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Active les colliders des modules pour le tutoriel
+    /// </summary>
+    public void EnableCollider()
+    {
+        foreach (GameObject module in modulesGo)
+        {
+            if (module.TryGetComponent(out Collider col))
+            {
+                col.enabled = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Desactive les colliders des modules pour le tutoriel
+    /// </summary>
+    public void DisableCollider()
+    {
+        foreach (GameObject module in modulesGo)
+        {
+            if (module.TryGetComponent(out Collider col))
+            {
+                col.enabled = false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Lance la bombe pour le tutoriel
+    /// </summary>
+    public void StartTutorialBomb()
+    {
+        isBombExploded = false;
+        isBombDefused = false;
+        TimeSpan time = new(0, 3 * (nbModules / 6), 0);
+        timerScript.SetupTimer(time);
+        timerScript.LaunchTimer();
+    }
+
+    #endregion
 
 }

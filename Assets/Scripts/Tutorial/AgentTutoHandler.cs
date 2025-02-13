@@ -1,17 +1,21 @@
 using System.Collections;
 using UnityEngine;
-using System;
-using System.Linq;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class AgentTutoHandler : MonoBehaviour
 {
     #region BombGeneration
+    private const int BOMB_SEED = 8;
     private ModuleType[] bombModules;
     [SerializeField] private Vector3 bombPos;
     [SerializeField] private Vector3 bombRot;
     public GameObject bomb;
+
+    private static readonly Vector3 basePos = new Vector3(-50, 5.6f, 7);
+    private static readonly Vector3 timerPos = new Vector3(-50, 6.1f, 6.5f);
+    private static readonly Vector3 buttonPos = new Vector3(-49, 6.1f, 6.5f);
     #endregion
 
     private PlayerControls playerControls;
@@ -23,6 +27,8 @@ public class AgentTutoHandler : MonoBehaviour
     private UIDocument doc;
     private Label textLabel;
     private bool isTextDisplayed = false;
+
+    private bool hasCameraMoved = false;
 
     public bool isDebug = false;
 
@@ -62,33 +68,20 @@ public class AgentTutoHandler : MonoBehaviour
             new(GoToButtonModuleStep,()=>WaitUntilInputPerformed(skipTuto)),
             new(FakeDefuseStep,()=>WaitForStrike()),
             new(()=>RenderText("TUTO_AGENT_9"),()=>WaitUntilInputPerformed(skipTuto)),
+            new(()=>RenderText("TUTO_AGENT_10"),()=>WaitUntilInputPerformed(skipTuto)),
             new(StartBombTimerStep,()=>WaitForBombExplosionOrDefusal())
         };
 
-        bombModules = new ModuleType[] { //TODO : Mettre un seul bouton et le reste c'est le module vide
+        bombModules = new ModuleType[] {
             ModuleType.BUTTON,
-            ModuleType.BUTTON,
-            ModuleType.BUTTON,
-            ModuleType.BUTTON,
-            ModuleType.BUTTON,
+            ModuleType.EMPTY,
+            ModuleType.EMPTY,
+            ModuleType.EMPTY,
+            ModuleType.EMPTY,
         };
 
         doc = GetComponent<UIDocument>();
         textLabel = doc.rootVisualElement.Q<Label>("tutorialText");
-
-        //Que sont les vrais �tapes du tuto
-        //1- Bienvenue au tutoriel en tant qu'agent, l'objectif est de desamorcer la bombe, condition espace ou 5s
-        //2- Il fait tr�s sombre ici, allumer la flashlight , condition appuyer sur la touche pour la flashlight
-        //3- Bon maintenant il faut apprendre � d�samorcer une bombe , condition espace ou 5s
-        //4- Spawn la bombe et dit voici la bombe que vous devez desamorcer, elle est compos�e de modules condition espace ou 5s
-        //5- On dit qu'il faut click gauche pour zoommer sur la bombe, quand c'est fait on passe � l'�tape suivante
-        //6- Description du timer -condition espace ou 5s
-        //7- Description du module gros bouton
-        //8- On fake decrit comment desamorcer le module gros bouton on va sur 9
-        //TODO : trouver un seed pr pas que ce soit possible la condition genre faut que le timer ait un 5
-        //9- On lance le timer et on donne la solution
-        //9bis - Si il attend la fin du timer on le remet à 0 et on repart sur l'étape 10
-        //10- Fin du tuto on dit gg, faut pas oublier l'objectif c'est de communiquer avec l'expert bisous.
     }
 
     private void Start()
@@ -136,7 +129,7 @@ public class AgentTutoHandler : MonoBehaviour
     /// </summary>
     private void GenerateBombStep()
     {
-        MainGeneration.Instance.SetSeed(0);
+        MainGeneration.Instance.SetSeed(BOMB_SEED);
         RenderText("TUTO_AGENT_4");
         MainGeneration.Instance.SetBombType(BombTypes.SIX_SLOTS);
         MainGeneration.Instance.SetModules(bombModules);
@@ -149,28 +142,28 @@ public class AgentTutoHandler : MonoBehaviour
     /// </summary>
     private void GoToTimerModuleStep()
     {
-        //TODO : Faudrait zoomer sur le module du timer
+        StartCoroutine(MoveCameraTo(basePos, timerPos));
         RenderText("TUTO_AGENT_6");
-
     }
 
 
     private void GoToButtonModuleStep()
     {
-        //TODO : Zoom vers le module du gros bouton
+        StartCoroutine(MoveCameraTo(timerPos, buttonPos));
         RenderText("TUTO_AGENT_7");
     }
 
     private void FakeDefuseStep()
     {
-        //TODO : Activer le collider du gros bouton
+        bomb.GetComponent<Bomb>().EnableCollider();
         RenderText("TUTO_AGENT_8");
     }
 
     private void StartBombTimerStep()
     {
-        //TODO : Activer le timer, le lancer et reactiver le collider du gros bouton
-        RenderText("TUTO_AGENT_10");
+        bomb.GetComponent<Bomb>().EnableCollider();
+        bomb.GetComponent<Bomb>().StartTutorialBomb();
+        RenderText("TUTO_AGENT_11");
     }
 
     #endregion
@@ -193,21 +186,31 @@ public class AgentTutoHandler : MonoBehaviour
         isTextDisplayed = true;
     }
 
-    #region Coroutines Wait
-
-
-
     /// <summary>
-    /// Attends un certain nombre de secondes
+    /// Déplace la caméra de from à to
     /// </summary>
-    /// <param name="seconds">Le nombre de secondes � attendre</param>
-    /// <returns>Quand le timer est fini</returns>
-    IEnumerator WaitForSeconds(float seconds)
+    /// <param name="from">Point de départ</param>
+    /// <param name="to">Point d'arrivée</param>
+    /// <returns>Quand le déplacement est terminé </returns>
+    IEnumerator MoveCameraTo(Vector3 from, Vector3 to)
     {
-        //On attend que le texte soit render
-        yield return new WaitUntil(() => isTextDisplayed);
-        yield return new WaitForSeconds(seconds);
+        hasCameraMoved = false;
+        float duration = 1.0f; // Durée du déplacement en secondes
+        float elapsedTime = 0f;
+
+        Camera.main.transform.position = from;
+
+        while (elapsedTime < duration)
+        {
+            Camera.main.transform.position = Vector3.Lerp(from, to, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        hasCameraMoved = true;
+        Camera.main.transform.position = to;
     }
+
+    #region Coroutines Wait
 
     /// <summary>
     /// Attends que la bombe soit proche
@@ -244,24 +247,41 @@ public class AgentTutoHandler : MonoBehaviour
 
     IEnumerator WaitForBombExplosionOrDefusal()
     {
+        yield return new WaitUntil(() => isTextDisplayed);
         //Si bomb explosion recursivité, sinon fin du tuto
-        yield return null;
+        yield return new WaitUntil(() => bomb.GetComponent<Bomb>().isBombDefused || bomb.GetComponent<Bomb>().isBombExploded);
+
+        if (bomb.GetComponent<Bomb>().isBombDefused)
+        {
+            //Fin du tuto
+            RenderText("TUTO_AGENT_12");
+
+            yield return new WaitUntil(() => isTextDisplayed);
+
+            SceneManager.LoadScene("LevelSelect");
+        }
+        else
+        {
+            //La bombe a explosé
+            RenderText("TUTO_AGENT_11_ALT");
+            yield return new WaitUntil(() => isTextDisplayed);
+
+            StartBombTimerStep();
+
+            yield return StartCoroutine(WaitForBombExplosionOrDefusal()); //Recursivité pas ouf ptet infini mais bon faut pas troll aussi
+        }
+
     }
 
-    IEnumerator WaitForBombExplosion()
-    {
-        yield return null;
-    }
-
-    IEnumerator WaitForBombToBeDefused()
-    {
-        yield return null;
-    }
-
+    /// <summary>
+    /// Attend que le nombre de strikes soit supérieur � 0
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitForStrike()
     {
-        yield return null;
-        //TODO : Desactivation du module du gros bouton
+        yield return new WaitUntil(() => isTextDisplayed);
+        yield return bomb.GetComponent<Bomb>().GetNbStrikes() > 0;
+        bomb.GetComponent<Bomb>().DisableCollider();
     }
     #endregion
 }
