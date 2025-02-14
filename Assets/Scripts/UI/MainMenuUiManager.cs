@@ -20,6 +20,7 @@ public class MainMenuUiManager : MonoBehaviour
 
     private void Awake()
     {
+
         doc = GetComponent<UIDocument>();
 
         playBtn = doc.rootVisualElement.Q<Button>("playBtn");
@@ -36,6 +37,8 @@ public class MainMenuUiManager : MonoBehaviour
             languageDropdown.choices.Add(locale.Identifier.CultureInfo.NativeName);
         }
         languageDropdown.value = LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName;
+
+        UnityEngine.Cursor.visible = true;
     }
 
     private void OnEnable()

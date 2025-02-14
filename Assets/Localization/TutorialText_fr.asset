@@ -68,13 +68,13 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 752264675815424
     m_Localized: "Passons aux choses s\xE9rieuses d\xE9sormais, j\u2019active le
-      minuteur qui va aller plus vite \xE0 cause de l\u2019erreur. Je vais vous dire
-      comment vraiment d\xE9samorcer le module."
+      minuteur et je vais effacer l'erreur pr\xE9cedente. Je vais vous dire comment
+      vraiment d\xE9samorcer le module."
     m_Metadata:
       m_Items: []
   - m_Id: 752358993129472
     m_Localized: "Pour d\xE9samorcer le module il faut, attendez, laissez moi regarder,
-      euuuuuuuuuhhhhhh, appuyer sur le bouton et le rel\xE2cher quand il y a un 4
+      euuuuuuuuuhhhhhh, appuyer sur le bouton et le rel\xE2cher quand il y a un 6
       dans le minuteur \xE0 n\u2019importe quelle position."
     m_Metadata:
       m_Items: []

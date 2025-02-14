@@ -66,14 +66,13 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 752264675815424
-    m_Localized: "Let\u2019s get serious now, I will activate the timer which will
-      go faster than usual due to the strike. I will then tell you how to really
-      defuse the module."
+    m_Localized: "Let\u2019s get serious now, I will activate the timer which and
+      erase the mistake. I will then tell you how to really defuse the module."
     m_Metadata:
       m_Items: []
   - m_Id: 752358993129472
     m_Localized: To defuse the module, you need to, wait, let me have a look, aaaaaaaaaahhhhh,
-      press on the button and release it when there has a 4 in any position in the
+      press on the button and release it when there has a 6 in any position in the
       timer.
     m_Metadata:
       m_Items: []

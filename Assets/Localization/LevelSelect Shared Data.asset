@@ -103,6 +103,10 @@ MonoBehaviour:
     m_Key: CREDITS_AUDIO
     m_Metadata:
       m_Items: []
+  - m_Id: 16763714342973440
+    m_Key: APP_TUTO
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

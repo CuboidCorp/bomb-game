@@ -14,6 +14,7 @@ public abstract class Bomb : MonoBehaviour
     protected List<Vector3> modulePositions;
 
     protected int nbModules;
+    private int nbModulesToDefuse;
 
     protected Timer timerScript;
 
@@ -49,6 +50,7 @@ public abstract class Bomb : MonoBehaviour
     /// <param name="rules">L'objet qui contient les générateur de regles pour les différents modules</param>
     public void SetupModules(ModuleType[] modules, RuleHolder rules)
     {
+        nbModulesToDefuse = nbModules - 1;
         //On place le timer dans un des slots random
         int timerSlot = Random.Range(0, nbModules);
         Vector3 pos = modulePositions[timerSlot];
@@ -95,6 +97,10 @@ public abstract class Bomb : MonoBehaviour
                 mod.ModuleFail.AddListener(AddStrike);
                 mod.ModuleSuccess.AddListener(ModuleSuccess);
             }
+            else if (moduleType == ModuleType.EMPTY)
+            {
+                nbModulesToDefuse--;
+            }
         }
 
     }
@@ -135,7 +141,7 @@ public abstract class Bomb : MonoBehaviour
     {
         AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_SUCCESS);
         nbModulesFinished++;
-        if (nbModulesFinished == nbModules - 1)
+        if (nbModulesFinished == nbModulesToDefuse)
         {
             BombSuccess();
         }

@@ -12,6 +12,7 @@ public partial class LvlDesktopElement : VisualElement
     private Button DailyRun => this.Q<Button>("dailyRun");
     private Button Scoreboard => this.Q<Button>("scoreboard");
     private Button Credits => this.Q<Button>("credits");
+    private Button Tutorial => this.Q<Button>("tuto");
 
     public void Init()
     {
@@ -21,6 +22,7 @@ public partial class LvlDesktopElement : VisualElement
         DailyRun.clicked += GoToDailyRun;
         Scoreboard.clicked += GoToScoreboard;
         Credits.clicked += GoToCredits;
+        Tutorial.clicked += GoToTutorial;
     }
 
     /// <summary>
@@ -97,6 +99,14 @@ public partial class LvlDesktopElement : VisualElement
     private void GoToCredits()
     {
         PcLevelSelectManager.Instance.OpenCreditsWindow();
+    }
+
+    /// <summary>
+    /// Lance le tutoriel
+    /// </summary>
+    private void GoToTutorial()
+    {
+        PcLevelSelectManager.Instance.GoToTutorial();
     }
 
     public LvlDesktopElement() { }

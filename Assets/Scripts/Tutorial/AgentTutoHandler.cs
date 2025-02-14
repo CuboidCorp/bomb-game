@@ -28,8 +28,6 @@ public class AgentTutoHandler : MonoBehaviour
     private Label textLabel;
     private bool isTextDisplayed = false;
 
-    private bool hasCameraMoved = false;
-
     public bool isDebug = false;
 
     [SerializeField] private BombInteract bombInteract;
@@ -194,7 +192,6 @@ public class AgentTutoHandler : MonoBehaviour
     /// <returns>Quand le déplacement est terminé </returns>
     IEnumerator MoveCameraTo(Vector3 from, Vector3 to)
     {
-        hasCameraMoved = false;
         float duration = 1.0f; // Durée du déplacement en secondes
         float elapsedTime = 0f;
 
@@ -206,7 +203,6 @@ public class AgentTutoHandler : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        hasCameraMoved = true;
         Camera.main.transform.position = to;
     }
 
@@ -258,6 +254,8 @@ public class AgentTutoHandler : MonoBehaviour
 
             yield return new WaitUntil(() => isTextDisplayed);
 
+            yield return StartCoroutine(WaitUntilInputPerformed(skipTuto));
+
             SceneManager.LoadScene("LevelSelect");
         }
         else
@@ -280,7 +278,7 @@ public class AgentTutoHandler : MonoBehaviour
     IEnumerator WaitForStrike()
     {
         yield return new WaitUntil(() => isTextDisplayed);
-        yield return bomb.GetComponent<Bomb>().GetNbStrikes() > 0;
+        yield return new WaitUntil(() => bomb.GetComponent<Bomb>().GetNbStrikes() >= 1);
         bomb.GetComponent<Bomb>().DisableCollider();
     }
     #endregion

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class PcLevelSelectManager : PcUiManager
@@ -54,6 +55,11 @@ public class PcLevelSelectManager : PcUiManager
     {
         screenHolder.Clear();
         screenHolder.Add(creditsWindow.CloneTree());
+    }
+
+    public void GoToTutorial()
+    {
+        SceneManager.LoadScene("TutoAgent");
     }
 
     /// <summary>
