@@ -1,39 +1,40 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=95042b685b2a0a141b44c25f836a679a&amp;type=3#MainMenuStyle" />
     <engine:VisualElement name="Holder" style="flex-grow: 1; background-color: rgb(0, 0, 0); justify-content: space-evenly; align-self: auto; align-content: auto; align-items: stretch;">
         <engine:Label text="Label" name="Titre" style="-unity-text-align: middle-center; font-size: 80px; color: rgb(255, 255, 255); margin-bottom: 40px;">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:2eb1bddef06e1c34391d9681b3589c78" entry="Id(1549376825028608)" />
             </Bindings>
         </engine:Label>
-        <engine:Button text="Button" name="playBtn" style="font-size: 50px; margin-left: 50px; margin-right: 50px; margin-top: 25px; margin-bottom: 25px;">
+        <engine:Button text="Button" name="playBtn" class="primary-button menu-button" style="font-size: 50px; margin-left: 50px; margin-right: 50px; margin-top: 25px; margin-bottom: 25px;">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:2eb1bddef06e1c34391d9681b3589c78" entry="Id(1549479157657600)" />
             </Bindings>
         </engine:Button>
-        <engine:Button text="Button" name="optionsBtn" style="font-size: 50px; margin-right: 50px; margin-left: 50px; margin-top: 25px; margin-bottom: 25px;">
+        <engine:Button text="Button" name="optionsBtn" class="secondary-button menu-button" style="font-size: 50px; margin-right: 50px; margin-left: 50px; margin-top: 25px; margin-bottom: 25px;">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:2eb1bddef06e1c34391d9681b3589c78" entry="Id(1549509797048320)" />
             </Bindings>
         </engine:Button>
-        <engine:Button text="Button" name="quitBtn" style="font-size: 50px; margin-right: 50px; margin-left: 50px; margin-bottom: 25px; margin-top: 25px;">
+        <engine:Button text="Button" name="quitBtn" class="secondary-button menu-button" style="font-size: 50px; margin-right: 50px; margin-left: 50px; margin-bottom: 25px; margin-top: 25px;">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:2eb1bddef06e1c34391d9681b3589c78" entry="Id(1549531037003776)" />
             </Bindings>
         </engine:Button>
         <engine:VisualElement name="FlagAndVersion" style="flex-grow: 1; flex-direction: row-reverse; justify-content: space-around; align-self: auto; align-items: flex-end;">
-            <engine:VisualElement name="flagHolder" style="flex-grow: 1; flex-direction: row-reverse; align-self: auto; min-height: 50px; max-height: 50px; height: 50px;">
-                <engine:VisualElement name="flag" style="flex-grow: 1; min-width: 70px; max-width: 70px; max-height: 35px; min-height: 35px; align-self: center;">
+            <engine:VisualElement name="flagHolder" class="locale-container" style="flex-grow: 1; flex-direction: row-reverse; align-self: auto; min-height: 50px; max-height: 50px; height: 50px;">
+                <engine:VisualElement name="flag" class="flag-icon" style="flex-grow: 1; min-width: 70px; max-width: 70px; max-height: 35px; min-height: 35px; align-self: center;">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedSprite property="style.backgroundImage" table="GUID:49728bc5ca4b0ce42975bee687bd6c0a" entry="Id(1863693332480)" />
                     </Bindings>
                 </engine:VisualElement>
-                <engine:DropdownField name="changeLocale" style="-unity-text-align: middle-center; font-size: 25px; align-items: center; color: rgb(255, 255, 255);">
+                <engine:DropdownField name="changeLocale" class="locale-dropdown" style="-unity-text-align: middle-center; font-size: 25px; align-items: center; color: rgb(255, 255, 255);">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="label" table="GUID:2eb1bddef06e1c34391d9681b3589c78" entry="Id(5316238864384)" />
                     </Bindings>
                 </engine:DropdownField>
             </engine:VisualElement>
-            <engine:Label text="v0.1" name="versionLabel" style="align-items: auto; align-self: auto; color: rgb(255, 255, 255); font-size: 25px;" />
+            <engine:Label text="v0.1" name="versionLabel" class="version-label" style="align-items: auto; align-self: auto; color: rgb(255, 255, 255); font-size: 25px;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

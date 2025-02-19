@@ -1,0 +1,112 @@
+.content-container {
+    padding: 20px;
+    justify-content: flex-start;
+}
+
+.options-title {
+    -unity-text-align: middle-center;
+    font-size: 80px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 40px;
+}
+
+.options-scroll-view {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.section-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    -unity-text-align: middle-left;
+}
+
+.slider-group {
+    margin: 15px 0;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.custom-slider {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    margin: 5px;
+    height: 60px;
+}
+
+.custom-slider Label {
+    min-width: 300px;
+    max-width: 300px;
+    color: rgba(255, 255, 255, 0.8);
+    -unity-text-align: middle-left;
+    padding-right: 20px;
+}
+
+.custom-slider #unity-drag-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 15px;
+    min-width: 250px;
+}
+
+.custom-slider #unity-tracker {
+    background-color: rgba(230, 60, 60, 0.5);
+    border-radius: 5px;
+    height: 10px;
+}
+
+.custom-slider #unity-dragger {
+    background-color: rgb(230, 60, 60);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: -5px;
+    border-width: 2px;
+    border-color: rgb(255, 255, 255);
+}
+
+.options-title {
+    -unity-text-align: middle-center;
+    font-size: 80px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 40px;
+}
+
+.sliders-container {
+    margin: 10px;
+}
+
+.buttons-container {
+    min-height: 150px;
+}
+
+.action-buttons {
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.action-buttons .menu-button {
+    margin: 0 10px;
+    min-width: 200px;
+}
+
+.primary-button {
+    font-size: 45px;
+}
+
+.secondary-button {
+    font-size: 45px;
+}

@@ -31,10 +31,6 @@ MonoBehaviour:
     m_Key: RETURN_BTN
     m_Metadata:
       m_Items: []
-  - m_Id: 3546334851072
-    m_Key: "OPTIONS_BTN\t"
-    m_Metadata:
-      m_Items: []
   - m_Id: 4037940834304
     m_Key: VOLUME_TITLE
     m_Metadata:

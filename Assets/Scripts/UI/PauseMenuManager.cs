@@ -29,7 +29,6 @@ public class PauseMenuManager : MonoBehaviour
     private Slider sfxVolumeSlider;
     private Button saveButton;
     private Button cancelButton;
-    private Button backButton;
     #endregion
 
     private void Awake()
@@ -158,15 +157,13 @@ public class PauseMenuManager : MonoBehaviour
         generalVolumeSlider = currentRootElement.Q<Slider>("generalSlider");
         musicVolumeSlider = currentRootElement.Q<Slider>("musicSlider");
         sfxVolumeSlider = currentRootElement.Q<Slider>("sfxSlider");
-        backButton = currentRootElement.Q<Button>("returnBtn");
         saveButton = currentRootElement.Q<Button>("saveBtn");
         cancelButton = currentRootElement.Q<Button>("cancelBtn");
 
         LoadOptions();
 
         saveButton.clicked += SaveOptions;
-        cancelButton.clicked += LoadOptions;
-        backButton.clicked += CloseOptionsMenu;
+        cancelButton.clicked += CloseOptionsMenu;
     }
 
     /// <summary>
@@ -174,9 +171,8 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     private void CloseOptionsMenu()
     {
-        cancelButton.clicked -= LoadOptions;
+        cancelButton.clicked -= CloseOptionsMenu;
         saveButton.clicked -= SaveOptions;
-        backButton.clicked -= CloseOptionsMenu;
         generalVolumeSlider = null;
         musicVolumeSlider = null;
         OpenPauseMenu();
@@ -202,7 +198,6 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     private void SaveOptions()
     {
-        //TODO : PlayerPrefs
         PlayerPrefs.SetFloat("generalVolume", generalVolumeSlider.value);
         PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
         PlayerPrefs.SetFloat("sfxVolume", sfxVolumeSlider.value);

@@ -34,9 +34,13 @@ public class MainMenuUiManager : MonoBehaviour
         locales = LocalizationSettings.AvailableLocales.Locales;
         foreach (Locale locale in locales)
         {
-            languageDropdown.choices.Add(locale.Identifier.CultureInfo.NativeName);
+            string nativeName = locale.Identifier.CultureInfo.NativeName;
+            string nativeNameFormatted = char.ToUpper(nativeName[0]) + nativeName[1..];
+            languageDropdown.choices.Add(nativeNameFormatted);
         }
-        languageDropdown.value = LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName;
+
+        languageDropdown.value = char.ToUpper(LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName[0])
+                         + LocalizationSettings.SelectedLocale.Identifier.CultureInfo.NativeName[1..];
 
         UnityEngine.Cursor.visible = true;
     }
@@ -85,7 +89,9 @@ public class MainMenuUiManager : MonoBehaviour
         string localeName = evt.newValue;
         foreach (Locale locale in locales)
         {
-            if (locale.Identifier.CultureInfo.NativeName == localeName)
+            string nativeName = locale.Identifier.CultureInfo.NativeName;
+            string nativeNameFormatted = char.ToUpper(nativeName[0]) + nativeName[1..];
+            if (nativeNameFormatted == localeName)
             {
                 LocalizationSettings.SelectedLocale = locale;
                 break;

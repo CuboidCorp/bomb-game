@@ -34,10 +34,6 @@ MonoBehaviour:
     m_Localized: Retour
     m_Metadata:
       m_Items: []
-  - m_Id: 3546334851072
-    m_Localized: Options
-    m_Metadata:
-      m_Items: []
   - m_Id: 4037940834304
     m_Localized: Volume
     m_Metadata:
@@ -55,11 +51,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 46708952625152
-    m_Localized: SAUVEGARDER
+    m_Localized: Sauvegarder
     m_Metadata:
       m_Items: []
   - m_Id: 46757472333824
-    m_Localized: ANNULER
+    m_Localized: Annuler
     m_Metadata:
       m_Items: []
   - m_Id: 4075292339957760

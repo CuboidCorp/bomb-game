@@ -1,24 +1,30 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:VisualElement name="pauseMenu" style="flex-grow: 1; background-color: rgba(17, 17, 17, 0.59); margin-top: 5%; margin-right: 10%; margin-bottom: 5%; margin-left: 10%; justify-content: space-evenly;">
-        <engine:Label text="Pause" name="pausetitle" style="font-size: 100px; -unity-text-align: middle-center; color: rgb(255, 255, 255);">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(300081967104)" />
-            </Bindings>
-        </engine:Label>
-        <engine:Button text="Button" name="optionsBtn" style="font-size: 80px; margin-top: 2px; margin-right: 20px; margin-left: 20px;">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(330712969216)" />
-            </Bindings>
-        </engine:Button>
-        <engine:Button text="Button" name="cancelBtn" style="font-size: 80px; margin-left: 20px; margin-right: 20px;">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(675962908672)" />
-            </Bindings>
-        </engine:Button>
-        <engine:Button text="Button" name="quitBtn" style="font-size: 80px; margin-right: 20px; margin-left: 20px;">
-            <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(365173370880)" />
-            </Bindings>
-        </engine:Button>
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=95042b685b2a0a141b44c25f836a679a&amp;type=3#MainMenuStyle" />
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/PauseMenuStyle.uss?fileID=7433441132597879392&amp;guid=44ec6a2b8d0e7d24ab152c888109ed11&amp;type=3#PauseMenuStyle" />
+    <engine:VisualElement name="pauseMenu" class="pause-container">
+        <engine:VisualElement name="pause-content" class="pause-content">
+            <engine:Label text="Pause" name="pausetitle" class="pause-title">
+                <Bindings>
+                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(300081967104)" />
+                </Bindings>
+            </engine:Label>
+            <engine:VisualElement name="buttons-wrapper" class="buttons-wrapper">
+                <engine:Button text="Button" name="optionsBtn" class="pause-button">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:2eb1bddef06e1c34391d9681b3589c78" entry="Id(1549509797048320)" />
+                    </Bindings>
+                </engine:Button>
+                <engine:Button text="Button" name="cancelBtn" class="pause-button">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(675962908672)" />
+                    </Bindings>
+                </engine:Button>
+                <engine:Button text="Button" name="quitBtn" class="pause-button warning-button">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(365173370880)" />
+                    </Bindings>
+                </engine:Button>
+            </engine:VisualElement>
+        </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

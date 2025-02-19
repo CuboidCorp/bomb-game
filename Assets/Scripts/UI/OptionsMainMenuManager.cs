@@ -16,7 +16,6 @@ public class OptionsMainMenuManager : MonoBehaviour
     private Slider sfxVolumeSlider;
     private Button saveButton;
     private Button cancelButton;
-    private Button backButton;
     #endregion
 
     private void Awake()
@@ -33,12 +32,10 @@ public class OptionsMainMenuManager : MonoBehaviour
         generalVolumeSlider = currentRootElement.Q<Slider>("generalSlider");
         musicVolumeSlider = currentRootElement.Q<Slider>("musicSlider");
         sfxVolumeSlider = currentRootElement.Q<Slider>("sfxSlider");
-        backButton = currentRootElement.Q<Button>("returnBtn");
         saveButton = currentRootElement.Q<Button>("saveBtn");
         cancelButton = currentRootElement.Q<Button>("cancelBtn");
         saveButton.clicked += SaveOptions;
-        cancelButton.clicked += LoadOptions;
-        backButton.clicked += CloseOptionsMenu;
+        cancelButton.clicked += CloseOptionsMenu;
         LoadOptions();
 
     }
@@ -74,6 +71,8 @@ public class OptionsMainMenuManager : MonoBehaviour
         mainAudioMixer.SetFloat("musicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
         mainAudioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxVolumeSlider.value) * 20);
 
+        CloseOptionsMenu();
+
     }
 
     /// <summary>
@@ -83,7 +82,6 @@ public class OptionsMainMenuManager : MonoBehaviour
     {
         uiDoc.enabled = false;
         saveButton.clicked -= SaveOptions;
-        cancelButton.clicked -= LoadOptions;
-        backButton.clicked -= CloseOptionsMenu;
+        cancelButton.clicked -= CloseOptionsMenu;
     }
 }
