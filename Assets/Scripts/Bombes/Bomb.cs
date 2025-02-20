@@ -110,8 +110,8 @@ public abstract class Bomb : MonoBehaviour
     /// </summary>
     public void StartBomb()
     {
-        //Calcul du temps de la bombe
-        TimeSpan time = new(0, 3 * (nbModules / 6), 0); //TODO : Nouvelle version de calcul du temps  (Le nb de modules ne sera pas multiple de 6)
+        //TODO : Tester et trouver une bonne valeur pour le temps de la bombe
+        TimeSpan time = new(0, 5 * (nbModules / 6), 0); //TODO : Nouvelle version de calcul du temps  (Le nb de modules ne sera pas multiple de 6)
         timerScript.StartTimer(time);
         timerScript.TimerFinished.AddListener(ExplodeBomb);
     }
@@ -178,7 +178,6 @@ public abstract class Bomb : MonoBehaviour
     {
         //TODO : Afficher confettis
         timerScript.StopTimer();
-        Debug.Log("GG");
         isBombDefused = true;
         if (!isTutorial)
         {
@@ -203,6 +202,7 @@ public abstract class Bomb : MonoBehaviour
     public void SetupTutorialBomb()
     {
         isTutorial = true;
+
         TimeSpan time = new(0, 3 * (nbModules / 6), 0);
         timerScript.SetupTimer(time);
         foreach (GameObject module in modulesGo)

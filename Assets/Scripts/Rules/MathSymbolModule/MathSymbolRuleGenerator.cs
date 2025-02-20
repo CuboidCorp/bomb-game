@@ -58,6 +58,9 @@ public class MathSymbolRuleGenerator : IRuleGenerator
         };
         Dictionary<Symbols, int> valeursBtn = new();
 
+        List<int> randomButtonValues = new(buttonValues);
+        Functions.Shuffle(randomButtonValues);
+
         int nbSymbolsChosen = 0;
         while (nbSymbolsChosen < 8)
         {
@@ -66,9 +69,10 @@ public class MathSymbolRuleGenerator : IRuleGenerator
             {
                 continue;
             }
-            valeursBtn[randSymbol] = buttonValues[nbSymbolsChosen];
+            valeursBtn[randSymbol] = randomButtonValues[nbSymbolsChosen];
             nbSymbolsChosen++;
         }
+
         rule.valeursBtn = valeursBtn;
 
         return rule;

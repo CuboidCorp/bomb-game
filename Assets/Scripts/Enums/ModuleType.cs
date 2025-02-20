@@ -10,6 +10,4 @@ public enum ModuleType
     MATH_SYMBOL,
     MORSE,
     WIRES,
-
-    //TODO : Ajouter le module vide
 }
