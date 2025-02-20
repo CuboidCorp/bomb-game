@@ -1,0 +1,191 @@
+.lvl-run {
+    width: 1024px;
+    max-width: 1024px;
+    min-width: 1024px;
+    max-height: 464px;
+    height: 464px;
+    min-height: 464px;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0);
+}
+
+.top-bar {
+    flex-grow: 0;
+    height: 32px;
+    max-height: 32px;
+    min-height: 32px;
+    flex-direction: row-reverse;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close-button {
+    width: 32px;
+    max-width: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    max-height: 32px;
+    height: 32px;
+    border-color: rgba(149, 149, 149, 0);
+    background-image: url("project://database/Assets/Images/Close.png");
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0;
+    margin: 0;
+    transition: all 0.2s;
+}
+
+.close-button:hover {
+    scale: 1.1;
+}
+
+.run-info {
+    flex-grow: 1;
+    position: relative;
+    padding: 15px;
+    align-self: stretch;
+}
+
+.title {
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    margin-bottom: 15px;
+}
+
+.seed-container {
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0;
+    padding: 10px;
+    max-height: 80px;
+}
+
+.seed-field {
+    font-size: 18px;
+    -unity-text-align: middle-center;
+    width: 350px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.seed-field > Label {
+    color: rgb(255, 255, 255);
+}
+
+.seed-field > IntegerInput {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.icon-button {
+    width: 40px;
+    max-width: 40px;
+    min-width: 40px;
+    height: 40px;
+    max-height: 40px;
+    min-height: 40px;
+    padding: 6px;
+    margin: 0 5px;
+    border-radius: 4px;
+    border-width: 1px;
+    transition: all 0.2s;
+}
+
+.icon-button:hover {
+    scale: 1.1;
+}
+
+.copy-button {
+    background-color: rgb(230, 60, 60);
+    border-color: rgb(255, 255, 255);
+}
+
+.random-button {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.modules-container {
+    flex-grow: 0;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0;
+    padding: 10px;
+    max-height: 80px;
+}
+
+.bomb-type-field {
+    font-size: 18px;
+    -unity-text-align: middle-center;
+    width: 400px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    border-width: 1px;
+    border-radius: 4px;
+}
+
+.bomb-type-field > Label {
+    color: rgb(255, 255, 255);
+}
+
+.bomb-type-field > EnumInput {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+.roles-container {
+    flex-grow: 1;
+    flex-direction: row;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.player-section {
+    flex-grow: 1;
+    flex-direction: column-reverse;
+    max-width: 50%;
+    min-width: 50%;
+    padding: 10px;
+    margin: 5px;
+}
+
+.role-title {
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.description-text {
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    font-size: 16px;
+    flex-wrap: nowrap;
+    white-space: normal;
+    margin: 8px 0;
+    padding: 0 8px;
+}
+
+.play-button {
+    font-size: 24px;
+    background-color: rgb(230, 60, 60);
+    border-color: rgb(255, 255, 255);
+    border-width: 2px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 15px;
+    transition: all 0.2s;
+}
+
+.play-button:hover {
+    scale: 1.05;
+}

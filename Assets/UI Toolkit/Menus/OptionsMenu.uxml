@@ -35,6 +35,7 @@
                             <engine:Slider label="Slider" value="0.5" name="sfxSlider" low-value="0.001" high-value="1" class="ingame-slider">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4320666284032)" />
+                                    <UnityEngine.Localization.LocalizedString property="label" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4320666284032)" />
                                 </Bindings>
                             </engine:Slider>
                         </engine:VisualElement>

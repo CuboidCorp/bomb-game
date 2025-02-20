@@ -1,56 +1,57 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <LvlDesktopElement name="desktop" style="width: 1024px; height: 464px; max-width: 1024px; max-height: 464px; min-width: 1024px; min-height: 464px; background-image: url(&quot;project://database/Assets/Images/StockSnap_AYRUIOILUG.jpg?fileID=2800000&amp;guid=e31ce08f9144d5846bd8cde90dbc406b&amp;type=3#StockSnap_AYRUIOILUG&quot;); flex-direction: row; flex-wrap: wrap;">
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="trashcan" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: url(&quot;project://database/Assets/Images/Trashcan.png?fileID=2800000&amp;guid=147d7fa01a388a64e96f1c3f91832cf2&amp;type=3#Trashcan&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="trashCanLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; color: rgb(255, 255, 255); -unity-font-style: bold;">
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/LevelSelectStyle.uss?fileID=7433441132597879392&amp;guid=0498b078e17894e49a3ddb2dbce29cd6&amp;type=3#LevelSelectStyle" />
+    <LvlDesktopElement name="desktop" class="desktop" style="background-image: url(&quot;project://database/Assets/Images/StockSnap_AYRUIOILUG.jpg?fileID=2800000&amp;guid=e31ce08f9144d5846bd8cde90dbc406b&amp;type=3#StockSnap_AYRUIOILUG&quot;);">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="trashcan" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/Trashcan.png?fileID=2800000&amp;guid=147d7fa01a388a64e96f1c3f91832cf2&amp;type=3#Trashcan&quot;); background-color: rgba(188, 188, 188, 0);" />
+            <engine:Label text="Label" name="trashCanLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(66901036724224)" />
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="dailyRun" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: url(&quot;project://database/Assets/Images/DailyRun.png?fileID=2800000&amp;guid=a99437dc6c9b0d342b989c4845a3f4a2&amp;type=3#DailyRun&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="dailyRunLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 9px; white-space: nowrap; color: rgb(255, 255, 255); -unity-font-style: bold;">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="dailyRun" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/DailyRun.png?fileID=2800000&amp;guid=a99437dc6c9b0d342b989c4845a3f4a2&amp;type=3#DailyRun&quot;); background-color: rgba(188, 188, 188, 0);" />
+            <engine:Label text="Label" name="dailyRunLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(66948545605632)" />
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="randomRun" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: url(&quot;project://database/Assets/Images/RandomRun.png?fileID=2800000&amp;guid=094774fc4a9d6e44796541db3e3b383d&amp;type=3#RandomRun&quot;); background-color: rgba(0, 0, 0, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="dailyRunLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 11px; white-space: nowrap; color: rgb(255, 255, 255); -unity-font-style: bold;">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="randomRun" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/RandomRun.png?fileID=2800000&amp;guid=094774fc4a9d6e44796541db3e3b383d&amp;type=3#RandomRun&quot;); background-color: rgba(0, 0, 0, 0);" />
+            <engine:Label text="Label" name="dailyRunLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(67421658902528)" />
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="customRun" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: url(&quot;project://database/Assets/Images/CustomRun.png?fileID=2800000&amp;guid=9dd36eed6365ae44f88b205fd3fdcc00&amp;type=3#CustomRun&quot;); background-color: rgba(0, 0, 0, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="customRunLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 8px; -unity-font-style: bold; color: rgb(255, 255, 255);">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="customRun" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/CustomRun.png?fileID=2800000&amp;guid=9dd36eed6365ae44f88b205fd3fdcc00&amp;type=3#CustomRun&quot;); background-color: rgba(0, 0, 0, 0);" />
+            <engine:Label text="Label" name="customRunLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(67260933173248)" />
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="scoreboard" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: url(&quot;project://database/Assets/Images/Scoreboard.png?fileID=2800000&amp;guid=bdf3aba6687fa8e448408a2dcb5a6aff&amp;type=3#Scoreboard&quot;); background-color: rgba(188, 188, 188, 0); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="scoreboardLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 8px; color: rgb(255, 255, 255); -unity-font-style: bold;">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="scoreboard" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/Scoreboard.png?fileID=2800000&amp;guid=bdf3aba6687fa8e448408a2dcb5a6aff&amp;type=3#Scoreboard&quot;); background-color: rgba(188, 188, 188, 0);" />
+            <engine:Label text="Label" name="scoreboardLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(67823716495360)" />
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="credits" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: none; background-color: rgb(188, 188, 188); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="creditsLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 15px; color: rgb(255, 255, 255); -unity-font-style: bold;">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="credits" class="app-button" style="background-image: none; background-color: rgb(188, 188, 188);" />
+            <engine:Label text="Label" name="creditsLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(2994325642768384)" />
                 </Bindings>
             </engine:Label>
         </engine:VisualElement>
-        <engine:VisualElement name="AppHolder" style="flex-grow: 1; width: 64px; height: 84px; max-height: 84px; min-height: 84px; max-width: 64px; min-width: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
-            <engine:Button name="tuto" style="width: 100%; max-width: 100%; min-width: 100%; height: 64px; max-height: 64px; min-height: 64px; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; background-image: none; background-color: rgb(188, 188, 188); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
-            <engine:Label text="Label" name="tutoLabel" style="height: 20px; max-height: 20px; min-height: 20px; width: 100%; max-width: 100%; min-width: 100%; -unity-text-align: middle-center; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-size: 15px; color: rgb(255, 255, 255); -unity-font-style: bold;">
+        <engine:VisualElement name="AppHolder" class="app-holder">
+            <engine:Button name="tuto" class="app-button" style="background-image: none; background-color: rgb(188, 188, 188);" />
+            <engine:Label text="Label" name="tutoLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(16763714342973440)" />
                 </Bindings>
