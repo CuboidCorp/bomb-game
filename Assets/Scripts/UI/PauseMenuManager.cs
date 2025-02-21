@@ -16,6 +16,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private AudioMixer mainAudioMixer;
 
     private bool isPaused;
+    private bool isOptionsOpen;
 
     #region PauseMenu
     private Button resumeButton;
@@ -37,6 +38,7 @@ public class PauseMenuManager : MonoBehaviour
         Instance = this;
         SetupInGameMenu();
         isPaused = false;
+        isOptionsOpen = false;
     }
 
     /// <summary>
@@ -82,9 +84,30 @@ public class PauseMenuManager : MonoBehaviour
         resumeButton = currentRootElement.Q<Button>("cancelBtn");
         optionsButton = currentRootElement.Q<Button>("optionsBtn");
         quitButton = currentRootElement.Q<Button>("quitBtn");
-        resumeButton.clicked += ClosePauseMenu;
+        resumeButton.clicked += ResumeButton;
         optionsButton.clicked += OpenOptionsMenu;
         quitButton.clicked += ReturnToMainMenu;
+    }
+
+    /// <summary>
+    /// Reprend le jeu
+    /// </summary>
+    private void ResumeButton()
+    {
+        if (LevelSelectInteract.Instance != null)
+        {
+            LevelSelectInteract.Instance.SetupActions();
+        }
+        if (ManualInteract.Instance != null)
+        {
+            ManualInteract.Instance.SetupActions();
+        }
+        if (BombInteract.Instance != null)
+        {
+            BombInteract.Instance.SetupActions();
+        }
+
+        ClosePauseMenu();
     }
 
     /// <summary>
@@ -115,7 +138,14 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (isPaused)
         {
-            ClosePauseMenu();
+            if (isOptionsOpen)
+            {
+                CloseOptionsMenu();
+            }
+            else
+            {
+                ClosePauseMenu();
+            }
         }
         else
         {
@@ -152,6 +182,7 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     public void OpenOptionsMenu()
     {
+        isOptionsOpen = true;
         DisablePauseMenu();
         SetVisualTreeAsset(optionsMenu);
         generalVolumeSlider = currentRootElement.Q<Slider>("generalSlider");
@@ -171,6 +202,7 @@ public class PauseMenuManager : MonoBehaviour
     /// </summary>
     private void CloseOptionsMenu()
     {
+        isOptionsOpen = false;
         cancelButton.clicked -= CloseOptionsMenu;
         saveButton.clicked -= SaveOptions;
         generalVolumeSlider = null;
@@ -208,6 +240,7 @@ public class PauseMenuManager : MonoBehaviour
         mainAudioMixer.SetFloat("musicVolume", Mathf.Log10(musicVolumeSlider.value) * 20);
         mainAudioMixer.SetFloat("sfxVolume", Mathf.Log10(sfxVolumeSlider.value) * 20);
 
+        CloseOptionsMenu();
     }
 
     /// <summary>

@@ -144,19 +144,27 @@ public class AgentTutoHandler : MonoBehaviour
         RenderText("TUTO_AGENT_6");
     }
 
-
+    /// <summary>
+    /// Etape 7 du tutoriel
+    /// </summary>
     private void GoToButtonModuleStep()
     {
         StartCoroutine(MoveCameraTo(timerPos, buttonPos));
         RenderText("TUTO_AGENT_7");
     }
 
+    /// <summary>
+    /// Etape 8 du tutoriel
+    /// </summary>
     private void FakeDefuseStep()
     {
         bomb.GetComponent<Bomb>().EnableCollider();
         RenderText("TUTO_AGENT_8");
     }
 
+    /// <summary>
+    /// Etape 11 du tutoriel
+    /// </summary>
     private void StartBombTimerStep()
     {
         bomb.GetComponent<Bomb>().EnableCollider();
@@ -241,6 +249,10 @@ public class AgentTutoHandler : MonoBehaviour
         action.performed -= onPerformed;
     }
 
+    /// <summary>
+    /// Attends que la bombe explose ou qu'elle soit désamorcée
+    /// </summary>
+    /// <returns></returns>
     IEnumerator WaitForBombExplosionOrDefusal()
     {
         yield return new WaitUntil(() => isTextDisplayed);

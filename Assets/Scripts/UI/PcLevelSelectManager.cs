@@ -57,8 +57,12 @@ public class PcLevelSelectManager : PcUiManager
         screenHolder.Add(creditsWindow.CloneTree());
     }
 
+    /// <summary>
+    /// Ouvre le tutoriel
+    /// </summary>
     public void GoToTutorial()
     {
+        UnSetupDoc();
         SceneManager.LoadScene("TutoAgent");
     }
 

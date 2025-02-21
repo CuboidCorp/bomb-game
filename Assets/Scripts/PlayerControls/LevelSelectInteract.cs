@@ -23,8 +23,6 @@ public class LevelSelectInteract : MonoBehaviour
     [SerializeField] protected Vector3 mainCameraBasePosition;
     protected Vector3 zoomPosition;
 
-    private Coroutine pinchDetectCoroutine;
-
     [SerializeField] private Vector3 computerCamPosition;
 
     private bool isZoomedOnComputer = false;
@@ -49,33 +47,26 @@ public class LevelSelectInteract : MonoBehaviour
 
         actions.Player.Tap.performed += OnTap;
 
-        actions.Player.Return.performed += UnZoom;
-        actions.Player.SecondFingerContact.started += PinchDetectStart;
-        actions.Player.SecondFingerContact.canceled += PinchDetectEnd;
-        actions.Player.Escape.performed += OnEscapePerformed;
     }
 
     protected void UnSetupActions()
     {
         actions.Player.Tap.performed -= OnTap;
 
-        actions.Player.Return.performed -= UnZoom;
-        actions.Player.SecondFingerContact.started -= PinchDetectStart;
-        actions.Player.SecondFingerContact.canceled -= PinchDetectEnd;
-        actions.Player.Escape.performed -= OnEscapePerformed;
     }
 
     private void OnEnable()
     {
         actions.Enable();
         SetupActions();
+        actions.Player.Escape.performed += OnEscapePerformed;
     }
 
     private void OnDisable()
     {
         actions.Disable();
         UnSetupActions();
-        PinchDetectEnd();
+        actions.Player.Escape.performed -= OnEscapePerformed;
     }
 
     /// <summary>
@@ -86,8 +77,10 @@ public class LevelSelectInteract : MonoBehaviour
         if (PauseMenuManager.Instance.OpenOrClose())
         {
             UnSetupActions();
-            PinchDetectEnd();
-
+        }
+        else
+        {
+            SetupActions();
         }
     }
 
@@ -98,35 +91,10 @@ public class LevelSelectInteract : MonoBehaviour
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed * Time.deltaTime);
             if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .05f)
             {
+                PcLevelSelectManager.Instance.StartComputer();
                 mainCamera.transform.position = zoomPosition;
                 isZooming = false;
             }
-        }
-    }
-
-    private void PinchDetectStart(InputAction.CallbackContext _)
-    {
-        pinchDetectCoroutine = StartCoroutine(PinchDetection());
-    }
-
-    private void PinchDetectEnd(InputAction.CallbackContext ctx = new InputAction.CallbackContext())
-    {
-        if (pinchDetectCoroutine != null)
-            StopCoroutine(pinchDetectCoroutine);
-    }
-
-    private IEnumerator PinchDetection()
-    {
-        float previousDistance = 0f, distance;
-        while (true)
-        {
-            distance = Vector2.Distance(actions.Player.Position.ReadValue<Vector2>(), actions.Player.SecondFingerPosition.ReadValue<Vector2>());
-
-            if (distance > previousDistance)
-            {
-                UnZoom();
-            }
-            previousDistance = distance;
         }
     }
 
@@ -162,12 +130,5 @@ public class LevelSelectInteract : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void UnZoom(InputAction.CallbackContext _ = new InputAction.CallbackContext())
-    {
-        PcLevelSelectManager.Instance.UnSetupDoc();
-        ZoomTo(mainCameraBasePosition);
-        isZoomedOnComputer = false;
     }
 }

@@ -49,39 +49,32 @@ public class ManualInteract : MonoBehaviour
         actions.Player.Tap.performed += OnTap;
 
         actions.Player.Return.performed += UnZoom;
-        actions.Player.SecondFingerContact.started += PinchDetectStart;
-        actions.Player.SecondFingerContact.canceled += PinchDetectEnd;
 
-        actions.Player.Escape.performed += OnEscapePerformed;
+
     }
 
-    /// <summary>
-    /// Surement inutile car le unsub d'un lambda anonyme n'existe pas, faudrait mettre dans des actions nommées
-    /// Mais c'est pour garder l'idée qu'il faut unsub des events
-    /// Pas nécessaire dans ce cas car le script est tjrs activé
-    /// </summary>
+
     protected void UnSetupActions()
     {
         actions.Player.Tap.performed -= OnTap;
 
         actions.Player.Return.performed -= UnZoom;
-        actions.Player.SecondFingerContact.started -= PinchDetectStart;
-        actions.Player.SecondFingerContact.canceled -= PinchDetectEnd;
 
-        actions.Player.Escape.performed -= OnEscapePerformed;
+
     }
 
     private void OnEnable()
     {
         actions.Enable();
         SetupActions();
+        actions.Player.Escape.performed += OnEscapePerformed;
     }
 
     private void OnDisable()
     {
         actions.Disable();
         UnSetupActions();
-        PinchDetectEnd();
+        actions.Player.Escape.performed -= OnEscapePerformed;
     }
 
 
@@ -92,6 +85,10 @@ public class ManualInteract : MonoBehaviour
             mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, zoomPosition, zoomSpeed * Time.deltaTime);
             if (Vector3.Distance(mainCamera.transform.position, zoomPosition) <= .05f)
             {
+                if (isZoomedOnComputer)
+                {
+                    PcUiManager.InstanceAbs.StartComputer();
+                }
                 mainCamera.transform.position = zoomPosition;
                 isZooming = false;
             }
@@ -106,34 +103,10 @@ public class ManualInteract : MonoBehaviour
         if (PauseMenuManager.Instance.OpenOrClose())
         {
             UnSetupActions();
-            PinchDetectEnd();
-
         }
-    }
-
-    private void PinchDetectStart(InputAction.CallbackContext _)
-    {
-        pinchDetectCoroutine = StartCoroutine(PinchDetection());
-    }
-
-    private void PinchDetectEnd(InputAction.CallbackContext _ = new InputAction.CallbackContext())
-    {
-        if (pinchDetectCoroutine != null)
-            StopCoroutine(pinchDetectCoroutine);
-    }
-
-    private IEnumerator PinchDetection()
-    {
-        float previousDistance = 0f, distance;
-        while (true)
+        else
         {
-            distance = Vector2.Distance(actions.Player.Position.ReadValue<Vector2>(), actions.Player.SecondFingerPosition.ReadValue<Vector2>());
-
-            if (distance > previousDistance)
-            {
-                UnZoom();
-            }
-            previousDistance = distance;
+            SetupActions();
         }
     }
 

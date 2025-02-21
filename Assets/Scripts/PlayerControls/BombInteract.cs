@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class BombInteract : MonoBehaviour
 {
 
-
+    public static BombInteract Instance;
     private PlayerControls actions;
     private InputAction _pos;
 
@@ -41,6 +41,7 @@ public class BombInteract : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         Setup();
     }
 
@@ -56,6 +57,7 @@ public class BombInteract : MonoBehaviour
         actions = new PlayerControls();
         actions.Enable();
         SetupActions();
+        actions.Player.Escape.performed += OnEscapePerformed;
     }
 
     private void OnDisable()
@@ -63,11 +65,10 @@ public class BombInteract : MonoBehaviour
         actions.Player.Disable();
         actions.UI.Disable();
         UnSetupActions();
+        actions.Player.Escape.performed -= OnEscapePerformed;
     }
 
-
-
-    private void SetupActions()
+    public void SetupActions()
     {
         _pos = actions.Player.Position;
 
@@ -77,7 +78,6 @@ public class BombInteract : MonoBehaviour
         actions.Player.Rotate.started += StartRotate;
         actions.Player.Rotate.canceled += StopRotate;
 
-        actions.Player.Escape.performed += OnEscapePerformed;
         actions.Player.Flashlight.performed += OnFlashlightPerformed;
 
     }
@@ -91,7 +91,6 @@ public class BombInteract : MonoBehaviour
         actions.Player.Rotate.started -= StartRotate;
         actions.Player.Rotate.canceled -= StopRotate;
 
-        actions.Player.Escape.performed -= OnEscapePerformed;
         actions.Player.Flashlight.performed -= OnFlashlightPerformed;
     }
 
@@ -103,7 +102,10 @@ public class BombInteract : MonoBehaviour
         if (PauseMenuManager.Instance.OpenOrClose())
         {
             UnSetupActions();
-
+        }
+        else
+        {
+            SetupActions();
         }
     }
 
