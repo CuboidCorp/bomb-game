@@ -22,7 +22,7 @@ public class OptionsMainMenuManager : MonoBehaviour
     {
         Instance = this;
         uiDoc = GetComponent<UIDocument>();
-        uiDoc.enabled = false;
+        OpenOptionsMenu();
     }
 
     public void OpenOptionsMenu()
