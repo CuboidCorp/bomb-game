@@ -12,7 +12,7 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3350951939764224)" />
                 </Bindings>
             </engine:Label>
-            <engine:Label text="chocolatine727, rajojobar" name="tests" style="font-size: 30px; -unity-text-align: middle-center; flex-wrap: wrap; white-space: normal;" />
+            <engine:Label text="chocolatine727, rajojobar, los_pepitos" name="tests" style="font-size: 30px; -unity-text-align: middle-center; flex-wrap: wrap; white-space: normal;" />
             <engine:Label text="Label" name="packagesLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3352509507137536)" />
@@ -21,6 +21,9 @@
             <engine:Label text="AllSky Free - 10 Sky / Skybox Set by rpgwhitelock" name="package1" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
             <engine:Label text="Chemistry Lab Items Pack by Animatics Studio" name="package2" triple-click-selects-line="true" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
             <engine:Label text="Office Pack - Free by nappin" name="package3" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+            <engine:Label text="Free PBR Lamps by New Solution Studio" name="package4" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+            <engine:Label text="PBR Materials Sampler Pack by Integrity Software &amp; Games" name="package5" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+            <engine:Label text="POLYGON office building by 255 pixel studios" name="package6" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
             <engine:Label text="Label" name="inspLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3351482842181632)" />

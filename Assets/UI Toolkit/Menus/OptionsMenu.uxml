@@ -3,15 +3,15 @@
     <Style src="project://database/Assets/UI%20Toolkit/Styles/PauseMenuStyle.uss?fileID=7433441132597879392&amp;guid=44ec6a2b8d0e7d24ab152c888109ed11&amp;type=3#PauseMenuStyle" />
     <Style src="project://database/Assets/UI%20Toolkit/Styles/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=95042b685b2a0a141b44c25f836a679a&amp;type=3#MainMenuStyle" />
     <engine:VisualElement name="optionsHolder" class="ingame-options-container">
-        <engine:VisualElement name="options-content" class="options-content" style="margin-top: 7%; margin-bottom: 7%;">
-            <engine:Label text="Label" name="optionsLabel" class="ingame-options-title">
+        <engine:VisualElement name="options-content" class="options-content" style="margin-top: 5%; margin-bottom: 5%; margin-right: 5%; margin-left: 5%;">
+            <engine:Label text="Label" name="optionsLabel" class="ingame-options-title" style="font-size: 40px;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(330712969216)" />
                 </Bindings>
             </engine:Label>
             <engine:ScrollView name="optScrollView" class="ingame-options-scroll-view">
                 <engine:VisualElement name="volumeHolder" class="ingame-section-container">
-                    <engine:Label text="Label" name="volume" class="ingame-section-title">
+                    <engine:Label text="Label" name="volume" class="ingame-section-title" style="-unity-font-style: bold;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(4037940834304)" />
                         </Bindings>
@@ -43,13 +43,13 @@
                 </engine:VisualElement>
             </engine:ScrollView>
             <engine:VisualElement name="btnContainer" class="ingame-buttons-container">
-                <engine:VisualElement name="saveAndReset" class="ingame-action-buttons" style="justify-content: space-around;">
-                    <engine:Button text="Button" name="saveBtn" class="ingame-button primary-button">
+                <engine:VisualElement name="saveAndReset" class="ingame-action-buttons" style="justify-content: space-evenly;">
+                    <engine:Button text="Button" name="saveBtn" class="ingame-button primary-button" style="font-size: 30px;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(46708952625152)" />
                         </Bindings>
                     </engine:Button>
-                    <engine:Button text="Button" name="cancelBtn" class="ingame-button secondary-button">
+                    <engine:Button text="Button" name="cancelBtn" class="ingame-button secondary-button" style="font-size: 30px;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:602e67e85e73c4742bf209c0f2939638" entry="Id(46757472333824)" />
                         </Bindings>

@@ -42,7 +42,7 @@
             </engine:Label>
         </engine:VisualElement>
         <engine:VisualElement name="AppHolder" class="app-holder">
-            <engine:Button name="credits" class="app-button" style="background-image: none; background-color: rgb(188, 188, 188);" />
+            <engine:Button name="credits" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/Credits.png?fileID=2800000&amp;guid=6828965313e7f3d4c88278ae6c6e7371&amp;type=3#Credits&quot;); background-color: rgba(0, 0, 0, 0);" />
             <engine:Label text="Label" name="creditsLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(2994325642768384)" />
@@ -50,7 +50,7 @@
             </engine:Label>
         </engine:VisualElement>
         <engine:VisualElement name="AppHolder" class="app-holder">
-            <engine:Button name="tuto" class="app-button" style="background-image: none; background-color: rgb(188, 188, 188);" />
+            <engine:Button name="tuto" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/Tutorial.png?fileID=2800000&amp;guid=6de7be843b3090049a23a37c263dc17d&amp;type=3#Tutorial&quot;); background-color: rgba(0, 0, 0, 0);" />
             <engine:Label text="Label" name="tutoLabel" class="app-label">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(16763714342973440)" />
