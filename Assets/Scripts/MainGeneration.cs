@@ -123,6 +123,7 @@ public class MainGeneration : MonoBehaviour
                 bombModules[i] = ModuleType.EMPTY;
             }
         }
+
         ruleHolder.Generate(bombModules);
     }
 
@@ -195,6 +196,7 @@ public class MainGeneration : MonoBehaviour
         };
         GameObject bomb = Instantiate(Resources.Load<GameObject>(resourcesPath), position, Quaternion.Euler(rotation));
         bomb.GetComponent<Bomb>().SetupBomb();
+        bomb.GetComponent<Bomb>().SetupAppendixes(ruleHolder);
         bomb.GetComponent<Bomb>().SetupModules(bombModules, ruleHolder);
         bomb.GetComponent<Bomb>().StartBomb();
         return bomb;

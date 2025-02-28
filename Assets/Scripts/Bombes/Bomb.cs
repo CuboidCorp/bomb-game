@@ -106,6 +106,25 @@ public abstract class Bomb : MonoBehaviour
     }
 
     /// <summary>
+    /// Setup les annexes
+    /// </summary>
+    /// <param name="rules">Le generateur des regles</param>
+    public void SetupAppendixes(RuleHolder rules)
+    {
+        string prefabPath = "BombAppendixes/";
+
+        string currentPrefabPath = prefabPath + rules.serialNumberGenerator.GetPathToPrefab();
+
+        GameObject serialNumberGo = Instantiate(Resources.Load<GameObject>(currentPrefabPath));
+        SerialNumberRenderer snRender = serialNumberGo.GetComponent<SerialNumberRenderer>();
+        snRender.Setup(rules);
+        snRender.Generate(Random.Range(0, 4), transform.position);
+        snRender.RenderText();
+        serialNumberGo.transform.SetParent(transform);
+
+    }
+
+    /// <summary>
     /// Lance la bombe en commençant le timer et en ajoutant l'evenement d'explosion a la fin du timer
     /// </summary>
     public void StartBomb()

@@ -6,8 +6,17 @@ public class RuleHolder
     public MorseRuleGenerator morseRuleGenerator = null;
     public MathSymbolRuleGenerator mathSymbolRuleGenerator = null;
 
+    public SerialNumberGenerator serialNumberGenerator = null;
+
+    /// <summary>
+    /// Génère les règles des modules
+    /// </summary>
+    /// <param name="modules">Les modules dont on veux que les règles soient générées</param>
+    /// <exception cref="System.Exception">Si on donne un module non implementé</exception>
     public void Generate(ModuleType[] modules)
     {
+        GenerateAppendixes();
+
         foreach (ModuleType module in modules)
         {
             switch (module)
@@ -55,6 +64,19 @@ public class RuleHolder
         }
     }
 
+    /// <summary>
+    /// Genere les annexes de la bombe
+    /// </summary>
+    public void GenerateAppendixes()
+    {
+        serialNumberGenerator = new();
+        serialNumberGenerator.GenerateSerialNumber();
+    }
+
+    /// <summary>
+    /// Renvoie le générateur de règles du module en morse
+    /// </summary>
+    /// <returns>Le générateur si il existe, sinon un nouveau</returns>
     public MorseRuleGenerator GetMorseRuleGenerator()
     {
         if (morseRuleGenerator == null)
