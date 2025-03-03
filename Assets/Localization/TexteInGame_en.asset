@@ -31,15 +31,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 103662710784
-    m_Localized: TEXT4
+    m_Localized: KABOOM
     m_Metadata:
       m_Items: []
   - m_Id: 193425010688
-    m_Localized: TEXT5
+    m_Localized: 'ARMED '
     m_Metadata:
       m_Items: []
   - m_Id: 196340051968
-    m_Localized: TEXT6
+    m_Localized: TRY ME
     m_Metadata:
       m_Items: []
   references:

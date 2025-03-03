@@ -9,6 +9,7 @@ public class ButtonModule : Module
     /// Le bouton dans le module
     /// </summary>
     [SerializeField] private GameObject button;
+    private Animator buttonAnimator;
 
     /// <summary>
     /// Le texte pour afficher le mot
@@ -22,6 +23,8 @@ public class ButtonModule : Module
 
     public override void SetupModule(RuleHolder rules)
     {
+        buttonAnimator = button.GetComponent<Animator>();
+
         targetRule = rules.buttonRuleGenerator.GetRule();
 
         text.text = TextLocalizationHandler.LoadString("TexteInGame", targetRule.wordKey);
@@ -44,6 +47,7 @@ public class ButtonModule : Module
             if (hit.collider.gameObject == gameObject)
             {
                 isPressed = true;
+                buttonAnimator.SetTrigger("Press");
                 pressStartTime = Time.time;
             }
         }
@@ -56,6 +60,7 @@ public class ButtonModule : Module
             return;
         }
         isPressed = false;
+        buttonAnimator.SetTrigger("Release");
         float pressTime = Time.time - pressStartTime;
         bool success = false;
         Debug.Log("Press time : " + pressTime);

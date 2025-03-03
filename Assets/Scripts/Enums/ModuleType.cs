@@ -9,5 +9,6 @@ public enum ModuleType
     LABY,
     MATH_SYMBOL,
     MORSE,
+    SAFE,
     WIRES,
 }

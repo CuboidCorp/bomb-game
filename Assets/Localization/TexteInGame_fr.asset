@@ -31,15 +31,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 103662710784
-    m_Localized: TEXTE4
+    m_Localized: KABOOM
     m_Metadata:
       m_Items: []
   - m_Id: 193425010688
-    m_Localized: TEXTE5
+    m_Localized: "ARM\xC9"
     m_Metadata:
       m_Items: []
   - m_Id: 196340051968
-    m_Localized: TEXTE6
+    m_Localized: ESSAIE-MOI
     m_Metadata:
       m_Items: []
   references:
