@@ -71,7 +71,6 @@ public partial class LvlDesktopElement : VisualElement
     private void GoToDailyRun()
     {
         int daySeed = int.Parse($"{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}");
-        Random.InitState(daySeed);
 
         RunInfoHolder runInfo = new()
         {
