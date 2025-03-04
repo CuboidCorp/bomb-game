@@ -5,8 +5,18 @@ public class RuleHolder
     public ButtonRuleGenerator buttonRuleGenerator = null;
     public MorseRuleGenerator morseRuleGenerator = null;
     public MathSymbolRuleGenerator mathSymbolRuleGenerator = null;
+    public SafeRuleGenerator safeRuleGenerator = null;
 
     public SerialNumberGenerator serialNumberGenerator = null;
+
+    /// <summary>
+    /// Genere les annexes de la bombe
+    /// </summary>
+    public void GenerateAppendixes()
+    {
+        serialNumberGenerator = new();
+        serialNumberGenerator.GenerateSerialNumber();
+    }
 
     /// <summary>
     /// Génère les règles des modules
@@ -56,21 +66,20 @@ public class RuleHolder
                         mathSymbolRuleGenerator.SetupRules();
                     }
                     break;
+                case ModuleType.SAFE:
+                    if(safeRuleGenerator == null)
+                    {
+                        safeRuleGenerator = new();
+                        safeRuleGenerator.SetSerialNumberGen(serialNumberGenerator);
+                        safeRuleGenerator.SetupRules();
+                    }
+                    break;
                 case ModuleType.EMPTY:
                     break;
                 default:
                     throw new System.Exception("Module non reconnu");
             }
         }
-    }
-
-    /// <summary>
-    /// Genere les annexes de la bombe
-    /// </summary>
-    public void GenerateAppendixes()
-    {
-        serialNumberGenerator = new();
-        serialNumberGenerator.GenerateSerialNumber();
     }
 
     /// <summary>

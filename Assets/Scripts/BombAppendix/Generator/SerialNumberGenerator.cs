@@ -62,6 +62,42 @@ public class SerialNumberGenerator
     }
 
     /// <summary>
+    /// Renvoie le nombre de consonnes dans le numéro de série
+    /// </summary>
+    /// <returns>Le nombre de consonnes</returns>
+    public int GetNbConsonant()
+    {
+        int nbConsonant = 0;
+        for (int i = 0 ; i < serialNumber.Length ; i++)
+        {
+            if (!IsVoyelle(serialNumber[i]))
+            {
+                nbConsonant++;
+            }
+        }
+
+        return nbConsonant;
+    }
+
+    /// <summary>
+    /// Renvoie le nombre de voyelles dans le numéro de série
+    /// </summary>
+    /// <returns>Entier qui représente le nombre de voyelles</returns>
+    public int GetNbVowels()
+    {
+        int nbVowels = 0;
+        for (int i = 0 ; i < serialNumber.Length ; i++)
+        {
+            if (IsVoyelle(serialNumber[i]))
+            {
+                nbVowels++;
+            }
+        }
+
+        return nbVowels;
+    }
+
+    /// <summary>
     /// Vérifie si le numéro de série contient un caractère
     /// </summary>
     /// <param name="c">Le caractère à vérifier</param>
@@ -69,39 +105,6 @@ public class SerialNumberGenerator
     public bool ContainsChar(char c)
     {
         return serialNumber.Contains(c);
-    }
-
-    /// <summary>
-    /// Vérifie si il y a une consonne dans le numéro de série
-    /// </summary>
-    /// <returns>True si il y en a une, false sinon</returns>
-    public bool ContainsConsonne()
-    {
-        for (int i = 0; i < serialNumber.Length; i++)
-        {
-            if (!IsVoyelle(serialNumber[i]))
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// Vérifie si il y a une voyelle dans le numéro de série
-    /// </summary>
-    /// <returns>True si y a en a une, false sinon</returns>
-    public bool ContainsVoyelle()
-    {
-        for (int i = 0; i < serialNumber.Length; i++)
-        {
-            if (IsVoyelle(serialNumber[i]))
-            {
-                return true;
-            }
-        }
-        return false;
-
     }
 
     /// <summary>

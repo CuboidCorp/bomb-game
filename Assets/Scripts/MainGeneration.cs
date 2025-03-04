@@ -26,7 +26,10 @@ public class MainGeneration : MonoBehaviour
     private bool isFull = true;
 
     private Dictionary<ModuleType, float> moduleWeights;
-
+    /// <summary>
+    /// Associe à un module le nombre de fois ou il peut être dans une bombe
+    /// </summary>
+    private Dictionary<ModuleType, int> nbModulesAllowed;
     [SerializeField] private float weightDecreaseFactor = 0.5f;
     [SerializeField] private float weightIncreaseFactor = .1f;
     [SerializeField] private float minimumWeight = .1f;
@@ -88,6 +91,10 @@ public class MainGeneration : MonoBehaviour
             BombTypes.TWELVE_SLOTS => 11,
             _ => throw new NotImplementedException(),
         };
+
+        //On met les nombres max d'utilisation pour les modules concernés
+        nbModulesAllowed = new();
+        nbModulesAllowed.Add(ModuleType.Safe, 1);
 
         allModules = (ModuleType[])Enum.GetValues(typeof(ModuleType));
         //On enleve le module vide
@@ -166,14 +173,34 @@ public class MainGeneration : MonoBehaviour
     private void AdjustWeights(ModuleType selectedModule)
     {
         totalWeight = 0;
-        moduleWeights[selectedModule] = Mathf.Max(moduleWeights[selectedModule] * weightDecreaseFactor, minimumWeight);
+
+        if(nbModulesAllowed.Keys.Contains(selectedModule))
+        {
+            nbModulesAllowed[selectedModule]--;
+            if (nbModulesAllowed[selectedModule] == 0)
+            {
+                moduleWeights[selectedModule] = 0;
+            }
+            else
+            {
+                moduleWeights[selectedModule] = Mathf.Max(moduleWeights[selectedModule] * weightDecreaseFactor, minimumWeight);
+            }
+        }
+        else
+        {
+            moduleWeights[selectedModule] = Mathf.Max(moduleWeights[selectedModule] * weightDecreaseFactor, minimumWeight);
+        }
+
         totalWeight += moduleWeights[selectedModule];
 
         foreach (ModuleType module in allModules)
         {
             if (module != selectedModule)
             {
-                moduleWeights[module] += weightIncreaseFactor;
+                if(!nbModulesAllowed.Keys.Contains(selectedModule) || nbModulesAllowed[selectedModule] > 0)
+                {
+                    moduleWeights[module] += weightIncreaseFactor;
+                }
                 totalWeight += moduleWeights[module];
             }
 
