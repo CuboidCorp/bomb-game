@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe pour le module avec des fils
@@ -204,7 +205,7 @@ public class WireModule : Module
         GetComponent<Collider>().enabled = true;
     }
 
-    public override void OnModuleHoldStart(Ray rayInteract)
+    public override void OnModuleHoldStart(Ray rayInteract, InputAction pos)
     {
         //RIEN
     }

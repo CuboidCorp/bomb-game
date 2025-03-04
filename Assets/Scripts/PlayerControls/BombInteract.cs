@@ -167,7 +167,7 @@ public class BombInteract : MonoBehaviour
                 if (hit.transform.TryGetComponent(out targetModule))
                 {
                     targetModule = hit.transform.GetComponent<Module>();
-                    targetModule.OnModuleHoldStart(ray);
+                    targetModule.OnModuleHoldStart(ray, _pos);
                 }
 
             }

@@ -1,6 +1,7 @@
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MathSymbolModule : Module
@@ -33,7 +34,7 @@ public class MathSymbolModule : Module
         //Rien pr ce module
     }
 
-    public override void OnModuleHoldStart(Ray rayInteract)
+    public override void OnModuleHoldStart(Ray rayInteract, InputAction pos)
     {
         //Rien pr ce module
     }

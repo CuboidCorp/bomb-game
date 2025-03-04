@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ButtonModule : Module
 {
@@ -40,7 +41,7 @@ public class ButtonModule : Module
         //On fait rien, sur ce module seul le hold est important
     }
 
-    public override void OnModuleHoldStart(Ray rayInteract)
+    public override void OnModuleHoldStart(Ray rayInteract, InputAction pos)
     {
         if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
         {

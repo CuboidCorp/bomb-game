@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class LabyModule : Module
@@ -190,7 +191,7 @@ public class LabyModule : Module
         }
     }
 
-    public override void OnModuleHoldStart(Ray rayInteract)
+    public override void OnModuleHoldStart(Ray rayInteract, InputAction pos)
     {
         //Rien sur ce module
     }

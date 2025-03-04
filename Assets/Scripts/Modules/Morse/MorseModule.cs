@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MorseModule : Module
 {
@@ -111,7 +112,7 @@ public class MorseModule : Module
         Success();
     }
 
-    public override void OnModuleHoldStart(Ray rayInteract)
+    public override void OnModuleHoldStart(Ray rayInteract, InputAction pos)
     {
         //Rien sur ce module
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Classe de base pour tous les modules de bombe
@@ -39,7 +40,7 @@ public abstract class Module : MonoBehaviour
     /// <summary>
     /// Quand on hold le module
     /// </summary>
-    public abstract void OnModuleHoldStart(Ray rayInteract);
+    public abstract void OnModuleHoldStart(Ray rayInteract, InputAction pos);
 
     /// <summary>
     /// Quand on finit le hold du module
