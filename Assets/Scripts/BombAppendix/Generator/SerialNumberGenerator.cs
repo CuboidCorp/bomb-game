@@ -108,6 +108,24 @@ public class SerialNumberGenerator
     }
 
     /// <summary>
+    /// Vérifie si il y a un doublon dans le numéro de série
+    /// </summary>
+    /// <returns>True si y a un doublon, false sinon</returns>
+    public bool HasDuplicateChar()
+    {
+        HashSet<char> vus = new();
+        foreach(char c in serialNumber)
+        {
+            if(vus.Contains(c))
+            {
+                return true;
+            }
+            vus.Add(c);
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Check si un caractère est une voyelle
     /// </summary>
     /// <param name="c">Le caractère à check</param>
