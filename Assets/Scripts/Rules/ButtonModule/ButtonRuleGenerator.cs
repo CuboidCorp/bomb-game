@@ -45,6 +45,8 @@ public class ButtonRuleGenerator : IRuleGenerator
             rules.Add(GenerateRule(i, i)); //TODO : Pour changer randomiser le materiel et le texte en verifiant qu'ils ne sont pas deja pris
         }
 
+
+
         Functions.Shuffle(rules);
     }
 

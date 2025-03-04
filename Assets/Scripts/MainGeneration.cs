@@ -93,8 +93,10 @@ public class MainGeneration : MonoBehaviour
         };
 
         //On met les nombres max d'utilisation pour les modules concernés
-        nbModulesAllowed = new();
-        nbModulesAllowed.Add(ModuleType.Safe, 1);
+        nbModulesAllowed = new()
+        {
+            { ModuleType.SAFE, 1 }
+        };
 
         allModules = (ModuleType[])Enum.GetValues(typeof(ModuleType));
         //On enleve le module vide
@@ -130,6 +132,8 @@ public class MainGeneration : MonoBehaviour
                 bombModules[i] = ModuleType.EMPTY;
             }
         }
+
+        Debug.Log("Generation des modules");
 
         ruleHolder.Generate(bombModules);
     }
@@ -174,7 +178,7 @@ public class MainGeneration : MonoBehaviour
     {
         totalWeight = 0;
 
-        if(nbModulesAllowed.Keys.Contains(selectedModule))
+        if (nbModulesAllowed.Keys.Contains(selectedModule))
         {
             nbModulesAllowed[selectedModule]--;
             if (nbModulesAllowed[selectedModule] == 0)
@@ -197,7 +201,7 @@ public class MainGeneration : MonoBehaviour
         {
             if (module != selectedModule)
             {
-                if(!nbModulesAllowed.Keys.Contains(selectedModule) || nbModulesAllowed[selectedModule] > 0)
+                if (!nbModulesAllowed.Keys.Contains(selectedModule) || nbModulesAllowed[selectedModule] > 0)
                 {
                     moduleWeights[module] += weightIncreaseFactor;
                 }

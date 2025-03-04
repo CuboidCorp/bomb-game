@@ -76,7 +76,7 @@ public partial class LvlDesktopElement : VisualElement
         {
             seed = daySeed,
             isSeedLocked = true,
-            bombTypeIndex = Random.Range(0, Enum.GetValues(typeof(BombTypes)).Length),
+            bombTypeIndex = (int)BombTypes.SIX_SLOTS,
             isBombTypeLocked = true,
             isRandomizable = false
         };

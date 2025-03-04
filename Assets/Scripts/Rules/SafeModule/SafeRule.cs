@@ -1,4 +1,4 @@
-using UnityEngine;
+using System.Collections.Generic;
 
 public struct SafeRule
 {
@@ -24,5 +24,5 @@ public struct SafeRule
     /// <summary>
     /// Liste des questions 
     /// </summary>
-    List<SerialNumberConditions> questions;
+    public List<SerialNumberConditions> questions;
 }

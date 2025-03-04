@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -65,10 +66,10 @@ public class SerialNumberGenerator
     /// Renvoie le nombre de consonnes dans le numéro de série
     /// </summary>
     /// <returns>Le nombre de consonnes</returns>
-    public int GetNbConsonant()
+    public int GetNbConsonants()
     {
         int nbConsonant = 0;
-        for (int i = 0 ; i < serialNumber.Length ; i++)
+        for (int i = 0; i < serialNumber.Length; i++)
         {
             if (!IsVoyelle(serialNumber[i]))
             {
@@ -86,7 +87,7 @@ public class SerialNumberGenerator
     public int GetNbVowels()
     {
         int nbVowels = 0;
-        for (int i = 0 ; i < serialNumber.Length ; i++)
+        for (int i = 0; i < serialNumber.Length; i++)
         {
             if (IsVoyelle(serialNumber[i]))
             {
@@ -114,9 +115,9 @@ public class SerialNumberGenerator
     public bool HasDuplicateChar()
     {
         HashSet<char> vus = new();
-        foreach(char c in serialNumber)
+        foreach (char c in serialNumber)
         {
-            if(vus.Contains(c))
+            if (vus.Contains(c))
             {
                 return true;
             }

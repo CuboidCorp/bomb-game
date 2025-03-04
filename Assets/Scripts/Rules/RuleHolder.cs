@@ -32,47 +32,29 @@ public class RuleHolder
             switch (module)
             {
                 case ModuleType.WIRES:
-                    if (wireRuleGenerator == null)
-                    {
-                        wireRuleGenerator = new();
-                        wireRuleGenerator.SetupRules();
-                    }
+                    wireRuleGenerator = new();
+                    wireRuleGenerator.SetupRules();
                     break;
                 case ModuleType.LABY:
-                    if (labyRuleGenerator == null)
-                    {
-                        labyRuleGenerator = new();
-                        labyRuleGenerator.SetupRules();
-                    }
+                    labyRuleGenerator = new();
+                    labyRuleGenerator.SetupRules();
                     break;
                 case ModuleType.BUTTON:
-                    if (buttonRuleGenerator == null)
-                    {
-                        buttonRuleGenerator = new();
-                        buttonRuleGenerator.SetupRules();
-                    }
+                    buttonRuleGenerator = new();
+                    buttonRuleGenerator.SetupRules();
                     break;
                 case ModuleType.MORSE:
-                    if (morseRuleGenerator == null)
-                    {
-                        morseRuleGenerator = new();
-                        morseRuleGenerator.SetupRules();
-                    }
+                    morseRuleGenerator = new();
+                    morseRuleGenerator.SetupRules();
                     break;
                 case ModuleType.MATH_SYMBOL:
-                    if (mathSymbolRuleGenerator == null)
-                    {
-                        mathSymbolRuleGenerator = new();
-                        mathSymbolRuleGenerator.SetupRules();
-                    }
+                    mathSymbolRuleGenerator = new();
+                    mathSymbolRuleGenerator.SetupRules();
                     break;
                 case ModuleType.SAFE:
-                    if(safeRuleGenerator == null)
-                    {
-                        safeRuleGenerator = new();
-                        safeRuleGenerator.SetSerialNumberGen(serialNumberGenerator);
-                        safeRuleGenerator.SetupRules();
-                    }
+                    safeRuleGenerator = new();
+                    safeRuleGenerator.SetSerialNumberGen(serialNumberGenerator);
+                    safeRuleGenerator.SetupRules();
                     break;
                 case ModuleType.EMPTY:
                     break;
