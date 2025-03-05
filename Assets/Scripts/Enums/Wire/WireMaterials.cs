@@ -3,7 +3,7 @@
 /// </summary>
 public enum WireMaterials
 {
-    BLEU,
+    BLUE,
     CYAN,
     GREEN,
     MAGENTA,

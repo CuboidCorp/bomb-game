@@ -34,7 +34,7 @@ public partial class ButtonRulesElement : VisualElement
         for (int i = 0; i < ButtonRuleGenerator.NB_RULES; i++)
         {
             gridPlaced = gridElem.CloneTree();
-            gridPlaced.Q<Label>("word").text = TextLocalizationHandler.LoadString("TexteManuel", $"COLORS{i + 1}");
+            gridPlaced.Q<Label>("word").text = TextLocalizationHandler.LoadString("GenericText", $"COLORS{i + 1}");
             GridHolder.Add(gridPlaced);
 
             for (int j = 0; j < ButtonRuleGenerator.NB_RULES; j++)

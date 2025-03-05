@@ -83,30 +83,6 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
-  - m_Id: 2963092376350720
-    m_Localized: Bleu
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963167097876480
-    m_Localized: Cyan
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963459621220352
-    m_Localized: Vert
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963475165310976
-    m_Localized: Violet
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963492038995968
-    m_Localized: Rouge
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963504961646592
-    m_Localized: Jaune
-    m_Metadata:
-      m_Items: []
   - m_Id: 338588126900224
     m_Localized: "Ce module est compos\xE9 d'un gros bouton, en fonction de sa couleur
       et du texte \xE9crit dessus l'agent devra appuyer et rel\xE2cher le bouton
@@ -124,10 +100,6 @@ MonoBehaviour:
       caract\xE8re associ\xE9, vous devrez alors trouver l'image associ\xE9 au groupe
       auquel appartient le caract\xE8re et la d\xE9crire \xE0 l'agent pour qu'ils
       valident ensuite en cliquant sur le long bouton vert."
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6796106386599936
-    m_Localized: A venir ...
     m_Metadata:
       m_Items: []
   - m_Id: 7159074420912128
@@ -169,58 +141,6 @@ MonoBehaviour:
     m_Localized: bossu
     m_Metadata:
       m_Items: []
-  - m_Id: 7483902847840256
-    m_Localized: bleu
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483931536879616
-    m_Localized: cyan
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483958577557504
-    m_Localized: vert
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483969319170048
-    m_Localized: magenta
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483980559904768
-    m_Localized: rouge
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483989216948224
-    m_Localized: jaune
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7486142241271808
-    m_Localized: premier
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7487959779995648
-    m_Localized: "deuxi\xE8me"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488030714064896
-    m_Localized: "troisi\xE8me"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488072690659328
-    m_Localized: "quatri\xE8me"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488191133609984
-    m_Localized: "cinqui\xE8me"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488240597037056
-    m_Localized: "sixi\xE8me"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488464770002944
-    m_Localized: Sinon
-    m_Metadata:
-      m_Items: []
   - m_Id: 14041401331773440
     m_Localized: "Contr\xF4les"
     m_Metadata:
@@ -246,6 +166,62 @@ MonoBehaviour:
       une fois que le num\xE9ro est atteint."
     m_Metadata:
       m_Items: []
+  - m_Id: 33356307298217984
+    m_Localized: "R\xE8gles pour le module du coffre-fort"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356418262724608
+    m_Localized: "Ce module est compos\xE9 d\u2019une grande serrure \xE0 combinaison.
+      En s\u2019appuyant sur les informations du num\xE9ro de s\xE9rie situ\xE9 sur
+      un des c\xF4t\xE9s de la bombe, il faudra trouver le sens de rotation et la
+      valeur cible. Pour d\xE9samorcer le module il faut que l\u2019agent tourne
+      le verrou dans le sens trouv\xE9 pour atteindre la valeur trouv\xE9e, l\u2019agent
+      entendra un clic sonore en arr\xEAtant le verrou sur la valeur. Il faudra r\xE9p\xE9ter
+      ce processus \xE0 trois reprises en suivant les instructions suivantes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356595665006592
+    m_Localized: Tourner dans le sens horaire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356627881455616
+    m_Localized: Tourner dans le sens anti-horaire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356878591782912
+    m_Localized: "Tourner pour atteindre le num\xE9ro {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 33357363587543040
+    m_Localized: "Si la somme des chiffres du num\xE9ro de s\xE9rie est {0} \xE0
+      {1}"
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 33357629405753344
+    m_Localized: "Si le num\xE9ro de s\xE9rie contient le caract\xE8re {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650835
+  - m_Id: 33357738189221888
+    m_Localized: "Si le nombre de voyelles du num\xE9ro de s\xE9rie est {0} \xE0
+      {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33357788134993920
+    m_Localized: "Si le nombre de consonnes du num\xE9ro de s\xE9rie est {0} \xE0
+      {1}"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33357968846581760
+    m_Localized: "Si le num\xE9ro de s\xE9rie contient des doublons"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33357879860228096
+    m_Localized: "Si le num\xE9ro de s\xE9rie contient un nombre {0} \xE0 {1}"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -262,3 +238,6 @@ MonoBehaviour:
         - id: 7480320446656512
         - id: 7480511501398016
         - id: 7482107345989632
+        - id: 33356878591782912
+        - id: 33357363587543040
+        - id: 33357629405753344

@@ -102,14 +102,14 @@ public struct WireRule
         switch (condition)
         {
             case WireConditionTarget.Material:
-                args[0] = TextLocalizationHandler.LoadString("TexteManuel", $"WIRE_COLOR{((int)(WireMaterials)targetType) + 1}");
+                args[0] = TextLocalizationHandler.LoadString("GenericText", $"WIRE_COLOR{((int)(WireMaterials)targetType) + 1}");
                 break;
             case WireConditionTarget.Type:
                 args[0] = TextLocalizationHandler.LoadString("TexteManuel", $"WIRE_TYPE{((int)(WireType)targetType) + 1}_DESC");
                 break;
         }
 
-        args[1] = TextLocalizationHandler.LoadString("TexteManuel", $"NB_TO_TEXT{action.targetIndex + 1}");
+        args[1] = TextLocalizationHandler.LoadString("GenericText", $"NB_TO_TEXT{action.targetIndex + 1}");
 
         ruleString.Arguments = args;
 

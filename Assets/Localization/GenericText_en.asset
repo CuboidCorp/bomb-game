@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GenericText_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: aec63d3afa06f434a901b4d7f0797b5e, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7483989216948224
+    m_Localized: yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483980559904768
+    m_Localized: red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483969319170048
+    m_Localized: magenta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483958577557504
+    m_Localized: green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483931536879616
+    m_Localized: cyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7483902847840256
+    m_Localized: blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6796106386599936
+    m_Localized: Coming soon ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488240597037056
+    m_Localized: sixth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488191133609984
+    m_Localized: fifth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488072690659328
+    m_Localized: fourth
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488030714064896
+    m_Localized: third
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7487959779995648
+    m_Localized: second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7486142241271808
+    m_Localized: first
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7488464770002944
+    m_Localized: Else
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963504961646592
+    m_Localized: Yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963492038995968
+    m_Localized: Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963475165310976
+    m_Localized: Purple
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963459621220352
+    m_Localized: Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963167097876480
+    m_Localized: Cyan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2963092376350720
+    m_Localized: Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4212008644608
+    m_Localized: Then
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5109312876544
+    m_Localized: lesser than
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5179139649536
+    m_Localized: equal to
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5157295714304
+    m_Localized: greater than
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -56,34 +56,6 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 4501475455923650834
-  - m_Id: 2963092376350720
-    m_Localized: Blue
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963167097876480
-    m_Localized: Cyan
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963459621220352
-    m_Localized: Green
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963475165310976
-    m_Localized: Purple
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963492038995968
-    m_Localized: Red
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2963504961646592
-    m_Localized: Yellow
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6796106386599936
-    m_Localized: Coming soon ...
-    m_Metadata:
-      m_Items: []
   - m_Id: 7159074420912128
     m_Localized: Curb
     m_Metadata:
@@ -121,58 +93,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 7483120492703744
     m_Localized: bumpy
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483902847840256
-    m_Localized: blue
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483931536879616
-    m_Localized: cyan
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483958577557504
-    m_Localized: green
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483969319170048
-    m_Localized: magenta
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483980559904768
-    m_Localized: red
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7483989216948224
-    m_Localized: yellow
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7486142241271808
-    m_Localized: first
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7487959779995648
-    m_Localized: second
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488030714064896
-    m_Localized: third
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488072690659328
-    m_Localized: fourth
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488191133609984
-    m_Localized: fifth
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488240597037056
-    m_Localized: sixth
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7488464770002944
-    m_Localized: Else
     m_Metadata:
       m_Items: []
   - m_Id: 14041401331773440
@@ -247,6 +167,59 @@ MonoBehaviour:
       the symbols to defuse the bomb once the number is reached.
     m_Metadata:
       m_Items: []
+  - m_Id: 33356307298217984
+    m_Localized: Instructions for the safe module
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356418262724608
+    m_Localized: "This module is made of a big combination lock. Taking into account
+      the information from the bomb\u2019s serial number located on one of the sides
+      of the bomb, you will need to find the correct direction of rotation and the
+      target value. To defuse this module the agent needs to turn the lock in the
+      correct direction to reach the target value, the agent will hear a sound when
+      done correctly. This process needs to be done three times, using the following
+      instructions."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356595665006592
+    m_Localized: Turn clockwise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356627881455616
+    m_Localized: Turn counter clockwise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33356878591782912
+    m_Localized: Turn to reach the number {0}
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 33357363587543040
+    m_Localized: If the sum of the digits of the serial number is {0} {1}
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 33357629405753344
+    m_Localized: If the serial number contains the character {0}
+    m_Metadata:
+      m_Items:
+      - rid: 4501475455923650834
+  - m_Id: 33357738189221888
+    m_Localized: If the number of vowels in the serial number is {0} {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33357788134993920
+    m_Localized: If the number of consonants in the serial number is {0} {1}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33357968846581760
+    m_Localized: If the serial number contains duplicates
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33357879860228096
+    m_Localized: If the serial number contains a number {0} {1}
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -263,3 +236,6 @@ MonoBehaviour:
         - id: 7480320446656512
         - id: 7480511501398016
         - id: 7482107345989632
+        - id: 33356878591782912
+        - id: 33357363587543040
+        - id: 33357629405753344

@@ -34,7 +34,7 @@ public partial class WireRulesElement : VisualElement
                 Label label = new();
                 if (y > 0)
                 {
-                    label.text = TextLocalizationHandler.LoadString("TexteManuel", "ELSE") + " " + rules[y].GetRuleString().ToLower();
+                    label.text = TextLocalizationHandler.LoadString("GenericText", "ELSE") + " " + rules[y].GetRuleString().ToLower();
                 }
                 else
                 {
