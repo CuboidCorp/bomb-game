@@ -269,6 +269,9 @@ public class MainGeneration : MonoBehaviour
                     break;
                 case ModuleType.EMPTY: //Pas de manuel pour le module vide
                     break;
+                case ModuleType.SAFE:
+                    visualElement.Q<SafeRulesElement>().Init(ruleHolder.safeRuleGenerator);
+                    break;
                 default:
                     throw new NotImplementedException();
             }

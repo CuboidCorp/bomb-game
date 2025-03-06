@@ -1,5 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Styles/ManuelStyle.uss?fileID=7433441132597879392&amp;guid=2e9315a032ddd8e44a1ac09cab168e9b&amp;type=3#ManuelStyle" />
+    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
     <SafeRulesElement name="safeRuleElement">
         <engine:Label text="Label" name="title" class="moduleTitle">
             <Bindings>
@@ -11,6 +12,71 @@
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33356418262724608)" />
             </Bindings>
         </engine:Label>
-        <engine:VisualElement name="instructions" style="flex-grow: 1;" />
+        <engine:VisualElement name="instructions" style="flex-grow: 1;">
+            <engine:VisualElement name="header" style="flex-grow: 1; flex-direction: row;">
+                <engine:VisualElement name="cell1" class="safeCell">
+                    <engine:Label name="Label" class="safeLabel" style="-unity-text-align: upper-center; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);" />
+                </engine:VisualElement>
+                <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="headerNum" class="safeLabel">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33723690537938944)" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+                <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="headerRot" class="safeLabel" style="-unity-text-align: middle-center; height: 27px;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33723771387342848)" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="row1" style="flex-grow: 1; flex-direction: row;">
+                <engine:VisualElement name="cell1" class="safeCell">
+                    <engine:Label text="Label" name="step1" class="safeLabel" style="-unity-text-align: middle-center; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33726358434050048)" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+                <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="num1" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="dir1" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="row2" style="flex-grow: 1; flex-direction: row;">
+                <engine:VisualElement name="cell1" class="safeCell">
+                    <engine:Label text="Label" name="step2" class="safeLabel" style="-unity-text-align: middle-center; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); white-space: normal;">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33726413874360320)" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+                <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="num2" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="dir2" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+            <engine:VisualElement name="row3" style="flex-grow: 1; flex-direction: row;">
+                <engine:VisualElement name="cell1" class="safeCell">
+                    <engine:Label text="Label" name="step3" class="safeLabel" style="-unity-text-align: middle-center; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                        <Bindings>
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33726450712932352)" />
+                        </Bindings>
+                    </engine:Label>
+                </engine:VisualElement>
+                <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="num3" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                </engine:VisualElement>
+                <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
+                    <engine:Label text="Label" name="dir3" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                </engine:VisualElement>
+            </engine:VisualElement>
+        </engine:VisualElement>
     </SafeRulesElement>
 </engine:UXML>

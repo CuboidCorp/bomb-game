@@ -173,6 +173,26 @@ MonoBehaviour:
     m_Key: SERIAL_NUMBER_HAS_NUMBER
     m_Metadata:
       m_Items: []
+  - m_Id: 33723690537938944
+    m_Key: SAFE_HEADER_NUMBER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33723771387342848
+    m_Key: SAFE_HEADER_DIRECTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726358434050048
+    m_Key: SAFE_STEP_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726413874360320
+    m_Key: SAFE_STEP_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726450712932352
+    m_Key: SAFE_STEP_3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

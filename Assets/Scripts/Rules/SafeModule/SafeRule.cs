@@ -25,4 +25,9 @@ public struct SafeRule
     /// Liste des questions 
     /// </summary>
     public List<SerialNumberConditions> questions;
+
+    /// <summary>
+    /// Liste des annexes des questions
+    /// </summary>
+    public string[] annexesQuestions;
 }

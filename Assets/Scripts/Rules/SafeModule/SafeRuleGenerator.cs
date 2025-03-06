@@ -464,7 +464,8 @@ public class SafeRuleGenerator : IRuleGenerator
             valeurs = valeurs,
             goodDirIndex = goodDirIndex,
             goodValIndex = goodValIndex,
-            questions = questions
+            questions = questions,
+            annexesQuestions = annexesQuestions
         };
     }
 

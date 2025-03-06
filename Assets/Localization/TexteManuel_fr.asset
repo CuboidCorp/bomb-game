@@ -215,11 +215,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 33357968846581760
-    m_Localized: "Si le num\xE9ro de s\xE9rie contient des doublons"
+    m_Localized: "Si le num\xE9ro de s\xE9rie contient un nombre {0} \xE0 {1}"
     m_Metadata:
       m_Items: []
   - m_Id: 33357879860228096
-    m_Localized: "Si le num\xE9ro de s\xE9rie contient un nombre {0} \xE0 {1}"
+    m_Localized: "Si le num\xE9ro de s\xE9rie contient des doublons"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33723690537938944
+    m_Localized: Nombre cible
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33723771387342848
+    m_Localized: Sens de rotation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726358434050048
+    m_Localized: "Premi\xE8re \xE9tape"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726413874360320
+    m_Localized: "Deuxi\xE8me \xE9tape"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726450712932352
+    m_Localized: "Troisi\xE8me \xE9tape"
     m_Metadata:
       m_Items: []
   references:

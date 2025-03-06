@@ -213,11 +213,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 33357968846581760
-    m_Localized: If the serial number contains duplicates
+    m_Localized: If the serial number contains a number {0} {1}
     m_Metadata:
       m_Items: []
   - m_Id: 33357879860228096
-    m_Localized: If the serial number contains a number {0} {1}
+    m_Localized: If the serial number contains duplicates
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33723690537938944
+    m_Localized: Target number
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33723771387342848
+    m_Localized: Turn direction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726358434050048
+    m_Localized: First step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726413874360320
+    m_Localized: Second step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33726450712932352
+    m_Localized: Third step
     m_Metadata:
       m_Items: []
   references:
