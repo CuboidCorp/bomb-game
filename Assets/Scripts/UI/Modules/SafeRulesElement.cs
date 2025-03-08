@@ -34,7 +34,9 @@ public partial class SafeRulesElement : VisualElement
         int index = 0;
         for (int i = 0; i < rule.questions.Count; i++)
         {
-            value = rule.annexesQuestions[cpt];
+            value = rule.annexesQuestions[i];
+
+            Debug.Log(rule.questions[i] + " " + value);
             text = GetTextFromCond(rule.questions[i], value);
             text += " " + TextLocalizationHandler.LoadString("GenericText", "THEN");
             text += "\n\t";

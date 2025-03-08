@@ -79,7 +79,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
 
                     }
@@ -91,7 +91,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -104,7 +104,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -115,7 +115,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -141,7 +141,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -152,7 +152,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -179,7 +179,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -190,7 +190,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
 
@@ -206,7 +206,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -217,7 +217,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -232,7 +232,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -243,7 +243,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -258,7 +258,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -269,7 +269,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -284,7 +284,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -295,7 +295,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -310,7 +310,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -321,7 +321,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -336,7 +336,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -347,7 +347,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -362,7 +362,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -373,7 +373,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -388,7 +388,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -399,7 +399,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -414,7 +414,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -425,7 +425,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;
@@ -440,7 +440,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i;
+                            goodValIndex[i / 2] = i - 1;
                         }
                     }
                     else
@@ -451,7 +451,7 @@ public class SafeRuleGenerator : IRuleGenerator
                         }
                         else
                         {
-                            goodValIndex[i / 2] = i + 1;
+                            goodValIndex[i / 2] = i;
                         }
                     }
                     break;

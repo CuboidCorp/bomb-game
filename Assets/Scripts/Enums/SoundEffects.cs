@@ -8,4 +8,5 @@ public enum SoundEffects
     MODULE_FAIL,
     MODULE_SUCCESS,
     BUTTON_PRESS,
+    LIGHT_CLICK,
 }

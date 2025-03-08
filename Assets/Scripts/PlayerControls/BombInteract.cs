@@ -141,7 +141,10 @@ public class BombInteract : MonoBehaviour
         }
     }
 
-    private void PressStartModule(InputAction.CallbackContext context)
+    /// <summary>
+    /// Quand on commence a presser le module (click souris)
+    /// </summary>
+    private void PressStartModule(InputAction.CallbackContext _)
     {
         //On fait un ray pr tester la position
         Ray ray = mainCamera.ScreenPointToRay(_pos.ReadValue<Vector2>());
@@ -175,18 +178,27 @@ public class BombInteract : MonoBehaviour
 
     }
 
-    private void PressEndModule(InputAction.CallbackContext context)
+    /// <summary>
+    /// Quand on arrete de presser le module (relache la souris)
+    /// </summary>
+    private void PressEndModule(InputAction.CallbackContext _)
     {
         if (!isBombGrabbed || isGrabbingBomb)
         {
             return;
         }
+
+        if (targetModule != null)
+        {
+            targetModule.OnModuleHoldEnd();
+            targetModule = null;
+        }
+        //Interact simple
         Ray ray = mainCamera.ScreenPointToRay(_pos.ReadValue<Vector2>());
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance, moduleLayerMask))
         {
             if (hit.transform.TryGetComponent(out targetModule))
             {
-                targetModule.OnModuleHoldEnd();
                 targetModule.ModuleInteract(ray);
                 targetModule = null;
             }
