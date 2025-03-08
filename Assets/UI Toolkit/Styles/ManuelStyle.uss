@@ -1,9 +1,14 @@
 .moduleTitle {
     font-size: 32px;
     -unity-text-align: middle-center;
+    -unity-font-style: bold;
 }
 
 .moduleDesc {
     font-size: 20px;
     white-space: normal;
+}
+
+.whitespace {
+    height: 50px;
 }

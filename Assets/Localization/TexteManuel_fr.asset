@@ -20,48 +20,49 @@ MonoBehaviour:
     - rid: 4501475455923650835
   m_TableData:
   - m_Id: 33936601088
-    m_Localized: Introduction
+    m_Localized: <u>Introduction
     m_Metadata:
       m_Items: []
   - m_Id: 96884715520
-    m_Localized: "Votre objectif en tant qu'op\xE9rateur est d'aider l'agent sur
-      le terrain \xE0 d\xE9samorcer la bombe. La bombe en face de l'agent aura plusieurs
-      modules qu'il faut desactiver un \xE0 un, un module est desactiv\xE9 quand
-      la diode du module est verte."
+    m_Localized: "<align=justified>Votre objectif en tant qu'op\xE9rateur est d'aider
+      l'agent sur le terrain \xE0 d\xE9samorcer la bombe. La bombe en face de l'agent
+      aura plusieurs modules qu'il faut desactiver un \xE0 un, un module est desactiv\xE9
+      quand la diode du module est verte."
     m_Metadata:
       m_Items: []
   - m_Id: 177146916864
-    m_Localized: "Pour d\xE9sactiver un module l'agent devra vous aider \xE0 identifier
-      le type de module, parmi les modules pr\xE9sents dans ce manuel. Il faudra
-      alors vous r\xE9f\xE9rer aux r\xE8gles sp\xE9cifiques au module pour le d\xE9sactiver."
+    m_Localized: "<align=justified>Pour d\xE9sactiver un module l'agent devra vous
+      aider \xE0 identifier le type de module, parmi les modules pr\xE9sents dans
+      ce manuel. Il faudra alors vous r\xE9f\xE9rer aux r\xE8gles sp\xE9cifiques
+      au module pour le d\xE9sactiver."
     m_Metadata:
       m_Items: []
   - m_Id: 205965979648
-    m_Localized: "R\xE8gles du module des fils"
+    m_Localized: "<u>R\xE8gles du module des fils"
     m_Metadata:
       m_Items: []
   - m_Id: 222474760192
-    m_Localized: "Ce module est compos\xE9 de {0} \xE0 {1} fils color\xE9s. L'objectif
-      est de trouver la premi\xE8re condition qui est remplie et d'effectuer l'action
-      associ\xE9e. Les conditions se lisent de haut en bas."
+    m_Localized: "<align=justified>Ce module est compos\xE9 de {0} \xE0 {1} fils
+      color\xE9s. L'objectif est de trouver la premi\xE8re condition qui est remplie
+      et d'effectuer l'action associ\xE9e. Les conditions se lisent de haut en bas."
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 234994757632
-    m_Localized: "R\xE8gles du module de labyrinthe"
+    m_Localized: "<u>R\xE8gles du module de labyrinthe"
     m_Metadata:
       m_Items: []
   - m_Id: 265327964160
-    m_Localized: "Ce module est compos\xE9 d'un labyrinthe de {0}x{1} cases. L'objectif
-      est d'aider l'agent \xE0 d\xE9placer le curseur du labyrithe du d\xE9but du
-      labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue) sans passer
-      par les murs que l'agent ne peut pas voir. La position actuelle dans le labyrinthe
-      est indiqu\xE9 par une case jaune clignotante."
+    m_Localized: "<align=justified>Ce module est compos\xE9 d'un labyrinthe de {0}x{1}
+      cases. L'objectif est d'aider l'agent \xE0 d\xE9placer le curseur du labyrithe
+      du d\xE9but du labyrinthe (Case verte) vers la fin du labyrinthe (Case bleue)
+      sans passer par les murs que l'agent ne peut pas voir. La position actuelle
+      dans le labyrinthe est indiqu\xE9 par une case jaune clignotante."
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 338585450934272
-    m_Localized: "R\xE8gles du module du bouton\t"
+    m_Localized: "<u>R\xE8gles du module du bouton</u>\t"
     m_Metadata:
       m_Items: []
   - m_Id: 2960232460808192
@@ -84,22 +85,22 @@ MonoBehaviour:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 338588126900224
-    m_Localized: "Ce module est compos\xE9 d'un gros bouton, en fonction de sa couleur
-      et du texte \xE9crit dessus l'agent devra appuyer et rel\xE2cher le bouton
-      selon la condition contenue dans le tableau."
+    m_Localized: "<align=justified>Ce module est compos\xE9 d'un gros bouton, en
+      fonction de sa couleur et du texte \xE9crit dessus l'agent devra appuyer et
+      rel\xE2cher le bouton selon la condition contenue dans le tableau.</align>"
     m_Metadata:
       m_Items: []
   - m_Id: 5083017551245312
-    m_Localized: "R\xE8gles du module de morse"
+    m_Localized: "<u>R\xE8gles du module de morse"
     m_Metadata:
       m_Items: []
   - m_Id: 5083079790522368
-    m_Localized: "Ce module est compos\xE9 d'une lampe qui clignote, un long bouton
-      vert et une grille de 3*6 boutons. Pour d\xE9samorcer ce module il faut que
-      l'agent vous informe des clignotements en morse de la lampe, et trouver le
-      caract\xE8re associ\xE9, vous devrez alors trouver l'image associ\xE9 au groupe
-      auquel appartient le caract\xE8re et la d\xE9crire \xE0 l'agent pour qu'ils
-      valident ensuite en cliquant sur le long bouton vert."
+    m_Localized: "<align=justified>Ce module est compos\xE9 d'une lampe qui clignote,
+      un long bouton vert et une grille de 3*6 boutons. Pour d\xE9samorcer ce module
+      il faut que l'agent vous informe des clignotements en morse de la lampe, et
+      trouver le caract\xE8re associ\xE9, vous devrez alors trouver l'image associ\xE9
+      au groupe auquel appartient le caract\xE8re et la d\xE9crire \xE0 l'agent pour
+      qu'ils valident ensuite en cliquant sur le long bouton vert."
     m_Metadata:
       m_Items: []
   - m_Id: 7159074420912128
@@ -142,7 +143,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14041401331773440
-    m_Localized: "Contr\xF4les"
+    m_Localized: "<u>Contr\xF4les</u>"
     m_Metadata:
       m_Items: []
   - m_Id: 14041938836025344
@@ -152,29 +153,29 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 15990518295523328
-    m_Localized: "R\xE8gles pour le module des symboles"
+    m_Localized: "<u>R\xE8gles pour le module des symboles"
     m_Metadata:
       m_Items: []
   - m_Id: 15990640144248832
-    m_Localized: "Ce module est compos\xE9 d\u2019un \xE9cran noir avec un num\xE9ro
-      dessus, ainsi que de huit boutons avec des symboles dessus. Pour d\xE9samorcer
-      ce module, il faut que l\u2019agent vous informe du nombre sur l\u2019\xE9cran
-      et des symboles sur les boutons, l\u2019objectif sera alors de trouver une
-      combinaison de symboles dont la somme des valeurs correspond au nombre, vous
-      devrez alors donner \xE0 l\u2019agent la combinaison de symboles qu\u2019il
-      doit effectuer pour d\xE9samorcer le module en cliquant sur les boutons correspondants
-      une fois que le num\xE9ro est atteint."
+    m_Localized: "<align=justified>Ce module est compos\xE9 d\u2019un \xE9cran noir
+      avec un num\xE9ro dessus, ainsi que de huit boutons avec des symboles dessus.
+      Pour d\xE9samorcer ce module, il faut que l\u2019agent vous informe du nombre
+      sur l\u2019\xE9cran et des symboles sur les boutons, l\u2019objectif sera alors
+      de trouver une combinaison de symboles dont la somme des valeurs correspond
+      au nombre, vous devrez alors donner \xE0 l\u2019agent la combinaison de symboles
+      qu\u2019il doit effectuer pour d\xE9samorcer le module en cliquant sur les
+      boutons correspondants une fois que le num\xE9ro est atteint."
     m_Metadata:
       m_Items: []
   - m_Id: 33356307298217984
-    m_Localized: "R\xE8gles pour le module du coffre-fort"
+    m_Localized: "<u>R\xE8gles pour le module du coffre-fort"
     m_Metadata:
       m_Items: []
   - m_Id: 33356418262724608
-    m_Localized: "Ce module est compos\xE9 d\u2019une grande serrure \xE0 combinaison.
-      En s\u2019appuyant sur les informations du num\xE9ro de s\xE9rie situ\xE9 sur
-      un des c\xF4t\xE9s de la bombe, il faudra trouver le sens de rotation et la
-      valeur cible. Pour d\xE9samorcer le module il faut que l\u2019agent tourne
+    m_Localized: "<align=justified>Ce module est compos\xE9 d\u2019une grande serrure
+      \xE0 combinaison. En s\u2019appuyant sur les informations du num\xE9ro de s\xE9rie
+      situ\xE9 sur un des c\xF4t\xE9s de la bombe, il faudra trouver le sens de rotation
+      et la valeur cible. Pour d\xE9samorcer le module il faut que l\u2019agent tourne
       le verrou dans le sens trouv\xE9 pour atteindre la valeur trouv\xE9e, l\u2019agent
       entendra un clic sonore en arr\xEAtant le verrou sur la valeur. Il faudra r\xE9p\xE9ter
       ce processus \xE0 trois reprises en suivant les instructions suivantes."

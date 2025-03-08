@@ -20,20 +20,20 @@ MonoBehaviour:
     - rid: 4501475455923650834
   m_TableData:
   - m_Id: 33936601088
-    m_Localized: Introduction
+    m_Localized: <u>Introduction</u>
     m_Metadata:
       m_Items: []
   - m_Id: 222474760192
-    m_Localized: This module is made of {0} to {1} colored wires.
+    m_Localized: <align=justified>This module is made of {0} to {1} colored wires.
     m_Metadata:
       m_Items:
       - rid: 4501475455923650834
   - m_Id: 265327964160
-    m_Localized: This module is made of a labyrinth made of a grid of {0}x{1} squares.
-      The objective is to help the agent move the cursor from the beginning of the
-      labyrinth (Green square) to the end of the labyrinth (Blue squares) without
-      going through the walls that the agent can not see. The current position in
-      the labyrinth is shown through a blinking yellow square.
+    m_Localized: <align=justified>This module is made of a labyrinth made of a grid
+      of {0}x{1} squares. The objective is to help the agent move the cursor from
+      the beginning of the labyrinth (Green square) to the end of the labyrinth (Blue
+      squares) without going through the walls that the agent can not see. The current
+      position in the labyrinth is shown through a blinking yellow square.
     m_Metadata:
       m_Items:
       - rid: 4501475455923650834
@@ -96,7 +96,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 14041401331773440
-    m_Localized: Controls
+    m_Localized: <u>Controls</u>
     m_Metadata:
       m_Items: []
   - m_Id: 14041938836025344
@@ -108,77 +108,80 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 96884715520
-    m_Localized: Your objective as the operator is to help the agent on field defuse
-      the bomb. The bomb in front of the agent will have multiple module that needs
-      to be defused one by one, a module is disabled once the lamp on it is green.
+    m_Localized: <align=justified>Your objective as the operator is to help the agent
+      on field defuse the bomb. The bomb in front of the agent will have multiple
+      module that needs to be defused one by one, a module is disabled once the lamp
+      on it is green.
     m_Metadata:
       m_Items: []
   - m_Id: 177146916864
-    m_Localized: To disable a module, the agent will have to help you identify the
-      type of module, among the types of modules present inside this manual. Once
-      the module is identified you need to refer to the associated instructions to
-      help the agent disable the module.
+    m_Localized: <align=justified>To disable a module, the agent will have to help
+      you identify the type of module, among the types of modules present inside
+      this manual. Once the module is identified you need to refer to the associated
+      instructions to help the agent disable the module.
     m_Metadata:
       m_Items: []
   - m_Id: 205965979648
-    m_Localized: Instructions for the wires module
+    m_Localized: <u>Instructions for the wires module
     m_Metadata:
       m_Items: []
   - m_Id: 234994757632
-    m_Localized: Instructions for the labyrinth module
+    m_Localized: <u>Instructions for the labyrinth module
     m_Metadata:
       m_Items: []
   - m_Id: 338585450934272
-    m_Localized: Instructions for the button module
+    m_Localized: <u>Instructions for the button module</u>
     m_Metadata:
       m_Items: []
   - m_Id: 338588126900224
-    m_Localized: This module is made of a big button, and depending on its color
-      and the text written on it the agent will need to press and release the button
-      according to the condition associated with the color and text of the button
-      in the table below.
+    m_Localized: '<align=justified>This module is made of a big button, and depending
+      on its color and the text written on it the agent will need to press and release
+      the button according to the condition associated with the color and text of
+      the button in the table below.</align>
+
+'
     m_Metadata:
       m_Items: []
   - m_Id: 5083017551245312
-    m_Localized: Instructions for the morse module
+    m_Localized: <u>Instructions for the morse module
     m_Metadata:
       m_Items: []
   - m_Id: 5083079790522368
-    m_Localized: This module is made of a blinking light, a long green button and
-      a grid of 3x6 buttons. To disable this module, the agent needs to tell you
-      how the light is blinking so you can find which character is associated using
-      the morsepedia app. Once you have the character you need to find the group
-      in which it belongs and describe the associated image so they can reproduce
+    m_Localized: <align=justified>This module is made of a blinking light, a long
+      green button and a grid of 3x6 buttons. To disable this module, the agent needs
+      to tell you how the light is blinking so you can find which character is associated
+      using the morsepedia app. Once you have the character you need to find the
+      group in which it belongs and describe the associated image so they can reproduce
       it. Once they have the same image they can confirm it by pressing the long
       green button.
     m_Metadata:
       m_Items: []
   - m_Id: 15990518295523328
-    m_Localized: Instructions for the symbols module
+    m_Localized: <u>Instructions for the symbols module
     m_Metadata:
       m_Items: []
   - m_Id: 15990640144248832
-    m_Localized: This module is made of a black screen with a number on it, as well
-      as eight buttons with symbols on them. To defuse the module, the agent will
-      need to tell you what the number on the screen is, and which symbols are on
-      the buttons. The objective will then be to find a correct combination of symbols
-      where the sum of their respective values is equal to the number, once found
-      you can give it to the agent for them to press the buttons associated with
-      the symbols to defuse the bomb once the number is reached.
+    m_Localized: <align=justified>This module is made of a black screen with a number
+      on it, as well as eight buttons with symbols on them. To defuse the module,
+      the agent will need to tell you what the number on the screen is, and which
+      symbols are on the buttons. The objective will then be to find a correct combination
+      of symbols where the sum of their respective values is equal to the number,
+      once found you can give it to the agent for them to press the buttons associated
+      with the symbols to defuse the bomb once the number is reached.
     m_Metadata:
       m_Items: []
   - m_Id: 33356307298217984
-    m_Localized: Instructions for the safe module
+    m_Localized: <u>Instructions for the safe module
     m_Metadata:
       m_Items: []
   - m_Id: 33356418262724608
-    m_Localized: "This module is made of a big combination lock. Taking into account
-      the information from the bomb\u2019s serial number located on one of the sides
-      of the bomb, you will need to find the correct direction of rotation and the
-      target value. To defuse this module the agent needs to turn the lock in the
-      correct direction to reach the target value, the agent will hear a sound when
-      done correctly. This process needs to be done three times, using the following
-      instructions."
+    m_Localized: "<align=justified>This module is made of a big combination lock.
+      Taking into account the information from the bomb\u2019s serial number located
+      on one of the sides of the bomb, you will need to find the correct direction
+      of rotation and the target value. To defuse this module the agent needs to
+      turn the lock in the correct direction to reach the target value, the agent
+      will hear a sound when done correctly. This process needs to be done three
+      times, using the following instructions."
     m_Metadata:
       m_Items: []
   - m_Id: 33356595665006592

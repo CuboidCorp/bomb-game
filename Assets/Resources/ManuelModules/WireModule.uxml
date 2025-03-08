@@ -2,6 +2,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
     <Style src="project://database/Assets/UI%20Toolkit/Styles/ManuelStyle.uss?fileID=7433441132597879392&amp;guid=2e9315a032ddd8e44a1ac09cab168e9b&amp;type=3#ManuelStyle" />
     <WireRulesElement name="wireController">
+        <engine:VisualElement name="whiteSpace" class="whitespace" style="flex-grow: 1;" />
         <engine:Label text="Module filaire" name="titre" class="moduleTitle" style="font-size: 32px; -unity-text-align: upper-center;">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(205965979648)" />
