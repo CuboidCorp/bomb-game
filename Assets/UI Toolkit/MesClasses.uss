@@ -71,3 +71,27 @@
     -unity-font-style: bold;
     -unity-text-align: middle-center;
 }
+
+.hoveredToolbar {
+    background-color: rgba(87, 98, 138,0);
+    border-left-color: rgba(87, 98, 138,0);
+    border-right-color: rgba(87, 98, 138,0);
+    border-top-color: rgba(87, 98, 138,0);
+    border-bottom-color: rgba(87, 98, 138,0);
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+
+.hoveredToolbar:hover {
+    background-color: rgba(87, 98, 138,1);
+    border-left-color: rgba(87, 98, 138,1);
+    border-right-color: rgba(87, 98, 138,1);
+    border-top-color: rgba(87, 98, 138,1);
+    border-bottom-color: rgba(87, 98, 138,1);
+}
