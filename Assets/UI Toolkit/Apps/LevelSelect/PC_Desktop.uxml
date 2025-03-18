@@ -1,7 +1,7 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Styles/LevelSelectStyle.uss?fileID=7433441132597879392&amp;guid=0498b078e17894e49a3ddb2dbce29cd6&amp;type=3#LevelSelectStyle" />
     <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
-    <LvlDesktopElement name="desktop" class="desktop" style="background-image: url(&quot;project://database/Assets/Images/StockSnap_AYRUIOILUG.jpg?fileID=2800000&amp;guid=e31ce08f9144d5846bd8cde90dbc406b&amp;type=3#StockSnap_AYRUIOILUG&quot;);">
+    <LvlDesktopElement name="desktop" class="desktop pc-screen" style="background-image: url(&quot;project://database/Assets/Images/StockSnap_AYRUIOILUG.jpg?fileID=2800000&amp;guid=e31ce08f9144d5846bd8cde90dbc406b&amp;type=3#StockSnap_AYRUIOILUG&quot;); flex-direction: row;">
         <engine:VisualElement name="AppHolder" class="app-holder hoveredToolbar" style="height: 100px;">
             <engine:Button name="trashcan" class="app-button" style="background-image: url(&quot;project://database/Assets/Images/Trashcan.png?fileID=2800000&amp;guid=147d7fa01a388a64e96f1c3f91832cf2&amp;type=3#Trashcan&quot;); background-color: rgba(188, 188, 188, 0);" />
             <engine:Label text="Label" name="trashCanLabel" class="app-label">

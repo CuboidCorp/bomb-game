@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
+    <LvlToolBarElement name="toolBar" class="pc-toolbar" style="background-color: rgb(73, 81, 138);">
+        <engine:VisualElement name="hoverHolder" class="hoveredToolbar hoverHolder" style="border-left-color: rgba(87, 98, 138, 0); border-right-color: rgba(87, 98, 138, 0); border-top-color: rgba(87, 98, 138, 0); border-bottom-color: rgba(87, 98, 138, 0);">
+            <engine:Button name="mainMenuBtn" class="toolbar-icon" style="background-image: url(&quot;project://database/Assets/Images/CUBE.png?fileID=2800000&amp;guid=159b3c5b8bafafb4c857bad058a5b389&amp;type=3#CUBE&quot;);" />
+        </engine:VisualElement>
+    </LvlToolBarElement>
+</engine:UXML>

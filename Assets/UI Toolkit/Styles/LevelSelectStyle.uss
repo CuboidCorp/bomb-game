@@ -1,14 +1,3 @@
-.desktop {
-    width: 1024px;
-    height: 464px;
-    max-width: 1024px;
-    max-height: 464px;
-    min-width: 1024px;
-    min-height: 464px;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .app-holder {
     flex-grow: 0;
     width: 96px;

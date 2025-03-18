@@ -1,5 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:VisualElement name="calcView" style="flex-grow: 1; width: 1024px; max-width: 1024px; min-width: 1024px; height: 440px; max-height: 440px; min-height: 440px; background-color: rgb(200, 200, 200);">
+    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
+    <engine:VisualElement name="calcView" class="pc-screen" style="flex-grow: 1; background-color: rgb(200, 200, 200);">
         <engine:Label name="NYI" style="max-height: 100%; max-width: 100%; min-width: 100%; height: 100%; min-height: 100%; width: 100%; -unity-text-align: middle-center; font-size: 180px;">
             <Bindings>
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:aec63d3afa06f434a901b4d7f0797b5e" entry="Id(6796106386599936)" />

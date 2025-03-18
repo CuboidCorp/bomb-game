@@ -1,8 +1,9 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:VisualElement name="ScoreboardHolder" style="flex-grow: 1; background-color: rgb(200, 200, 200); width: 1024px; max-width: 1024px; min-width: 1024px; height: 464px; max-height: 464px; min-height: 464px;">
+    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
+    <engine:VisualElement name="ScoreboardHolder" class="pc-screen" style="flex-grow: 1; background-color: rgb(200, 200, 200);">
         <engine:Label name="NYI" style="max-height: 100%; max-width: 100%; min-width: 100%; height: 100%; min-height: 100%; width: 100%; -unity-text-align: middle-center; font-size: 180px;">
             <Bindings>
-                <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(6796106386599936)" />
+                <UnityEngine.Localization.LocalizedString property="text" table="GUID:aec63d3afa06f434a901b4d7f0797b5e" entry="Id(6796106386599936)" />
             </Bindings>
         </engine:Label>
     </engine:VisualElement>

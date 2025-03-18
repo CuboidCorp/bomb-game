@@ -1,0 +1,43 @@
+.character-item {
+    width: 300px; 
+    height: 100px;
+    margin: 10px 5px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: rgb(180, 180, 180);
+    flex-direction: row;
+}
+
+.custom-scrollview {
+    flex-grow: 1;
+    margin: 10px;
+}
+
+.custom-scrollview .unity-scroll-view__content-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.custom-scrollview .unity-scroll-view__vertical-scroller {
+    width: 18px;
+    background-color: rgba(200, 200, 200, 0.5);
+    border-left-width: 1px;
+    border-color: rgb(180, 180, 180);
+}
+
+.custom-scrollview .unity-scroller--vertical .unity-slider__tracker {
+    background-color: transparent;
+}
+
+.custom-scrollview .unity-scroller--vertical .unity-slider__dragger {
+    background-color: rgb(120, 120, 120);
+    border-radius: 4px;
+    width: 12px;
+    margin-left: 2px;
+}
+
+.custom-scrollview .unity-scroller--vertical .unity-slider__dragger:hover {
+    background-color: rgb(90, 90, 90);
+}

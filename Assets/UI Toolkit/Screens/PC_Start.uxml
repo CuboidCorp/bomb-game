@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:VisualElement name="holder" style="flex-grow: 1; justify-content: center; align-items: center; background-color: rgb(0, 0, 0); max-width: 1024px; min-width: 1024px; max-height: 512px; min-height: 512px;">
         <engine:VisualElement name="logo" style="flex-grow: 1; width: 160px; height: 160px; min-height: 160px; max-height: 160px; max-width: 160px; min-width: 160px; background-image: url(&quot;project://database/Assets/Images/CUBE.png?fileID=2800000&amp;guid=159b3c5b8bafafb4c857bad058a5b389&amp;type=3#CUBE&quot;);" />
-        <engine:Label text="Cuboid Corp." name="labelNom" style="-unity-background-image-tint-color: rgb(255, 255, 255); color: rgb(255, 255, 255);" />
+        <engine:Label text="Cuboid Corp." name="labelNom" style="-unity-background-image-tint-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-size: 20px;" />
     </engine:VisualElement>
 </engine:UXML>
