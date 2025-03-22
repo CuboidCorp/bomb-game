@@ -12,6 +12,6 @@
                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(338588126900224)" />
             </Bindings>
         </engine:Label>
-        <engine:VisualElement name="gridHolder" style="flex-grow: 1; flex-direction: row; justify-content: center; flex-wrap: wrap; width: auto; height: auto; max-width: 950px; max-height: 950px; min-width: auto; min-height: auto;" />
+        <engine:VisualElement name="gridHolder" style="flex-grow: 1; flex-direction: row; justify-content: center; flex-wrap: wrap; width: auto; height: auto; max-width: 1000px; max-height: 1000px; min-width: auto; min-height: auto; align-self: center;" />
     </ButtonRulesElement>
 </engine:UXML>
