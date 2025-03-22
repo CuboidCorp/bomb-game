@@ -64,6 +64,13 @@
 .safeLabel {
     flex-wrap: wrap;
     -unity-text-align: middle-center;
+    font-size: 16px;
+    white-space: pre-wrap;
+    justify-content: flex-start;
+    align-self: auto;
+    align-content: auto;
+    align-items: stretch;
+    max-width: none;
 }
 
 .safeHeaderLabel {

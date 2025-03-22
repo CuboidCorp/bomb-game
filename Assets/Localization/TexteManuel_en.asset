@@ -198,29 +198,29 @@ MonoBehaviour:
       m_Items:
       - rid: 4501475455923650834
   - m_Id: 33357363587543040
-    m_Localized: If the sum of the digits of the serial number is {0} {1}
+    m_Localized: Is the sum of the digits of the serial number {0} {1} ?
     m_Metadata:
       m_Items:
       - rid: 4501475455923650834
   - m_Id: 33357629405753344
-    m_Localized: If the serial number contains the character {0}
+    m_Localized: Does the serial number contain the character {0} ?
     m_Metadata:
       m_Items:
       - rid: 4501475455923650834
   - m_Id: 33357738189221888
-    m_Localized: If the number of vowels in the serial number is {0} {1}
+    m_Localized: Is the number of vowels in the serial number {0} {1} ?
     m_Metadata:
       m_Items: []
   - m_Id: 33357788134993920
-    m_Localized: If the number of consonants in the serial number is {0} {1}
+    m_Localized: Is the number of consonants in the serial number {0} {1} ?
     m_Metadata:
       m_Items: []
   - m_Id: 33357968846581760
-    m_Localized: If the serial number contains a number {0} {1}
+    m_Localized: Does the serial number contain a number {0} {1} ?
     m_Metadata:
       m_Items: []
   - m_Id: 33357879860228096
-    m_Localized: If the serial number contains duplicates
+    m_Localized: Does the serial number contain duplicates ?
     m_Metadata:
       m_Items: []
   - m_Id: 33723690537938944

@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Styles/ManuelStyle.uss?fileID=7433441132597879392&amp;guid=2e9315a032ddd8e44a1ac09cab168e9b&amp;type=3#ManuelStyle" />
-    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
     <SafeRulesElement name="safeRuleElement">
         <engine:VisualElement name="whiteSpace" class="whitespace" style="flex-grow: 1;" />
         <engine:Label text="Label" name="title" class="moduleTitle" style="-unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=329c47043eabb814a80946c76e649f98&amp;type=3#NotInter-Regular&quot;); text-overflow: clip;">

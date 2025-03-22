@@ -195,32 +195,34 @@ MonoBehaviour:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 33357363587543040
-    m_Localized: "Si la somme des chiffres du num\xE9ro de s\xE9rie est {0} \xE0
-      {1}"
+    m_Localized: "Est-ce que la somme des chiffres du num\xE9ro de s\xE9rie est {0}
+      \xE0 {1} ?"
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 33357629405753344
-    m_Localized: "Si le num\xE9ro de s\xE9rie contient le caract\xE8re {0}"
+    m_Localized: "Est-ce que le num\xE9ro de s\xE9rie contient le caract\xE8re {0}
+      ?"
     m_Metadata:
       m_Items:
       - rid: 4501475455923650835
   - m_Id: 33357738189221888
-    m_Localized: "Si le nombre de voyelles du num\xE9ro de s\xE9rie est {0} \xE0
-      {1}"
+    m_Localized: "Est-ce que le nombre de voyelles du num\xE9ro de s\xE9rie est {0}
+      \xE0 {1} ?"
     m_Metadata:
       m_Items: []
   - m_Id: 33357788134993920
-    m_Localized: "Si le nombre de consonnes du num\xE9ro de s\xE9rie est {0} \xE0
-      {1}"
+    m_Localized: "Est-ce que le nombre de consonnes du num\xE9ro de s\xE9rie est
+      {0} \xE0 {1} ?"
     m_Metadata:
       m_Items: []
   - m_Id: 33357968846581760
-    m_Localized: "Si le num\xE9ro de s\xE9rie contient un nombre {0} \xE0 {1}"
+    m_Localized: "Est-ce que le num\xE9ro de s\xE9rie contient un nombre {0} \xE0
+      {1} ?"
     m_Metadata:
       m_Items: []
   - m_Id: 33357879860228096
-    m_Localized: "Si le num\xE9ro de s\xE9rie contient des doublons"
+    m_Localized: "Est-ce que le num\xE9ro de s\xE9rie contient des doublons ?"
     m_Metadata:
       m_Items: []
   - m_Id: 33723690537938944

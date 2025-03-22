@@ -36,10 +36,8 @@ public partial class SafeRulesElement : VisualElement
         {
             value = rule.annexesQuestions[i];
 
-            Debug.Log(rule.questions[i] + " " + value);
             text = GetTextFromCond(rule.questions[i], value);
-            text += " " + TextLocalizationHandler.LoadString("GenericText", "THEN");
-            text += "\n\t";
+            text += "\n\t- " + TextLocalizationHandler.LoadString("GenericText", "TRUE") + " ";
             if (i % 2 == 0)
             {
                 LocalizedString numText = TextLocalizationHandler.GetSmartString("TexteManuel", "SAFE_TARGET_NUMBER");
@@ -51,10 +49,7 @@ public partial class SafeRulesElement : VisualElement
                 text += rule.directions[cpt] ? TextLocalizationHandler.LoadString("TexteManuel", "TURN_CLOCKWISE") : TextLocalizationHandler.LoadString("TexteManuel", "TURN_COUNTERCLOCKWISE");
             }
 
-            text += "\n";
-            text += TextLocalizationHandler.LoadString("GenericText", "ELSE");
-            text += "\n\t";
-
+            text += "\n\t- " + TextLocalizationHandler.LoadString("GenericText", "FALSE") + " ";
             if (i % 2 == 0)
             {
                 LocalizedString numText = TextLocalizationHandler.GetSmartString("TexteManuel", "SAFE_TARGET_NUMBER");

@@ -111,6 +111,14 @@ MonoBehaviour:
     m_Key: EQUAL_TO
     m_Metadata:
       m_Items: []
+  - m_Id: 5990290939146240
+    m_Key: TRUE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5990330063613952
+    m_Key: FALSE
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
