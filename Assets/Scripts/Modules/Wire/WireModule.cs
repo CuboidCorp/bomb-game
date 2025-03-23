@@ -178,7 +178,7 @@ public class WireModule : Module
         Destroy(wire);
 
         //On vérifie si c'est bien un bon fil
-        if (targetRule.IsWireCorrect(wireIndex, wireType, mat))
+        if (targetRule.IsWireCorrect(wireIndex))
         {
             Success();
         }

@@ -27,6 +27,7 @@ public class MainGeneration : MonoBehaviour
     /// Array qui contient tous les modules de la bombe
     /// </summary>
     private ModuleType[] bombModules;
+    private ModuleType[] uniqueModules;
 
     #region ModuleGeneration
     private List<ModuleType> allModules;
@@ -151,8 +152,8 @@ public class MainGeneration : MonoBehaviour
         }
 
         Debug.Log("Generation des modules");
-
-        ruleHolder.Generate(bombModules);
+        uniqueModules = bombModules.Distinct().ToArray();
+        ruleHolder.Generate(uniqueModules);
     }
 
     /// <summary>
@@ -255,7 +256,7 @@ public class MainGeneration : MonoBehaviour
     {
         //TODO : Regarder si c'est bien en generant les regles des modules qui y a pas pour compliquer la tache de l'operateur
         List<VisualElement> modulesRules = new();
-        ModuleType[] uniqueModules = bombModules.Distinct().ToArray();
+
 
         VisualTreeAsset[] images = Resources.LoadAll<VisualTreeAsset>("ManuelImages");
         VisualTreeAsset[] modules = Resources.LoadAll<VisualTreeAsset>("ManuelModules");

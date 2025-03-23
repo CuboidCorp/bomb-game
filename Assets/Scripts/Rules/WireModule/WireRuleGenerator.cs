@@ -64,61 +64,68 @@ public class WireRuleGenerator : IRuleGenerator
         return rulesByNbWires[nbWire][currentNbRulesIndex - 1];
     }
 
+    /// <summary>
+    /// Génère une règle pour un nombre de fils donné, en prenant en compte la dernière règle générée pour éviter les doublons
+    /// </summary>
+    /// <param name="nbWires">Nombre de fils sur lesquels s'appuyer</param>
+    /// <param name="lastRule">Denière règle généré, null si c'est la première</param>
+    /// <returns>Une nouvelle règle différente des anciennes</returns>
     private WireRule GenerateRule(int nbWires, WireRule? lastRule)
     {
-        //Randomiser certaines parties
         bool invertCondition;
-        WireConditionTarget condition = (WireConditionTarget)Random.Range(0, Enum.GetValues(typeof(WireConditionTarget)).Length);
-        Enum targetType = condition switch
-        {
-            WireConditionTarget.Material => (WireMaterials)Random.Range(0, Enum.GetValues(typeof(WireMaterials)).Length),
-            WireConditionTarget.Type => (WireType)Random.Range(0, Enum.GetValues(typeof(WireType)).Length),
-            _ => throw new NotImplementedException(),
-        };
+        WireConditionTarget condition;
+        WireMaterials? targetMaterial = null;
+        WireType? targetType = null;
+        WireRuleTarget action;
+        WireRule wireRule = default;
 
-        int quantity = Random.Range(0, 3);
-        if (quantity == 0)
-        {
-            invertCondition = Random.Range(0, 2) == 0;
-        }
-        else
-        {
-            invertCondition = false;
-        }
-        //En fonction de la quantité, on va choisir un type de quantité
-        QuantityType quantityType = (QuantityType)Random.Range(0, Enum.GetValues(typeof(QuantityType)).Length - 1);
         bool isRuleOkay = false;
-        WireRuleTarget action = new(Random.Range(0, nbWires));
-        WireRule wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1, action);
         while (isRuleOkay == false)
         {
-            wireRule = new(nbWires, invertCondition, targetType, condition, quantity, quantityType, -1, action);
+            invertCondition = Random.Range(0, 2) == 0;
+            condition = (WireConditionTarget)Random.Range(0, Enum.GetValues(typeof(WireConditionTarget)).Length);
+            switch (condition)
+            {
+                case WireConditionTarget.Material:
+                    targetMaterial = (WireMaterials)Random.Range(0, Enum.GetValues(typeof(WireMaterials)).Length);
+                    targetType = null;
+                    break;
+                case WireConditionTarget.Type:
+                    targetType = (WireType)Random.Range(0, Enum.GetValues(typeof(WireType)).Length);
+                    targetMaterial = null;
+                    break;
+            }
+            action = new WireRuleTarget(Random.Range(0, nbWires));
+
+            wireRule = new(nbWires, invertCondition, targetType, targetMaterial, condition, action);
             if (lastRule != null)
             {
                 if (wireRule.Equals(lastRule.Value) || wireRule.Equals(lastRule.Value.GetRuleInverse()))
                 {
                     continue;
                 }
+                bool isRuleInverseInConstraints = false;
                 foreach (WireRule constraint in lastRule.Value.constraints)
                 {
                     if (wireRule.Equals(constraint) || wireRule.Equals(constraint.GetRuleInverse()))
                     {
-                        continue;
+                        isRuleInverseInConstraints = true;
+                        break;
                     }
+                }
+                if (isRuleInverseInConstraints)
+                {
+                    continue;
                 }
 
                 isRuleOkay = true;
+                wireRule.AddConstraint(lastRule.Value);
             }
             else
             {
                 isRuleOkay = true;
             }
 
-        }
-
-        if (lastRule != null)
-        {
-            wireRule.AddConstraint((WireRule)lastRule);
         }
 
         return wireRule;

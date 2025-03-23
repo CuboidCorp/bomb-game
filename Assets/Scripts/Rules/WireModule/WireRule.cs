@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Localization;
 
 public struct WireRule
@@ -14,28 +13,17 @@ public struct WireRule
     /// </summary>
     public bool invertCondition;
     /// <summary>
-    /// L'objet sur lequel la condition s'applique
-    /// Ici (Wire Materials and Wire Type)
+    /// Le matériau cible de la condition, null si on check le type
     /// </summary>
-    public Enum targetType;
+    public WireMaterials? targetMaterial;
+    /// <summary>
+    /// Le type cible de la condition, null si on check le matériau
+    /// </summary>
+    public WireType? targetType;
     /// <summary>
     /// Permet d'identifier le target de la condition
     /// </summary>
     public WireConditionTarget condition;
-    /// <summary>
-    /// Quantité de fils qui doivent respecter la condition NYI
-    /// </summary>
-    public int quantity;
-    /// <summary>
-    /// Relation a check en fonction de la quantité NYI
-    /// </summary>
-    public QuantityType quantityType;
-
-    /// <summary>
-    /// L'index du fil sur lequel la règle s'applique  NYI
-    /// (De 0 à nbWires - 1)
-    /// </summary>
-    public int wirePositionIndex;
 
     /// <summary>
     /// Contraintes à respecter pour cette règle ( Liste des regles précédentes)
@@ -47,41 +35,32 @@ public struct WireRule
     /// </summary>
     public WireRuleTarget action;
 
-    public WireRule(int nbWires, bool invertCondition, Enum targetType, WireConditionTarget condition, int quantity, QuantityType quantityType, int wirePosition, WireRuleTarget action, List<WireRule> constraints = null)
+    public WireRule(int nbWires, bool invertCondition, WireType? targetType, WireMaterials? targetMaterial, WireConditionTarget condition, WireRuleTarget action, List<WireRule> constraints = null)
     {
         this.nbWires = nbWires;
         this.invertCondition = invertCondition;
         this.targetType = targetType;
+        this.targetMaterial = targetMaterial;
         this.condition = condition;
-        this.quantity = quantity;
-        this.quantityType = quantityType;
         this.constraints = constraints;
-        this.wirePositionIndex = wirePosition;
         this.action = action;
         this.constraints ??= new List<WireRule>();
     }
 
-    public readonly WireRule GetRuleInverse() => new(nbWires, !invertCondition, targetType, condition, quantity, GetInverseQuantityType(quantityType), wirePositionIndex, action, constraints);
-
-    private static QuantityType GetInverseQuantityType(QuantityType qt)
-    {
-        return qt switch
-        {
-            QuantityType.LESSER_THAN => QuantityType.GREATER_THAN_OR_EQUALS,
-            QuantityType.GREATER_THAN => QuantityType.LESSER_THAN_OR_EQUALS,
-            QuantityType.EQUALS => QuantityType.NOT_EQUALS,
-            QuantityType.LESSER_THAN_OR_EQUALS => QuantityType.GREATER_THAN,
-            QuantityType.GREATER_THAN_OR_EQUALS => QuantityType.LESSER_THAN,
-            QuantityType.NOT_EQUALS => QuantityType.EQUALS,
-            _ => qt, // Par sécurité, retourne le type actuel si non défini
-        };
-    }
+    public readonly WireRule GetRuleInverse() => new(nbWires, !invertCondition, targetType, targetMaterial, condition, action, constraints);
 
     /// <summary>
     /// Ajoute l'inverse d'une regle aux contraintes de cette regle
     /// </summary>
     /// <param name="ruleToAdd"></param>
-    public readonly void AddConstraint(WireRule ruleToAdd) => constraints.Add(ruleToAdd.GetRuleInverse());
+    public readonly void AddConstraint(WireRule ruleToAdd)
+    {
+        foreach (WireRule constraint in ruleToAdd.constraints)
+        {
+            constraints.Add(constraint);
+        }
+        constraints.Add(ruleToAdd.GetRuleInverse());
+    }
 
     /// <summary>
     /// Renvoie la règle sous forme lisible traduite en fonction de la locale
@@ -102,10 +81,10 @@ public struct WireRule
         switch (condition)
         {
             case WireConditionTarget.Material:
-                args[0] = TextLocalizationHandler.LoadString("GenericText", $"WIRE_COLOR{((int)(WireMaterials)targetType) + 1}");
+                args[0] = TextLocalizationHandler.LoadString("GenericText", $"WIRE_COLOR{((int)targetMaterial.Value) + 1}");
                 break;
             case WireConditionTarget.Type:
-                args[0] = TextLocalizationHandler.LoadString("TexteManuel", $"WIRE_TYPE{((int)(WireType)targetType) + 1}_DESC");
+                args[0] = TextLocalizationHandler.LoadString("TexteManuel", $"WIRE_TYPE{((int)targetType.Value) + 1}_DESC");
                 break;
         }
 
@@ -114,6 +93,11 @@ public struct WireRule
         ruleString.Arguments = args;
 
         return ruleString.GetLocalizedString();
+    }
+
+    public override string ToString()
+    {
+        return GetRuleString();
     }
 
     public override bool Equals(object obj)
@@ -132,6 +116,10 @@ public struct WireRule
         {
             return false;
         }
+        if (targetMaterial != other.Value.targetMaterial)
+        {
+            return false;
+        }
         if (targetType != other.Value.targetType)
         {
             return false;
@@ -146,10 +134,15 @@ public struct WireRule
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(invertCondition, targetType, condition, quantity, quantityType, constraints);
+        return HashCode.Combine(invertCondition, targetType, condition, constraints);
     }
 
-    public bool IsWireCorrect(int wireIndex, int wireType, Material mat)
+    /// <summary>
+    /// Vérifie si le fil coupé est correct
+    /// </summary>
+    /// <param name="wireIndex">L'index du fil coupé</param>
+    /// <returns>True si correct, false sinon</returns>
+    public bool IsWireCorrect(int wireIndex)
     {
         //Pour le momement on ne check que l'index du fil
         return action.IsIndexCorrect(wireIndex);

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 /// <summary>
 /// Le fil a couper apres 
 /// </summary>
@@ -10,15 +8,9 @@ public struct WireRuleTarget
     /// </summary>
     public int targetIndex;
 
-    /// <summary>
-    /// Le materiel a couper NYI
-    /// </summary>
-    public Material targetMaterial;
-
-    public WireRuleTarget(int targetIndex, Material targetMaterial = null)
+    public WireRuleTarget(int targetIndex)
     {
         this.targetIndex = targetIndex;
-        this.targetMaterial = targetMaterial;
     }
 
 
