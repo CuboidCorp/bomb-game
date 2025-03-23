@@ -35,10 +35,7 @@ public class WireModule : Module
 
         targetRule = rules.wireRuleGenerator.GetRandomRuleFromNbWire(nbWires);
 
-        if (MainGeneration.Instance.isDebug)
-        {
-            Debug.Log($"Solution {gameObject.name} : {targetRule}");
-        }
+        Debug.Log($"Solution {gameObject.name} : {targetRule}");
 
         SetupConstraints();
 
