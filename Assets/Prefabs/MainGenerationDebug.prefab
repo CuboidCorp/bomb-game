@@ -47,3 +47,11 @@ MonoBehaviour:
   seed: 0
   bombType: 0
   isDebug: 1
+  nbModulesAllowed:
+  - module: 1
+    maxNbAppearance: 0
+  - module: 5
+    maxNbAppearance: 1
+  weightDecreaseFactor: 0.5
+  weightIncreaseFactor: 0.1
+  minimumWeight: 0.1

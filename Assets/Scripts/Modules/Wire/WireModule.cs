@@ -33,9 +33,7 @@ public class WireModule : Module
 
         nbWires = rules.wireRuleGenerator.GetNbWire();
 
-        WireRule[] wireRules = rules.wireRuleGenerator.GetRulesFromNbWire(nbWires);
-
-        targetRule = wireRules[Random.Range(0, wireRules.Length)];
+        targetRule = rules.wireRuleGenerator.GetRandomRuleFromNbWire(nbWires);
 
         SetupConstraints();
 

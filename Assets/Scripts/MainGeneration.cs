@@ -5,6 +5,13 @@ using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 using System.Linq;
 
+[Serializable]
+public struct ModuleLimit
+{
+    public ModuleType module;
+    public int maxNbAppearance;
+}
+
 public class MainGeneration : MonoBehaviour
 {
     [SerializeField] private int seed = 0;
@@ -22,14 +29,16 @@ public class MainGeneration : MonoBehaviour
     private ModuleType[] bombModules;
 
     #region ModuleGeneration
-    private ModuleType[] allModules;
+    private List<ModuleType> allModules;
     private bool isFull = true;
 
     private Dictionary<ModuleType, float> moduleWeights;
     /// <summary>
     /// Associe à un module le nombre de fois ou il peut être dans une bombe
     /// </summary>
-    private Dictionary<ModuleType, int> nbModulesAllowed;
+    [SerializeField] private ModuleLimit[] nbModulesAllowed;
+    private Dictionary<ModuleType, int> nbModulesAllowedDict;
+
     [SerializeField] private float weightDecreaseFactor = 0.5f;
     [SerializeField] private float weightIncreaseFactor = .1f;
     [SerializeField] private float minimumWeight = .1f;
@@ -53,7 +62,7 @@ public class MainGeneration : MonoBehaviour
     {
         if (isDebug)
         {
-            Debug.LogWarning("Lancement en mode debug, le jeu sera diff�rent de la release, meme avec le meme seed");
+            Debug.LogWarning("Lancement en mode debug");
             Debug.Log("Set seed : " + seed);
             Random.InitState(seed);
         }
@@ -92,22 +101,30 @@ public class MainGeneration : MonoBehaviour
             _ => throw new NotImplementedException(),
         };
 
-        //On met les nombres max d'utilisation pour les modules concernés
-        nbModulesAllowed = new()
-        {
-            { ModuleType.SAFE, 1 }
-        };
+        allModules = ((ModuleType[])Enum.GetValues(typeof(ModuleType))).ToList();
 
-        allModules = (ModuleType[])Enum.GetValues(typeof(ModuleType));
-        //On enleve le module vide
-        allModules = allModules.Where(x => x != ModuleType.EMPTY).ToArray(); //TODO : Ameliorer ça faut juste enlever un 
+
+        //Création dico pour les limites des modules
+        //Si le module empty n'a pas une limite à 0 -> Exception garantie
+        nbModulesAllowedDict = new();
+        foreach (ModuleLimit moduleLimit in nbModulesAllowed)
+        {
+            if (moduleLimit.maxNbAppearance == 0)
+            {
+                allModules.Remove(moduleLimit.module);
+            }
+            else
+            {
+                nbModulesAllowedDict.Add(moduleLimit.module, moduleLimit.maxNbAppearance);
+            }
+        }
 
         moduleWeights = new();
         foreach (ModuleType module in allModules)
         {
             moduleWeights.Add(module, 1);
         }
-        totalWeight = allModules.Length;
+        totalWeight = allModules.Count;
 
         bombModules = new ModuleType[nbModules];
         if (isFull)
@@ -178,12 +195,12 @@ public class MainGeneration : MonoBehaviour
     {
         totalWeight = 0;
 
-        if (nbModulesAllowed.Keys.Contains(selectedModule))
+        if (nbModulesAllowedDict.Keys.Contains(selectedModule))
         {
-            nbModulesAllowed[selectedModule]--;
-            if (nbModulesAllowed[selectedModule] == 0)
+            nbModulesAllowedDict[selectedModule]--;
+            if (nbModulesAllowedDict[selectedModule] == 0)
             {
-                moduleWeights[selectedModule] = 0;
+                allModules.Remove(selectedModule);
             }
             else
             {
@@ -201,10 +218,7 @@ public class MainGeneration : MonoBehaviour
         {
             if (module != selectedModule)
             {
-                if (!nbModulesAllowed.Keys.Contains(selectedModule) || nbModulesAllowed[selectedModule] > 0)
-                {
-                    moduleWeights[module] += weightIncreaseFactor;
-                }
+                moduleWeights[module] += weightIncreaseFactor;
                 totalWeight += moduleWeights[module];
             }
 

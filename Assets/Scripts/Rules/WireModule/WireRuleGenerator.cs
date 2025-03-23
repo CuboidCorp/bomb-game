@@ -8,8 +8,12 @@ public class WireRuleGenerator : IRuleGenerator
     private const int NB_WIRES_MAX = 5;
 
     private const int NB_RULES = 4;
-
     private WireRule[] rules;
+    /// <summary>
+    /// Regles triées et randomisées par nombre de fils
+    /// </summary>
+    private Dictionary<int, WireRule[]> rulesByNbWires;
+    private int currentNbRulesIndex = 0;
 
     private List<int> nbWiresList;
     private int currentNbWiresIndex = 0;
@@ -18,16 +22,22 @@ public class WireRuleGenerator : IRuleGenerator
     {
         nbWiresList = new List<int>();
         int nbWireRules = NB_WIRES_MAX + 1 - NB_WIRES_MIN;
+        rulesByNbWires = new Dictionary<int, WireRule[]>();
         rules = new WireRule[nbWireRules * NB_RULES];
+        List<WireRule> rulesList = new();
         for (int i = 0; i < nbWireRules; i++)
         {
             nbWiresList.Add(NB_WIRES_MIN + i);
             WireRule? lastWire = null;
             for (int y = 0; y < NB_RULES; y++)
             {
-                rules[i * NB_RULES + y] = GenerateRule(NB_WIRES_MIN + i, lastWire);
-                lastWire = rules[i * NB_RULES + y];
+                WireRule newRule = GenerateRule(NB_WIRES_MIN + i, lastWire);
+                rules[i * NB_RULES + y] = newRule;
+                rulesList.Add(newRule);
+                lastWire = newRule;
             }
+            Functions.Shuffle(rulesList);
+            rulesByNbWires.Add(NB_WIRES_MIN + i, rulesList.ToArray());
         }
 
         Functions.Shuffle(nbWiresList);
@@ -42,6 +52,16 @@ public class WireRuleGenerator : IRuleGenerator
             currentNbWiresIndex = 1;
         }
         return nbWiresList[currentNbWiresIndex - 1];
+    }
+
+    public WireRule GetRandomRuleFromNbWire(int nbWire)
+    {
+        currentNbRulesIndex++;
+        if (currentNbRulesIndex > NB_RULES)
+        {
+            currentNbRulesIndex = 1;
+        }
+        return rulesByNbWires[nbWire][currentNbRulesIndex - 1];
     }
 
     private WireRule GenerateRule(int nbWires, WireRule? lastRule)
@@ -122,6 +142,8 @@ public class WireRuleGenerator : IRuleGenerator
 
         return rulesList.ToArray();
     }
+
+
 
     /// <summary>
     /// Renvoie le nombre de fils minimum
