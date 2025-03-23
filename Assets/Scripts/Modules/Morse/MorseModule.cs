@@ -44,7 +44,7 @@ public class MorseModule : Module
 
         if (MainGeneration.Instance.isDebug)
         {
-            Debug.Log($"Module morse target Char : {targetRule.targetCharacter}");
+            Debug.Log($"Solution {gameObject.name} target Char : {targetRule.targetCharacter}");
             string img = "";
             for (int i = 0; i < imageSize.y; i++)
             {

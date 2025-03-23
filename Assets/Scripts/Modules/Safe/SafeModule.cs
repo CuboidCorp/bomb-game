@@ -39,9 +39,9 @@ public class SafeModule : Module
             valeursCibles[i] = rule.valeurs[rule.goodValIndex[i]];
             directions[i] = rule.directions[rule.goodDirIndex[i]];
         }
-
-        Debug.Log("Valeurs cibles : " + valeursCibles[0] + " " + valeursCibles[1] + " " + valeursCibles[2]);
-        Debug.Log("Directions : " + directions[0] + " " + directions[1] + " " + directions[2]);
+        Debug.Log($"Solution {gameObject.name}");
+        Debug.Log($"Valeurs cibles : {valeursCibles[0]} {valeursCibles[1]} {valeursCibles[2]}");
+        Debug.Log($"Directions : {directions[0]} {directions[1]} {directions[2]}");
 
     }
 

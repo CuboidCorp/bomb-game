@@ -46,6 +46,8 @@ public class MathSymbolModule : Module
 
         numberHolder.text = targetRule.targetNumber.ToString();
 
+        Debug.Log($"Solution {gameObject.name} : {targetRule}");
+
         for (int i = 0; i < buttons.Length; i++)
         {
             int index = (int)targetRule.valeursBtn.Keys.ToArray()[i];

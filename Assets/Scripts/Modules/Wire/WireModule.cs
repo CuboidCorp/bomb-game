@@ -35,6 +35,11 @@ public class WireModule : Module
 
         targetRule = rules.wireRuleGenerator.GetRandomRuleFromNbWire(nbWires);
 
+        if (MainGeneration.Instance.isDebug)
+        {
+            Debug.Log($"Solution {gameObject.name} : {targetRule}");
+        }
+
         SetupConstraints();
 
         placedWires = new GameObject[nbWires];
@@ -108,25 +113,24 @@ public class WireModule : Module
 
         switch (targetRule.condition)
         {
-            //TODO : Ajouter les autres conditions
             case WireConditionTarget.Material:
                 if (targetRule.invertCondition)
                 {
-                    forbiddenMaterials.Add(wireMaterials[(int)(WireMaterials)targetRule.targetType]);
+                    forbiddenMaterials.Add(wireMaterials[(int)targetRule.targetMaterial.Value]);
                 }
                 else
                 {
-                    mandatoryMaterials.Add(wireMaterials[(int)(WireMaterials)targetRule.targetType]);
+                    mandatoryMaterials.Add(wireMaterials[(int)targetRule.targetMaterial.Value]);
                 }
                 break;
             case WireConditionTarget.Type:
                 if (targetRule.invertCondition)
                 {
-                    forbiddenTypes.Add((int)(WireType)targetRule.targetType);
+                    forbiddenTypes.Add((int)targetRule.targetType.Value);
                 }
                 else
                 {
-                    mandatoryTypes.Add((int)(WireType)targetRule.targetType);
+                    mandatoryTypes.Add((int)targetRule.targetType.Value);
                 }
                 break;
 
@@ -136,25 +140,24 @@ public class WireModule : Module
         {
             switch (constraint.condition)
             {
-                //TODO : Ajouter les autres conditions
                 case WireConditionTarget.Material:
                     if (constraint.invertCondition)
                     {
-                        forbiddenMaterials.Add(wireMaterials[(int)(WireMaterials)constraint.targetType]);
+                        forbiddenMaterials.Add(wireMaterials[(int)constraint.targetMaterial.Value]);
                     }
                     else
                     {
-                        mandatoryMaterials.Add(wireMaterials[(int)(WireMaterials)constraint.targetType]);
+                        mandatoryMaterials.Add(wireMaterials[(int)constraint.targetMaterial.Value]);
                     }
                     break;
                 case WireConditionTarget.Type:
                     if (constraint.invertCondition)
                     {
-                        forbiddenTypes.Add((int)(WireType)constraint.targetType);
+                        forbiddenTypes.Add((int)constraint.targetType.Value);
                     }
                     else
                     {
-                        mandatoryTypes.Add((int)(WireType)constraint.targetType);
+                        mandatoryTypes.Add((int)constraint.targetType.Value);
                     }
                     break;
 
@@ -193,7 +196,6 @@ public class WireModule : Module
         GetComponent<Collider>().enabled = false;
         if (Physics.Raycast(rayInteract, out RaycastHit hit, 10))
         {
-            Debug.Log(hit.collider.gameObject.name);
             Debug.DrawRay(rayInteract.origin, rayInteract.direction * 10, Color.black, 5);
             if (hit.collider.TryGetComponent(out Wire wire))
             {
