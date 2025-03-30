@@ -7,15 +7,15 @@ using UnityEngine.UIElements;
 public class AgentTutoHandler : MonoBehaviour
 {
     #region BombGeneration
-    private const int BOMB_SEED = 8;
+    [SerializeField] private int BOMB_SEED = 8;
     private ModuleType[] bombModules;
     [SerializeField] private Vector3 bombPos;
     [SerializeField] private Vector3 bombRot;
     public GameObject bomb;
 
-    private static readonly Vector3 basePos = new Vector3(-50, 5.6f, 7);
-    private static readonly Vector3 timerPos = new Vector3(-50, 6.1f, 6.5f);
-    private static readonly Vector3 buttonPos = new Vector3(-49, 6.1f, 6.5f);
+    private static readonly Vector3 basePos = new(-50, 5.6f, 7);
+    private static readonly Vector3 timerPos = new(-50, 5.1f, 6.5f);
+    private static readonly Vector3 buttonPos = new(-49, 6.1f, 6.5f);
     #endregion
 
     private PlayerControls playerControls;
@@ -27,6 +27,8 @@ public class AgentTutoHandler : MonoBehaviour
     private UIDocument doc;
     private Label textLabel;
     private bool isTextDisplayed = false;
+    private Coroutine textDisplayCoroutine;
+    private Coroutine skipTextCoroutine;
 
     public bool isDebug = false;
 
@@ -117,10 +119,13 @@ public class AgentTutoHandler : MonoBehaviour
         }
         else
         {
-            StartCoroutine(DisplayProgressiveText(text));
+            textDisplayCoroutine = StartCoroutine(DisplayProgressiveText(text));
+            skipTextCoroutine = StartCoroutine(SkipTextDisplayCoroutine(skipTuto, text));
         }
 
     }
+
+
 
     /// <summary>
     /// Contient les fonction pour l'�tape 4 du tutoriel
@@ -158,6 +163,7 @@ public class AgentTutoHandler : MonoBehaviour
     /// </summary>
     private void FakeDefuseStep()
     {
+        StartCoroutine(MoveCameraTo(buttonPos, basePos));
         bomb.GetComponent<Bomb>().EnableCollider();
         RenderText("TUTO_AGENT_8");
     }
@@ -179,7 +185,7 @@ public class AgentTutoHandler : MonoBehaviour
     /// </summary>
     /// <param name="text">Le texte � afficher</param>
     /// <returns>Quand le texte est affich� entierement</returns>
-    IEnumerator DisplayProgressiveText(string text)
+    private IEnumerator DisplayProgressiveText(string text)
     {
         textLabel.text = "";
         isTextDisplayed = false;
@@ -189,7 +195,24 @@ public class AgentTutoHandler : MonoBehaviour
             if (text[i] != ' ' && text[i] != '\n' && text[i] != '.' && text[i] != ',')
                 yield return new WaitForSeconds(TIME_BETWEEN_LETTERS);
         }
+        StopCoroutine(skipTextCoroutine);
         isTextDisplayed = true;
+    }
+
+    private IEnumerator SkipTextDisplayCoroutine(InputAction action, string text)
+    {
+        bool inputReceived = false;
+
+        void onPerformed(InputAction.CallbackContext ctx) => inputReceived = true;
+
+        action.performed += onPerformed;
+
+        yield return new WaitUntil(() => inputReceived);
+
+        action.performed -= onPerformed;
+        StopCoroutine(textDisplayCoroutine);
+        isTextDisplayed = true;
+        textLabel.text = text;
     }
 
     /// <summary>

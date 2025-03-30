@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     /// <param name="soundEffect">Le sound effect a jouer</param>
     /// <param name="volume">Le volume du sound effect</param>
-    public void PlaySoundEffect(SoundEffects soundEffect, int volume = 1)
+    public void PlaySoundEffect(SoundEffects soundEffect, float volume = 1)
     {
         audioSourceSFX.PlayOneShot(soundEffects[(int)soundEffect], volume);
     }

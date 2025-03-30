@@ -173,11 +173,14 @@ public abstract class Bomb : MonoBehaviour
     {
         //TODO : Afficher explosion
         timerScript.StopTimer();
-        foreach (GameObject module in modulesGo)
+        if (!isTutorial)
         {
-            if (module != null)
+            foreach (GameObject module in modulesGo)
             {
-                Destroy(module.GetComponent<Module>());
+                if (module != null)
+                {
+                    Destroy(module.GetComponent<Module>());
+                }
             }
         }
         AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_EXPLOSION);
@@ -269,6 +272,7 @@ public abstract class Bomb : MonoBehaviour
         isBombExploded = false;
         isBombDefused = false;
         TimeSpan time = new(0, 3 * (nbModules / 6), 0);
+        nbStrikes = 0;
         timerScript.SetupTimer(time);
         timerScript.LaunchTimer();
     }

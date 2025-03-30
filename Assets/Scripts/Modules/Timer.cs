@@ -87,7 +87,7 @@ public class Timer : MonoBehaviour
         while (nbSeconds > 0)
         {
             yield return new WaitForSecondsRealtime(timeBetweenSeconds);
-            AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_BEEP);
+            AudioManager.Instance.PlaySoundEffect(SoundEffects.BOMB_BEEP, 0.5f);
             nbSeconds--;
             timerText.text = TimeSpan.FromSeconds(nbSeconds).ToString("mm\\:ss");
         }
