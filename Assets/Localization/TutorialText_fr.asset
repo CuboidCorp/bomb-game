@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 355815878656
-    m_Localized: "Bienveue dans le tutoriel pour les agents, vous allez apprendre
+    m_Localized: "Bienvenue dans le tutoriel pour les agents, vous allez apprendre
       ici \xE0 d\xE9samorcer les bombes. Appuyez sur [Espace] pour continuer."
     m_Metadata:
       m_Items: []
@@ -62,8 +62,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 752191023837184
-    m_Localized: "Oups, je me suis tromp\xE9 et vous avez eu une erreur, les erreurs
-      sont tr\xE8s dangereuses car elles acc\xE9l\xE8rent le minuteur."
+    m_Localized: "Oups, je me suis tromp\xE9 et vous avez eu une erreur, faites attention
+      car au bout de trois erreurs la bombe explosera."
     m_Metadata:
       m_Items: []
   - m_Id: 752264675815424

@@ -61,8 +61,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 752191023837184
-    m_Localized: Oops, I made a mistake and you got a strike, strikes are very dangerous
-      as they speed up the timer.
+    m_Localized: 'Oops, I made a mistake and you got a strike, you better be careful
+      : three strikes and you''re out.'
     m_Metadata:
       m_Items: []
   - m_Id: 752264675815424

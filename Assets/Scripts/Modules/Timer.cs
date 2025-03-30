@@ -76,7 +76,7 @@ public class Timer : MonoBehaviour
     public void AddStrike()
     {
         strikesText.text += "X";
-        timeBetweenSeconds /= 1.5f;
+        //timeBetweenSeconds /= 1.5f;
     }
 
     /// <summary>

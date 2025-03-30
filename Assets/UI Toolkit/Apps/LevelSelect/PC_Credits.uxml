@@ -1,5 +1,5 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
     <engine:VisualElement name="Credits" class="pc-screen" style="flex-grow: 1; background-color: rgb(200, 200, 200);">
         <engine:ScrollView>
             <engine:Label text="Label" name="devLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
@@ -13,7 +13,7 @@
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3350951939764224)" />
                 </Bindings>
             </engine:Label>
-            <engine:Label text="chocolatine727, rajojobar, los_pepitos" name="tests" style="font-size: 30px; -unity-text-align: middle-center; flex-wrap: wrap; white-space: normal;" />
+            <engine:Label text="chocolatine727, rajojobar, los_pepitos, rystue" name="tests" style="font-size: 30px; -unity-text-align: middle-center; flex-wrap: wrap; white-space: normal;" />
             <engine:Label text="Label" name="packagesLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
                 <Bindings>
                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3352509507137536)" />
@@ -51,6 +51,7 @@
             </engine:Label>
             <engine:Label text="Pixabay" name="audio" style="font-size: 30px; -unity-text-align: middle-center;" />
             <engine:Label text="Milan Wulf (Pixabay)" name="audio2" style="font-size: 30px; -unity-text-align: middle-center;" />
+            <engine:Label text="eritnhut (Pixabay)" name="audio2" style="font-size: 30px; -unity-text-align: middle-center;" />
         </engine:ScrollView>
     </engine:VisualElement>
 </engine:UXML>

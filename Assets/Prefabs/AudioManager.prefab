@@ -49,8 +49,8 @@ MonoBehaviour:
   soundEffects:
   - {fileID: 8300000, guid: 725a5f819cb233046af4d5c7fac251ad, type: 3}
   - {fileID: 8300000, guid: 8b22f97241bb26e4d9162f15046b258f, type: 3}
-  - {fileID: 8300000, guid: e12b20155f2be714e98b29c61d133874, type: 3}
-  - {fileID: 8300000, guid: 5fd1f54fa36ac0a43b69534fddce0e79, type: 3}
+  - {fileID: 8300000, guid: a7badbdad183bcc4dbe3da31b972b264, type: 3}
+  - {fileID: 8300000, guid: 9dc5a13a7dbfd5748b46c4d0fb9b772b, type: 3}
   - {fileID: 8300000, guid: 6308de4974d7f234ebe9871bf2b281b2, type: 3}
   - {fileID: 8300000, guid: dd6475ae2edf894469544da66c4f30ce, type: 3}
   audioSourceSFX: {fileID: 8122070937391369677}
