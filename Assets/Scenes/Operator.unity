@@ -2678,11 +2678,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: seed
-      value: 1430
+      value: 1431
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[2].module
@@ -2701,12 +2701,20 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
-      propertyPath: nbModulesAllowed.Array.data[1].maxNbAppearance
+      propertyPath: nbModulesAllowed.Array.data[6].module
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
+      propertyPath: nbModulesAllowed.Array.data[0].maxNbAppearance
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
+      propertyPath: nbModulesAllowed.Array.data[1].maxNbAppearance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[2].maxNbAppearance
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[3].maxNbAppearance

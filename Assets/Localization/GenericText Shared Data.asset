@@ -100,15 +100,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5109312876544
-    m_Key: LESSER_THAN
+    m_Key: LESSER_THAN_M
     m_Metadata:
       m_Items: []
   - m_Id: 5157295714304
-    m_Key: GREATER_THAN
+    m_Key: GREATER_THAN_M
     m_Metadata:
       m_Items: []
   - m_Id: 5179139649536
-    m_Key: EQUAL_TO
+    m_Key: EQUAL_TO_M
     m_Metadata:
       m_Items: []
   - m_Id: 5990290939146240
@@ -117,6 +117,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5990330063613952
     m_Key: FALSE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10105889667641344
+    m_Key: LESSER_THAN_F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10105951101612032
+    m_Key: GREATER_THAN_F
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10106054306656256
+    m_Key: EQUAL_TO_F
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -185,7 +185,7 @@ public class MainGeneration : MonoBehaviour
             }
         }
         Debug.LogWarning("Aucun module n'a ete selectionne");
-        return allModules[0];
+        return ModuleType.EMPTY;
     }
 
     /// <summary>
@@ -195,6 +195,11 @@ public class MainGeneration : MonoBehaviour
     private void AdjustWeights(ModuleType selectedModule)
     {
         totalWeight = 0;
+        if (selectedModule == ModuleType.EMPTY)
+        {
+            //Si y a eu une erreur, on ne fait rien
+            return;
+        }
 
         if (nbModulesAllowedDict.Keys.Contains(selectedModule))
         {

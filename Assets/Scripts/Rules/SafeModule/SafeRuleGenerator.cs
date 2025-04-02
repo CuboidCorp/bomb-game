@@ -458,6 +458,16 @@ public class SafeRuleGenerator : IRuleGenerator
             }
         }
 
+        foreach (int i in goodDirIndex)
+        {
+            Debug.Log($"GoodDirIndex : {i} valeur : {directions[i]}");
+        }
+
+        foreach (int i in goodValIndex)
+        {
+            Debug.Log($"GoodValIndex : {i} valeur : {valeurs[i]}");
+        }
+
         return new SafeRule
         {
             directions = directions,

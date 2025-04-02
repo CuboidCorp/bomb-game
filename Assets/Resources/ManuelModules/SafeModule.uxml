@@ -21,14 +21,14 @@
                 <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
                     <engine:Label text="Label" name="headerNum" class="safeHeaderLabel">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33723690537938944)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33723771387342848)" />
                         </Bindings>
                     </engine:Label>
                 </engine:VisualElement>
                 <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
                     <engine:Label text="Label" name="headerRot" class="safeHeaderLabel">
                         <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33723771387342848)" />
+                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:1c63d9cd4a0b9e84f9c5fc96bc93be33" entry="Id(33723690537938944)" />
                         </Bindings>
                     </engine:Label>
                 </engine:VisualElement>
@@ -42,10 +42,10 @@
                     </engine:Label>
                 </engine:VisualElement>
                 <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
-                    <engine:Label text="Label" name="num1" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                    <engine:Label text="Label" name="dir1" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
                 </engine:VisualElement>
                 <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
-                    <engine:Label text="Label" name="dir1" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                    <engine:Label text="Label" name="num1" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="row2" style="flex-grow: 1; flex-direction: row;">
@@ -57,10 +57,10 @@
                     </engine:Label>
                 </engine:VisualElement>
                 <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
-                    <engine:Label text="Label" name="num2" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                    <engine:Label text="Label" name="dir2" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
                 </engine:VisualElement>
                 <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
-                    <engine:Label text="Label" name="dir2" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                    <engine:Label text="Label" name="num2" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
                 </engine:VisualElement>
             </engine:VisualElement>
             <engine:VisualElement name="row3" style="flex-grow: 1; flex-direction: row;">
@@ -72,10 +72,10 @@
                     </engine:Label>
                 </engine:VisualElement>
                 <engine:VisualElement name="cell2" class="safeCell" style="flex-grow: 1;">
-                    <engine:Label text="Label" name="num3" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                    <engine:Label text="Label" name="dir3" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
                 </engine:VisualElement>
                 <engine:VisualElement name="cell3" class="safeCell" style="flex-grow: 1;">
-                    <engine:Label text="Label" name="dir3" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
+                    <engine:Label text="Label" name="num3" class="safeLabel" style="-unity-text-align: middle-left; white-space: normal;" />
                 </engine:VisualElement>
             </engine:VisualElement>
         </engine:VisualElement>

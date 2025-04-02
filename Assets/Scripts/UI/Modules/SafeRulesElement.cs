@@ -40,27 +40,27 @@ public partial class SafeRulesElement : VisualElement
             text += "\n\t- " + TextLocalizationHandler.LoadString("GenericText", "TRUE") + " ";
             if (i % 2 == 0)
             {
-                LocalizedString numText = TextLocalizationHandler.GetSmartString("TexteManuel", "SAFE_TARGET_NUMBER");
-                numText.Arguments = new object[] { rule.valeurs[cpt] };
-                text += numText.GetLocalizedString();
+                text += rule.directions[cpt] ? TextLocalizationHandler.LoadString("TexteManuel", "TURN_CLOCKWISE") : TextLocalizationHandler.LoadString("TexteManuel", "TURN_COUNTERCLOCKWISE");
             }
             else
             {
-                text += rule.directions[cpt] ? TextLocalizationHandler.LoadString("TexteManuel", "TURN_CLOCKWISE") : TextLocalizationHandler.LoadString("TexteManuel", "TURN_COUNTERCLOCKWISE");
+                LocalizedString numText = TextLocalizationHandler.GetSmartString("TexteManuel", "SAFE_TARGET_NUMBER");
+                numText.Arguments = new object[] { rule.valeurs[cpt] };
+                text += numText.GetLocalizedString();
             }
 
             text += "\n\t- " + TextLocalizationHandler.LoadString("GenericText", "FALSE") + " ";
             if (i % 2 == 0)
             {
+                text += rule.directions[cpt + 1] ? TextLocalizationHandler.LoadString("TexteManuel", "TURN_CLOCKWISE") : TextLocalizationHandler.LoadString("TexteManuel", "TURN_COUNTERCLOCKWISE");
+                Dirs[index].text = text;
+            }
+            else
+            {
                 LocalizedString numText = TextLocalizationHandler.GetSmartString("TexteManuel", "SAFE_TARGET_NUMBER");
                 numText.Arguments = new object[] { rule.valeurs[cpt + 1] };
                 text += numText.GetLocalizedString();
                 Nums[index].text = text;
-            }
-            else
-            {
-                text += rule.directions[cpt + 1] ? TextLocalizationHandler.LoadString("TexteManuel", "TURN_CLOCKWISE") : TextLocalizationHandler.LoadString("TexteManuel", "TURN_COUNTERCLOCKWISE");
-                Dirs[index].text = text;
                 index++;
                 cpt += 2;
             }
@@ -83,62 +83,62 @@ public partial class SafeRulesElement : VisualElement
                 break;
             case SerialNumberConditions.HAS_NUMBER_GREATER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_HAS_NUMBER");
-                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NUMBER_LESSER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_HAS_NUMBER");
-                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NUMBER_EQUAL_TO:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_HAS_NUMBER");
-                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO");
+                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_SUM_GREATER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_SUM");
-                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN_F");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_SUM_LESSER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_SUM");
-                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN_F");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_SUM_EQUAL_TO:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_SUM");
-                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO");
+                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO_F");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NB_VOWEL_GREATER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_NB_VOWELS");
-                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NB_VOWEL_LESSER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_NB_VOWELS");
-                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NB_VOWEL_EQUAL_TO:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_NB_VOWELS");
-                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO");
+                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NB_CONSONANT_GREATER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_NB_CONS");
-                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "GREATER_THAN_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NB_CONSONANT_LESSER_THAN:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_NB_CONS");
-                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN");
+                texte = TextLocalizationHandler.LoadString("GenericText", "LESSER_THAN_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             case SerialNumberConditions.HAS_NB_CONSONANT_EQUAL_TO:
                 smartText = TextLocalizationHandler.GetSmartString("TexteManuel", "SERIAL_NUMBER_NB_CONS");
-                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO");
+                texte = TextLocalizationHandler.LoadString("GenericText", "EQUAL_TO_M");
                 smartText.Arguments = new object[] { texte, value };
                 break;
             default:

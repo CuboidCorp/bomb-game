@@ -71,7 +71,7 @@ public class SerialNumberGenerator
         int nbConsonant = 0;
         for (int i = 0; i < serialNumber.Length; i++)
         {
-            if (!IsVoyelle(serialNumber[i]))
+            if (IsConsonant(serialNumber[i]))
             {
                 nbConsonant++;
             }
@@ -130,10 +130,20 @@ public class SerialNumberGenerator
     /// Check si un caractère est une voyelle
     /// </summary>
     /// <param name="c">Le caractère à check</param>
-    /// <returns>True si il y a </returns>
+    /// <returns>True si voyelle, false sinon </returns>
     private bool IsVoyelle(char c)
     {
         return "AEIOUY".Contains(c);
+    }
+
+    /// <summary>
+    /// Check si un caractère est une consonne
+    /// </summary>
+    /// <param name="c">Le caractère a check</param>
+    /// <returns>True si consonne, false sinon</returns>
+    private bool IsConsonant(char c)
+    {
+        return "BCDFGHJKLMNPQRSTVWXZ".Contains(c);
     }
 
 

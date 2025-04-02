@@ -122,6 +122,18 @@ MonoBehaviour:
     m_Localized: FALSE
     m_Metadata:
       m_Items: []
+  - m_Id: 10105889667641344
+    m_Localized: lesser than
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10105951101612032
+    m_Localized: greater than
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10106054306656256
+    m_Localized: equal to
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

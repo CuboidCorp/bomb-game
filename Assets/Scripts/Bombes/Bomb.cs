@@ -140,7 +140,7 @@ public abstract class Bomb : MonoBehaviour
     /// </summary>
     public void AddStrike()
     {
-        AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_FAIL, 0.5f);
+        AudioManager.Instance.PlaySoundEffect(SoundEffects.MODULE_FAIL, 0.25f);
         nbStrikes++;
         Debug.Log("Adding strike");
         if (nbStrikes == MAX_STRIKES)

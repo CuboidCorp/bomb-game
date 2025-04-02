@@ -103,15 +103,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5109312876544
-    m_Localized: "strictement inf\xE9rieure"
+    m_Localized: "strictement inf\xE9rieur"
     m_Metadata:
       m_Items: []
   - m_Id: 5157295714304
-    m_Localized: "strictement sup\xE9rieure"
+    m_Localized: "strictement sup\xE9rieur"
     m_Metadata:
       m_Items: []
   - m_Id: 5179139649536
-    m_Localized: "\xE9gale"
+    m_Localized: "\xE9gal"
     m_Metadata:
       m_Items: []
   - m_Id: 5990290939146240
@@ -120,6 +120,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5990330063613952
     m_Localized: FAUX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10105889667641344
+    m_Localized: "strictement inf\xE9rieure"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10105951101612032
+    m_Localized: "strictement sup\xE9rieure"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10106054306656256
+    m_Localized: "\xE9gale"
     m_Metadata:
       m_Items: []
   references:
