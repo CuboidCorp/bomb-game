@@ -52,6 +52,8 @@ MonoBehaviour:
     maxNbAppearance: 0
   - module: 5
     maxNbAppearance: 1
+  - module: 3
+    maxNbAppearance: 5
   weightDecreaseFactor: 0.5
   weightIncreaseFactor: 0.1
   minimumWeight: 0.1

@@ -50,7 +50,7 @@ public class MathSymbolModule : Module
 
         for (int i = 0; i < buttons.Length; i++)
         {
-            int index = (int)targetRule.valeursBtn.Keys.ToArray()[i];
+            int index = (int)targetRule.valeursBtn[i].Key;
             buttons[i].sprite = symbolSprites[index];
         }
 
@@ -62,7 +62,7 @@ public class MathSymbolModule : Module
         int num = int.Parse(btnName[3..]);
 
         //On recup le numéro associé au bouton
-        int value = targetRule.valeursBtn[targetRule.valeursBtn.Keys.ToArray()[num - 1]];
+        int value = targetRule.valeursBtn[num - 1].Value;
 
         currentCount += value;
         Debug.Log("Current count : " + currentCount + " / " + targetRule.targetNumber);

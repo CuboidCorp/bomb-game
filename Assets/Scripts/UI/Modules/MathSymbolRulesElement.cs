@@ -24,10 +24,6 @@ public partial class MathSymbolRulesElement : VisualElement
                 symbol.style.backgroundImage = symbolsSprites[(int)symbolsRep[i, y]].texture;
                 symbol.style.width = 64;
                 symbol.style.height = 64;
-                //symbol.style.maxHeight = 64;
-                //symbol.style.maxWidth = 64;
-                //symbol.style.minHeight = 64;
-                //symbol.style.minWidth = 64;
                 symbolHolder.Add(symbol);
 
             }

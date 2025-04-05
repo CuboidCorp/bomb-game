@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class MathSymbolRuleGenerator : IRuleGenerator
 {
-    private const int NB_RULES = 4;
+    private const int NB_RULES = 5;
 
     private MathSymbolRule[] rules;
     private int currentRuleIndex = 0;
@@ -37,41 +37,51 @@ public class MathSymbolRuleGenerator : IRuleGenerator
             }
         }
 
-
         for (int i = 0; i < NB_RULES; i++)
         {
-            rulesList.Add(GenerateMathSymbolRule());
+            MathSymbolRule rule = GenerateMathSymbolRule(i);
+            rulesList.Add(rule);
         }
 
         symbolsSprites = Resources.LoadAll<Sprite>("Textures/Symbols/");
 
         Functions.Shuffle(rulesList);
+
+        //On shuffle les symboles de chaque ligne
+        for (int i = 0; i < 8; i++)
+        {
+            List<Symbols> ligne = new();
+            for (int j = 0; j < 5; j++)
+            {
+                ligne.Add(symbolsRepartition[i, j]);
+            }
+            Functions.Shuffle(ligne);
+            for (int j = 0; j < 5; j++)
+            {
+                symbolsRepartition[i, j] = ligne[j];
+            }
+        }
+
         rules = rulesList.ToArray();
 
     }
 
-    private MathSymbolRule GenerateMathSymbolRule()
+    private MathSymbolRule GenerateMathSymbolRule(int index)
     {
         MathSymbolRule rule = new()
         {
             targetNumber = Random.Range(400, 999)
         };
-        Dictionary<Symbols, int> valeursBtn = new();
 
-        List<int> randomButtonValues = new(buttonValues);
-        Functions.Shuffle(randomButtonValues);
+        List<KeyValuePair<Symbols, int>> valeursBtn = new();
 
-        int nbSymbolsChosen = 0;
-        while (nbSymbolsChosen < 8)
+        for (int i = 0; i < 8; i++)
         {
-            Symbols randSymbol = (Symbols)Random.Range(0, Enum.GetValues(typeof(Symbols)).Length);
-            if (valeursBtn.ContainsKey(randSymbol))
-            {
-                continue;
-            }
-            valeursBtn[randSymbol] = randomButtonValues[nbSymbolsChosen];
-            nbSymbolsChosen++;
+            Symbols symbol = symbolsRepartition[i, index];
+            valeursBtn.Add(new(symbol, buttonValues[i]));
         }
+
+        Functions.Shuffle(valeursBtn);
 
         rule.valeursBtn = valeursBtn;
 
