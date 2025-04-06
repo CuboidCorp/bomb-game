@@ -78,7 +78,7 @@ public class ButtonModule : Module
             case ButtonCondition.PRESS_FOR:
                 Debug.Log("PRESS_FOR");
                 Debug.Log("Target press" + targetRule.targetPressTime);
-                if (pressTime > targetRule.targetPressTime && pressTime < targetRule.targetPressTime + .5f)
+                if (pressTime > targetRule.targetPressTime - .25f && pressTime < targetRule.targetPressTime + .25f)
                 {
                     Debug.Log("Bouton relaché après un certain temps");
                     success = true;

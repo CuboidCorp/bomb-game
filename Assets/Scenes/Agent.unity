@@ -1384,7 +1384,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: seed
-      value: 1430
+      value: 1386
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: m_Enabled
@@ -1420,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[2].maxNbAppearance
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[3].maxNbAppearance
@@ -1428,7 +1428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[4].maxNbAppearance
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 777656300350960457, guid: 5a6eecc94d042fd4bb422ee97a881615, type: 3}
       propertyPath: nbModulesAllowed.Array.data[6].maxNbAppearance
