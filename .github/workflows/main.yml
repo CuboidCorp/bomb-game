@@ -16,12 +16,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           lfs: true
+    
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
+      
       - name: Run tests
         uses: game-ci/unity-test-runner@v4
         env:
@@ -61,7 +63,7 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           unityVersion: 6000.0.38f1
-          buildName: CountdownCrew
+          buildName: ${{ vars.GAME_NAME }}
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
@@ -78,13 +80,19 @@ jobs:
     steps:
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
+  
       - name: Clean and zip builds
         run: |
           for dir in Build-*; do
             echo "Cleaning $dir"
             find "$dir" -type d -iname '*DoNotShip*' -exec rm -rf {} +
-            zip -r "${dir}.zip" "$dir"/*
+
+            inner=$(find "$dir" -mindepth 1 -maxdepth 1 -type d)
+            mv "$inner" "$dir/${{ vars.GAME_NAME }}"
+
+            (cd "$dir" && zip -r "../${{ vars.GAME_NAME }}-${dir#Build-}.zip" "${{ vars.GAME_NAME }}")
           done
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
