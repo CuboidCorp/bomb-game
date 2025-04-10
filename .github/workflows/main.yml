@@ -77,8 +77,13 @@ jobs:
     steps:
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
-      - name : Test if artifact works
-        run : ls -R
+      - name: Clean and zip builds
+        run: |
+          for dir in Build-*; do
+            echo "Cleaning $dir"
+            find "$dir" -type d -iname '*DoNotShip*' -exec rm -rf {} +
+            zip -r "${dir}.zip" "$dir"
+          done
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
