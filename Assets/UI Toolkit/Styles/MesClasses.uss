@@ -103,13 +103,34 @@
     border-bottom-color: rgb(87, 98, 138);
 }
 
+.pc-closebar {
+    width: 1024px;
+    max-width: 1024px;
+    min-width: 1024px;
+    height: 32px;
+    max-height: 32px;
+    min-height: 32px;
+    flex-grow: 1;
+    flex-direction: row-reverse;
+    background-color: rgb(153, 153, 153);
+}
+
+.pc-closebtn {
+    width: 32px;
+    max-width: 32px;
+    min-width: 32px;
+    height: 32px;
+    max-height: 32px;
+    min-height: 32px;
+}
+
 .pc-screen {
     max-width: 1024px;
     width: 1024px;
     min-width: 1024px;
-    height: 448px;
-    max-height: 448px;
-    min-height: 448px;
+    height: 416px;
+    max-height: 416px;
+    min-height: 416px;
 }
 
 .pc-toolbar {

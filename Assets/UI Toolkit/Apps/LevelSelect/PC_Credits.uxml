@@ -1,57 +1,63 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/Styles/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
-    <engine:VisualElement name="Credits" class="pc-screen" style="flex-grow: 1; background-color: rgb(200, 200, 200);">
-        <engine:ScrollView>
-            <engine:Label text="Label" name="devLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3350720389017600)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="Nathan Pagnucco" name="devs" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="Label" name="testLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3350951939764224)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="chocolatine727, rajojobar, los_pepitos, rystue" name="tests" style="font-size: 30px; -unity-text-align: middle-center; flex-wrap: wrap; white-space: normal;" />
-            <engine:Label text="Label" name="packagesLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3352509507137536)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="AllSky Free - 10 Sky / Skybox Set by rpgwhitelock" name="package1" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
-            <engine:Label text="Chemistry Lab Items Pack by Animatics Studio" name="package2" triple-click-selects-line="true" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
-            <engine:Label text="Office Pack - Free by nappin" name="package3" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
-            <engine:Label text="Free PBR Lamps by New Solution Studio" name="package4" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
-            <engine:Label text="PBR Materials Sampler Pack by Integrity Software &amp; Games" name="package5" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
-            <engine:Label text="POLYGON office building by 255 pixel studios" name="package6" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
-            <engine:Label text="Label" name="inspLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3351482842181632)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="Keep Talking and Nobody Explodes" name="insp1" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="Them Bombs" name="insp2" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="Label" name="fontLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3353211285499904)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="E1234 by GGBotNet" name="font" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="Label" name="iconsLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3352461922758656)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="svgrepo" name="iconSource" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="Label" name="audioLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
-                <Bindings>
-                    <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3353669584515072)" />
-                </Bindings>
-            </engine:Label>
-            <engine:Label text="Pixabay" name="audio" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="Milan Wulf (Pixabay)" name="audio2" style="font-size: 30px; -unity-text-align: middle-center;" />
-            <engine:Label text="eritnhut (Pixabay)" name="audio2" style="font-size: 30px; -unity-text-align: middle-center;" />
-        </engine:ScrollView>
-    </engine:VisualElement>
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/LevelRunStyle.uss?fileID=7433441132597879392&amp;guid=913dc1c09938c224fa3b1cd4425e0830&amp;type=3#LevelRunStyle" />
+    <LvlCreditsElement>
+        <engine:VisualElement name="topBar" class="top-bar" style="background-color: rgb(200, 200, 200); -unity-background-image-tint-color: rgb(200, 200, 200);">
+            <engine:Button name="closeButton" class="close-button" />
+        </engine:VisualElement>
+        <engine:VisualElement name="Credits" class="pc-screen" style="flex-grow: 1; background-color: rgb(200, 200, 200); height: 416px; min-height: 416px; max-height: 416px;">
+            <engine:ScrollView>
+                <engine:Label text="Label" name="devLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3350720389017600)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="Nathan Pagnucco" name="devs" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="Label" name="testLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3350951939764224)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="chocolatine727, rajojobar, los_pepitos, rystue" name="tests" style="font-size: 30px; -unity-text-align: middle-center; flex-wrap: wrap; white-space: normal;" />
+                <engine:Label text="Label" name="packagesLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3352509507137536)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="AllSky Free - 10 Sky / Skybox Set by rpgwhitelock" name="package1" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+                <engine:Label text="Chemistry Lab Items Pack by Animatics Studio" name="package2" triple-click-selects-line="true" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+                <engine:Label text="Office Pack - Free by nappin" name="package3" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+                <engine:Label text="Free PBR Lamps by New Solution Studio" name="package4" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+                <engine:Label text="PBR Materials Sampler Pack by Integrity Software &amp; Games" name="package5" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+                <engine:Label text="POLYGON office building by 255 pixel studios" name="package6" style="font-size: 25px; -unity-text-align: middle-center; -unity-font-style: normal;" />
+                <engine:Label text="Label" name="inspLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3351482842181632)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="Keep Talking and Nobody Explodes" name="insp1" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="Them Bombs" name="insp2" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="Label" name="fontLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3353211285499904)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="E1234 by GGBotNet" name="font" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="Label" name="iconsLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3352461922758656)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="svgrepo" name="iconSource" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="Label" name="audioLabel" style="font-size: 50px; color: rgb(0, 0, 0); -unity-text-align: middle-center;">
+                    <Bindings>
+                        <UnityEngine.Localization.LocalizedString property="text" table="GUID:9c753c02c1d42d3449f1dccbc2989712" entry="Id(3353669584515072)" />
+                    </Bindings>
+                </engine:Label>
+                <engine:Label text="Pixabay" name="audio" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="Milan Wulf (Pixabay)" name="audio2" style="font-size: 30px; -unity-text-align: middle-center;" />
+                <engine:Label text="eritnhut (Pixabay)" name="audio2" style="font-size: 30px; -unity-text-align: middle-center;" />
+            </engine:ScrollView>
+        </engine:VisualElement>
+    </LvlCreditsElement>
 </engine:UXML>

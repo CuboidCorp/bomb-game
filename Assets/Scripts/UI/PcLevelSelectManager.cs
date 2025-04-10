@@ -55,6 +55,7 @@ public class PcLevelSelectManager : PcUiManager
     {
         screenHolder.Clear();
         screenHolder.Add(creditsWindow.CloneTree());
+        doc.rootVisualElement.Q<LvlCreditsElement>().Init();
     }
 
     /// <summary>
