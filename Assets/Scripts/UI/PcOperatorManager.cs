@@ -25,24 +25,32 @@ public class PcOperatorManager : PcUiManager
         Instance = this;
         InstanceAbs = this;
         annexes = Resources.LoadAll<VisualTreeAsset>("Applis");
+        windows = new Dictionary<string, VisualElement>();
     }
 
-    private void Start()
+    protected override void OnComputerLoggedIn()
     {
-        windows = new Dictionary<string, VisualElement>();
+        doc.visualTreeAsset = mainScreenWindow;
+        screenHolder = doc.rootVisualElement.Q("screenHolder");
+        SetupToolBar();
+        InitializeWindow("desktop", desktopWindow);
         InitializeWindow("manual", manualWindow);
         InitializeWindow("morse", morseWindow);
         InitializeWindow("wire", wireWindow);
         InitializeWindow("calculator", calcWindow);
-
+        OpenDesktop();
     }
 
     private void InitializeWindow(string key, VisualTreeAsset asset)
     {
         VisualElement window = asset.CloneTree();
         window.style.display = DisplayStyle.None;
-        Button closeBtn = window.Q<Button>("closeBtn");
-        closeBtn.clicked += () => CloseWindow(key);
+        if (key != "desktop")
+        {
+            Button closeBtn = window.Q<Button>("closeBtn");
+            closeBtn.clicked += OpenDesktop;
+        }
+
         switch (key)
         {
             case "manual":
@@ -63,10 +71,19 @@ public class PcOperatorManager : PcUiManager
         screenHolder.Add(window);
     }
 
+    private void HideAllWindows()
+    {
+        foreach (VisualElement window in windows.Values)
+        {
+            window.style.display = DisplayStyle.None;
+        }
+    }
+
     private void ShowWindow(string key)
     {
         if (windows.TryGetValue(key, out VisualElement window))
         {
+            HideAllWindows();
             window.style.display = DisplayStyle.Flex;
             window.BringToFront();
         }
@@ -76,17 +93,7 @@ public class PcOperatorManager : PcUiManager
         }
     }
 
-    private void CloseWindow(string key)
-    {
-        if (windows.TryGetValue(key, out VisualElement window))
-        {
-            window.style.display = DisplayStyle.None;
-        }
-        else
-        {
-            Debug.LogWarning($"Window with key '{key}' not found.");
-        }
-    }
+    public override void OpenDesktop() => ShowWindow("desktop");
 
     /// <summary>
     /// Ouvre le manuel avec tous les modules

@@ -1,0 +1,11 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ClassicPopup name="popup">
+        <engine:VisualElement name="topBar" style="flex-grow: 1; flex-direction: row-reverse; background-color: rgb(114, 114, 114);">
+            <engine:Button name="closeBtn" style="border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0); background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/Images/Close.png?fileID=2800000&amp;guid=d34a329af0b48864aa051eefef94dcb5&amp;type=3#Close&quot;); width: 32px; min-width: 32px; max-width: 32px; height: 32px; min-height: 32px; max-height: 32px;" />
+        </engine:VisualElement>
+        <engine:VisualElement name="body" style="flex-grow: 1; align-items: center; background-color: rgb(255, 255, 255);">
+            <engine:Label text="YOU ARE AN IDIOT" name="Text" style="align-items: auto; -unity-text-align: middle-center; font-size: 40px;" />
+            <engine:Label text="☺☺☺" name="Emojis" style="-unity-text-align: middle-center; font-size: 90px;" />
+        </engine:VisualElement>
+    </ClassicPopup>
+</engine:UXML>

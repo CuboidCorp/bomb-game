@@ -1,8 +1,8 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="PC_ToolBar" src="project://database/Assets/UI%20Toolkit/Templates/PC_ToolBar.uxml?fileID=9197481963319205126&amp;guid=ba92f712e9cfa5c488aac8ce77b4f815&amp;type=3#PC_ToolBar" />
     <engine:Template name="PC_Cursor" src="project://database/Assets/UI%20Toolkit/Templates/PC_Cursor.uxml?fileID=9197481963319205126&amp;guid=189919e3b631fd34ea7debaf7e06a4aa&amp;type=3#PC_Cursor" />
-    <Style src="project://database/Assets/UI%20Toolkit/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
-    <engine:VisualElement name="screenHolder" class="pc-screen" style="flex-grow: 1;" />
+    <Style src="project://database/Assets/UI%20Toolkit/Styles/MesClasses.uss?fileID=7433441132597879392&amp;guid=9cdbe67c2e3b5e94da6ce95e7237532d&amp;type=3#MesClasses" />
+    <engine:VisualElement name="screenHolder" class="pc-desktop" style="flex-grow: 1;" />
     <engine:Instance template="PC_ToolBar" style="width: 1024px; max-width: 1024px; min-width: 1024px; height: 48px; max-height: 48px; min-height: 48px;" />
     <engine:Instance template="PC_Cursor" picking-mode="Ignore" style="position: absolute; width: 32px; max-width: 32px; min-width: 32px; height: 32px; max-height: 32px; min-height: 32px;" />
 </engine:UXML>

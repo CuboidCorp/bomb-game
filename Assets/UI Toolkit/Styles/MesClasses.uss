@@ -133,6 +133,15 @@
     min-height: 416px;
 }
 
+.pc-desktop {
+    max-width: 1024px;
+    width: 1024px;
+    min-width: 1024px;
+    height: 448px;
+    max-height: 448px;
+    min-height: 448px;
+}
+
 .pc-toolbar {
     width: 1024px;
     max-width: 1024px;

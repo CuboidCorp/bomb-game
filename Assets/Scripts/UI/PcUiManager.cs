@@ -86,7 +86,7 @@ public abstract class PcUiManager : MonoBehaviour
         doc.panelSettings.SetScreenToPanelSpaceFunction(null);
     }
 
-    private void OnComputerLoggedIn()
+    protected virtual void OnComputerLoggedIn()
     {
         doc.visualTreeAsset = mainScreenWindow;
         screenHolder = doc.rootVisualElement.Q("screenHolder");

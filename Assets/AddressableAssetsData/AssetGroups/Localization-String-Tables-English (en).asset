@@ -34,6 +34,12 @@ MonoBehaviour:
     - Locale-en
     - Preload
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d8c28ebbb23cbf45af14ce5529160fa
+    m_Address: PopupText_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4ebad3b626d9598428a859e06394fef1
     m_Address: MainMenu_en
     m_ReadOnly: 1

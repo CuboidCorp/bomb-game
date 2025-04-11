@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: PopupText Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: PopupText
+  m_TableCollectionNameGuidString: b79d1fa52440b0844925aa7ba20d57c3
+  m_Entries:
+  - m_Id: 9332813824
+    m_Key: IDIOT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 296885907456
+    m_Key: SYSALERT_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 576528543744
+    m_Key: SYSALERT_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2467052351488
+    m_Key: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2501739245568
+    m_Key: QUIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2549227155456
+    m_Key: RETRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2636233797632
+    m_Key: CANCEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2750402752512
+    m_Key: CONGRATS_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2867323170816
+    m_Key: CONGRATS_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2947623120896
+    m_Key: CONGRATS_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3985214238720
+    m_Key: BINBOWS_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4499616264192
+    m_Key: BINBOWS_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4860460625920
+    m_Key: VIRUS_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6234074214400
+    m_Key: VIRUS_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6577336053760
+    m_Key: SCAN
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 6241072355829350572
+  references:
+    version: 2
+    RefIds:
+    - rid: 6241072355829350572
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1744400785783
