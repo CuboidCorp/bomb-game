@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38aaf64cb49309c46879c3600ebbe828, type: 3}
+  m_Name: SysAlert
+  m_EditorClassIdentifier: 
+  popupType: 2
+  mainText:
+    m_TableReference:
+      m_TableCollectionName: GUID:b79d1fa52440b0844925aa7ba20d57c3
+    m_TableEntryReference:
+      m_KeyId: 296885907456
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  subText:
+    m_TableReference:
+      m_TableCollectionName: GUID:b79d1fa52440b0844925aa7ba20d57c3
+    m_TableEntryReference:
+      m_KeyId: 576528543744
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  buttonsText:
+  - m_TableReference:
+      m_TableCollectionName: GUID:aec63d3afa06f434a901b4d7f0797b5e
+    m_TableEntryReference:
+      m_KeyId: 2549227155456
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:aec63d3afa06f434a901b4d7f0797b5e
+    m_TableEntryReference:
+      m_KeyId: 2636233797632
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  buttonsActionsEnum: 0100000000000000
+  nbButtons: 2
+  isCloseBtnVisible: 0
+  references:
+    version: 2
+    RefIds: []

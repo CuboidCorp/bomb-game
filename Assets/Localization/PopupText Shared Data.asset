@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: IDIOT_1
     m_Metadata:
       m_Items: []
+  - m_Id: 206953653956608
+    m_Key: IDIOT_2
+    m_Metadata:
+      m_Items: []
   - m_Id: 296885907456
     m_Key: SYSALERT_1
     m_Metadata:
@@ -27,32 +31,12 @@ MonoBehaviour:
     m_Key: SYSALERT_2
     m_Metadata:
       m_Items: []
-  - m_Id: 2467052351488
-    m_Key: OK
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2501739245568
-    m_Key: QUIT
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2549227155456
-    m_Key: RETRY
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2636233797632
-    m_Key: CANCEL
-    m_Metadata:
-      m_Items: []
   - m_Id: 2750402752512
     m_Key: CONGRATS_1
     m_Metadata:
       m_Items: []
   - m_Id: 2867323170816
     m_Key: CONGRATS_2
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2947623120896
-    m_Key: CONGRATS_3
     m_Metadata:
       m_Items: []
   - m_Id: 3985214238720
@@ -71,8 +55,12 @@ MonoBehaviour:
     m_Key: VIRUS_2
     m_Metadata:
       m_Items: []
-  - m_Id: 6577336053760
-    m_Key: SCAN
+  - m_Id: 221208168067072
+    m_Key: SYS32_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 221329437978624
+    m_Key: SYS32_2
     m_Metadata:
       m_Items: []
   m_Metadata:

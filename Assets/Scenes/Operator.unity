@@ -2234,6 +2234,7 @@ GameObject:
   - component: {fileID: 810705779}
   - component: {fileID: 810705778}
   - component: {fileID: 810705780}
+  - component: {fileID: 810705781}
   m_Layer: 5
   m_Name: ComputerScreen
   m_TagString: Computer
@@ -2372,6 +2373,20 @@ MonoBehaviour:
   morseWindow: {fileID: 9197481963319205126, guid: b1658074343dbd246b043fda140b1226, type: 3}
   wireWindow: {fileID: 9197481963319205126, guid: 78cf348c1bfece144b5b0d624a7987f8, type: 3}
   introManual: {fileID: 9197481963319205126, guid: 7a88274392f2f8f4da3ca9c38c7b3e77, type: 3}
+--- !u!114 &810705781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810705771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b74ca199c5241dd469bf460570e904fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupAsset: {fileID: 9197481963319205126, guid: 8f6f9f6dcf85294488e9026fd4b82624, type: 3}
+  POPUP_SPAWN_TIME: 5
 --- !u!1001 &816541379
 PrefabInstance:
   m_ObjectHideFlags: 0

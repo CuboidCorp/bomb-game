@@ -134,6 +134,30 @@ MonoBehaviour:
     m_Localized: "\xE9gale"
     m_Metadata:
       m_Items: []
+  - m_Id: 2467052351488
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2501739245568
+    m_Localized: Quitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2549227155456
+    m_Localized: "R\xE9essayer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2947623120896
+    m_Localized: "R\xE9cuperer prix"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2636233797632
+    m_Localized: Annuler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6577336053760
+    m_Localized: Scanner
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

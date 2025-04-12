@@ -134,6 +134,30 @@ MonoBehaviour:
     m_Localized: equal to
     m_Metadata:
       m_Items: []
+  - m_Id: 2467052351488
+    m_Localized: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2501739245568
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2549227155456
+    m_Localized: Retry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2947623120896
+    m_Localized: Claim prize
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2636233797632
+    m_Localized: Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6577336053760
+    m_Localized: Scan
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

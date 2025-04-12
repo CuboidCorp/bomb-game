@@ -15,6 +15,30 @@ MonoBehaviour:
   m_TableCollectionName: GenericText
   m_TableCollectionNameGuidString: aec63d3afa06f434a901b4d7f0797b5e
   m_Entries:
+  - m_Id: 2467052351488
+    m_Key: OK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2501739245568
+    m_Key: QUIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2549227155456
+    m_Key: RETRY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2947623120896
+    m_Key: CLAIM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2636233797632
+    m_Key: CANCEL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6577336053760
+    m_Key: SCAN
+    m_Metadata:
+      m_Items: []
   - m_Id: 2963092376350720
     m_Key: COLORS1
     m_Metadata:

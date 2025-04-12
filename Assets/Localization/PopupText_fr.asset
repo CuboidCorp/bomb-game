@@ -26,32 +26,16 @@ MonoBehaviour:
     m_Localized: SYSTEM ALERT
     m_Metadata:
       m_Items: []
-  - m_Id: 2467052351488
-    m_Localized: OK
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2501739245568
-    m_Localized: Quitter
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2549227155456
-    m_Localized: "R\xE9essayer"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2636233797632
-    m_Localized: Annuler
+  - m_Id: 206953653956608
+    m_Localized: "\u263A\u263A\u263A"
     m_Metadata:
       m_Items: []
   - m_Id: 2750402752512
-    m_Localized: "F\xE9licitation !!!!"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2947623120896
-    m_Localized: "R\xE9cuperer prix"
+    m_Localized: "F\xE9licitations !!!!"
     m_Metadata:
       m_Items: []
   - m_Id: 2867323170816
-    m_Localized: "Vous avez gagn\xE9 des vacances gratuite vers Avastia ! Appuyez
+    m_Localized: "Vous avez gagn\xE9 des vacances gratuite vers Avatsia ! Appuyez
       pour r\xE9cup\xE9rer votre prix !"
     m_Metadata:
       m_Items: []
@@ -71,12 +55,16 @@ MonoBehaviour:
     m_Localized: "Base virale mise \xE0 jour"
     m_Metadata:
       m_Items: []
-  - m_Id: 6577336053760
-    m_Localized: Scanner
-    m_Metadata:
-      m_Items: []
   - m_Id: 6234074214400
     m_Localized: "Trojan.exe a infect\xE9 votre calculatrice."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 221208168067072
+    m_Localized: '! Attention !'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 221329437978624
+    m_Localized: ' '
     m_Metadata:
       m_Items: []
   references:

@@ -30,28 +30,12 @@ MonoBehaviour:
     m_Localized: A fatal error has occured, please restart the program.
     m_Metadata:
       m_Items: []
-  - m_Id: 2467052351488
-    m_Localized: OK
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2501739245568
-    m_Localized: Quit
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2549227155456
-    m_Localized: Retry
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2636233797632
-    m_Localized: Cancel
+  - m_Id: 206953653956608
+    m_Localized: "\u263A\u263A\u263A"
     m_Metadata:
       m_Items: []
   - m_Id: 2750402752512
     m_Localized: CONGRATULATIONS !!!!
-    m_Metadata:
-      m_Items: []
-  - m_Id: 2947623120896
-    m_Localized: Claim prize
     m_Metadata:
       m_Items: []
   - m_Id: 2867323170816
@@ -74,8 +58,12 @@ MonoBehaviour:
     m_Localized: Trojan.exe has infected your calculator.
     m_Metadata:
       m_Items: []
-  - m_Id: 6577336053760
-    m_Localized: Scan
+  - m_Id: 221208168067072
+    m_Localized: '! Warning !'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 221329437978624
+    m_Localized: Please delete System32 to continue
     m_Metadata:
       m_Items: []
   references:

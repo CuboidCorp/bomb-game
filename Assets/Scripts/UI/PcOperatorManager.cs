@@ -39,6 +39,8 @@ public class PcOperatorManager : PcUiManager
         InitializeWindow("wire", wireWindow);
         InitializeWindow("calculator", calcWindow);
         OpenDesktop();
+
+        PopupManager.Instance.InitPopups();
     }
 
     private void InitializeWindow(string key, VisualTreeAsset asset)
@@ -124,5 +126,46 @@ public class PcOperatorManager : PcUiManager
         toolbar.Init();
     }
 
+    /// <summary>
+    /// Recupere la taille du screen Holder
+    /// (Bricolage car resolvedStyle et style ne marche pas)
+    /// </summary>
+    /// <returns>Width en x et height en y</returns>
+    public Vector2 GetScreenSize()
+    {
+        return new Vector2(1024, 448);
+    }
 
+    /// <summary>
+    /// Ajoute un popup a l'ecran
+    /// </summary>
+    /// <param name="popup">Le popup a ajouter</param>
+    public void AddPopup(VisualElement popup)
+    {
+        screenHolder.Add(popup);
+    }
+
+    /// <summary>
+    /// Supprime un popup de l'ecran
+    /// </summary>
+    /// <param name="popup">Le popup a supprimer</param>
+    public void RemovePopup(VisualElement popup)
+    {
+        screenHolder.Remove(popup);
+    }
+
+    /// <summary>
+    /// Recupere un element par son nom
+    /// </summary>
+    /// <param name="name">Le nom de l'elem qu'on veut recup</param>
+    /// <returns>L'element qu'on voulait, null si il y est pas</returns>
+    public VisualElement GetElementByName(string name)
+    {
+        VisualElement elem = screenHolder.Q(name);
+        if (elem == null)
+        {
+            Debug.LogWarning($"Element with name '{name}' not found.");
+        }
+        return elem;
+    }
 }
